@@ -234,7 +234,7 @@
     和派生对象都具有 
     <dfn id="internal-key-modifier-state">内部键修饰符状态</dfn> ，
     可以使用 [[UIEvents-Key]] 规范中，
-    <a href="http://www.w3.org/TR/uievents-key/#keys-modifier">修饰符键表</a> 
+    <a href="https://mangwu.github.io/uievents-key/#keys-modifier">修饰符键表</a> 
     中描述的<a href="#keys-modifiers">键修饰符名称</a> 来设置和检索该状态。
 
     以下步骤补充了定义在 DOM4 中构建事件时的算法：

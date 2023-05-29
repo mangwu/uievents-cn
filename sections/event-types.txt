@@ -1166,7 +1166,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 			关于修饰符键的表示的具体键盘按键，
 			在不同的键盘设备和不同的操作系统上，甚至不同的浏览器上，
 			都会有不同的映射关系以及不同的修饰符键支持程度。
-			可以参阅 [[UIEvents-Key]] 中的 [=Modifier Keys table=] 
+			可以参阅 [[UIEvents-Key]] 中的 [=修饰符键值表格=] 
 			获取非标准有效的修饰符键列表。也可以参阅 
 			<a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState#modifier_keys_on_gecko">
 			MDN-KeyboardEvent-getModifierState-modifier_keys_on_gecko</a> 
@@ -2873,16 +2873,16 @@ myDiv.addEventListener("auxclick", function(e) {
 					<span class="zh-upper">必须</span> 被按下的时间长度是配置独立的
 					(由配置决定)。
 
-					<div class="note custom-note">
+					<div class="note custom-note" id="custom-reapeat-note">
 					<q>Long-key-press行为是一种用户交互行为，
 					通常指用户在按下键盘上的某个键时，停留的时间超过了一定的阈值，
 					例如超过0.5秒或者1秒。
 					这种行为通常被视为用户在积极地与计算机进行交互，而不是简单地按下按键。
-					<br /> 在计算机图形学和人机交互领域，long-key-press
+					<br/>在计算机图形学和人机交互领域，long-key-press
 					行为通常被用于触发一些特定的功能或者操作。例如，在一些文本编辑器中，
 					当用户在按下某个键超过一定时间后，会出现一个弹出菜单，
 					显示与该键相关的操作选项。在其他应用程序中，
-					long-key-press行为则可能被用于执行复制、粘贴、撤销等常见操作。 <br /> 
+					long-key-press行为则可能被用于执行复制、粘贴、撤销等常见操作。 <br/>
 					理解long-key-press行为的关键在于理解其背后的意图和行为逻辑。
 					与简单地按下按键不同，long-key-press
 					行为通常意味着用户希望执行某些特定的操作，
@@ -2916,22 +2916,38 @@ myDiv.addEventListener("auxclick", function(e) {
 	
 				<dt><dfn method>getModifierState(keyArg)</dfn></dt>
 				<dd>
-					Queries the state of a modifier using a key value.
-	
-					Returns <code>true</code> if it is a modifier key and
-					the modifier is activated, <code>false</code> otherwise.
+					使用键值查询修饰键的状态。
+
+					如果它(传入的键值)是修饰键并且修饰键处于激活状态，则返回
+					<code>true</code>  ，否则返回 <code>false</code> 。	
 	
 					<dl class="parameters">
 						<dt>DOMString keyArg</dt>
 						<dd>
-							A modifier key value.  Valid [=modifier keys=] are defined
-							in the [=Modifier Keys table=] in [[UIEvents-Key]].
+							修饰符键值。有效的 <a href="#modifier-key">修饰键</a> 在 
+							[[UIEvents Key]] 中的 [=修饰符键值表格=] 中定义。
 	
 							<p class="note">
-							If an application wishes to distinguish between right
-							and left modifiers, this information could be deduced
-							using keyboard events and {{KeyboardEvent/location}}.
+							如果应用程序希望区分左右修饰键，则可以使用键盘事件和 
+							{{KeyboardEvent/location}} 来推断此信息。
 							</p>
+
+							<div class="note custom-note">
+							"修饰按键"，"修饰符按键"，"修饰键"，"修饰符"，这几种不同的说法，
+							在本规范的翻译中都表示"修饰符按键"，即"Modifier Keys"，
+							有时候也会使用"modifiers"简化表示。它是计算机键盘上的一种特殊键
+							(或组合键)，当按下时， 它会临时修改另一个键的正常功能。 <br/>
+							常见的修饰键有 KEYCAP{Shift} ，KEYCAP{Alt} ， KEYCAP{Ctrl} 等，
+							想要了解修饰符按键的功能定义，可以查阅 [=修饰符按键=] ， 
+							想要知晓本方法检查修饰键的状态传入的所有参数，如上述，查阅 
+							[=修饰符键值表格=] 。 <br> <code>getModifierState(keyArg)</code> 
+							方法不会区分是左修饰符按键还是右修饰符按键被激活，
+							这是由传入的参数是修饰符键值(modifier key value)，也就是修饰符
+							[=键属性值=] 决定的，因为它不区分按键的左右。除了通过 
+							{{KeyboardEvent/location}} 来区分左右修饰键，还可以直接通过键码值 
+							{{KeyboardEvent/code}} 来区分。
+							</div>
+							
 						</dd>
 					</dl>
 				</dd>
@@ -2951,63 +2967,94 @@ myDiv.addEventListener("auxclick", function(e) {
 	
 			<dl dfn-for="KeyboardEventInit">
 				<dt class="origin-dfn"><dfn dict-member>key</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">key</code></i>，
+					<code>DOMString</code>
+					<span class="replacement"> 类型，默认值为""</span>
+				</dt>
+				
 				<dd>
-					Initializes the <code>key</code> attribute of the KeyboardEvent
-					object to the unicode character string representing the meaning
-					of a key after taking into account all keyboard modifiers
-					(such as shift-state). This value is the final effective value
-					of the key. If the key is not a printable character, then it
-					should be one of the key values defined in [[UIEvents-Key]].
+					将所有键盘修饰符(如shift-state)纳入考虑范围在考虑后，将键盘事件
+					(KeyboardEvent)对象的 <code>key</code> 属性初始化为表示该键含义的 
+					unicode 字符串。该值是按键的最终有效值。如果键不是可打印字符，
+					则它应该是 [[UIEvents-Key]] 中定义的键值之一。
 				</dd>
 	
 				<dt class="origin-dfn"><dfn dict-member>code</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">code</code></i>，
+					<code>DOMString</code>
+					<span class="replacement"> 类型，默认值为""</span>
+				</dt>
+				
 				<dd>
-					Initializes the <code>code</code> attribute of the KeyboardEvent
-					object to the unicode character string representing the key that
-					was pressed, ignoring any keyboard modifications such as
-					keyboard layout. This value should be one of the code values
-					defined in [[UIEvents-Code]].
+					忽略键盘布局等任何键盘配置变动，将键盘事件(KeyboardEvent)
+					对象的 <code>code</code> 属性初始化为表示为按下的物理键的 unicode 
+					字符串。此值应该是[[UIEvents-Code]] 中定义的键码值之一。
 				</dd>
+
+				<div class="note custom-note">
+				键盘事件对象的键值就是接口中定义的 <code>key</code> 属性值，
+				键盘事件的码值就是接口中定义的 <code>code</code> 属性值，
+				前者表示按键的含义通常与键入值有关，会因为区域设置有所不同，
+				后者表示物理按键的编码，用于标识每个独立的物理按键。在翻译过程中，
+				"键值"，"键属性值"，"按键值"都是 <code>key</code> 属性值，即 "key value"
+				; "码值"，"键码值"，"码属性值"，"键码属性值"都是 <code>code</code> 
+				属性值，即 "code value" 。关于二者的含义以及所表示的值集合，可以参阅 
+				<a href="https://mangwu.github.io/uievents-key-cn/">用户界面事件键盘事件
+				key 属性值</a> 和 <a href="https://mangwu.github.io/uievents-code-cn/">
+				用户界面事件键盘事件 code 属性值</a> 。
+				</div>
 	
 				<dt class="origin-dfn"><dfn dict-member>location</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">location</code></i>，
+					<code>unsigned long</code>
+					<span class="replacement"> 类型(无符号2字节整型)，默认为 
+					<code>0</code> </span>
+				</dt>
+				
 				<dd>
-					Initializes the {{KeyboardEvent/location}} attribute of the
-					KeyboardEvent object to one of the following location numerical
-					constants:
+					将键盘事件(KeyboardEvent)对象的 {{KeyboardEvent/location}} 
+					属性初始化为以下表示位置的数值常量之一: 
 	
-					*	{{KeyboardEvent/DOM_KEY_LOCATION_STANDARD}} (numerical value 0)</li>
-					*	{{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} (numerical value 1)</li>
-					*	{{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} (numerical value 2)</li>
-					*	{{KeyboardEvent/DOM_KEY_LOCATION_NUMPAD}} (numerical value 3)</li>
+					*	{{KeyboardEvent/DOM_KEY_LOCATION_STANDARD}} (数值 0)</li>
+					*	{{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} (数值 1)</li>
+					*	{{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} (数值 2)</li>
+					*	{{KeyboardEvent/DOM_KEY_LOCATION_NUMPAD}} (数值 3)</li>
 				</dd>
 	
 				<dt class="origin-dfn"><dfn dict-member>repeat</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">repeat</code></i>，
+					<code>boolean</code>
+					<span class="replacement"> 类型，默认值为 <code>false</code> </span>
+				</dt>
+				
 				<dd>
-					Initializes the <code>repeat</code> attribute of the
-					KeyboardEvent object. This attribute should be set to
-					<code>true</code> if the the current KeyboardEvent is considered
-					part of a repeating sequence of similar events caused by the
-					long depression of any single key, <code>false</code> otherwise.
+					初始化键盘事件(KeyboardEvent)对象的 <code>repeat</code> 属性。
+					如果当前键盘事件(KeyboardEvent)被认为是由长时间按下(非规范补充: 见于 
+					<a href="#custom-reapeat-note">reapeat属性注释</a> )
+					任何单个键引起的类似事件的重复序列的一部分，则该属性应设置为 
+					<code>true</code> ，否则为 <code>false</code> 。
 				</dd>
 	
 				<dt class="origin-dfn"><dfn dict-member>isComposing</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">isComposing</code></i>，
+					<code>boolean</code>
+					<span class="replacement"> 类型，默认值为 <code>false</code></span>
+				</dt>
+				
 				<dd>
-					Initializes the <code>isComposing</code> attribute of the
-					KeyboardEvent object. This attribute should be set to
-					<code>true</code> if the event being constructed occurs as part
-					of a composition sequence, <code>false</code> otherwise.
+					初始化键盘事件(KeyboardEvent)对象的 <code>isComposing</code> 属性。
+					如果正在构建的事件是作为合成序列的一部分发生的，则该属性应设置为 
+					<code>true</code> ，否则为 <code>false</code> 。
 				</dd>
 			</dl>
 	
 	<div class="warning">
-	Legacy keyboard event implementations include three additional attributes,
-	<code>keyCode</code>, <code>charCode</code>, and <code>which</code>. The
-	<code>keyCode</code> attribute indicates a numeric value associated with a
-	particular key on a computer keyboard, while the <code>charCode</code>
-	attribute indicates the <abbr title="American Standard Code for
-	Information Interchange">ASCII</abbr> value of the character associated
-	with that key (which might be the same as the <code>keyCode</code> value)
-	and is applicable only to keys that produce a <a>character value</a>.
+	遗留的键盘事件实现包括三个额外的属性， <code>keyCode</code> 、 
+	<code>charCode</code> 和 <code>which</code> 。 <code>keyCode</code> 
+	属性表示与计算机键盘上某个特定键关联的数值，而 <code>charCode</code> 
+	属性则表示与该键关联的字符的 <abbr title="American Standard Code for
+	Information Interchange">ASCII</abbr> 值(可能与<code>keyCode</code>值相同)，
+	并且仅适用于生成 <a href="#character-value">字符值</a> 的键。
 	
 	In practice, <code>keyCode</code> and <code>charCode</code> are inconsistent
 	across platforms and even the same implementation on different operating

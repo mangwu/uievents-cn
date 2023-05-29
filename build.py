@@ -94,7 +94,7 @@ class Parser():
             pre = self.process_text(m.group(1))
             name = m.group(2)
             post = self.process_text(m.group(3))
-            desc = '%s<code class="code">"<a href="http://www.w3.org/TR/uievents-code/#code-%s">%s</a>"</code>%s' % (
+            desc = '%s<code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-%s">%s</a>"</code>%s' % (
                 pre, name, name, post)
 
         m = re.match(r'^(.*)KEY{(.+?)}(.*)$', desc)
@@ -102,7 +102,7 @@ class Parser():
             pre = self.process_text(m.group(1))
             name = m.group(2)
             post = self.process_text(m.group(3))
-            desc = '%s<code class="key">"<a href="http://www.w3.org/TR/uievents-key/#key-%s">%s</a>"</code>%s' % (
+            desc = '%s<code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-%s">%s</a>"</code>%s' % (
                 pre, name, name, post)
 
         m = re.match(r'^(.*)KEY_NOLINK{(.+?)}(.*)$', desc)

@@ -60,16 +60,15 @@
 	of event flow for more details.
 
 : <dfn>character value</dfn>
-::	In the context of key values, a character value is a string representing one
-	or more Unicode characters, such as a letter or symbol, or a set of letters, each
-	belonging to the set of valid <a>Unicode character categories</a>.
-	In this specification, character values are denoted as a unicode string
-	(e.g., UNI{U+0020}) or a glyph representation of the same code point (e.g.,
-	GLYPH{&nbsp;}), and are color coded to help distinguish these two representations.
+::	在键值的上下文中，字符值是表示一个或多个 Unicode 字符的字符串，
+	例如一个字母或符号，或一组字母，每个字符都属于一组有效的 
+	<a href="#unicode-character-categories">Unicode 字符类别</a> 。在本规范中，
+	字符值表示为 unicode 字符串(例如，NI{U+0020})或同一码点(code point)的字形表示
+	(例如，GLYPH{&nbsp;})，并且字符值会进行颜色编码以帮助区分这两种表示。
 
 	<p class="note">
-	In source code, some key values, such as non-graphic characters, can be
-	represented using the character escape syntax of the programming language in
+	在源代码中，一些键值，例如非图形字符，
+	可以通过正在使用的编程语言的字符转义语法来表示。
 	use.
 	</p>
 
@@ -272,7 +271,7 @@
 : <dfn>modifier key</dfn>
 ::	修饰符键可更改键的正常行为，例如生成不同大小写的字符(如 KEYCAP{Shift} 键)，
 	或更改键触发的功能(如 KEYCAP{Fn} 键或 KEYCAP{Alt} 键)。参阅 [[#keys-modifiers]] 
-	获取有关修饰符键的更多信息，并参阅 [[UIEvents-Key]] 中的 [=Modifier Keys table=] 
+	获取有关修饰符键的更多信息，并参阅 [[UIEvents-Key]] 中的 [=修饰符键值表格=] 
 	以获取有效的修饰符键列表。
 
 : <dfn lt="namespace URIs">namespace URI</dfn>
@@ -339,28 +338,28 @@
 	<a>host language</a>.
 
 : <dfn>Unicode character categories</dfn>
-:: A subset of the General Category values that are defined for each Unicode
-	code point. This subset contains all the
-	Letter (<abbr title="Letter, Lowercase">Ll</abbr>,
+:: Unicode字符类别，为每个 Unicode 码点定义的"一般类别(General Category)"值的子集。
+	该子集包含所有
+	字母(Letter) (<abbr title="Letter, Lowercase">Ll</abbr>,
 		<abbr title="Letter, Modifier">Lm</abbr>,
 		<abbr title="Letter, Other">Lo</abbr>,
 		<abbr title="Letter, Titlecase">Lt</abbr>,
 		<abbr title="Letter, Uppercase">Lu</abbr>),
-	Number (<abbr title="Number, Decimal Digit">Nd</abbr>,
+	数字(Number) (<abbr title="Number, Decimal Digit">Nd</abbr>,
 		<abbr title="Number, Letter">Nl</abbr>,
 		<abbr title="Number, Other">No</abbr>),
-	Punctuation (<abbr title="Punctuation, Connector">Pc</abbr>,
+	标点(Punctuation) (<abbr title="Punctuation, Connector">Pc</abbr>,
 		<abbr title="Punctuation, Dash">Pd</abbr>,
 		<abbr title="Punctuation, Close">Pe</abbr>,
 		<abbr title="Punctuation, Final quote">Pf</abbr>,
 		<abbr title="Punctuation, Initial quote">Pi</abbr>,
 		<abbr title="Punctuation, Other">Po</abbr>,
 		<abbr title="Punctuation, Open">Ps</abbr>)
-	and Symbol (<abbr title="Symbol, Currency">Sc</abbr>,
+	符号(Symbol) (<abbr title="Symbol, Currency">Sc</abbr>,
 		<abbr title="Symbol, Modifier">Sk</abbr>,
 		<abbr title="Symbol, Math">Sm</abbr>,
 		<abbr title="Symbol, Other">So</abbr>)
-	category values.
+	的类别值。
 
 : <dfn>un-initialized value</dfn>
 ::	未初始化值，表示任何还没有使用{{Event/initEvent()}}进行过初始化的事件的属性

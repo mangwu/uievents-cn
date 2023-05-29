@@ -119,8 +119,8 @@ url: https://www.w3.org/TR/2004/REC-xml-20040204/#NT-S; type: dfn;
 	text: white space
 url: https://mangwu.github.io/uievents-key-cn/#key-attribute-value; type: dfn; spec: uievents-key;
 	text: 键属性值
-url: https://www.w3.org/TR/uievents-key/#keys-modifier; type: dfn; spec: uievents-key;
-	text: modifier keys table
+url: https://mangwu.github.io/uievents-key-cn/#keys-modifier; type: dfn; spec: uievents-key;
+	text: 修饰符键值表格
 url: https://html.spec.whatwg.org/multipage/forms.html#context-menus; type: dfn;
 	text: contextmenu
 url: https://www.w3.org/TR/pointerevents3/#pointerevent-interface; type: interface; spec: pointerevents3
