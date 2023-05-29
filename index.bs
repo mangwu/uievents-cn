@@ -1,41 +1,136 @@
-<h1>UI Events</h1>
+<link href="./override.css" rel="stylesheet" />
+<script defer src="./custom-script.js"></script>
+<script src="./backup-script.js"></script>
 
 <pre class="metadata">
 Shortname: uievents
+Title: 用户界面事件(UI Events)
 Level:
 Group: webapps
-Status: ED
-TR: http://www.w3.org/TR/uievents/
-ED: https://w3c.github.io/uievents/
-Repository: w3c/uievents
-Previous version: https://www.w3.org/TR/2015/WD-uievents-20151215/
-Previous version: http://www.w3.org/TR/2015/WD-uievents-20150428/
-Previous version: http://www.w3.org/TR/2015/WD-uievents-20150319/
-Editor: Gary Kacmarcik, Google, garykac@google.com
-Editor: Travis Leithead, Microsoft, travil@microsoft.com
-Editor: Doug Schepers, Mar 2008 - May 2011
-!Tests: <a href=https://github.com/web-platform-tests/wpt/tree/master/uievents>web-platform-tests uievents/</a> (<a href=https://github.com/web-platform-tests/wpt/labels/uievents>ongoing work</a>)
+Status: UD
+TR: https://w3c.github.io/uievents/
+ED: https://mangwu.github.io/uievents-cn
+Text Macro: DATE 2023年5月29日
+Text Macro: LONGSTATUS 翻译草案
+Boilerplate: repository-issue-tracking off, copyright off, property-index off
+Repository: mangwu/uievents-cn
+!上个版本: <a href="https://www.w3.org/TR/2022/WD-uievents-20220913/">https://www.w3.org/TR/2022/WD-uievents-20220913/</a>
+No Editor: true
+!规范反馈: <a href="https://github.com/w3c/uievents/issues/">GitHub-w3c-uievents-issues</a>
+!翻译反馈: <a href="https://github.com/mangwu/uievents-cn/issues/">GitHub-mangwu-uievents-cn-issues</a>
+!编辑者: 
+	<a class="p-name fn u-email email" href="mailto:garykac@google.com">Gary Kacmarcik</a>(Google)
+	<a class="p-name fn u-email email" href="mailto:travil@microsoft.com">Travis Leithead</a>(Microsoft)
+!翻译者: 
+	<a class="p-name fn u-email email" href="mailto:1185956753@qq.com">mangwu</a>
+!前作者: Doug Schepers, Mar 2008 - May 2011
+!测试: <a href=https://github.com/web-platform-tests/wpt/tree/master/uievents>web-platform-tests uievents/</a> 
+	( <a href=https://github.com/web-platform-tests/wpt/labels/uievents>开发中</a> )
 Abstract:
-	This specification defines UI Events which extend the DOM Event objects
-	defined in [[DOM]]. UI Events are those typically implemented by visual
-	user agents for handling user interaction such as mouse and keyboard input.
+	<h2 class="no-num no-toc no-ref heading settled" id="abstract-cn">
+	<span class="content">摘要</span>
+	</h2>
+		<p>
+		本规范定义了用户界面事件，它扩展了 [[DOM]] 中定义的DOM事件对象。
+		用户界面事件通常由视觉用户代理实现，用于处理用户交互，如鼠标和键盘输入。
+		</p>
+
+	<h2 class="no-num no-toc no-ref heading settled" id="sotd-cn">
+	<span class="content">文档状态</span>
+	</h2>
+	<div data-fill-with="status-cn">
+		<p><em>
+		本节介绍了本文件发布时的状态。
+		当前 <abbr title="World Wide Web Consortium">W3C</abbr> 
+		出版物列表和本技术报告的最新修订版可在
+		<a href="https://www.w3.org/TR/">
+		<abbr title="World Wide Web Consortium">W3C</abbr> 技术报告索引
+		</a>
+		中找到，网址为 https://www.w3.org/TR/ 。
+		</em></p>
+
+		<p> 本文件由
+		<a href="https://www.w3.org/groups/wg/webapps">网络应用程序工作组</a>
+		作为 <strong>编辑草稿</strong> (Editors Draft)发布。 
+		<span class="del-content">本文档旨在成为W3C推荐标准</span> 。
+		</p>
+
+		<p></p>
+
+		<p> 本文件由
+		<a href="https://www.w3.org/groups/wg/webapps">网络应用程序工作组</a>
+		作为 <strong>工作草案</strong> (Working Draft)发布。
+		欢迎对本规范提出反馈和意见。请使用
+		<a href="https://github.com/w3c/uievents/issues">GitHub issues</a>
+		对源文档进行问题讨论; 请使用
+		<a href="https://github.com/mangwu/uievents-cn/issues">GitHub issues</a>
+		对翻译文档进行问题讨论; 
+		官方的问题存档地址为
+		<a href="https://lists.w3.org/Archives/Public/public-webapps/">
+		public-webapps@w3.org archives
+		</a> 。
+		</p>
+
+		<p>
+		作为编辑草案出版并不意味着
+		<abbr title="World Wide Web Consortium">W3C</abbr>
+		及其成员的认可。 
+		这是一份草案文档，可以随时被其他文档更新、替换或作废。
+		本文档不适合被其它正在编写的规范作为引用。
+		</p>
+
+		<p> 本文档由一个根据
+		<a href="https://www.w3.org/Consortium/Patent-Policy-20200915/">
+		<abbr title="World Wide Web Consortium">W3C</abbr> 专利政策</a>
+		运作的小组编写。
+		<abbr title="World Wide Web Consortium">W3C</abbr>
+		保留了一份与该小组可交付成果相关的
+		<a href="https://www.w3.org/2004/01/pp-impl/114929/status" rel="disclosure">
+		所有可披露专利的公开列表
+		</a> ; 该页面还包括公开一份专利的说明。
+		对认为包含
+		<a 
+		href=
+		"https://www.w3.org/Consortium/Patent-Policy-20200915/#def-essential">
+		基本权利要求
+		</a>
+		（Essential Claim(s)）的专利有实际了解的个人必须根据
+		<a
+		href=
+		"https://www.w3.org/Consortium/Patent-Policy-20200915/#sec-Disclosure">
+		<abbr title="World Wide Web Consortium">W3C</abbr>专利政策第6节
+		</a> 
+		公开信息。
+		</p>
+
+		<p>本文件受
+		<a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision-cn">
+		2021 11月2日 W3C处理文档</a> 规范管理。
+		</p>
+  </div>
 </pre>
 
 <pre class="anchors">
-urlPrefix: http://www.w3.org/TR/WebIDL/#idl-; type: type;
+urlPrefix: https://www.w3.org/TR/WebIDL/#idl-; type: type;
 	text: long
-urlPrefix: http://w3c.github.io/selection-api/#widl-Window-getSelection-Selection; type: dfn; for: Document
+urlPrefix: https://w3c.github.io/selection-api/#widl-Window-getSelection-Selection; type: dfn; for: Document
 	text: getSelection()
-url: http://www.w3.org/TR/2004/REC-xml-20040204/#NT-S; type: dfn;
-    text: white space
-url: https://www.w3.org/TR/uievents-key/#key-attribute-value; type: dfn; spec: uievents-key;
-	text: key attribute value
+url: https://www.w3.org/TR/2004/REC-xml-20040204/#NT-S; type: dfn;
+	text: white space
+url: https://mangwu.github.io/uievents-key-cn/#key-attribute-value; type: dfn; spec: uievents-key;
+	text: 键属性值
 url: https://www.w3.org/TR/uievents-key/#keys-modifier; type: dfn; spec: uievents-key;
 	text: modifier keys table
 url: https://html.spec.whatwg.org/multipage/forms.html#context-menus; type: dfn;
 	text: contextmenu
 url: https://www.w3.org/TR/pointerevents3/#pointerevent-interface; type: interface; spec: pointerevents3
 	text: PointerEvent
+url: https://mangwu.github.io/uievents-code-cn/#wiki-modifier-keys; type: dfn; spec: uievents-code;
+	text: 修饰符按键
+url: https://mangwu.github.io/uievents-code-cn/#keypad; type: dfn; spec: uievents-code;
+	text: 小键盘
+url: https://mangwu.github.io/uievents-code-cn/#keyboard-layout; type: dfn; spec: uievents-code;
+	text: 键盘布局
 </pre>
 
 <pre class="link-defaults">

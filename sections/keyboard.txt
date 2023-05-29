@@ -1,26 +1,25 @@
 <section>
-<h2 id="keys">Keyboard events and key values</h2>
+<h2 id="keys">键盘事件和键值</h2>
 
 
-This section contains necessary information regarding keyboard events:
+本节包含有关键盘事件的必要信息：
 
-*	Explanation of keyboard layout, mapping, and key values.
-*	Relations between keys, such as <a>dead keys</a> or modifiers keys.
-*	Relations between keyboard events and their default actions.
-*	The set of <code>key</code> values, and guidelines on how to extend this set.
+*	键盘布局、映射和键值的说明。
+*	键之间的关系，例如<a href="#dead-key">死键</a> 或 修饰符键。
+*	键盘事件和其默认行为之间的关系。
+*	一组 <code>键</code> 值集合，以及如何扩展这集合的指导方针。
 
 <p class="note">
-This section uses Serbian and Kanji characters which could be misrepresented or
-unavailable in the PDF version or printed version of this specification.
+本节使用塞尔维亚语拉丁字母和汉字(Kanji)字符，这些字符可能在本规范的 PDF 
+版本或打印版本中被误传或不可用。
 </p>
 
-<h3 id="keyboard-input">Keyboard Input</h3>
+<h3 id="keyboard-input">键盘输入</h3>
 
-	<em>This section is non-normative</em>
+	<em>本节内容不是规范的</em>
 
-	The relationship of each key to the complete keyboard has three separate
-	aspects, each of which vary among different models and configurations of
-	keyboards, particularly for locale-specific reasons:
+	每个键与整个键盘的关系有三个独立的方面，
+	每个方面在不同型号和配置的键盘中都有所不同，尤其是地区不同时，键盘差异更大: 
 
 	*	<strong>Mechanical layout:</strong> the dimensions, size, and placement
 		of the physical keys on the keyboard
@@ -309,9 +308,9 @@ unavailable in the PDF version or printed version of this specification.
 	contain the intermediate state of the dead key sequence reported via the
 	{{CompositionEvent/data}} attribute. As in the previous example, the key
 	value for the key marked KEYCAP{O} on a <a>QWERTY</a> keyboard has a
-	{{CompositionEvent/data}} value of <code class="char">'&#xF6;'</code> in an
+	{{CompositionEvent/data}} value of <code class="char">"&#xF6;"</code> in an
 	unshifted state during a dead-key operation to add an umlaut diacritic, and
-	<code class="char">'&#xD6;'</code> in a shifted state during a dead-key
+	<code class="char">"&#xD6;"</code> in a shifted state during a dead-key
 	operation to add an umlaut diacritic.
 	</p>
 
@@ -336,7 +335,7 @@ unavailable in the PDF version or printed version of this specification.
 	executable programs it is equivalent to the mathematical multiplication
 	operation, while in other documents or executable programs, that function is
 	reserved for the multiplication symbol (GLYPH{&#xD7;}, Unicode value
-	UNI{U+00D7}) or the Latin small letter <code>'x'</code>
+	UNI{U+00D7}) or the Latin small letter <code>"x"</code>
 	(due to the lack of a multiplication key on many keyboards and the
 	superficial resemblance of the glyphs GLYPH{&#xD7;} and GLYPH{x}).  Thus,
 	the semantic meaning or function of character representations is outside the

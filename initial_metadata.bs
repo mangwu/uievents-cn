@@ -1,0 +1,23 @@
+<!-- 从index.bs截取的原始位于<pre class="metadata"></pre>之间的原始文档数据 -->
+<h1>UI Events</h1>
+
+<pre class="metadata">
+Shortname: uievents
+Level:
+Group: webapps
+Status: ED
+TR: http://www.w3.org/TR/uievents/
+ED: https://w3c.github.io/uievents/
+Repository: w3c/uievents
+Previous version: https://www.w3.org/TR/2015/WD-uievents-20151215/
+Previous version: http://www.w3.org/TR/2015/WD-uievents-20150428/
+Previous version: http://www.w3.org/TR/2015/WD-uievents-20150319/
+Editor: Gary Kacmarcik, Google, garykac@google.com
+Editor: Travis Leithead, Microsoft, travil@microsoft.com
+Editor: Doug Schepers, Mar 2008 - May 2011
+!Tests: <a href=https://github.com/web-platform-tests/wpt/tree/master/uievents>web-platform-tests uievents/</a> (<a href=https://github.com/web-platform-tests/wpt/labels/uievents>ongoing work</a>)
+Abstract:
+	This specification defines UI Events which extend the DOM Event objects
+	defined in [[DOM]]. UI Events are those typically implemented by visual
+	user agents for handling user interaction such as mouse and keyboard input.
+</pre>

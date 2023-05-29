@@ -1,228 +1,255 @@
 <section>
-<h2 id="dom-event-architecture">DOM Event Architecture</h2>
+<h2 id="dom-event-architecture">DOM 事件结构</h2>
 
 
-<em>This section is non-normative. Refer to [[DOM]] for a normative description
-of the DOM event architecture</em>
+<em>本节内容并不是规范的。有关 DOM 事件结构的规范性描述，请参阅 [[DOM]] 。</em>
 
-<h3 id="event-flow">Event dispatch and DOM event flow</h3>
+<h3 id="event-flow">事件派发和 DOM 事件流</h3>
 
-    This section gives a brief overview of the event <a>dispatch</a> mechanism
-    and describes how events propagate through the DOM tree. Applications can
-    dispatch event objects using the {{EventTarget/dispatchEvent()}} method, and
-    the event object will propagate through the DOM tree as determined by the
-    DOM event flow.
-
-    <figure id="figure-dom-event-flow">
-        <img src='images/eventflow.svg' height="560" alt="Graphical representation of an event dispatched in a DOM tree using the DOM event flow"/>
-        <figcaption>Graphical representation of an event dispatched in a DOM tree using the DOM event flow</figcaption>
+    本节简要概述了事件 <a href="#dispatch">派发</a> 机制，
+    并描述了事件如何通过 DOM 树传播。应用程序可以使用 
+    {{EventTarget/dispatchEvent()}} 方法派发事件对象，事件对象将根据 DOM 
+    事件流在 DOM 树上传播。
+    
+    <div class="figure-change"  data-content="images/eventflow">
+    <div class="custom-tabs-nav-wrap">
+        <div class="custom-tabs-nav-list">
+            <div data-node-key="1" class="custom-tabs-tab custom-tabs-tab-active">
+                <div class="custom-tabs-tab-btn" tabindex="0">汉化图</div>
+            </div>
+            <div data-node-key="2" class="custom-tabs-tab">
+                <div class="custom-tabs-tab-btn" tabindex="0">原图</div>
+            </div>
+        </div>
+    </div>
+    <figure id="figure-dom-event-flow-zh" >
+        <img 
+            src='images/eventflow-zh.svg'
+            height="700"
+            width="800"
+            alt="依据DOM 事件流机制，在 DOM 树中进行一次事件派发的图形化表示"/>
+        <figcaption>
+            依据DOM 事件流机制，在 DOM 树中进行一次事件派发的图形化表示
+        </figcaption>
     </figure>
+    <figure id="figure-dom-event-flow" class="figure-hidden">
+        <img 
+            src='images/eventflow.svg' 
+            height="560" 
+            alt="依据DOM 事件流机制，在 DOM 树中进行一次事件派发的图形化表示"/>
+        <figcaption>
+            依据DOM 事件流机制，在 DOM 树中进行一次事件派发的图形化表示
+        </figcaption>
+    </figure>
+    </div>
 
-    Event objects are dispatched to an <a>event target</a>. But before dispatch
-    can begin, the event object's <a>propagation path</a> must first be
-    determined.
+    事件对象被分派到 <a href="#event-target">事件目标</a> 。
+    但在开始派发之前，事件对象的 <a href="#propagation-path">传播路径</a> 
+    必须被首先确定。
 
-    The <a>propagation path</a> is an ordered list of <a>current event
-    targets</a> through which the event passes. This propagation path reflects
-    the hierarchical tree structure of the document. The last item in the list
-    is the <a>event target</a>, and the preceding items in the list are referred
-    to as the <em>target's ancestors</em>, with the immediately preceding item
-    as the <em>target's parent</em>.
+    <a href="#propagation-path">传播路径</a> 是事件经过的 
+    <a href="#current-event-target">当前事件目标</a> 的有序列表。
+    此传播路径反映了文档树的层次结构。这个有序列表的最后一项是
+    <a href="#event-target">事件目标</a> ，紧挨着事件目标的前面的一项是 
+    <em>目标的父亲节点(target's parent)</em> ，而(不包括事件目标的)
+    前面的所有项被称为 <em>目标的祖先节点(target's ancestors)</em> 。
 
-    Once the <a>propagation path</a> has been determined, the event object
-    passes through one or more <a>event phases</a>. There are three event
-    phases: <a>capture phase</a>, <a>target phase</a> and <a>bubble phase</a>.
-    Event objects complete these phases as described below. A phase will be
-    skipped if it is not supported, or if the event object's propagation has
-    been stopped. For example, if the {{Event/bubbles}} attribute is set to
-    false, the bubble phase will be skipped, and if {{Event/stopPropagation()}}
-    has been called prior to the dispatch, all phases will be skipped.
+    一旦确定了 <a href="#propagation-path">传播路径</a> ，
+    事件对象就会经过一个或多个 <a href="#event-phase">事件阶段</a> 。
+    一般会包含三个事件阶段：<a href="#capture-phase">捕获阶段</a> 
+    、<a href="#target-phase">目标阶段</a> 和 
+    <a href="#target-phase">冒泡阶段</a>。
+    每个事件对象都会像下面描述地那样经历完这些阶段，如果不支持某个阶段，
+    或者事件对象的传播被停止，则该阶段将被跳过。例如，如果 
+    {{Event/bubbles}} 属性被设置为 <code>false</code> ，
+    事件对象就将跳过冒泡阶段，如果在派发之前调用了 
+    {{Event/stopPropagation()}} ，则将跳过所有阶段。
 
-    *   The <strong>capture phase</strong>: The event object propagates
-        through the target's ancestors from the <a>Window</a> to the target's
-        parent. This phase is also known as the <em>capturing phase</em>.
+    *   <strong>捕获阶段(capture phase)</strong> : 事件对象通过目标的祖先节点从
+        <a>Window</a> 传播到目标的父节点。这个阶段也被称为 
+        <em>捕获阶段(capturing phase)</em> 。
 
-    *   The <strong>target phase</strong>: The event object arrives at the event
-        object's <a>event target</a>. This phase is also known as the
-        <em>at-target phase</em>. If the <a>event type</a> indicates that the
-        event doesn't bubble, then the event object will halt after completion
-        of this phase.
+    *   <strong>目标阶段(target phase)</strong> : 事件对象到达事件对象的 
+        <a href="#event-target">事件目标</a> 。这个阶段也被称为
+        <em>目标阶段(at-target phase)</em> 。如果
+        <a href="#event-type">事件类型</a> 指示事件不会冒泡，
+        那么事件对象将在该阶段完成后停止(传播)。
 
-    *   The <strong>bubble phase</strong>: The event object propagates through
-        the target's ancestors in reverse order, starting with the target's
-        parent and ending with the <a>Window</a>. This phase is also known as
-        the <em>bubbling phase</em>.
+        <p class="note custom-note">
+            所谓"到达事件对象的事件目标"指的就是事件传播到触发事件的元素节点；
+            事件类型决定了事件本身(在传播时)会不会冒泡，
+            除了可以通过查看有关事件的规范定义的事件类型表，
+            以确定一种事件类型能否冒泡外，实践中最直接的方法是检查事件对象的 
+            {{Event/bubbles}} 属性的真假值。
+        </p>
+
+    *   <strong>冒泡阶段(bubble phase)</strong> : 事件对象以(和捕获阶段) 
+        相反的顺序在目标的祖先节点中传播，从目标的父节点开始，传播到 
+        <a>Window</a> 结束。这个阶段也被称为 <em>冒泡阶段(bubbling phase)</em> 。
 
 
-<h3 id="event-flow-default-cancel">Default actions and cancelable events</h3>
-
-    Events are typically dispatched by the implementation as a result of a user
-    action, in response to the completion of a task, or to signal progress
-    during asynchronous activity (such as a network request). Some events can be
-    used to control the behavior that the implementation may take next (or undo
-    an action that the implementation already took). Events in this category are
-    said to be <em>cancelable</em> and the behavior they cancel is called their
-    <em><a>default action</a></em>. Cancelable event objects can be associated
-    with one or more 'default actions'. To cancel an event, call the
-    {{Event/preventDefault()}} method.
-
-    <p class="example">
-    A EVENT{mousedown} event is dispatched immediately after the user presses
-    down a button on a pointing device (typically a mouse). One possible
-    <a>default action</a> taken by the implementation is to set up a state
-    machine that allows the user to drag images or select text. The <a>default
-    action</a> depends on what happens next &mdash; for example, if the user's
-    pointing device is over text, a text selection might begin. If the user's
-    pointing device is over an image, then an image-drag action could begin.
-    Preventing the <a>default action</a> of a EVENT{mousedown} event prevents
-    these actions from occurring.
-    </p>
-
-    <a>Default actions</a> are usually performed after the event dispatch has
-    been completed, but in exceptional cases they may also be performed
-    immediately before the event is dispatched.
-
-    <p class="example">
-    The default action associated with the EVENT{click} event on <code>&lt;input
-    type="checkbox"&gt;</code> elements toggles the <code>checked</code> IDL
-    attribute value of that element. If the EVENT{click} event's default action
-    is cancelled, then the value is restored to its former state.
-    </p>
-
-    When an event is canceled, then the conditional <a>default actions</a>
-    associated with the event is skipped (or as mentioned above, if the
-    <a>default actions</a> are carried out before the dispatch, their effect
-    is undone). Whether an event object is cancelable is indicated by
-    the {{Event/cancelable}} attribute. Calling {{Event/preventDefault()}} stops all
-    related <a>default actions</a> of an event object. The
-    {{Event/defaultPrevented}} attribute indicates whether an event has already
-    been canceled (e.g., by a prior <a>event listener</a>). If the <a>DOM
-    application</a> itself initiated the dispatch, then the return value of the
-    {{EventTarget/dispatchEvent()}} method indicates whether the event object
-    was cancelled.
-
-    <p class="note">Many implementations additionally interpret an <a>event
-    listener</a>'s return value, such as the value <code>false</code>, to mean that
-    the <a>default action</a> of cancelable events will be cancelled (though
-    <code>window.onerror</code> handlers are cancelled by returning
-    <code>true</code>).
-    </p>
-
-<h3 id="sync-async">Synchronous and asynchronous events</h3>
-
-    Events may be dispatched either synchronously or asynchronously.
-
-    Events which are synchronous (<em><q>sync events</q></em>) are treated
-    as if they are in a virtual queue in a first-in-first-out model, ordered by
-    sequence of temporal occurrence with respect to other events, to changes in
-    the DOM, and to user interaction.  Each event in this virtual queue is
-    delayed until the previous event has completed its propagation behavior, or
-    been canceled.  Some sync events are driven by a specific device or process,
-    such as mouse button events. These events are governed by the <a>event
-    order</a> algorithms defined for that set of events, and user agents will
-    dispatch these events in the defined order.
-
-    Events which are asynchronous (<em><q>async events</q></em>) may be
-    dispatched as the results of the action are completed, with no relation to
-    other events, to other changes in the DOM, nor to user interaction.
+<h3 id="event-flow-default-cancel">默认行为和可取消事件</h3>
+    事件通常作为用户操作的结果，由实现(浏览器等用户代理)派发，
+    以响应(用户)活动的完成，或响应在异步活动(如网络请求)期间的进度信号 
+    (signal progress)。这些都是在事件发生后，实现接下来可能采取的行为。 
+    一些事件可被用于控制这些行为(或撤消实现已经采取的操作)。这类事件被认为是 
+    <em>可以取消的(cancelable)</em> ，并且这种可以被取消的行为称为事件的
+    <em><a href="#default-action">默认行为</a></em> 。
+    可取消的事件对象可以与一个或多个"默认行为"相关联。要取消一个事件，请调用 
+    {{Event/preventDefault()}} 方法。
 
     <p class="example">
-    During loading of a document, an inline script element is parsed and
-    executed. The EVENT{load} event is queued to be fired
-    asynchronously at the script element. However, because it is an async event,
-    its order with relation to other synchronous events fired during document
-    load (such as the <code class="eventtype">DOMContentLoaded</code> event from
-    [[!HTML5]]) is not guaranteed.
+    用户按下定位设备(通常是鼠标)上的按键后，会立即派发 EVENT{mousedown} 事件。
+    实现所采取的一个可能的 <a href="#default-action">默认行为</a> 
+    是建立一个状态机(state machine)，以允许用户拖动图像或选择文本。
+    <a href="#default-action">默认行为</a>  取决于接下来会发生什么——
+    例如，如果用户的定位设备在文本上，则可能会开始文本选择; 
+    如果用户的定位设备在图像上，则可以开始图像拖动操作。
+    阻止 EVENT{mousedown} 事件的 <a href="#default-action">默认行为</a> 
+    将阻止这些操作的发生。
     </p>
 
-<h3 id="trusted-events">Trusted events</h3>
+    <a href="#default-action">默认行为</a>  通常在事件派发完成后执行，
+    但在特殊情况下，也可能在事件派发之前立即执行。
 
-    Events that are generated by the <a>user agent</a>, either as a result of user
-    interaction, or as a direct result of changes to the DOM, are trusted by the
-    <a>user agent</a> with privileges that are not afforded to events generated by
-    script through the {{Document/createEvent()}} method, modified
-    using the {{Event/initEvent()}} method, or dispatched via the
-    {{EventTarget/dispatchEvent()}} method.  The {{Event/isTrusted}} attribute
-    of trusted events has a value of <code>true</code>, while untrusted events
-    have a {{Event/isTrusted}} attribute value of <code>false</code>.
+    <p class="example">
+    与 <code>&lt;input type="checkbox"&gt;</code> 
+    元素上的 EVENT{click} 事件相关联的默认行为是切换(toggles)该元素的 
+    <code>checked</code> IDL 属性值。如果 EVENT{click} 事件的默认操作被取消，
+    则该值将恢复到以前的状态。
+    </p>
 
-    Most untrusted events will not trigger <a>default actions</a>, with the
-    exception of the EVENT{click} event. This event always
-    triggers the <a>default action</a>, even if the {{Event/isTrusted}}
-    attribute is <code>false</code> (this behavior is retained for
-    backward-compatibility). All other untrusted events behave as if the
-    {{Event/preventDefault()}} method had been called on that event.
+    当一个事件被取消时，与该事件相关联的有条件的(conditional) 
+    <a href="#default-action">默认行为</a> 将被跳过(或者如上所述，
+    如果 <a href="#default-action">默认行为</a> 在派发之前执行，
+    则其作用将被撤消)。一个事件对象是否可取消由 {{Event/cancelable}} 
+    属性指示。调用 {{Event/preventDefault()}} 方法将取消事件对象相关的所有 
+    <a href="#default-action">默认行为</a> 。 {{Event/defaultPrevented}} 
+    属性表示事件是否已经被取消(例如，由先前的事件侦听器取消)。如果 
+    <a href="#dom-application">DOM 应用程序</a> 本身发起了派发操作，那么 
+    {{EventTarget/dispatchEvent()}} 方法的返回值能表示事件对象是否被成功取消。
+
+    <p class="note">
+    许多实现还将 <a href="#event-listener">事件监听器</a> 的返回值(如值 
+    <code>false</code> )解释为可取消事件的 
+    <a href="#default-action">默认行为</a> 将被被取消
+    (尽管 <code>window.onerror</code> 的处理程序通过返回 <code>true</code> 
+    来取消)。
+    </p>
+
+<h3 id="sync-async">同步和异步事件</h3>
+
+    事件可以被同步派发，也可以被异步派发。
+
+    同步的事件( <em><q>同步事件(sync events)</q></em> ) 
+    就好像它们在先进先出模型的虚拟队列中，按照事件在时间上的派发顺序进行排序，
+    这种事时间上的发生顺序基于其他事件、 DOM 中的变化和用户交互。
+    此虚拟队列中的每个事件都会延迟(派发)，直到上一个事件的传播行为完成或被取消。
+    某些同步事件是由特定的设备或进程驱动的，例如鼠标按键事件。
+    这些事件由为该组事件定义的 <a href="#event-order">事件顺序</a> 
+    算法控制，用户代理将按算法定义的顺序派发这些事件。
+
+    异步的事件( <em><q>异步事件(async events)</q></em> ) 
+    可以在操作结果完成时进行派发，与其他事件、 DOM 中的其他更改或用户交互无关。
+
+    <p class="example">
+    在加载文档的过程中，会解析并执行内联脚本元素。 EVENT{load} 
+    事件在脚本元素处排队，等待被异步派发。然而，因为它是一个异步事件，
+    所以 EVENT{load} 事件相对于文档加载期间派发的其他同步事件
+    (例如 [[!HTML5]] 中的 <code class="eventtype">DOMContentLoaded</code> 
+    事件)的顺序是不可保证的。
+    </p>
+
+<h3 id="trusted-events">可信事件</h3>
+
+    <a href="#user-agent">用户代理</a> 生成的事件，无论是用户交互的结果，
+    还是DOM更改的直接结果，都受到 <a href="#user-agent">用户代理</a> 的信任，
+    并拥有用户代理给予的特殊权限(privileges)，而脚本代码通过 
+    {{Document/createEvent()}} 方法生成、使用 {{Event/initEvent()}} 方法修改、 
+    经过 {{EventTarget/dispatchEvent()}} 方法派发的事件不具有这种特殊权限
+    (即不受 <a href="#user-agent">用户代理</a> 的信任)。受信任事件(可信事件)的 
+    {{Event/isTrusted}} 属性的值为 <code>true</code> ，而不受信任的事件的
+    {{Event/isTrusted}} 属性值为 <code>false</code> 。
+
+    除 EVENT{click} 事件外，大多数不受信任的事件不会触发 
+    <a href="#default-action">默认行为</a> 。 EVENT{click} 事件始终触发 
+    <a href="#default-action">默认行为</a> ，即使它的 {{Event/isTrusted}} 
+    属性为 <code>false</code> (为了向后兼容，保留此行为)。
+    所有其他不受信任的事件表现地就好像在该事件上调用了 
+    {{Event/preventDefault()}} 方法一样。
 
 
-<h3 id="event-flow-activation">Activation triggers and behavior</h3>
+<h3 id="event-flow-activation">激活触发器和行为</h3>
 
-    Certain <a>event targets</a> (such as a link or button element) may have
-    associated <a>activation behavior</a> (such as following a link) that
-    implementations perform in response to an <em><a>activation
-    trigger</a></em> (such as clicking a link).
+    某些 <a href="#event-target">事件目标</a> (例如链接或按钮元素)
+    可能具有相关联的 <a href="#activation-behavior">激活行为</a> 
+    (例如跟随链接)，这些行为是实现为了响应
+    <em><a href="#activation-trigger">激活触发器</a></em> 
+    (例如点击链接)而执行的。
 
     <p class="example" id="example-activation">
-    Both HTML and SVG have an <code>&lt;a&gt;</code> element which indicates a
-    link.  Relevant <a>activation triggers</a> for an <code>&lt;a&gt;</code>
-    element are a EVENT{click} event on the text or image content
-    of the <code>&lt;a&gt;</code> element, or a EVENT{keydown}
-    event with a {{KeyboardEvent/key}} attribute value of KEY{Enter} key when
-    the <code>&lt;a&gt;</code> element has focus.  The activation behavior for
-    an <code>&lt;a&gt;</code> element is normally to change the content of the
-    window to the content of the new document, in the case of external links,
-    or to reposition the current document relative to the new anchor, in the
-    case of internal links.
+    HTML 和 SVG 都有一个 <code>&lt;a&gt;</code> 元素，它表示一个链接。
+    <code>&lt;a&gt;</code> 元素的相关 
+    <a href="#activation-trigger">激活触发器</a> 是 <code>&lt;a&gt;</code> 
+    元素的文本或图像内容上的 EVENT{click} 事件，或者当 <code>&lt;a&gt;</code> 
+    元素聚焦时，<a href="#activation-trigger">激活触发器</a> 也可以是 
+    {{KeyboardEvent/key}} 属性值为 KEY{Enter} 键的 EVENT{keydown} 事件。
+    <code>&lt;a&gt;</code> 元素的激活行为通常是: 在链接是外部链接的情况下，
+    将窗口的内容更改为链接的新文档的内容，或者在链接是内部链接的情况下，
+    将当前文档相对于新锚点重新定位。
     </p>
 
-    An <a>activation trigger</a> is a user action or an event which indicates
-    to the implementation that an activation behavior should be initiated.
-    User-initiated <a>activation triggers</a> include clicking a mouse button
-    on an activatable element, pressing the KEYCAP{Enter} key when an activatable
-    element has focus, or pressing a key that is somehow linked to an
-    activatable element (a <q>hotkey</q> or <q>access key</q>) even when that
-    element does not have focus.  Event-based <a>activation triggers</a> may
-    include timer-based events that activate an element at a certain clock time
-    or after a certain time period has elapsed, progress events after a certain
-    action has been completed, or many other condition-based or state-based
-    events.
+    <a href="#activation-trigger">激活触发器</a> 是一个用户操作或一个事件，
+    它会向实现指示激活行为应该被启动了。
+    用户发起的 <a href="#activation-trigger">激活触发器</a> 
+    包括: 在可激活元素上单击鼠标按键，当焦点在可激活元素上时按下 KEYCAP{Enter} 
+    键，或者即使可激活元素不是焦点，按下可以以某种方式链接到可激活元素的键
+    ( <q>热键</q> 或 <q>快捷键</q> )。基于事件的 
+    <a href="#activation-trigger">激活触发器</a> 可以包括: 
+    基于定时器的，在特定时钟时间或在经过特定时间段之后激活元素的事件、
+    在完成特定动作之后的进度事件、或许多基于条件或基于状态的其他事件。
 
 
-<h3 id="event-constructors">Constructing Mouse and Keyboard Events</h3>
+<h3 id="event-constructors">构造鼠标和键盘事件</h3>
 
-    Generally, when a constructor of an {{Event}} interface, or of an interface
-    inherited from the {{Event}} interface, is invoked, the steps described in
-    [[!DOM]] should be followed. However the {{KeyboardEvent}} and
-    {{MouseEvent}} interfaces provide additional dictionary members for
-    initializing the internal state of the {{Event}} object's key modifiers:
-    specifically, the internal state queried for using the
-    {{KeyboardEvent/getModifierState()}} and {{MouseEvent/getModifierState()}}
-    methods. This section supplements the DOM4 steps for intializing a new
-    {{Event}} object with these optional modifier states.
+    通常，当调用 {{Event}} 接口或从 {{Event}} 接口继承的接口的构造函数时，
+    应遵循 [[!DOM]] 中描述的步骤。然而， {{KeyboardEvent}} 和 {{MouseEvent}} 
+    接口提供了额外的字典成员，用于初始化 {{Event}} 对象的键修饰符的内部状态: 
+    特别地，这些键修饰符可以使用 {{KeyboardEvent/getModifierState()}} 和 
+    {{MouseEvent/getModifierState()}} 方法查询内部状态。
+    本节补充了使用这些可选的修饰符状态初始化一个新的 {{Event}} 对象的 
+    DOM4 步骤。
 
-    For the purposes of constructing a {{KeyboardEvent}}, {{MouseEvent}}, or
-    object derived from these objects using the algorithm below, all
-    {{KeyboardEvent}}, {{MouseEvent}}, and derived objects have
-    <dfn id="internal-key-modifier-state">internal key modifier state</dfn> which can be set and
-    retrieved using the <a href="#keys-modifiers">key modifier names</a>
-    described in the
-    <a href="http://www.w3.org/TR/uievents-key/#keys-modifier">Modifier Keys table</a>
-    in [[UIEvents-Key]].
+    <p class="note custom-note">
+        {{KeyboardEvent}} 和 {{MouseEvent}} 都继承于 {{UIEvent}} 接口，
+        但是它们的构造函数的可选的，用于初始化事件对象的字典并非直接继承于
+        {{UIEventInit}} 。{{KeyboardEventInit}} 和 {{MouseEventInit}} 
+        字典都继承于 {{EventModifierInit}} ，这个字典定义了很多键盘修饰符属性，
+        用于表示键盘按键的状态。同时 {{EventModifierInit}} 是继承于 
+        {{UIEventInit}} 的。
+    </p>
 
-    The following steps supplement the algorithm defined for constructing
-    events in DOM4:
+    为了使用下面的算法构建 {{KeyboardEvent}} 、 {{MouseEvent}} 
+    或从这些对象派生的对象，所有 {{KeyboardEvent}} 、 {{MouseEvent}} 
+    和派生对象都具有 
+    <dfn id="internal-key-modifier-state">内部键修饰符状态</dfn> ，
+    可以使用 [[UIEvents-Key]] 规范中，
+    <a href="http://www.w3.org/TR/uievents-key/#keys-modifier">修饰符键表</a> 
+    中描述的<a href="#keys-modifiers">键修饰符名称</a> 来设置和检索该状态。
 
-    *   If the {{Event}} being constructed is a {{KeyboardEvent}} or
-        {{MouseEvent}} object or an object that derives from either of these,
-        and a {{EventModifierInit}} argument was provided to the constructor,
-        then run the following sub-steps:
+    以下步骤补充了定义在 DOM4 中构建事件时的算法：
 
-        *   For each {{EventModifierInit}} argument, if the dictionary member
-            begins with the string <code>"modifier"</code>, then let the
-            <dfn id="modifier-key-name">key modifier name</dfn> be the
-            dictionary member's name excluding the prefix
-            <code>"modifier"</code>, and set the {{Event}} object's
-            <a href="#internal-key-modifier-state">internal key modifier state</a>
-            that matches the <a href="#modifier-key-name">key modifier name</a>
-            to the corresponding value.
+    *   如果正在构造的 {{Event}} 是 {{KeyboardEvent}} 或 {{MouseEvent}} 对象，
+        或者是从其中任何一个派生的对象，并且向构造函数提供了 
+        {{EventModifierInit}} 参数，则运行以下子步骤: 
+
+        *   对于每个 {{EventModifierInit}} 参数，如果字典成员以字符串 
+            <code>"modifier"</code> 开头，那么将不包括前缀 
+            <code>"modifier"</code> 的 
+            <dfn id="modifier-key-name">键修饰符名称</dfn> 视为字典成员的名称，
+            并将 {{Event}} 对象的 
+            <a href="#internal-key-modifier-state">内部键修饰符状态</a> 
+            设置为与 <a href="#modifier-key-name">键修饰符名称</a> 
+            相匹配的相应成员属性值。
 
 </section>

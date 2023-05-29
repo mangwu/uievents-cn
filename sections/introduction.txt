@@ -1,162 +1,174 @@
 <section>
-<h2 id="ui-events-intro">Introduction</h2>
+<h2 id="ui-events-intro">简介</h2>
 
 
-<h3 id="ui-events-overview">Overview</h3>
+<h3 id="ui-events-overview">概述</h3>
 
-    UI Events is designed with two main goals. The first goal is the design of
-    an <a>event</a> system which allows registration of <a>event listeners</a> and
-    describes event flow through a tree structure. Additionally, the
-    specification will provide standard modules of events for user interface
-    control and document mutation notifications, including defined contextual
-    information for each of these event modules.
+    UI Events的设计有两个主要目标。第一个目标是设计一个 
+    <a href="#event">事件</a> 系统，该系统允许注册 
+    <a href="#event-listener">事件侦听器</a> ，并通过树形结构描述事件流。此外，
+    该规范将为用户界面控制和文档变更通知提供标准的事件模块，
+    包括为每个事件模块定义的上下文信息。
 
-    The second goal of UI Events is to provide a common subset of the current
-    event systems used in existing browsers. This is intended to foster
-    interoperability of existing scripts and content. It is not expected that
-    this goal will be met with full backwards compatibility. However, the
-    specification attempts to achieve this when possible.
+    UI Events的第二个目标是提供现有浏览器中使用的所有当前事件系统的公共子集。
+    这是为了促进现有脚本和内容的互操作性。我们并不期望这个目标能够完全向后兼容。
+    但是，该规范力图在可能的情况下实现这一点。
 
+<h3 id="ui-events-conformance">一致性</h3>
 
-<h3 id="ui-events-conformance">Conformance</h3>
+    <strong>本节是规范的。</strong>
+    
+    在本规范中，关键字 <q>MUST</q> ， <q>MUST NOT</q> ， <q>REQUIRED</q> ， 
+    <q>SHALL</q> ， <q>SHALL NOT</q> ， <q>SHOULD</q> ， <q>SHOULD NOT</q> ， 
+    <q>RECOMMENDED</q> ， <q>MAY</q> 和 <q>OPTIONAL</q> 的解释如 [[!RFC2119]] 
+    中所述。
 
-    <strong>This section is normative.</strong>
+    此规范应在DOM Level 3 Core 规范 [[!DOM-Level-3-Core]] 的背景下理解，
+    并适用于DOM实现的一般考虑。例如，在XML名称空间中讨论了
+    <a href="#namespace-uris">命名空间 URI</a> 的处理。
+    有关 
+    <a 
+    class="normative"
+    href=
+    "http://www.w3.org/TR/DOM-Level-3-Core/introduction.html#ID-Conformance">
+    <em>一致性</em>
+    </a> 的其他信息，请参阅 DOM Level 3 Core 规范 [[DOM-Level-3-Core]] 。
+    为了符合本规范， <a href="#user-agent">用户代理</a> 
+    不需要完全符合另一个规范，但它 <span class="zh-upper">必须</span> 
+    符合本规范中引用的任何其他规范的特定部分
+    (例如，一个符合用户界面事件的 <a href="#user-agent">用户代理</a> 
+    <span class="zh-upper">必须</span> 支持 [[WebIDL]] 中定义的 
+    <code>DOMString</code> 数据类型，但不需要为了符合用户界面事件支持 [[WebIDL]] 
+    中定义的每个方法或数据类型)。
 
-    Within this specification, the key words <q>MUST</q>, <q>MUST NOT</q>,
-    <q>REQUIRED</q>, <q>SHALL</q>, <q>SHALL NOT</q>, <q>SHOULD</q>,
-    <q>SHOULD NOT</q>, <q>RECOMMENDED</q>, <q>MAY</q>, and <q>OPTIONAL</q>
-    are to be interpreted as described in [[!RFC2119]].
+    本规范为不同的 <a href="#user-agent">用户代理</a> 
+    、规范和内容作者定义了几类一致性:
 
-    This specification is to be understood in the context of the DOM Level 3
-    Core specification [[!DOM-Level-3-Core]] and the general considerations for DOM
-    implementations apply. For example, handling of <a>namespace URIs</a> is
-    discussed in
-    <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#Namespaces-Considerations"><em>XML Namespaces</em></a>.
-    For additional information about
-    <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/introduction.html#ID-Conformance"><em>conformance</em></a>,
-    please see the DOM Level 3 Core specification [[DOM-Level-3-Core]]. A <a>user
-    agent</a> is not required to conform to the entirety of another
-    specification in order to conform to this specification, but it MUST conform
-    to the specific parts of any other specification which are called out in
-    this specification (e.g., a conforming UI Events <a>user agent</a> MUST
-    support the <code>DOMString</code> data type as defined in [[WebIDL]], but
-    need not support every method or data type defined in [[WebIDL]] in order
-    to conform to UI Events).
+    <h4 id="conf-interactive-ua">
+        Web 浏览器和其他动态或交互式的 <a href="#user-agent">用户代理</a> 
+    </h4>
+        
+        一个动态的或交互式的 <a href="#user-agent">用户代理</a> 
+        ，在这里被称为 <q>浏览器</q> 
+        (无论是 Web 浏览器， AT ( Accessibility Technolog ，无障碍技术)应用程序，
+        或其他类似的程序)，要符合用户界面事件规范，
+        <a href="#user-agent">用户代理</a>需要支持:
 
-    This specification defines several classes of conformance for different
-    <a>user agents</a>, specifications, and content authors:
+        *   [[DOM-Level-3-Core]] 中定义的核心模块
 
+        *   [[#event-flow]] 机制
 
-    <h4 id="conf-interactive-ua">Web browsers and other dynamic or interactive <a>user agents</a></h4>
+        *   本规范中定义的所有接口和事件及其相关方法、属性和语义，
+            除了标记为 <a href="#deprecates">弃用</a> 的接口和事件
+            (符合要求的用户代理 <span class="zh-upper">可以</span> 
+            实现弃用的接口、事件或API以保证向后兼容性，
+            但这并非符合一致性的必要条件)
 
-        A dynamic or interactive <a>user agent</a>, referred to here as a
-        <q>browser</q> (be it a Web browser, AT (Accessibility Technology)
-        application, or other similar program), conforms to UI Events if it
-        supports:
+        *   在 [[UIEvents-Key]] 和 [[UIEvents-Code]] 中定义的 <code>key</code> 
+            和 <code>code</code> 值的完整集合(取决于平台可用性)，以及
 
-        *   the Core module defined in [[DOM-Level-3-Core]]
+        *   本规范中定义的所有其他规范要求。
 
-        *   the [[#event-flow]] mechanism
+        当为 <a href="#event-type">事件类型</a> 
+        定义的(触发事件的)条件得到满足时，符合规范的浏览器 
+        <span class="zh-upper">必须</span> 恰当地在给定 {{EventTarget}} 上
+        <a href="#dispatch">派发</a> 对应事件。
+        
+        如果浏览器实现了定义在 [[#event-types]] 中的接口和相关的 
+        <a href="#event-target">事件类型</a> ，
+        则它局限性地(specifically)符合用户界面事件规范。
 
-        *   all the interfaces and events with their associated methods,
-            attributes, and semantics defined in this specification with the
-            exception of those marked as <a>deprecated</a> (a conforming user
-            agent MAY implement the deprecated interfaces, events, or APIs for
-            backwards compatibility, but is not required to do so in order to be
-            conforming)
+        一个符合规范的浏览器 <span class="zh-upper">必须</span> 支持脚本、
+        声明性交互，或者能以本规范描述的方式检测和派发事件，
+        并且 <span class="zh-upper">必须</span> 支持为该
+        <a href="#event-type">事件类型</a> 定义的 APIs 。
 
-        *   the complete set of <code>key</code> and <code>code</code>
-            values defined in [[UIEvents-Key]] and [[UIEvents-Code]] (subject to
-            platform availability), and
+        为了向后兼容现有内容，除了满足所有其他一致性标准之外，
+        符合规范的浏览器还 <span class="zh-upper">可以</span> 
+        实现此规范已标记为 <a href="#deprecates">弃用</a> 的特性，
+        但不鼓励这样的实现。
 
-        *   all other normative requirements defined in this specification.
+        一个符合规范的浏览器也 <span class="zh-upper">可以</span> 
+        支持本规范中没有的特性，但它实现了 [[#event-flow]] 
+        机制、接口、事件或本规范中定义的其他特性，并且 
+        <span class="zh-upper">可以</span> 实现适合于该浏览器实现的附加接口和
+        <a href="#event-type">事件类型</a> 。这些特性可能在未来的规范中标准化。
 
-        A conforming browser MUST <a>dispatch</a> events appropriate to the
-        given {{EventTarget}} when the conditions defined for that <a>event
-        type</a> have been met.
+        不符合此规范所有要求实现的部分的浏览器 
+        <span class="zh-upper">不得</span> 声明符合用户界面事件规范。
+        这种符合本规范部分要求的实现 <span class="zh-upper">可以</span> 
+        声称符合那些特定部分。
 
-        A browser conforms specifically to UI Events if it implements the
-        interfaces and related <a>event types</a> specified in [[#event-types]].
+        如 Web IDL 规范 [[WebIDL]] 所述，
+        一个符合规范的浏览器也 <span class="zh-upper">必须</span> 
+        是本规范中 IDL 片段的 <i>符合实现(conforming implementation)</i> 。
 
-        A conforming browser MUST support scripting, declarative interactivity,
-        or some other means of detecting and dispatching events in the manner
-        described by this specification, and MUST support the APIs specified for
-        that <a>event type</a>.
+    <h4 id="conf-author-tools">创作工具</h4>
+        
+        如果一个内容创作工具生成的内容基于 <a href="#event-type">事件类型</a> 
+        和 [[#event-flow]] 模型，并且与本规范中定义的方式一致，
+        那么它就符合用户界面事件规范。
 
-        In addition to meeting all other conformance criteria, a conforming
-        browser MAY implement features of this specification marked as
-        <a>deprecated</a>, for backwards compatibility with existing content,
-        but such implementation is discouraged.
+        如果内容创作工具使用了本规范中被标记为 <a href="#deprecates">弃用</a> 
+        的特性，那么它生成的内容 <span class="zh-upper">不得</span> 
+        声称符合用户界面事件规范。
 
-        A conforming browser MAY also support features not found in this
-        specification, but which use the [[#event-flow]] mechanism, interfaces,
-        events, or other features defined in this specification, and MAY
-        implement additional interfaces and <a>event types</a> appropriate to
-        that implementation. Such features can be later standardized in future
-        specifications.
+        符合规范的内容创作工具 <span class="zh-upper">应当</span> 
+        为内容作者提供一种方法，使其能够在生成的内容文档中使用适用于所有 
+        <a href="#host-language">宿主语言</a> 的所有 
+        <a href="#event-type">事件类型</a> 和接口。
 
-        A browser which does not conform to all required portions of this
-        specification MUST NOT claim conformance to UI Events. Such an
-        implementation which does conform to portions of this specification MAY
-        claim conformance to those specific portions.
+        <p class="note custom-note">
+            这里的创作工具可以理解为开发工具，内容创作工具理解为 Web 
+            开发工具。本规范中说的内容，作者，创作都
+            <span class="zh-upper">可以</span> 从开发者的角度去理解，参见
+            <a href="#author">作者</a>  。
+        </p>
 
-        A conforming browser MUST also be a <i>conforming implementation</i> of
-        the IDL fragments in this specification, as described in the Web IDL
-        specification [[WebIDL]].
+    <h4 id="conf-authors">内容作者和内容</h4>
 
-    <h4 id="conf-author-tools">Authoring tools</h4>
+            如果一个内容 <a href="#author">作者</a> 创建的内容基于 
+            <a href="#event-type">事件类型</a> 和 [[#event-flow]] 
+            模型，并且与本规范中定义的方式一致，
+            那么它就是符合用户界面事件规范的内容。
 
-        A content authoring tool conforms to UI Events if it produces content
-        which uses the <a>event types</a> and [[#event-flow]] model, consistent
-        in a manner as defined in this specification.
+            内容作者 <span class="zh-upper">不应</span> 
+            使用本规范中标记 <a href="#deprecates">弃用</a> 
+            的特性，而 <span class="zh-upper">应当</span> 
+            依靠定义在本规范和其他规范的替换机制(replacement mechanisms)。
 
-        A content authoring tool MUST NOT claim conformance to UI Events for
-        content it produces which uses features of this specification marked as
-        <a>deprecated</a> in this specification.
-
-        A conforming content authoring tool SHOULD provide to the content author
-        a means to use all <a>event types</a> and interfaces appropriate to all
-        <a>host languages</a> in the content document being produced.
-
-    <h4 id="conf-authors">Content authors and content</h4>
-
-            A content <a>author</a> creates conforming UI Events content if that
-            content uses the <a>event types</a> and [[#event-flow]] model,
-            consistent in a manner as defined in this specification.
-
-            A content author SHOULD NOT use features of this specification
-            marked as <a>deprecated</a>, but SHOULD rely instead upon
-            replacement mechanisms defined in this specification and elsewhere.
-
-            Conforming content MUST use the semantics of the interfaces and
-            <a>event types</a> as described in this specification.
+            符合规范的内容 <span class="zh-upper">必须</span> 
+            使用本规范中描述的接口和 <a href="#event-type">事件类型</a> 的语义。
 
             <p class="note">
-            Content authors are advised to follow best practices as described in
-            <a href="http://www.w3.org/TR/WAI-WEBCONTENT/">accessibility</a> and
-            <a href="http://www.w3.org/standards/techs/i18n">internationalization</a>
-            guideline specifications.
+            建议内容作者遵循在 
+            <a href="http://www.w3.org/TR/WAI-WEBCONTENT/">无障碍</a> 和
+            <a href="http://www.w3.org/standards/techs/i18n">国际化</a> 
+            指南规范中描述的最佳实践。
             </p>
 
-    <h4 id="conf-specs">Specifications and host languages</h4>
+    <h4 id="conf-specs">规范和宿主语言</h4>
 
-        A specification or <a>host language</a> conforms to UI Events if it
-        references and uses the [[#event-flow]] mechanism, interfaces, events,
-        or other features defined in [[!DOM]], and does not extend
-        these features in incompatible ways.
+        如果一个规范或 <a href="#host-language">宿主语言</a> 
+        引用并使用本规范中的 [[#event-flow]] 机制、接口、事件或 在 [[!DOM]] 
+        中定义的其他特性，并且不会以不兼容的方式扩展这些特性，
+        那么它就是符合用户界面事件规范的。
 
-        A specification or <a>host language</a> conforms specifically to UI
-        Events if it references and uses the interfaces and related <a>event
-        types</a> specified in [[#event-types]]. A conforming specification MAY
-        define additional interfaces and <a>event types</a> appropriate to that
-        specification, or MAY extend the UI Events interfaces and <a>event
-        types</a> in a manner that does not contradict or conflict with the
-        definitions of those interfaces and <a>event types</a> in this
-        specification.
+        如果规范或 <a href="#host-language">宿主语言</a> 
+        引用并使用在 [[#event-types]] 中指定的接口和相关
+        <a href="#event-type">事件类型</a> ，
+        那么它局限性地(specifically)符合用户界面事件规范。
+        符合本规范的规范 <span class="zh-upper">可以</span> 
+        定义适用于其自身的附件接口和 <a href="#event-type">事件类型</a> 
+        ，或者 <span class="zh-upper">可以</span> 
+        以，与本规范中的接口和 <a href="#event-type">事件类型</a> 的定义
+        不矛盾或不冲突的方式，去扩展用户界面事件接口和 
+        <a href="#event-type">事件类型</a> 。
 
-        Specifications or <a>host languages</a> which reference UI Events SHOULD
-        NOT use or recommend features of this specification marked as
-        <a>deprecated</a>, but SHOULD use or recommend the indicated replacement
-        for that the feature (if available).
+        引用用户界面事件的规范或 <a href="#host-language">宿主语言</a> 
+        <span class="zh-upper">不应</span> 使用或推荐被本规范标记
+        <a href="#deprecates">弃用</a> 的特性，但
+        <span class="zh-upper">应当</span> 
+        使用或建议改特性指定的替代（如果可用）。
 
 </section>

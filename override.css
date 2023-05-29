@@ -258,3 +258,233 @@ div.warning > p:first-child {
   background:none repeat scroll 0 0 #D0DAFD;
   color:#333399;
 }
+
+/* 无法直接翻译的标题可以直接隐藏替换 */
+#abstract,
+#sotd,
+div[data-fill-with="status"] {
+  display: none;
+}
+
+/* 内容删除横线 */
+.del-content {
+  text-decoration-line: line-through;
+}
+
+/* 中文大写 */
+.zh-upper {
+  display: inline-block;
+  transform: scale(1.1);
+}
+
+/* 图像翻译覆盖 */
+figcaption:not(.no-marker)::before {
+  content: "图像 " counter(figure) " " !important;
+}
+
+/* 自定义图像 */
+.custom-figcaption {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  font-size: 90%;
+  display: block;
+  text-align: center;
+  color: var(--text);
+  overflow-wrap: break-word;
+  orphans: 2;
+  font-family: sans-serif;
+}
+.custom-figcaption:not(.no-marker)::before {
+  content: "非规范图像: ";
+}
+.custom-figcaption[data-content]:not(.no-marker)::before {
+  content: attr(data-content);
+}
+.custom-figcaption::before {
+  font-weight: bold;
+}
+
+/* 例子翻译覆盖 */
+.example:not(.no-marker)::before {
+  content: "例子 " counter(example) !important;
+}
+
+/* 代码格式化 */
+.custom-code {
+  white-space: pre;
+}
+
+/* 非规范注释 */
+.custom-note::before {
+  content: "非规范注释: ";
+}
+.custom-note[data-content]::before {
+  content: attr(data-content);
+}
+
+/* 隐藏summary */
+/* details > summary {
+  display: none;
+} */
+
+/* 不占用数量的例子 */
+.custom-example {
+  position: relative;
+  border: 0.5em;
+  border-color: var(--example-border);
+  background: var(--example-bg);
+  color: var(--example-text);
+  overflow: auto;
+  clear: both;
+  padding: 0.5em;
+  border-left-style: solid;
+  page-break-inside: avoid;
+  margin: 1em auto;
+}
+
+.custom-example > a.self-link {
+  /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+  left: auto;
+  right: 0;
+}
+.custom-example::before {
+  display: block;
+  padding-right: 0em;
+  text-transform: uppercase;
+  color: var(--exampleheading-text);
+}
+.custom-example:not(.no-marker)::before {
+  content: "非规范例子";
+}
+
+.custom-example[data-content]:not(.no-marker)::before {
+  content: attr(data-content);
+}
+
+/* 图像切换 */
+.figure-hidden {
+  display: none;
+}
+.custom-tabs-nav-wrap {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex: auto;
+  align-self: stretch;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translate(0);
+}
+.custom-tabs-nav-list {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  list-style: none;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  gap: 2px;
+  transition: opacity 0.3s;
+  transform: translate(0px, 0px);
+}
+.custom-tabs-tab {
+  white-space: nowrap;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 6px 16px;
+  border-radius: 6px 6px 0 0;
+}
+.custom-tabs-tab-btn {
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s;
+}
+.custom-tabs-tab-active {
+  margin: 0;
+  border: 1px solid #f0f0f0;
+  color: #1677ff !important;
+  background: #fff;
+  border-bottom-color: #fff;
+}
+.custom-tabs-tab-active > .custom-tabs-tab-btn {
+  text-shadow: 0 0 0.25px currentcolor;
+}
+
+/* 自定义表格的类名 */
+/* 事件类型列表 */
+.event-types-list > tbody > tr > th:nth-child(2) {
+  width: 48px;
+}
+.event-types-list > tbody > tr > th:nth-child(3) {
+  width: 32px;
+}
+.event-types-list > tbody > tr > th:nth-child(6) {
+  width: 32px;
+}
+/* 自定义rfc2119表格 */
+.custom-rfc2119-list > tbody > tr > th:nth-child(1) {
+  width: 96px;
+}
+.custom-rfc2119-list > tbody > tr > th:nth-child(2) {
+  width: 176px;
+}
+
+/* 自定义引用列表panel样式 */
+.dfn-paneled + span > aside.dfn-panel {
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  box-sizing: border-box;
+  border: none;
+}
+.dfn-paneled + span > aside.dfn-panel a[href] {
+  color: var(--a-normal-text) !important;
+}
+
+/* 自定义定义属性样式 */
+.custom-dfn {
+  display: none;
+}
+
+/* 隐藏非引用的固定一致性 */
+div[data-fill-with="conformance"] {
+  display: none;
+}
+a[href="#w3c-conformance"] {
+  display: none;
+}
+a[href="#w3c-conformance"] + ol {
+  display: none;
+}
+
+/* 覆盖索引的li样式 */
+ul.index {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 16px;
+}
+ul.index > li {
+  width: 33%;
+}

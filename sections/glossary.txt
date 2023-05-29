@@ -1,42 +1,51 @@
 <section>
-<h2 id="glossary">Glossary</h2>
+<h2 id="glossary">术语表</h2>
 
-Some of the following term definitions have been borrowed or modified from
-similar definitions in other W3C or standards documents. See the links within
-the definitions for more information.
+以下一些术语定义是从其他 W3C 或标准文档中的类似定义中借用或修改而来。
+请参阅定义中的链接以获取更多信息。
 
 
 : <dfn>activation behavior</dfn>
-::	The action taken when an <a>event</a>, typically initiated by users through
-	an input device, causes an element to fulfill a defined task.  The task MAY
-	be defined for that element by the <a>host language</a>, or by
-	author-defined variables, or both.  The default task for any given element
-	MAY be a generic action, or MAY be unique to that element.  For example, the
-	activation behavior of an HTML or SVG <code>&lt;a&gt;</code> element is to
-	cause the <a>user agent</a> to traverse the link specified in the
-	<code>href</code> attribute, with the further optional parameter of
-	specifying the browsing context for the traversal (such as the current
-	window or tab, a named window, or a new window). The activation behavior of
-	an HTML <code>&lt;input&gt;</code> element with the <code>type</code>
-	attribute value <code>submit</code> is be to send the values of the form
-	elements to an author-defined IRI by the author-defined HTTP method.  See
-	[[#event-flow-activation]] for more details.
+::	激活行为: 当一个 <a href="#event">事件</a> (通常由用户通过输入设备发起)
+	引发元素完成指定的任务时所执行的操作。该任务为引发元素定义， 
+	它<span class="zh-upper">可以</span> 通过 <a href="#host-language">宿主语言</a> 
+	定义，或者通过开发者自定义的变量定义，也可以同时由两者定义。
+	任何引发元素的默认任务 <span class="zh-upper">可以</span> 
+	是一个通用操作，或者说引发元素的任务 <span class="zh-upper">可以</span> 是唯一的。
+	例如， HTML 或 SVG 的 <code>&lt;a&gt;</code> 元素的激活行为是使 
+	<a href="#user-agent">用户代理</a> 遍历 <code>href</code> 属性中指定的链接，
+	并使用另一个可选参数( <code>target</code> 属性)指定遍历后进入的浏览上下文
+	(如当前窗口或选项卡、一个命名窗口或新窗口)。
+	<code>type</code> 属性值为 <code>submit</code> 的 HTML <code>&lt;input&gt;</code> 
+	元素的激活行为是通过开发者定义的 HTTP 方法将表单元素的值发送给开发者定义的 
+	IRI 。参见 [[#event-flow-activation]] 以了解更多详细信息。
+
+	<p class="note custom-note">
+	IRI 全称 <code>Internationalized Resource Identifier</code> ——国际化资源标识符，
+	它是一种互联网协议标准，它建立在统一资源标识符(URI)协议的基础上，
+	极大地扩展了允许的字符集。详情参考 
+	<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Content_type#iri">
+	MDN-SVG-Content_type#IRI</a> 和 
+	<a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier">
+	En-Wikipedia-IRI</a> 。
+	</p>
 
 : <dfn>activation trigger</dfn>
-::	An event which is defined to initiate an <a>activation behavior</a>.  Refer
-	to [[#event-flow-activation]] for more details.
+::	激活触发器，被定义为发起 <a href="#activation-behavior">激活行为</a> 的事件。
+	参考 [[#event-flow-activation]] 以了解更多详细信息。
 
 : <dfn>author</dfn>
-::	In the context of this specification, an <em>author</em>, <em>content
-	author</em>, or <em>script author</em> is a person who writes script or
-	other executable content that uses the interfaces, events, and event flow
-	defined in this specification. See [[#conf-authors]] conformance category
-	for more details.
+::	在本规范的上下文中， <em>作者</em> 、 <em>内容作者</em> 
+	或 <em>脚本作者</em> 是编写脚本或编写，使用本规范中定义的接口、
+	事件和事件流的可执行内容的人员。参见 一致性类别中的 [[#conf-authors]] 
+	了解更多细节。
+	<p class="note custom-note">
+		可以理解成 Web 内容开发者，前端开发者
+	</p>
 
 : <dfn>body element</dfn>
-::	In HTML or XHTML <a>documents</a>, the body element represents the contents of the
-	document. In a well-formed HTML document, the body element is a first
-	descendant of the <a>root element</a>.
+::	在 HTML 或 XHTML 文档中，body元素表示文档的内容。在格式良好的 HTML 
+	文档中，body元素是 <a href="#root-element">根元素</a> 的第一个子元素。
 
 : <dfn lt="bubble phase|bubbling phase">bubbling phase</dfn>
 ::	The process by which an <a>event</a> can be handled by one of the target's
@@ -65,12 +74,12 @@ the definitions for more information.
 	</p>
 
 : <dfn>current event target</dfn>
-::	In an event flow, the current event target is the object associated with the
-	<a>event handler</a> that is currently being dispatched. This object MAY be
-	the <a>event target</a> itself or one of its ancestors. The current event
-	target changes as the <a>event</a> propagates from object to object through
-	the various <a>phases</a> of the event flow. The current event target is the
-	value of the {{Event/currentTarget}} attribute.
+::	当前事件对象: 在事件流中，当前事件目标是与当前正在派发的
+	<a href="#event-handler">事件处理程序</a> 关联的对象。此对象
+	<span class="zh-upper">可以</span> 是 <a href="#event-target">事件目标</a> 
+	本身或其祖先之一。当前事件目标随着 <a href="#event">事件</a> 在事件流的各个
+	<a href="#phase">阶段</a> 从一个对象传播到另一个对象而变化。当前事件目标是
+	{{Event/currentTarget}} 属性的值。
 
 : <dfn>dead key</dfn>
 ::	A dead key is a key or combination of keys which produces no character by
@@ -79,63 +88,54 @@ the definitions for more information.
 	GLYPH{&#xF6;}, GLYPH{&#xE9;}, GLYPH{&#xE2;}).
 
 : <dfn>default action</dfn>
-::	A <a>default action</a> is an OPTIONAL supplementary behavior that an
-	implementation MUST perform in combination with the dispatch of the event
-	object.  Each event type definition, and each specification, defines the
-	<a>default action</a> for that event type, if it has one.  An instance of an
-	event MAY have more than one <a>default action</a> under some circumstances,
-	such as when associated with an <a>activation trigger</a>.  A <a>default
-	action</a> MAY be cancelled through the invocation of the
-	{{Event/preventDefault()}} method. For more details, see
-	[[#event-flow-default-cancel]].
+::	<a href="#default-action">默认行为</a> 是一种 <span class="zh-upper">可选的</span> 
+	补充行为，它的实现 <span class="zh-upper">必须</span> 与事件对象的派发合作执行。
+	每个事件类型定义和每个规范都定义了该事件类型的默认行为(如果有的话)。
+	在某些情况下，例如与 <a href="#activation-trigger">激活触发器</a> 
+	关联时，事件的实例 <span class="zh-upper">可以</span> 具有多个 
+	<a href="#default-action">默认行为</a> 。 <span class="zh-upper">可以</span> 
+	通过调用 {{Event/preventDefault()}} 方法来取消 
+	<a href="#default-action">默认行为</a>  。更多详细信息，请参见 
+	[[#event-flow-default-cancel]] 。
 
 : <dfn>delta</dfn>
-::	The estimated scroll amount (in pixels, lines, or pages) that the user agent
-	will scroll or zoom the page in response to the physical movement of an
-	input device that supports the {{WheelEvent}} interface (such as a mouse
-	wheel or touch pad). The value of a <a>delta</a> (e.g., the
-	{{WheelEvent/deltaX}}, {{WheelEvent/deltaY}}, or {{WheelEvent/deltaZ}}
-	attributes) is to be interpreted in the context of the current
-	{{WheelEvent/deltaMode}} property. The relationship between the physical
-	movement of a wheel (or other device) and whether the <a>delta</a> is
-	positive or negative is environment and device dependent. However, if a user
-	agent scrolls as the <a>default action</a> then the sign of the <a>delta</a>
-	is given by a right-hand coordinate system where positive X,Y, and Z axes
-	are directed towards the right-most edge, bottom-most edge, and farthest
-	depth (away from the user) of the <a>document</a>, respectively.
+::	为响应支持 {{WheelEvent}} 接口的输入设备(如鼠标滚轮或触摸板)的物理移动，
+	用户代理将滚动或缩放页面，对这种滚动或缩放页面的滚动量
+	(以像素、行或页为单位)估计就称为 <a href="#delta">delta</a> 。
+	<a href="#delta">delta</a> 的值(例如， {{WheelEvent/deltaX}} 、 
+	{{WheelEvent/deltaY}} 或 {{WheelEvent/deltaZ}} 属性)将在当前 
+	{{WheelEvent/deltaMode}} 属性的背景中进行解释。 
+	滚轮(或其他设备)的物理运动与 <a href="#delta">delta</a> 
+	是正值还是负值之间的关系取决于环境和设备。但是，如果用户代理将滚动作为 
+	<a href="#default-action">默认行为</a> ，则 <a href="#delta">delta</a> 
+	的符号由右手坐标系给出，其中正 X 、 Y 和 Z 轴分别指向 
+	<a href="#document">文档</a> 的最右边、最底边和最远深度(远离用户)。
 
 : <dfn lt="deprecates|deprecated">deprecated</dfn>
-::	Features marked as deprecated are included in the specification as reference
-	to older implementations or specifications, but are OPTIONAL and
-	discouraged.  Only features which have existing or in-progress replacements
-	MUST be deprecated in this specification.  Implementations which do not
-	already include support for the feature MAY implement deprecated features
-	for reasons of backwards compatibility with existing content, but content
-	authors creating content SHOULD NOT use deprecated features, unless there is
-	no other way to solve a use case. Other specifications which reference this
-	specification SHOULD NOT use deprecated features, but SHOULD point instead
-	to the replacements of which the feature is deprecated in favor.  Features
-	marked as deprecated in this specification are expected to be dropped from
-	future specifications.
+::	标记为弃用的特性包含在规范中，作为对旧实现或规范的参考，但它们是
+	<span class="zh-upper">可选的</span> ，不鼓励使用。在本规范中，
+	只有已存在或正在进行替换的特性才 <span class="zh-upper">必须</span> 弃用。
+	为了向后兼容已存在的内容(使用了弃用特性的代码)，尚未支持最新特性的实现 
+	<span class="zh-upper">可以</span> 实现弃用特性，但创建内容的开发者 
+	<span class="zh-upper">不应</span> 使用弃用特性，
+	除非没有其他方法来解决使用场景。引用本规范的其他规范 
+	<span class="zh-upper">不应</span> 使用弃用特性，而 
+	<span class="zh-upper">应当</span> 转向弃用该特性的替代。
+	此规范中标记为不推荐使用的特性预计将从未来的规范中删除。
 
 : <dfn>dispatch</dfn>
-::	To create an event with attributes and methods appropriate to its type and
-	context, and propagate it through the DOM tree in the specified manner.
-	Interchangeable with the term <q><a>fire</a></q>, e.g., <q>fire a
-	EVENT{click} event</q> or <q>dispatch a EVENT{load} event</q>.
+::	创建一个事件，事件对象的属性和方法适宜于事件的事件类型和上下文，
+	并以规定的方式在 DOM 树中传播它。可与术语 <q><a>fire</a></q> 互换，例如，
+	<q>触发一个 EVENT{click} 事件</q> 或<q>派发一个EVENT{load}事件</q>。
 
 : <dfn>document</dfn>
-::	An object instantiating the {{Document}} interface [[DOM-Level-3-Core]],
-	representing the entire HTML or XML text document.  Conceptually, it is the
-	root of the document tree, and provides the primary access to the document's
-	data.
+::	实例化 {{Document}} 接口 [[DOM-Level-3-Core]] 的对象，表示整个HTML或XML文本文档。
+	从概念上讲，它是文档树的根，并提供对文档数据的主要访问能力。
 
 : <dfn>DOM application</dfn>
-::	A DOM application is script or code, written by a content author or
-	automatically generated, which takes advantage of the interfaces, methods,
-	attributes, events, and other features described in this specification in
-	order to make dynamic or interactive content, such as Web applications,
-	exposed to users in a <a>user agent</a>.
+::	DOM 应用程序是由开发者编写或自动生成的脚本或代码，它利用本规范中描述的接口、
+	方法、属性、事件和其他特性，以便在 <a href="#user-agent">用户代理</a> 
+	中向用户展现动态或交互式内容，例如 Web 应用程序。
 
 : <dfn>DOM Level 0</dfn>
 ::	The term <q>DOM Level 0</q> refers to a mix of HTML <a>document</a> functionalities,
@@ -146,119 +146,113 @@ the definitions for more information.
 	Level 0</q>.
 
 : <dfn>empty string</dfn>
-::	The empty string is a value of type <code>DOMString</code> of length
-	<code>0</code>, i.e., a string which contains no characters (neither
-	printing nor control characters).
+::	空字符串是类型为<code>DOMString</code>，长度为0的值，也就是说它是一个不包含任何字符的字符串
+	(既没有打印字符也没有控制字符)。
 
 : <dfn>event</dfn>
-::	An event is the representation of some occurrence (such as a mouse click on
-	the presentation of an element, the removal of child node from an element,
-	or any number of other possibilities) which is associated with its <a>event
-	target</a>. Each event is an instantiation of one specific <a>event
-	type</a>.
+::	事件是某种发生的事情的表示(例如，在一个元素上呈现地的鼠标点击，
+	一个元素的孩子节点的移除，或其他任何的可能性)，它与它的
+	<a href="#event-target">事件目标</a> 相关联。每个事件都是一个特定
+	<a href="#event-type">事件类型</a> 的实例化。
 
 : <dfn>event focus</dfn>
-::	Event focus is a special state of receptivity and concentration on a
-	particular element or other <a>event target</a> within a <a>document</a>.  Each
-	element has different behavior when focused, depending on its functionality,
-	such as priming the element for activation (as for a button or hyperlink) or
-	toggling state (as for a checkbox), receiving text input (as for a text form
-	field), or copying selected text.  For more details, see
-	[[#events-focusevent-doc-focus]].
+::	事件焦点是文档中的一个特定元素或其他 <a href="#event-target">事件目标</a> 
+	的一种接受性(receptivity)的和聚集性(concentration)的特殊状态。
+	每个元素在聚焦时都有不同的行为，这取决于元素的功能，例如启动激活元素的引发效果
+	(见于按钮或超链接)或切换状态(见于复选框)、文本输入的接收(见于文本表单字段)、
+	或选定文本的复制。有关更多详细信息，请参见 [[#events-focusevent-doc-focus]] 。
 
 : <dfn lt="focus ring">event focus ring</dfn>
-::	An event focus ring is an ordered set of <a>event focus</a> targets within a
-	<a>document</a>.  A <a>host language</a> MAY define one or more ways to determine
-	the order of targets, such as document order, a numerical index defined per
-	focus target, explicit pointers between focus targets, or a hybrid of
-	different models.  Each document MAY contain multiple focus rings, or
-	conditional focus rings.  Typically, for document-order or indexed focus
-	rings, focus <q>wraps around</q> from the last focus target to the
-	first.
+::	事件焦点环是 <a href="#document">文档</a> 中一组有序的 
+	<a href="#event-focus">事件焦点</a> 目标。 
+	<a href="#host-language">宿主语言</a> <span class="zh-upper">可以</span> 
+	定义一种或多种方法来确定(事件焦点)目标的顺序，例如文档顺序、
+	每个焦点目标定义的数字索引、焦点目标之间的显式指针，或以上不同模式的混合。
+	每个文档都 <span class="zh-upper">可以</span> 包含多个焦点环或有条件焦点环。
+	通常，对于文档顺序或索引焦点环，焦点从最后一个焦点目标到第一个焦点目标进行
+	<q>环绕</q> 。
 
 : <dfn>event handler</dfn>
 : <dfn>event listener</dfn>
-::	An object that implements the {{EventListener}} interface and provides an
-	{{EventListener/handleEvent()}} callback method. Event handlers are
-	language-specific. Event handlers are invoked in the context of a particular
-	object (the <a>current event target</a>) and are provided with the event
-	object itself.
+::	事件监听器，事件处理程序: 一个实现 {{EventListener}} 接口并提供
+	{{EventListener/handleEvent()}} 回调方法的对象。事件处理程序是特定于语言的。
+	事件处理程序在特定对象 (<a href="#current-event-target">当前事件目标</a>) 
+	的上下文中调用，并随事件对象本身一起提供。
 
 	<p class="note">
-	In JavaScript, user-defined functions are considered to implement the
-	{{EventListener}} interface. Thus the event object will be provided as the
-	first parameter to the user-defined function when it is invoked.
-	Additionally, JavaScript objects can also implement the {{EventListener}}
-	interface when they define a {{EventListener/handleEvent}} method.
+	在JavaScript中，用户定义的函数被认为是实现 
+	{{EventListener}} 接口的。因此，当用户定义的函数被调用时，
+	事件对象将作为第一个参数提供给它。此外，JavaScript对象在定义 
+	{{EventListener/handleEvent()}} 方法时也可以实现 {{EventListener}} 接口
+	</p>
+
+	<p class="note custom-note">
+	在 {{EventTarget}} 接口定义中，{{EventTarget/addEventListener()}} 
+	方法的第二个参数接收一个 <code>callback</code> 对象。为了方便代码开发，
+	这个 <code>callback</code> 对象既可以是 {{EventListener}} 接口定义的回调函数，
+	也可以是一个普通的函数，所以原文档规范的注释会声称"用户定义的函数被认为是实现 
+	{{EventListener}} 接口的"。也就是说，事件监听器，事件处理程序就是传递给
+	{{EventTarget/addEventListener()}} 的 <code>callback</code> 对象。但是，
+	广义上来说事件监听器是一个 <q>更广泛的概念</q> ，参阅 [[DOM]] 规范中的
+	<a href="https://dom.spec.whatwg.org/#concept-event-listener">事件监听器</a> 
+	获取更多信息。
 	</p>
 
 : <dfn>event order</dfn>
-::	The sequence in which events from the same event source or process occur,
-	using the same or related event interfaces. For example, in an environment
-	with a mouse, a track pad, and a keyboard, each of those input devices would
-	constitute a separate event source, and each would follow its own event
-	order. A EVENT{mousedown} event from the trackpad followed by a
-	EVENT{mouseup} event from the mouse would not result in a EVENT{click} event.
+::	事件顺序: 使用相同或相关的事件接口，来自同一事件源或进程的事件的发生顺序。
+	例如，在一个有鼠标、轨迹板和键盘的环境中，
+	这些输入设备中的每一个都将构成一个单独的事件源，并且每个都将遵循自己的事件顺序。
+	紧随轨迹板上的一个 EVENT{mousedown} 事件触发的鼠标上的一个 EVENT{mouseup} 事件
+	不会导致 EVENT{click} 事件。
 
 	<p class="note">
-	There can be interactions between different event orders. For example, a
-	EVENT{click} event might be modified by a concurrent EVENT{keydown} event
-	(e.g., via KEYCAP{Shift}<code>+</code>EVENT{click}). However, the event
-	orders of these different event sources would be distinct.
+	不同的事件顺序之间可能存在交互。例如，
+	一个点击事件可能会被一个并发的 EVENT{keydown} 事件修改
+	(例如，通过 KEYCAP{Shift} <code>+</code> EVENT{click} )。
+	然而，这些不同事件源的事件顺序是不同的。
 
-	The event order of some interfaces are device-independent. For example, a
-	user might change focus using the KEYCAP{Tab} key, or by clicking the new
-	focused element with the mouse.  The event order in such cases depends on
-	the state of the process, not on the state of the device that initiates the
-	state change.
+	某些接口的事件顺序与设备无关。例如，用户可以使用 KEYCAP{Tab} 
+	键或用鼠标单击新的聚焦元素来更改焦点。在这种情况下，
+	事件顺序取决于进程的状态，而不是能发起状态改变的设备的状态。
 
 : <dfn>event phase</dfn>
-::	See <a>phase</a>.
+::	参阅 <a href="#phase">阶段</a> 。
 
 : <dfn>event target</dfn>
-::	The object to which an <a>event</a> is targeted using the [[#event-flow]].
-	The event target is the value of the {{Event/target}} attribute.
+::	一个应用 [[#event-flow]]> 的 <a href="#event">事件</a> 
+	的事件目标对象。事件目标对象是事件的 {{Event/target}} 属性的值。
 
 : <dfn>event type</dfn>
-::	An <em>event type</em> is an <a>event</a> object with a particular name and
-	which defines particular trigger conditions, properties, and other
-	characteristics which distinguish it from other event types.  For example,
-	the EVENT{click} event type has different characteristics than the
-	EVENT{mouseover} or EVENT{load} event types. The event type is exposed as
-	the {{Event/type}} attribute on the event object.  See [[#event-types]] for
-	more details.  Also loosely referred to as <em>"event"</em>, such as the
-	<em>EVENT{click} event</em>.
+::	<em>事件类型</em>是一个具有特定名称的 <a href="#event">事件对象</a>
+	，它定义了特定的触发条件、属性和区别于其他事件类型的其它特征。例如，
+	EVENT{click} 事件类型与 EVENT{mouseover} 或 EVENT{load} 类型具有不同的特性。
+	事件类型作为事件对象上的 {{Event/type}} 属性公开。参见
+	[[#event-types]] 了解更多详细信息。这个术语也常常引申为具体"事件"，
+	例如 <em>EVENT{click}</em> 事件。
 
 : <dfn>fire</dfn>
-::	A synonym for <a>dispatch</a>.
+::	<a>dispatch</a>的同义词。
 
 : <dfn>host language</dfn>
-::	Any language which integrates the features of another language or API
-	specification, while normatively referencing the origin specification rather
-	than redefining those features, and extending those features only in ways
-	defined by the origin specification.  An origin specification typically is
-	only intended to be implemented in the context of one or more host
-	languages, not as a standalone language.  For example, XHTML, HTML, and SVG
-	are host languages for UI Events, and they integrate and extend the objects
-	and models defined in this specification.
+::	宿主语言: 任何集成了另一种语言的特性或API规范的语言，
+	它同时规范性地引用原始规范而不是重新定义这些特性，
+	并且仅以原始规范定义的方式扩展这些特性。
+	源规范通常只打算在一种或多种宿主语言的上下文中实现，
+	而不是作为一种独立的语言。例如，XHTML、HTML和SVG是UI Events的宿主语言，
+	它们集成并扩展了本规范中定义的对象和模型。
 
 : <dfn>hysteresis</dfn>
-::	A feature of human interface design to accept input values within a certain
-	range of location or time, in order to improve the user experience.  For
-	example, allowing for small deviation in the time it takes for a user to
-	double-click a mouse button is temporal hysteresis, and not immediately
-	closing a nested menu if the user mouses out from the parent window when
-	transitioning to the child menu is locative hysteresis.
+::	滞后，人机界面设计的一种特性，在一定的位置或时间范围内接受用户输入，以改善用户体验。
+	例如，在用户双击鼠标按键时，允许其花费的时间有一定小偏差是时间上的滞后作用，
+	如果用户操作鼠标指针从父窗口移动到子菜单，则不立即关闭嵌套菜单是位置上的滞后作用。
 
 : <dfn>IME</dfn>
 : <dfn>input method editor</dfn>
-:: 	An <em>input method editor</em> (IME), also known as a <em>front end
-	processor</em>, is an application that performs the conversion between
-	keystrokes and ideographs or other characters, usually by user-guided
-	dictionary lookup, often used in East Asian languages (e.g., Chinese,
-	Japanese, Korean).  An <a>IME</a> MAY also be used for dictionary-based word
-	completion, such as on mobile devices.  See [[#keys-IME]] for treatment of
-	IMEs in this specification.  See also <a>text composition system</a>.
+:: 	<em>输入法编辑器</em>(IME) ，也被称为<em>前端处理器</em>(front end processer)，
+	是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs or other characters，
+	中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，这种输入应用程序常在东亚语言
+	(如中文，日语，韩语)中使用。一个输入法编辑器(<a href="#ime">IME</a>)也可被用于基于
+	词语的单词补全，常用在移动设备上。参见本规范中用于讨论IMEs的<a href="#keys-IME">
 
 : <dfn>key mapping</dfn>
 ::	Key mapping is the process of assigning a key value to a particular key, and
@@ -276,12 +270,10 @@ the definitions for more information.
 	any given key at any given time depends upon the <a>key mapping</a>.
 
 : <dfn>modifier key</dfn>
-::	A modifier key changes the normal behavior of a key, such as to produce a
-	character of a different case (as with the KEYCAP{Shift} key), or to alter
-	what functionality the key triggers (as with the KEYCAP{Fn} or KEYCAP{Alt}
-	keys). See [[#keys-modifiers]] for more information about modifier keys and
-	refer to the [=Modifier Keys table=] in [[UIEvents-Key]] for a list
-	of valid modifier keys.
+::	修饰符键可更改键的正常行为，例如生成不同大小写的字符(如 KEYCAP{Shift} 键)，
+	或更改键触发的功能(如 KEYCAP{Fn} 键或 KEYCAP{Alt} 键)。参阅 [[#keys-modifiers]] 
+	获取有关修饰符键的更多信息，并参阅 [[UIEvents-Key]] 中的 [=Modifier Keys table=] 
+	以获取有效的修饰符键列表。
 
 : <dfn lt="namespace URIs">namespace URI</dfn>
 ::	A <em>namespace URI</em> is a URI that identifies an XML namespace. This is
@@ -292,20 +284,25 @@ the definitions for more information.
 	regarding URIs and namespace URIs handling and comparison in the DOM APIs.
 
 : <dfn>phase</dfn>
-::	In the context of <a>events</a>, a phase is set of logical traversals from
-	node to node along the DOM tree, from the <a>Window</a> to the {{Document}}
-	object, <a>root element</a>, and down to the <a>event target</a> (<a>capture
-	phase</a>), at the <a>event target</a> itself (<a>target phase</a>), and
-	back up the same chain (<a>bubbling phase</a>).
+::	在 <a href="#event">事件</a> 的上下文中，
+	一个阶段是沿着 DOM 树从一个节点到另一个节点的逻辑遍历集，即
+	从 <a>Window</a> 到 {{Document}} 对象、 <a href="#root-element">根元素</a> 
+	，直到 <a href="#event-target">事件目标</a> ( 
+	<a href="#capture-phase">捕获阶段</a> )前继续向下遍历，然后传到 
+	<a href="#event-target">事件目标</a> 本身( 
+	<a href="#target-phase">目标阶段</a> )，最后按照相反方向向上遍历同一个节点链
+	( <a href="#bubble-phase">冒泡阶段</a> )。
 
 : <dfn>propagation path</dfn>
-::	The ordered set of <a>current event targets</a> though which an <a>event</a>
-	object will pass sequentially on the way to and back from the <a>event
-	target</a>.  As the event propagates, each <a>current event target</a> in
-	the propagation path is in turn set as the {{Event/currentTarget}}. The
-	propagation path is initially composed of one or more <a>event phases</a> as
-	defined by the <a>event type</a>, but MAY be interrupted.  Also known as an
-	<em>event target chain</em>.
+::	传播路径: <a href="#event">事件</a> 对象在往返于 
+	<a href="#event-target">事件目标</a> 的过程中会依次通过的
+	<a href="#current-event-target">当前事件目标</a> 的有序集合。随着事件的传播，
+	传播路径中的每个 <a href="#current-event-target">当前事件目标</a> 
+	依次设置在 {{Event/currentTarget}} 中。传播路径最初由 
+	<a href="#event-type">事件类型</a> 定义的一个或多个 
+	<a href="#event-phase">事件阶段</a> 组成，但 
+	<span class="zh-upper">可以</span> 被中断。传播路径也称为
+	<em>事件目标链</em> 。
 
 : <dfn>QWERTY</dfn>
 ::	QWERTY (pronounced <q>&#x2C8;kw&#x25C;rti</q>) is a common keyboard layout,
@@ -315,14 +312,13 @@ the definitions for more information.
 	or ergonomics.
 
 : <dfn>root element</dfn>
-::	The first element node of a <a>document</a>, of which all other elements are
-	children. The document element.
+::	根元素， <a href="#document">文档</a> 的第一个元素节点，
+	所有其他元素都是它的子元素。文档元素(就是 &lt;html&gt; 元素)。
 
 : <dfn>rotation</dfn>
-:: An indication of incremental change on an input device using the
-	{{WheelEvent}} interface. On some devices this MAY be a literal rotation of
-	a wheel, while on others, it MAY be movement along a flat surface, or
-	pressure on a particular button.
+:: 使用 {{WheelEvent}} 接口指示输入设备上的增量更改。在某些设备上，
+	<span class="zh-upper">可以</span> 是滚轮在字面意义上的旋转，而在其他设备上，
+	它 <span class="zh-upper">可以</span> 是沿着平面移动，或按下特定按钮。
 
 : <dfn>target phase</dfn>
 ::	The process by which an <a>event</a> can be handled by the <a>event
@@ -367,24 +363,22 @@ the definitions for more information.
 	category values.
 
 : <dfn>un-initialized value</dfn>
-::	The value of any event attribute (such as {{Event/bubbles}} or
-	{{Event/currentTarget}}) before the event has been initialized with
-	{{Event/initEvent()}}. The un-initialized values of an event apply
-	immediately after a new event has been created using the method
-	{{Document/createEvent()}}.
+::	未初始化值，表示任何还没有使用{{Event/initEvent()}}进行过初始化的事件的属性
+	(例如{{Event/bubbles}} ，{{Event/currentTarget}})的值。
+	一个新事件通过使用{{Document/createEvent()}}方法创建后，
+	这个事件的属性会立即应用未初始化值。
 
 : <dfn>user agent</dfn>
-::	A program, such as a browser or content authoring tool, normally running on
-	a client machine, which acts on a user's behalf in retrieving, interpreting,
-	executing, presenting, or creating content.  Users MAY act on the content
-	using different user agents at different times, for different purposes.  See
-	the [[#conf-interactive-ua]] and [[#conf-author-tools]] for details on the
-	requirements for a <em>conforming</em> user agent.
+::	用户代理，是一个程序，例如浏览器或内容创作工具，通常在客户端机器运行，
+	它代理用户对内容进行检索、解释、执行、呈现或创建。出于不同的目的，
+	用户可以在不同的时间使用不同的用户代理对内容进行操作。请参阅 
+	[[#conf-interactive-ua]] 和  [[#conf-authors]] ，以获得
+	<em>符合(conforming)</em> 要求(规范)的用户代理的详细信息。
 
 : <dfn>Window</dfn>
-::	The <code>Window</code> is the object referred to by the current <a>document</a>'s
-	browsing context's Window Proxy object as defined in
+::	<code>Window</code>引用当前<a href="#document">文档</a>的浏览上下文的窗口代理对象
+	(Window Proxy object)，窗口代理对象在
 	<a href="http://dev.w3.org/html5/spec/single-page.html#windowproxy" title="HTML5 WindowProxy description">HTML5</a>
-	[[HTML5]].
+	[[HTML5]] 中定义。
 
 </section>

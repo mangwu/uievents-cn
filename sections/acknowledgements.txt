@@ -1,11 +1,16 @@
 <section>
-<h2 id="acknowledgements-contributors">Acknowledgements</h2>
+<h2 id="acknowledgements-contributors">鸣谢</h2>
 
 
-Many people contributed to the DOM specifications (Level 1, 2 or 3),
-including participants of the DOM Working Group, the DOM Interest Group,
-the WebAPI Working Group, and the WebApps Working Group.
-We especially thank the following:
+许多人对 DOM 规范(1级、2级或3级)做出了贡献，包括 DOM 工作组(DOM Working Group)、
+DOM 兴趣组(DOM Interest Group)、 WebAPI 工作组(WebAPI Working Group)和 WebApps 
+工作组(WebApps Working Group)的参与者。我们特别感谢以下人员:
+
+<div class="note custom-note">
+鸣谢人员名单的列举基本格式是"姓名(所在工作单位)"，都属于专有名词，
+所以不进行翻译。
+</div>
+
 
 Andrew Watson (Object Management Group),
 Andy Heninger (IBM),
@@ -89,16 +94,14 @@ T.V. Raman (Google).
 Vidur Apparao (Netscape) and
 Vinod Anupam (Lucent).
 
-<strong>Former editors:</strong>
+<strong>前作者: </strong>
 Tom Pixley (Netscape Communications Corporation) until July 2002;
 Philippe Le Hégaret (W3C) until November 2003;
 Björn Höhrmann (Invited Expert) until January 2008;
 and Jacob Rossi (Microsoft) from March 2011 to October 2011.
 
-<strong>Contributors:</strong>
-In the WebApps Working Group, the following people made substantial
-material contributions in the process of refining and revising this
-specification:
+<strong>贡献者: </strong>
+在 WebApps 工作组中，以下人员在完善和修订本规范的过程中做出了大量实质性贡献:
 Bob Lund (Cable Laboratories),
 Cameron McCormack (Invited Expert / Mozilla),
 Daniel Danilatos (Google),
@@ -112,11 +115,11 @@ Olli Pettay (Mozilla),
 Takayoshi Kochi (Google) and
 Travis Leithead (Microsoft).
 
-<strong>Glossary contributors:</strong>
+<strong>术语表贡献者: </strong>
 Arnaud Le Hors (W3C) and
 Robert S. Sutor (IBM Research).
 
-<strong>Test suite contributors:</strong>
+<strong>测试套件贡献者: </strong>
 Carmelo Montanez (NIST),
 Fred Drake,
 Mary Brady (NIST),
@@ -125,9 +128,8 @@ Rick Rivello (NIST),
 Robert Clary (Netscape),
 with a special mention to Curt Arnold.
 
-Thanks to all those who have helped to improve this specification by
-sending suggestions and corrections (please, keep bugging us with your
-issues!), or writing informative books or Web sites:
+感谢所有通过发送建议和更正(请继续在规范反馈上给我们的提出bug!)
+或撰写信息丰富的书籍或网站来帮助改进本规范的人：
 Al Gilman,
 Alex Russell,
 Alexander J. Vincent,
