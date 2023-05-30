@@ -1514,7 +1514,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			为了最大限度地提高可访问性，鼓励开发者在定义自定义控件的激活行为时使用
 			EVENT{click} 事件类型，而不是其他更特定于设备的定位设备事件类型，如
 			EVENT{mousedown} 或 EVENT{mouseup} 。尽管 EVENT{click} 
-			事件类型起源于指针设备 (例如鼠标) ，但随后的实现增强将其扩展到了该关联之外，
+			事件类型起源于指针设备(例如鼠标)，但随后的实现增强将其扩展到了该关联之外，
 			并且可以将其视为用于元素激活的设备独立的事件类型。
 			</p>
 
@@ -2606,7 +2606,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			当DOM被更新后，<a href="#user-agent">用户代理</a>必须立即派发此事件
 
 <h3 id="events-keyboardevents">键盘事件</h3>
-	键盘事件是设备独立的，也就是说，
+	键盘事件是依赖设备的，也就是说，
 	键盘事件依赖于输入设备的能力以及输入设备在操作系统中的映射方式。
 	这种映射方式可以参阅 <a href="#keys">键盘事件和键值</a> ，
 	其中包括键盘事件如何与合成事件结合使用的例子。键盘事件是否会生成，
@@ -2870,7 +2870,7 @@ myDiv.addEventListener("auxclick", function(e) {
 					行为的移动设备， {{KeyboardEvent/repeat}} 属性值为 <code>true</code> 
 					的第一个按键事件 <span class="zh-upper">必须</span> 用作 
 					<em>长按按键(long-key-press)</em> 的指示。为了开启重复效果的按键 
-					<span class="zh-upper">必须</span> 被按下的时间长度是配置独立的
+					<span class="zh-upper">必须</span> 被按下的时间长度是依赖配置的
 					(由配置决定)。
 
 					<div class="note custom-note" id="custom-reapeat-note">
@@ -3169,7 +3169,7 @@ myDiv.addEventListener("auxclick", function(e) {
 		是由  <a href="#host-language">宿主语言</a> 定义的元素，
 		用于接受非文本目的的键盘输入，例如加速按键(accelerator key)
 		的激活或触发某些其他行为。如果没有合适的焦点元素，则事件目标将是 HTML 
-		<a href="#body-element">body元素</a>  body元素(如果可用)，否则为
+		<a href="#body-element">body元素</a> (如果可用)，否则为
 		<a href="#root-element">根元素</a> 。
 	
 		<p class="note">
@@ -3193,75 +3193,74 @@ myDiv.addEventListener("auxclick", function(e) {
 			+| 可取消默认行为   | 能                                                                                   |
 			+| 能否从Shadow<br/>| 能                                                                                   |
 			 | DOM冒泡传递      |                                                                                      |
-			+| 默认行为         | Varies: EVENT{beforeinput} and EVENT{input} events; launch                           |
-			 |                  | <a>text composition system</a>; EVENT{blur} and EVENT{focus} events; EVENT{keypress} |
-			 |                  | event (if supported); <a>activation behavior</a>; other event                        |
+			+| 默认行为         | 多种: (触发) EVENT{beforeinput} 和 EVENT{input} 事件; 启动                           |
+			 |                  | <a href="#text-composition-system">文本合成系统</a> ; (触发) EVENT{blur} 和          |
+			 |                  | EVENT{focus} 事件; (触发) EVENT{keypress} 事件 (如果支持);                           |
+			 |                  | (执行) <a href="#activation-behavior">激活行为</a> ; (触发)其它事件                  |
 			+| 上下文<br/>      | <ul>                                                                                 |
-			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : focused element processing the key event or if no   |
-			 |                  |     element focused, then the <a>body element</a> if available, otherwise the        |
-			 |                  |     <a>root element</a></li>                                                         |
+			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : 正在处理按键事件的焦点元素，或者如果没有元素焦点，  |
+			 |                  |     就是 <a href="#body-element">body元素</a> (如果可用)，否则为                     |
+			 |                  |     <a href="#root-element">根元素</a> </li>                                         |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/view}} : <a><code>Window</code></a></li>                   |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/detail}} : <code>0</code></li>                             |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/key}} : the key value of the key pressed.</li> |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/code}} : the code value associated with the    |
-			 |                  |     key's physical placement on the keyboard.</li>                                   |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/location}} : the location of the key on the    |
-			 |                  |     device.</li>                                                                     |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/altKey}} : <code>true</code> if KEYCAP{Alt}    |
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/shiftKey}} : <code>true</code> if KEYCAP{Shift}|
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/ctrlKey}} : <code>true</code> if KEYCAP{Control}|
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/metaKey}} : <code>true</code> if KEYCAP{Meta}  |
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/repeat}} : <code>true</code> if a key has been |
-			 |                  |     depressed long enough to trigger key repetition, otherwise <code>false</code></li>|
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/isComposing}} : <code>true</code> if the key   |
-			 |                  |     event occurs as part of a composition session, otherwise <code>false</code></li> |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/key}} : 按下的键的键值。</li>                  |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/code}} : 与键在键盘上的物理位置相关联的码      |
+			 |                  |     (code)值。</li>                                                                  |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/location}} : 键在设备上的位置。</li>           |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/altKey}} : 如果 KEYCAP{Alt}                    |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/shiftKey}} : 如果 KEYCAP{Shift}                |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/ctrlKey}} : 如果 KEYCAP{Ctrl}                  |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/metaKey}} : 如果 KEYCAP{Meta}                  |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/repeat}} : 如果按键被按下足够长的时间，        |
+			 |                  |     以触发按键重复，则为 <code>true</code> ，否则为 <code>false</code> </li>         |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/isComposing}} : 如果键事件作为合成会话         |
+			 |                  |     (composition session)的一部分发生，则为 <code>true</code> ，                     |
+			 |                  |     否则为 <code>false</code> </li>                                                  |
 			 |                  | </ul>                                                                                |
 			++------------------+--------------------------------------------------------------------------------------+
 	
-			A <a>user agent</a> MUST dispatch this event when a key is pressed
-			down. The EVENT{keydown} event type is device dependent and relies
-			on the capabilities of the input devices and how they are mapped in
-			the operating system. This event type MUST be generated after the
-			<a>key mapping</a>. This event type MUST be dispatched before the
-			EVENT{beforeinput}, EVENT{input}, and EVENT{keyup} events associated
-			with the same key.
+			当按下某个键盘按键时， <a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">必须</span> 派发此事件。 EVENT{keydown} 
+			事件类型是依赖设备的，它依赖输入设备的功能以及它们在操作系统中的映射方式。
+			此事件类型 <span class="zh-upper">必须</span> 在 
+			<a href="#key-mapping">键映射</a> 之后生成。此事件类型 
+			<span class="zh-upper">必须</span> 在与同一个键关联的 EVENT{beforeinput} 、
+			EVENT{input} 和 EVENT{keyup} 事件之前被派发。
 	
-			The default action of the EVENT{keydown} event depends upon the key:
+			EVENT{keydown} 事件的默认行为取决于按键: 
 	
-			*	If the key is associated with a character, the default action
-				MUST be to dispatch a EVENT{beforeinput} event followed by an
-				EVENT{input} event. In the case where the key which is
-				associated with multiple characters (such as with a macro or
-				certain sequences of dead keys), the default action MUST be to
-				dispatch one set of EVENT{beforeinput} / EVENT{input} events for
-				each character
+			*	如果键与一个字符相关联(也就是键值)，则默认行为 
+				<span class="zh-upper">必须</span> 是先派发 EVENT{beforeinput} 事件，
+				然后再派发 EVENT{input} 事件。如果键与多个字符相关(例如与宏(macro)
+				或某些 <a href="#dead-key">死键</a> 序列相关)，则默认行为
+				<span class="zh-upper">必须</span> 是为每个字符分配一组 
+				EVENT{beforeinput} / EVENT{input} 事件
 	
-			*	If the key is associated with a <a>text composition system</a>,
-				the default action MUST be to launch that system
+			*	如果按键与 <a href="#text-composition-system">文本合成系统</a> 
+				相关联，则默认行为 <span class="zh-upper">必须</span> 是启动该系统
 	
-			*	If the key is the KEYCAP{Tab} key, the default action MUST be
-				to shift the document focus from the currently focused element
-				(if any) to the new focused element, as described in
-				<a href="#events-focusevent">Focus Event Types</a>
+			*	如果键是 KEYCAP{Tab} 键，则默认行为 <span class="zh-upper">必须</span> 
+				是将文档焦点从当前焦点元素(如果有)转移到新的焦点元素，如 
+				<a href="#events-focusevent">焦点事件类型</a> 中描述的那样				
 	
-			*	If the key is the KEYCAP{Enter} or KEYCAP{&nbsp;} key and the
-				current focus is on a state-changing element, the default action
-				MUST be to dispatch a EVENT{click} event, and a
-				EVENT{DOMActivate} event if that event type is supported by the
-				<a>user agent</a> (refer to [[#event-flow-activation]] for more
-				details)
+			*	如果键是 KEYCAP{Enter} 或 KEYCAP{&nbsp;} (空格)键，
+				并且当前焦点在状态更改(state-changing)元素上，则默认行为 
+				<span class="zh-upper">必须</span> 是派发 EVENT{click} 事件，
+				如果用户代理支持 EVENT{DOMActivate} 事件类型也会派发一个 
+				EVENT{DOMActivate} 事件(请参阅 [[#event-flow-activation]] 
+				了解更多详细信息)
 	
-			If this event is canceled, the associated event types MUST NOT be
-			dispatched, and the associated actions MUST NOT be performed.
+			如果此事件被取消，则 <span class="zh-upper">不得</span> 
+			派发关联的事件类型，并且 <span class="zh-upper">不得</span> 
+			执行关联的行为。
 	
 			<p class="note">
-			The EVENT{keydown} and EVENT{keyup} events are traditionally
-			associated with detecting any key, not just those which produce a
-			<a>character value</a>.
+			EVENT{keydown} 和 EVENT{keyup} 事件传统上与能检测到的任何按键相关联，
+			而不仅仅是那些产生 <a href="#character-value">字符值</a> 的键。
 			</p>
 	
 		<h5 id="event-type-keyup"><dfn>keyup</dfn></h5>
@@ -3279,43 +3278,42 @@ myDiv.addEventListener("auxclick", function(e) {
 			 | DOM冒泡传递      |                                                                                      |
 			+| 默认行为         | 没有                                                                                 |
 			+| 上下文<br/>      | <ul>                                                                                 |
-			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : focused element processing the key event or if no   |
-			 |                  |     element focused, then the <a>body element</a> if available, otherwise the        |
-			 |                  |     <a>root element</a></li>                                                         |
+			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : 正在处理按键事件的焦点元素，或者如果没有元素焦点，  |
+			 |                  |     就是 <a href="#body-element">body元素</a> (如果可用)，否则为                     |
+			 |                  |     <a href="#root-element">根元素</a> </li>                                         |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/view}} : <a><code>Window</code></a></li>                   |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/detail}} : <code>0</code></li>                             |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/key}} : the key value of the key pressed.</li> |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/code}} : the code value associated with the    |
-			 |                  |     key's physical placement on the keyboard.</li>                                   |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/location}} : the location of the key on the    |
-			 |                  |     device.</li>                                                                     |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/altKey}} : <code>true</code> if KEYCAP{Alt}    |
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/shiftKey}} : <code>true</code> if KEYCAP{Shift}|
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/ctrlKey}} : <code>true</code> if KEYCAP{Control}|
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/metaKey}} : <code>true</code> if KEYCAP{Meta}  |
-			 |                  |     modifier was active, otherwise <code>false</code></li>                           |
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/repeat}} : <code>true</code> if a key has been |
-			 |                  |     depressed long enough to trigger key repetition, otherwise <code>false</code></li>|
-			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/isComposing}} : <code>true</code> if the key   |
-			 |                  |     event occurs as part of a composition session, otherwise <code>false</code></li> |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/key}} : 按下的键的键值。                 </li> |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/code}} : 与键在键盘上的物理位置相关联的码      |
+			 |                  |     (code)值。</li>                                                                  |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/location}} : 键在设备上的位置。</li>           |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/altKey}} : 如果 KEYCAP{Alt}                    |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/shiftKey}} : 如果 KEYCAP{Shift}                |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/ctrlKey}} : 如果 KEYCAP{Ctrl}                  |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/metaKey}} : 如果 KEYCAP{Meta}                  |
+			 |                  |     修饰符处于激活状态，则为 <code>true</code> ，否则为 <code>false</code> </li>     |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/repeat}} : 如果按键被按下足够长的时间，        |
+			 |                  |     以触发按键重复，则为 <code>true</code> ，否则为 <code>false</code> </li>         |
+			 |                  | <li>{{KeyboardEvent}}.{{KeyboardEvent/isComposing}} : 如果键事件作为合成会话         |
+			 |                  |     (composition session)的一部分发生，则为 <code>true</code> ，                     |
+			 |                  |     否则为 <code>false</code> </li>                                                  |
 			 |                  | </ul>                                                                                |
 			++------------------+--------------------------------------------------------------------------------------+
 	
-			A <a>user agent</a> MUST dispatch this event when a key is released.
-			The EVENT{keyup} event type is device dependent and relies on the
-			capabilities of the input devices and how they are mapped in the
-			operating system. This event type MUST be generated after the <a>key
-			mapping</a>. This event type MUST be dispatched after the
-			EVENT{keydown}, EVENT{beforeinput}, and EVENT{input} events
-			associated with the same key.
+			当按键被释放时，<a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">必须</span> 派发此事件。 EVENT{keyup} 
+			事件类型是依赖设备的，它依赖输入设备的功能以及它们在操作系统中的映射方式。
+			此事件类型 <span class="zh-upper">必须</span> 在 
+			<a href="#key-mapping">键映射</a> 之后生成。此事件类型 
+			<span class="zh-upper">必须</span> 在 EVENT{keydown} 、 
+			EVENT{beforeinput} 和与同一个键关联的 EVENT{input} 事件之后被派发。
 	
 			<p class="note">
-			The EVENT{keydown} and EVENT{keyup} events are traditionally
-			associated with detecting any key, not just those which produce a
-			<a>character value</a>.
+			EVENT{keydown} 和 EVENT{keyup} 事件传统上与能检测到的任何按键相关联，
+			而不仅仅是那些产生 <a href="#character-value">字符值</a> 的键。
 			</p>
 
 <h3 id="events-compositionevents">Composition Events</h3>

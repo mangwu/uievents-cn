@@ -48,16 +48,14 @@
 	文档中，body元素是 <a href="#root-element">根元素</a> 的第一个子元素。
 
 : <dfn lt="bubble phase|bubbling phase">bubbling phase</dfn>
-::	The process by which an <a>event</a> can be handled by one of the target's
-	ancestors <em>after</em> being handled by the <a>event target</a>. See the
-	description of the <a>bubble phase</a> in the context of event flow for more
-	details.
+::	冒泡阶段: <a href="#event">事件</a> 在由事件目标处理 <em>之后</em> ，
+	可以被目标的祖先节点之一处理的过程。获取更多相关的详细信息，
+	请参阅事件流上下文中对 <a href="#bubble-phase">冒泡阶段</a> 的描述。
 
 : <dfn>capture phase</dfn>
-::	The process by which an <a>event</a> can be handled by one of the target's
-	ancestors <em>before</em> being handled by the <a>event target</a>. See the
-	description of the <a href="#capture-phase">capture phase</a> in the context
-	of event flow for more details.
+::	捕获阶段: <a href="#event">事件</a> 在由事件目标处理 <em>之前</em> ，
+	可以被目标的祖先节点之一处理的过程。获取更多相关的详细信息，
+	请参阅事件流上下文中对 <a href="#capture-phase">捕获阶段</a> 的描述。
 
 : <dfn>character value</dfn>
 ::	在键值的上下文中，字符值是表示一个或多个 Unicode 字符的字符串，
@@ -81,10 +79,10 @@
 	{{Event/currentTarget}} 属性的值。
 
 : <dfn>dead key</dfn>
-::	A dead key is a key or combination of keys which produces no character by
-	itself, but which in combination or sequence with another key produces a
-	modified character, such as a character with diacritical marks (e.g.,
-	GLYPH{&#xF6;}, GLYPH{&#xE9;}, GLYPH{&#xE2;}).
+::	死键是一个键或键的组合(combination)，它本身不产生字符，
+	但与另一个键组合(击键)或按顺序(击键)产生一个修饰后的字符，
+	例如带有变音标记的字符(例如， GLYPH{&#xF6;} 、 GLYPH{&#xE9;} 、 
+	GLYPH{&#xE2;} )。
 
 : <dfn>default action</dfn>
 ::	<a href="#default-action">默认行为</a> 是一种 <span class="zh-upper">可选的</span> 
@@ -251,14 +249,15 @@
 	是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs or other characters，
 	中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，这种输入应用程序常在东亚语言
 	(如中文，日语，韩语)中使用。一个输入法编辑器(<a href="#ime">IME</a>)也可被用于基于
-	词语的单词补全，常用在移动设备上。参见本规范中用于讨论IMEs的<a href="#keys-IME">
+	词语的单词补全，常用在移动设备上。参见本规范中用于讨论IMEs的 [[#keys-IME]] 。
+	也可查看 <a href="#text-composition-system">文本合成系统</a> 。
 
 : <dfn>key mapping</dfn>
-::	Key mapping is the process of assigning a key value to a particular key, and
-	is the result of a combination of several factors, including the operating
-	system and the keyboard layout (e.g., <a>QWERTY</a>, Dvorak, Spanish,
-	InScript, Chinese, etc.), and after taking into account all <a>modifier
-	key</a> (KEYCAP{Shift}, KEYCAP{Alt}, et al.) and <a>dead key</a> states.
+::	键映射是将键值分配给特定键的过程，是多种因素组合的结果，
+	包括操作系统和键盘布局(例如， <a>QWERTY</a> 、德沃夏克式键映射、西班牙语、
+	马拉地语铭文(InScript)键盘、中文键盘等)的因素，并且还将所有 
+	<a href="#modifier-key">修饰按键</a> ( KEYCAP{Shift} 、 KEYCAP{Alt} 等)和
+	<a href="#dead-key">死键</a> 的状态纳入考虑因素。
 
 : <dfn>key value</dfn>
 ::	A key value is a <a>character value</a> or multi-character string (such as
@@ -304,11 +303,20 @@
 	<em>事件目标链</em> 。
 
 : <dfn>QWERTY</dfn>
-::	QWERTY (pronounced <q>&#x2C8;kw&#x25C;rti</q>) is a common keyboard layout,
-	so named because the first five character keys on the top row of letter keys
-	are Q, W, E, R, T, and Y.  There are many other popular keyboard layouts
-	(including the Dvorak and Colemak layouts), most designed for localization
-	or ergonomics.
+::	QWERTY(发音为 <q>&#x2C8;kw&#x25C;rti</q> )是一种常见的键盘布局，
+	之所以如此命名，是因为字母键最上面一排的前五个字符键是Q、W、E、R、T和Y。
+	还有许多其他流行的键盘布局(包括德沃夏克(Dvorak)和科尔马克(Colemak)布局)，
+	大多数是为本地化或人体工程学设计的。
+
+	<div class="note custom-note">
+	除了QWERTY的键盘布局外，还有 "QWERTZ" ， "AZERTY" 的键盘布局，
+	它们表示的是以某种字母排序方向进行排列的键盘布局。
+	<q>尽管有大量的键盘布局用拉丁字母书写的语言，
+	但这些布局中的大多数都非常相似。根据A、M、Q、W、Y和Z键在键盘上的位置， 
+	它们可以分为三个主要类别。这些布局通常以 D 行的前六个字母命名: AZERTY 、 QWERTY 、 
+	QWERTZ 、 QZERTY 及其其它国家变体。</q> —— 维基百科 
+	<a href="https://en.wikipedia.org/wiki/Keyboard_layout">Keyboard layout</a> 
+	</div>
 
 : <dfn>root element</dfn>
 ::	根元素， <a href="#document">文档</a> 的第一个元素节点，
@@ -338,8 +346,8 @@
 	<a>host language</a>.
 
 : <dfn>Unicode character categories</dfn>
-:: Unicode字符类别，为每个 Unicode 码点定义的"一般类别(General Category)"值的子集。
-	该子集包含所有
+:: Unicode字符类别，为每个 Unicode 码点定义的"一般类别(General Category)"
+	值的子集。该子集包含所有
 	字母(Letter) (<abbr title="Letter, Lowercase">Ll</abbr>,
 		<abbr title="Letter, Modifier">Lm</abbr>,
 		<abbr title="Letter, Other">Lo</abbr>,
