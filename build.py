@@ -73,10 +73,10 @@ class Parser():
                 if self.is_header_row:
                     data = ''
             if not self.is_header_row and data != '':
-                if colname == 'Event Type':
+                if colname == '事件类型':
                     # print(data)
                     data = self.event_type(data)
-                if colname == 'DOM Interface':
+                if colname == 'DOM 接口':
                     data = '{{' + data + '}}'
             row += pre + self.process_text(data) + post
         row += '</tr>\n'

@@ -458,6 +458,19 @@ figcaption:not(.no-marker)::before {
 .custom-rfc2119-list > tbody > tr > th:nth-child(2) {
   width: 176px;
 }
+/* 遗留事件类型列表 */
+.legacy-event-types-list {
+  width: 127%;
+}
+.legacy-event-types-list > tbody > tr > th:nth-child(2) {
+  width: 48px;
+}
+.legacy-event-types-list > tbody > tr > th:nth-child(3) {
+  width: 32px;
+}
+.legacy-event-types-list > tbody > tr > th:nth-child(6) {
+  width: 64px;
+}
 
 /* 自定义引用列表panel样式 */
 .dfn-paneled + span > aside.dfn-panel {

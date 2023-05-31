@@ -11,7 +11,7 @@
 下表提供了本规范中不推荐使用的事件类型的信息概要。
 它们被整理在这里是为了(规范的)参考引用和完整性。
 
-++-----------------------------+--------+----------+------------------------------------------+------------------+------------+--------------+------------------------------------------------+
+++-----------------------------+--------+----------+------------------------------------------+------------------+------------+--------------+------------------------------------------------+ legacy-event-types-list_event-sequence-table
 =| 事件类型   			           | 同步 / |  冒泡    | 可信事件目标 							              | DOM 接口	       | 可取消     | 能否从Shadow | 默认行为								                        |
  |							               | 异步	  |  阶段    | 类型					                      		  |					         | 默认行为   |	DOM冒泡传递	 |						 						                        |
  +-----------------------------+----o---+----o-----+--------------------o---------------------+--------o---------+------o-----+------o-------+------------------------------------------------+
@@ -360,31 +360,34 @@
         +| 9 | DOMFocusIn  | If supported                                      |
         ++---+-------------+---------------------------------------------------+
 
-<h3 id="legacy-keyboardevent-events">Legacy {{KeyboardEvent}} events</h3>
+<h3 id="legacy-keyboardevent-events">遗留 {{KeyboardEvent}} 事件</h3>
 
-	The EVENT{keypress} event is the traditional method for capturing key events
-	and processing them before the DOM is updated with the effects of the key
-	press. Code that makes use of the EVENT{keypress} event typically relies on
-	the legacy {{KeyboardEvent/charCode}}, {{KeyboardEvent/keyCode}}, and
-	{{UIEvent/which}} attributes.
+	EVENT{keypress} 事件是一种，用于捕获按键事件并在按键按下导致的 DOM 
+	更新效果作用之前对其进行处理的，传统方式。使用 EVENT{keypress} 
+	事件的代码通常依赖于遗留的 {{KeyboardEvent/charCode}} 、 
+	{{KeyboardEvent/keyCode}} 和 {{UIEvent/which}} 属性。
 
-	Note that the EVENT{keypress} event is specific to key events, and has been
-	replaced by the more general event sequence of EVENT{beforeinput} and
-	EVENT{input} events. These new <code>input</code> events are not specific to
-	keyboard actions and can be used to capture user input regardless of the
-	original source.
+	请注意， EVENT{keypress} 事件是特定于按键事件的，并且已被 
+	EVENT{beforeinput} 和 EVENT{input} 事件的更通用的事件序列所取代(见 
+	[[#events-keyboard-event-order]] )。这些新的 <code>input</code> 
+	事件不是特定于键盘操作的，并且可以用于捕获用户输入，而不管原始(触发)源是什么。
 
-	<h4 id="legacy-keyboardevent-event-types">Legacy {{KeyboardEvent}} event types</h4>
+	<div class="note custom-note">
+	个人理解，使用 EVENT{beforeinput} 和 EVENT{input} 代替键盘事件顺序中的 
+	EVENT{keypress} 相当于一种脱离硬件的抽象，它能更好的对虚拟键盘进行处理。
+	</div>
+
+	<h4 id="legacy-keyboardevent-event-types">遗留 {{KeyboardEvent}} 事件类型</h4>
 
 		<h5 id="event-type-keypress"><dfn>keypress</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>keypress</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{KeyboardEvent}}</td>
 				</tr>
 				<tr>
@@ -392,123 +395,128 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信<br/>目标对象</th>
 					<td><code>Element</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow DOM冒泡传递</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Default action</th>
-					<td>Varies:
-						launch <a>text composition system</a>;
-						EVENT{blur} and EVENT{focus} events;
-						EVENT{DOMActivate} event;
-						other event</td>
+					<th>默认行为</th>
+					<td>多种: 
+						启动 <a href="#text-composition-system">文本合成系统</a>; 
+						(触发) EVENT{blur} 和 EVENT{focus} 事件;
+						(触发) EVENT{DOMActivate} 事件;
+						(触发)其它事件</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-									focused element processing the key event or if no element focused, then the
-									<a>body element</a> if available, otherwise the
-									<a>root element</a></li>
+									正在处理按键事件的焦点元素，或者如果没有元素焦点，就是 
+									<a href="#body-element">body元素</a> (如果可用)，否则为
+									<a href="#root-element">根元素</a> </li>
 							<li>{{UIEvent}}.{{UIEvent/view}} :
 								<a><code>Window</code></a></li>
 							<li>{{UIEvent}}.{{UIEvent/detail}} :
 								<code>0</code></li>
 							<li>{{KeyboardEvent}}.{{UIEvent/which}} :
-								legacy numerical code for this key</li>
+								按键的遗留数字码</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/charCode}} :
-								legacy character value for this event</li>
+								事件的遗留字符值</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/keyCode}} :
-								legacy numerical code for this key</li>
+								按键的遗留数字码</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/key}} :
-								the key value of the key pressed.</li>
+								按下的键的键值。</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/code}} :
-								the code value associated with the key's physical placement on the keyboard.</li>
+								与键在键盘上的物理位置相关联的码(code)值。</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/location}} :
-								the location of the key on the device.</li>
+								键在设备上的位置。</li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/altKey}} :
-								<code>true</code> if KEYCAP{Alt} modifier was active, otherwise <code>false</code></li>
+								如果 KEYCAP{Alt} 修饰符处于激活状态，则为 <code>true</code> ，
+								否则为 <code>false</code> </li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/shiftKey}} :
-								<code>true</code> if KEYCAP{Shift} modifier was active, otherwise <code>false</code></li>
+								如果 KEYCAP{Shift} 修饰符处于激活状态，则为 <code>true</code> ，
+								否则为 <code>false</code> </li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/ctrlKey}} :
-								<code>true</code> if KEYCAP{Control} modifier was active, otherwise <code>false</code></li>
+								如果 KEYCAP{Control} 修饰符处于激活状态，则为 <code>true</code> ，
+								否则为 <code>false</code> </li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/metaKey}} :
-								<code>true</code> if KEYCAP{Meta} modifier was active, otherwise <code>false</code></li>
+								如果 KEYCAP{Meta} 修饰符处于激活状态，则为 <code>true</code> ，
+								否则为 <code>false</code> </li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/repeat}} :
 								<code>false</code></li>
 							<li>{{KeyboardEvent}}.{{KeyboardEvent/isComposing}} :
-								<code>true</code> if the key event occurs as part of a composition session, otherwise <code>false</code></li>
+								如果键事件作为合成会话(composition session)的一部分发生，则为 
+								<code>true</code> ，否则为 <code>false</code> </li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			If supported by a <a>user agent</a>, this event MUST be dispatched
-			when a key is pressed down, if and only if that key normally
-			produces a <a>character value</a>. The EVENT{keypress} event type is
-			device dependent and relies on the capabilities of the input devices
-			and how they are mapped in the operating system.
+			如果 <a href="#user-agent">用户代理</a> 支持，并且当且仅当该键能正常产生  
+			<a href="#character-value">字符值</a> 时，则 
+			<span class="zh-upper">必须</span> 在按下这个键时派发此事件。
+			EVENT{keypress} 事件类型是依赖设备的，
+			取决于输入设备的功能以及它们在操作系统中的映射方式。
 
-			This event type MUST be generated after the <a>key mapping</a>. It
-			MUST NOT be fired when using an <a>input method editor</a>.
+			此事件类型 <span class="zh-upper">必须</span> 在 
+			<a href="#key-mapping">键映射</a> 之后生成。使用 
+			<a href="#ime">输入法编辑器</a> 时， <span class="zh-upper">不得</span> 
+			派发它。
 
-			If this event is canceled, it should prevent the EVENT{input} event
-			from firing, in addition to canceling the <a>default action</a>.
+			如果取消此事件，除了取消 <a href="#default-action">默认行为</a> 外，
+			还应阻止 EVENT{input} 事件的触发。
 
-			Authors SHOULD use the EVENT{beforeinput} event instead of the
-			EVENT{keypress} event.
+			作者 <span class="zh-upper">应当</span> 使用 EVENT{beforeinput} 
+			事件而不是遗留的 EVENT{keypress} 事件。
 
 			<p class="note">
-			The EVENT{keypress} event is traditionally associated with detecting
-			a <a>character value</a> rather than a physical key, and might not
-			be available on all keys in some configurations.
+			传统上， EVENT{keypress} 事件与能检测到 
+			<a href="#character-value">字符值</a> 的按键而非一个物理键相关联，
+			并且在某些配置中可能不适用于所有键。
 			</p>
 
 			<p class="warning">
-			The EVENT{keypress} event type is defined in this specification for
-			reference and completeness, but this specification <a>deprecates</a>
-			the use of this event type. When in editing contexts, authors can
-			subscribe to the EVENT{beforeinput} event instead.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{keypress} 事件类型，
+			但本规范 <a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
+			在编辑上下文时，作者可以转而使用 EVENT{beforeinput} 事件替代( 
+			EVENT{keypress} )。
 			</p>
 
-	<h4 id="keypress-event-order">EVENT{keypress} event order</h4>
+	<h4 id="keypress-event-order">EVENT{keypress} 事件顺序</h4>
 
-		The EVENT{keypress} event type MUST be dispatched after the
-		EVENT{keydown} event and before the EVENT{keyup} event associated with
-		the same key.
+		EVENT{keypress} 事件类型 <span class="zh-upper">必须</span> 在 
+		EVENT{keydown} 事件之后并且与同一个按键关联的 EVENT{keyup} 事件之前被派发。
 
-		The EVENT{keypress} event type MUST be dispatched after the
-		EVENT{beforeinput} event and before the EVENT{input} event associated
-		with the same key.
+		EVENT{keypress} 事件类型 <span class="zh-upper">必须</span> 在 
+		EVENT{beforeinput} 事件之后并且与同一个按键关联的 EVENT{input} 
+		事件之前被派发。
 
-		The sequence of key events for user-agents the support the
-		EVENT{keypress} event is demonstrated in the following example:
+		以下示例演示了支持 EVENT{keypress} 事件的用户代理们的按键事件序列: 
 
 		<div class="example">
 		++---+-------------+------------------------+---------------------+--------------------------------+
-		=| # | Event Type  | {{KeyboardEvent}}<br/> | {{InputEvent}}<br/> | Notes                          |
+		=| # | 事件类型    | {{KeyboardEvent}}<br/> | {{InputEvent}}<br/> | 注释                           |
 		 |   |             | {{KeyboardEvent/key}}  | {{InputEvent/data}} |                                |
 		 +---+-------------+-----------o------------+----------o----------+--------------------------------+
 		+| 1 | keydown     | KEY_NOLINK{a}          |                     |                                |
 		+| 2 | beforeinput |                        | GLYPH{a}            |                                |
 		+| 3 | keypress    | KEY_NOLINK{a}          |                     |                                |
-		+|   |             |                        |                     | <em>Any <a>default actions</a> |
-		 |   |             |                        |                     | related to this key, such as   |
-		 |   |             |                        |                     | inserting a character in to    |
-		 |   |             |                        |                     | the DOM.</em>                  |
+		+|   |             |                        |                     | <em>与该键相关的任何           |
+		 |   |             |                        |                     | <a href="#default-action">     |
+		 |   |             |                        |                     | 默认行为</a> , 例如在 DOM      |
+		 |   |             |                        |                     | 中插入字符。</em>              |
 		+| 4 | input       |                        |                     |                                |
 		+| 5 | keyup       | KEY_NOLINK{a}          |                     |                                |
 		++---+-------------+------------------------+---------------------+--------------------------------+

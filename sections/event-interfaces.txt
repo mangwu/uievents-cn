@@ -89,63 +89,63 @@
     下表提供了本规范中描述的事件类型的信息摘要。
 
     ++--------------------------+-------------+----------+------------------+----------------------+----------------+--------------------------------------------------------------+ event-types-list_event-sequence-table
-    =|   事件类型               | 同步 / 异步 | 冒泡阶段 | 可信事件目标类型 |  DOM 接口            | 可取消默认行为 | 默认行为                                                     |
+    =| 事件类型                 | 同步 / 异步 | 冒泡阶段 | 可信事件目标类型 | DOM 接口             | 可取消默认行为 | 默认行为                                                     |
      +--------------------------+-------o-----+----o-----+---------o--------+-----------o----------+-------o--------+--------------------------------------------------------------+
-    +| EVENT{abort}             | 同步        | 不冒泡   | <a>Window</a>,   | {{Event}}            | 不能           | 没有                                                         |
+    +| abort                    | 同步        | 不冒泡   | <a>Window</a>,   | Event                | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{auxclick}          | 同步        | 冒泡     | Element          | {{PointerEvent}}     | 能             | 多种                                                         |
-    +| EVENT{beforeinput}       | 同步        | 冒泡     | Element          | {{InputEvent}}       | 能             | 更新 DOM 元素                                                |
-    +| EVENT{blur}              | 同步        | 不冒泡   | <a>Window</a>,   | {{FocusEvent}}       | 不能           | 没有                                                         |
+    +| auxclick                 | 同步        | 冒泡     | Element          | PointerEvent         | 能             | 多种                                                         |
+    +| beforeinput              | 同步        | 冒泡     | Element          | InputEvent           | 能             | 更新 DOM 元素                                                |
+    +| blur                     | 同步        | 不冒泡   | <a>Window</a>,   | FocusEvent           | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{click}             | 同步        | 冒泡     | Element          | {{PointerEvent}}     | 能             | 多种: 有相关激活行为的                                       |
+    +| click                    | 同步        | 冒泡     | Element          | PointerEvent         | 能             | 多种: 有相关激活行为的                                       |
      |                          |             |          |                  |                      |                | <a href="https://dom.spec.whatwg.org/#event-target">目标</a> |
      |                          |             |          |                  |                      |                | 执行其 <a href="#activation-behavior">激活行为</a> ; 可聚焦的|
      |                          |             |          |                  |                      |                | <a href="https://dom.spec.whatwg.org/#event-target">目标</a> |
      |                          |             |          |                  |                      |                | ，给予目标元素焦点。                                         |
-    +| EVENT{compositionstart}  | 同步        | 冒泡     | Element          | {{CompositionEvent}} | 能             | 显示                                                         |
+    +| compositionstart         | 同步        | 冒泡     | Element          | CompositionEvent     | 能             | 显示                                                         |
      |                          |             |          |                  |                      |                | <a href="#text-composition-system">文本合成系统</a> 候选窗口 |
-    +| EVENT{compositionupdate} | 同步        | 冒泡     | Element          | {{CompositionEvent}} | 不能           | 没有                                                         |
-    +| EVENT{compositionend}    | 同步        | 冒泡     | Element          | {{CompositionEvent}} | 不能           | 没有                                                         |
-    +| EVENT{contextmenu}       | 同步        | 冒泡     | Element          | {{PointerEvent}}     | 能             | 调用出上下文菜单(如果支持)                                   |
-    +| EVENT{dblclick}          | 同步        | 冒泡     | Element          | {{MouseEvent}}       | 不能           | 多种: 有相关激活行为的                                       |
+    +| compositionupdate        | 同步        | 冒泡     | Element          | CompositionEvent     | 不能           | 没有                                                         |
+    +| compositionend           | 同步        | 冒泡     | Element          | CompositionEvent     | 不能           | 没有                                                         |
+    +| contextmenu              | 同步        | 冒泡     | Element          | PointerEvent         | 能             | 调用出上下文菜单(如果支持)                                   |
+    +| dblclick                 | 同步        | 冒泡     | Element          | MouseEvent           | 不能           | 多种: 有相关激活行为的                                       |
      |                          |             |          |                  |                      |                | <a href="https://dom.spec.whatwg.org/#event-target">目标</a> |
      |                          |             |          |                  |                      |                | 执行其 <a href="#activation-behavior">激活行为</a> ;可聚焦的 |
      |                          |             |          |                  |                      |                | <a href="https://dom.spec.whatwg.org/#event-target">目标</a> |
      |                          |             |          |                  |                      |                | ，给予目标元素焦点;                                          |
-    +| EVENT{error}             | 异步        | 不冒泡   | <a>Window</a>,   | {{Event}}            | 不能           | 没有                                                         |
+    +| error                    | 异步        | 不冒泡   | <a>Window</a>,   | Event                | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{focus}             | 同步        | 不冒泡   | <a>Window</a>,   | {{FocusEvent}}       | 不能           | 没有                                                         |
+    +| focus                    | 同步        | 不冒泡   | <a>Window</a>,   | FocusEvent           | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{focusin}           | 同步        | 冒泡     | <a>Window</a>,   | {{FocusEvent}}       | 不能           | 没有                                                         |
+    +| focusin                  | 同步        | 冒泡     | <a>Window</a>,   | FocusEvent           | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{focusout}          | 同步        | 冒泡     | <a>Window</a>,   | {{FocusEvent}}       | 不能           | 没有                                                         |
+    +| focusout                 | 同步        | 冒泡     | <a>Window</a>,   | FocusEvent           | 不能           | 没有                                                         |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{input}             | 同步        | 冒泡     | Element          | {{InputEvent}}       | 不能           | 没有                                                         |
-    +| EVENT{keydown}           | 同步        | 冒泡     | Element          | {{KeyboardEvent}}    | 能             | 多种: 激发(trigger) EVENT{beforeinput} 和 EVENT{input} 事件; |
+    +| input                    | 同步        | 冒泡     | Element          | InputEvent           | 不能           | 没有                                                         |
+    +| keydown                  | 同步        | 冒泡     | Element          | KeyboardEvent        | 能             | 多种: 激发(trigger) EVENT{beforeinput} 和 EVENT{input} 事件; |
      |                          |             |          |                  |                      |                | 启动 <a href="#text-composition-system">文本合成系统</a> ;   |
      |                          |             |          |                  |                      |                | 可能触发 EVENT{blur} 和 EVENT{focus} 事件; 触发              |
      |                          |             |          |                  |                      |                | EVENT{keypress} 事件(如果支持); 可能执行                     |
      |                          |             |          |                  |                      |                | <a href="https://dom.spec.whatwg.org/#event-target">目标</a> |
      |                          |             |          |                  |                      |                | 的 <a href="#activation-behavior">激活行为</a> ;             |
      |                          |             |          |                  |                      |                | 可能触发其它事件                                             |
-    +| EVENT{keyup}             | 同步        | 冒泡     | Element          | {{KeyboardEvent}}    | 能             | 没有                                                         |
-    +| EVENT{load}              | 异步        | 不冒泡   | <a>Window</a>,   | {{Event}}            | 不能           | 没有                                                         |
+    +| keyup                    | 同步        | 冒泡     | Element          | KeyboardEvent        | 能             | 没有                                                         |
+    +| load                     | 异步        | 不冒泡   | <a>Window</a>,   | Event                | 不能           | 没有                                                         |
      |                          |             |          | Document,        |                      |                |                                                              |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{mousedown}         | 同步        | 冒泡     | Element          | {{MouseEvent}}       | 能             | 多种: 开始一个拖放操作; 开始一次文本选择;                    |
+    +| mousedown                | 同步        | 冒泡     | Element          | MouseEvent           | 能             | 多种: 开始一个拖放操作; 开始一次文本选择;                    |
      |                          |             |          |                  |                      |                | 开始一个滚动 / 移动交互                                      |
      |                          |             |          |                  |                      |                | (如果支持鼠标，则会与鼠标中键联合使用)                       |
-    +| EVENT{mouseenter}        | 同步        | 不冒泡   | Element          | {{MouseEvent}}       | 不能           | 没有                                                         |
-    +| EVENT{mouseleave}        | 同步        | 不冒泡   | Element          | {{MouseEvent}}       | 不能           | 没有                                                         |
-    +| EVENT{mousemove}         | 同步        | 冒泡     | Element          | {{MouseEvent}}       | <a href="#mousemove-now-cancelable">能</a> | 没有                             |
-    +| EVENT{mouseout}          | 同步        | 冒泡     | Element          | {{MouseEvent}}       | 能             | 没有                                                         |
-    +| EVENT{mouseover}         | 同步        | 冒泡     | Element          | {{MouseEvent}}       | 能             | 没有                                                         |
-    +| EVENT{mouseup}           | 同步        | 冒泡     | Element          | {{MouseEvent}}       | 能             | 没有                                                         |
-    +| EVENT{select}            | 同步        | 冒泡     | Element          | {{Event}}            | 不能           | 没有                                                         |
-    +| EVENT{unload}            | 同步        | 不冒泡   | <a>Window</a>,   | {{Event}}            | 不能           | 没有                                                         |
+    +| mouseenter               | 同步        | 不冒泡   | Element          | MouseEvent           | 不能           | 没有                                                         |
+    +| mouseleave               | 同步        | 不冒泡   | Element          | MouseEvent           | 不能           | 没有                                                         |
+    +| mousemove                | 同步        | 冒泡     | Element          | MouseEvent           | <a href="#mousemove-now-cancelable">能</a> | 没有                             |
+    +| mouseout                 | 同步        | 冒泡     | Element          | MouseEvent           | 能             | 没有                                                         |
+    +| mouseover                | 同步        | 冒泡     | Element          | MouseEvent           | 能             | 没有                                                         |
+    +| mouseup                  | 同步        | 冒泡     | Element          | MouseEvent           | 能             | 没有                                                         |
+    +| select                   | 同步        | 冒泡     | Element          | Event                | 不能           | 没有                                                         |
+    +| unload                   | 同步        | 不冒泡   | <a>Window</a>,   | Event                | 不能           | 没有                                                         |
      |                          |             |          | Document,        |                      |                |                                                              |
      |                          |             |          | Element          |                      |                |                                                              |
-    +| EVENT{wheel}             | 异步        | 冒泡     | Element          | {{WheelEvent}}       | 能             | 滚动(或缩放)文档                                             |
+    +| wheel                    | 异步        | 冒泡     | Element          | WheelEvent           | 能             | 滚动(或缩放)文档                                             |
     ++--------------------------+-------------+----------+------------------+----------------------+----------------+--------------------------------------------------------------+
 
     有关本规范中不推荐使用的事件的列表，请参阅本文档末尾的
