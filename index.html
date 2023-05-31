@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="bbba0265898e46ac1ad046857f7e1be9ca79b8b9" name="document-revision">
+  <meta content="f1d6e25de48a4ab5124db7480784b0ec5fad7c83" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1032,16 +1032,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          </ol>
        </ol>
       <li>
-       <a href="#events-compositionevents"><span class="secno">5.7</span> <span class="content">Composition Events</span></a>
+       <a href="#events-compositionevents"><span class="secno">5.7</span> <span class="content">合成事件</span></a>
        <ol class="toc">
         <li>
-         <a href="#interface-compositionevent"><span class="secno">5.7.1</span> <span class="content">Interface CompositionEvent</span></a>
+         <a href="#interface-compositionevent"><span class="secno">5.7.1</span> <span class="content">CompositionEvent 接口</span></a>
          <ol class="toc">
           <li><a href="#idl-compositionevent"><span class="secno">5.7.1.1</span> <span class="content">CompositionEvent</span></a>
           <li><a href="#idl-compositioneventinit"><span class="secno">5.7.1.2</span> <span class="content">CompositionEventInit</span></a>
          </ol>
-        <li><a href="#events-composition-order"><span class="secno">5.7.2</span> <span class="content">Composition Event Order</span></a>
-        <li><a href="#events-composition-handwriting"><span class="secno">5.7.3</span> <span class="content">Handwriting Recognition Systems</span></a>
+        <li><a href="#events-composition-order"><span class="secno">5.7.2</span> <span class="content">合成事件顺序</span></a>
+        <li><a href="#events-composition-handwriting"><span class="secno">5.7.3</span> <span class="content">手写识别系统</span></a>
         <li><a href="#events-composition-canceling"><span class="secno">5.7.4</span> <span class="content">Canceling Composition Events</span></a>
         <li><a href="#events-composition-key-events"><span class="secno">5.7.5</span> <span class="content">Key Events During Composition</span></a>
         <li><a href="#events-composition-input-events"><span class="secno">5.7.6</span> <span class="content">Input Events During Composition</span></a>
@@ -3916,7 +3916,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="InputEvent" data-dfn-type="attribute" data-export id="dom-inputevent-iscomposing"><code>isComposing</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-boolean" id="ref-for-idl-boolean③⑧">boolean</a>, readonly</span>
      <dt class="custom-dfn"><i><code class="idl">isComposing</code></i>， <code>boolean</code> <span class="replacement"> 类型，只读</span> 
      <dd>
-       如果输入事件作为一个组合会话(composition session)的一部分发生，
+       如果输入事件作为一个合成会话(composition session)的一部分发生，
 					该属性值为 <code>true</code> ，也就是说，在一个 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①"><code>compositionstart</code></a> 事件之后，在对应的 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①"><code>compositionend</code></a> 事件之前触发。 
       <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value②④">未初始化值</a> <span class="zh-upper">必须</span> 是 <code>false</code> 。</p>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="InputEvent" data-dfn-type="attribute" data-export id="dom-inputevent-inputtype"><code>inputType</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString⑨">DOMString</a>, readonly</span>
@@ -3941,7 +3941,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <dt class="custom-dfn"><i><code class="idl">isComposing</code></i>， <code>boolean</code> <span class="replacement"> 类型，默认值为 <code>false</code></span> 
      <dd> 初始化 InputEvent 对象的 <code>isComposing</code> 属性。 
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="InputEventInit" data-dfn-type="dict-member" data-export id="dom-inputeventinit-inputtype"><code>inputType</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①③">DOMString</a>, defaulting to <code>""</code></span>
-     <dt class="custom-dfn"><i><code class="idl">inputType</code></i>， <code>DOMString</code> <span class="replacement"> 类型，默认值为 <code>""</code></span> 
+     <dt class="custom-dfn"><i><code class="idl">inputType</code></i>， <code>DOMString</code> <span class="replacement"> 类型，默认值为 <code>""</code> </span> 
      <dd> 初始化 InputEvent 对象的 <code>inputType</code> 属性。 
     </dl>
     <h4 class="heading settled" data-level="5.5.2" id="events-inputevent-event-order"><span class="secno">5.5.2. </span><span class="content">输入事件顺序</span><a class="self-link" href="#events-inputevent-event-order"></a></h4>
@@ -4039,7 +4039,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④④">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②③">target</a></code> : 刚刚被更新的<a href="#event-target" id="ref-for-event-target④⑥"> 事件目标对象</a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②②">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④④"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②④">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string②⑦">空字符串</a>
+         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string②⑤">空字符串</a>
          <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑦">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-iscomposing" id="ref-for-dom-inputevent-iscomposing②">isComposing</a></code> : 如果此事件是在 <a href="#keys-dead">死键</a> 序列(dead key sequence) 期间 或在<a href="#input-method-editor" id="ref-for-input-method-editor⑧">输入法编辑器</a>处于活动状态时派发的 (以便派发<a href="#events-compositionevents">合成事件</a>)， 则为 <code>true</code> ; 否则为 <code>false</code> 。 
         </ul>
     </table>
@@ -4480,31 +4480,25 @@ myDiv.addEventListener("auxclick", function(e) {
 			此事件类型 <span class="zh-upper">必须</span> 在 <a href="#key-mapping" id="ref-for-key-mapping②">键映射</a> 之后生成。此事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①⓪"><code>keydown</code></a> 、 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①⓪"><code>beforeinput</code></a> 和与同一个键关联的 <a data-link-type="dfn" href="#input" id="ref-for-input①⓪"><code>input</code></a> 事件之后被派发。</p>
     <p class="note" role="note"> <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①①"><code>keydown</code></a> 和 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑧"><code>keyup</code></a> 事件传统上与能检测到的任何按键相关联，
 			而不仅仅是那些产生 <a href="#character-value" id="ref-for-character-value⑦">字符值</a> 的键。 </p>
-    <h3 class="heading settled" data-level="5.7" id="events-compositionevents"><span class="secno">5.7. </span><span class="content">Composition Events</span><a class="self-link" href="#events-compositionevents"></a></h3>
-     Composition Events provide a means for inputing text in a supplementary or
-	alternate manner than by Keyboard Events, in order to allow the use of
-	characters that might not be commonly available on keyboard. For example,
-	Composition Events might be used to add accents to characters despite their
-	absence from standard US keyboards, to build up logograms of many Asian
-	languages from their base components or categories, to select word choices
-	from a combination of key presses on a mobile device keyboard, or to convert
-	voice commands into text using a speech recognition processor. Refer to <a href="#keys">§ 6 键盘事件和键值</a> for examples on how Composition Events are used in combination
-	with keyboard events. 
-    <p>Conceptually, a composition session consists of one <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart③"><code>compositionstart</code></a> event, one or more <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①"><code>compositionupdate</code></a> events, and one <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend③"><code>compositionend</code></a> event, with the value of the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data">data</a></code> attribute persisting between each <q>stage</q> of this event chain during
-	each session.</p>
-    <p class="note" role="note"><strong>Note:</strong> While a composition session is active, keyboard events can be dispatched to
-	the DOM if the keyboard is the input device used with the composition
-	session. See the <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart④"><code>compositionstart</code></a> event details and <a href="#keys-IME">IME section</a> for relevent event ordering. </p>
-    <p>Not all <a data-link-type="dfn" href="#ime" id="ref-for-ime①③">IME</a> systems or devices expose the necessary data to the DOM,
-	so the active composition string (the <q>Reading Window</q> or <q>candidate
-	selection menu option</q>) might not be available through this interface, in
-	which case the selection MAY be represented by the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑧">empty string</a>.</p>
-    <h4 class="heading settled" data-level="5.7.1" id="interface-compositionevent"><span class="secno">5.7.1. </span><span class="content">Interface CompositionEvent</span><a class="self-link" href="#interface-compositionevent"></a></h4>
-    <p class="intro-dom">Introduced in this specification</p>
-    <p>The <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent③">CompositionEvent</a></code> interface provides specific contextual
-		information associated with Composition Events.</p>
-    <p>To create an instance of the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent④">CompositionEvent</a></code> interface,
-		use the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑤">CompositionEvent</a></code> constructor, passing an optional <code class="idl"><a data-link-type="idl" href="#dictdef-compositioneventinit" id="ref-for-dictdef-compositioneventinit">CompositionEventInit</a></code> dictionary.</p>
+    <h3 class="heading settled" data-level="5.7" id="events-compositionevents"><span class="secno">5.7. </span><span class="content">合成事件</span><a class="self-link" href="#events-compositionevents"></a></h3>
+     合成事件(Composition Events)提供了一种以补充或替代键盘事件(Keyboard Events)
+	的形式进行文本输入的方法，以便允许使用键盘上可能不常见(不能直接键入)的字符。
+	例如，尽管标准的美国键盘上不存在重音字符(比如"à")，
+	但合成事件可以用于: 为一般字符添加重音符号(以便输入重音字符);
+	根据亚洲语言的基本组件或类别建立许多的语标书写法(logograms);
+	从移动设备键盘上的组合按键中选择单词;
+	或使用语音识别处理器将语音命令转换为文本。参见 <a href="#keys">§ 6 键盘事件和键值</a> 寻找合成事件与键盘事件如何结合使用的例子。 
+    <p>从概念上讲，合成会话(composition session)由一个 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart③"><code>compositionstart</code></a> (合成启动)事件、一个或多个 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①"><code>compositionupdate</code></a> (合成更新)事件和一个 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend③"><code>compositionend</code></a> (合成结束)事件组成， <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data">data</a></code> 属性的值在每个会话期间保持在该事件链的每个 <q>阶段(stage)</q> 之间。</p>
+    <p class="note" role="note"><strong>注意: </strong> 当合成会话(composition session)处于活动状态时，如果键盘输入设备能使用合成会话，
+	则可以将键盘事件分派到 DOM 。请参阅 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart④"><code>compositionstart</code></a> 事件详细信息和 <a href="#keys-IME">IME 部分</a> 以了解相关事件的触发排序。 </p>
+    <p>并非所有 <a href="#ime" id="ref-for-ime①②">输入法编辑器</a> 系统或设备都将必要的数据暴露给 DOM ，
+	因此活动的合成字符串( <q>阅读窗口(Reading Window)</q> 或 <q>候补选择菜单选项</q> )可能无法通过该接口(指合成事件 API)使用，
+	在这种情况下，选择文本 <span class="zh-upper">可以</span> 由 <a href="#empty-string" id="ref-for-empty-string②⑥">空字符串</a> 表示。</p>
+    <h4 class="heading settled" data-level="5.7.1" id="interface-compositionevent"><span class="secno">5.7.1. </span><span class="content">CompositionEvent 接口</span><a class="self-link" href="#interface-compositionevent"></a></h4>
+    <p class="intro-dom">在本规范中引入介绍</p>
+    <p><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent③">CompositionEvent</a></code> 接口提供与合成事件(Composition Events)
+		相关联的特定上下文信息。</p>
+    <p>要创建 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent④">CompositionEvent</a></code> 接口的实例，请使用 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑤">CompositionEvent</a></code> 构造函数，传递一个可选的 <code class="idl"><a data-link-type="idl" href="#dictdef-compositioneventinit" id="ref-for-dictdef-compositioneventinit">CompositionEventInit</a></code> 字典。</p>
     <h5 class="heading settled" data-level="5.7.1.1" id="idl-compositionevent"><span class="secno">5.7.1.1. </span><span class="content">CompositionEvent</span><a class="self-link" href="#idl-compositionevent"></a></h5>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed⑥"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="compositionevent"><code><c- g>CompositionEvent</c-></code></dfn> : <a data-link-type="idl-name" href="#uievent" id="ref-for-uievent⑥⑥"><c- n>UIEvent</c-></a> {
@@ -4514,14 +4508,12 @@ myDiv.addEventListener("auxclick", function(e) {
 </pre>
     <dl>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="CompositionEvent" data-dfn-type="attribute" data-export id="dom-compositionevent-data"><code>data</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString②⑥">DOMString</a>, readonly</span>
+     <dt class="custom-dfn"><i><code class="idl">data</code></i>， <code>DOMString</code> <span class="replacement"> 类型，只读</span> 
      <dd>
-       <code>data</code> holds the value of the characters generated by
-					an input method. This MAY be a single Unicode character or a
-					non-empty sequence of Unicode characters <a data-link-type="biblio" href="#biblio-unicode" title="The Unicode Standard">[Unicode]</a>. Characters
-					SHOULD be normalized as defined by the Unicode normalization
-					form <em>NFC</em>, defined in <a data-link-type="biblio" href="#biblio-uax15" title="Unicode Normalization Forms">[UAX15]</a>. This
-					attribute MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①">empty string</a>. 
-      <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value③⑤">未初始化值</a> <span class="zh-upper">必须</span> 是 <code>""</code> (the empty string).</p>
+       <code>data</code> 保存由输入方法生成的字符值。这 <span class="zh-upper">可以</span> 是单个 Unicode 字符，也可能是非空的
+					Unicode 字符序列 <a data-link-type="biblio" href="#biblio-unicode" title="The Unicode Standard">[Unicode]</a> 。字符 <span class="zh-upper">应当</span> 按照 <a data-link-type="biblio" href="#biblio-uax15" title="Unicode Normalization Forms">[UAX15]</a> 中定义的 Unicode 规范化形式 <em>NFC</em> 进行标准化。
+					此属性 <span class="zh-upper">可以</span> 是 <a href="#empty-string" id="ref-for-empty-string②⑦">空字符串</a> 。 
+      <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value③⑤">未初始化值</a> <span class="zh-upper">必须</span> 是 <code>""</code> (空字符串)。</p>
     </dl>
     <h5 class="heading settled" data-level="5.7.1.2" id="idl-compositioneventinit"><span class="secno">5.7.1.2. </span><span class="content">CompositionEventInit</span><a class="self-link" href="#idl-compositioneventinit"></a></h5>
 <pre class="idl highlight def"><c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-compositioneventinit"><code><c- g>CompositionEventInit</c-></code></dfn> : <a data-link-type="idl-name" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit⑧"><c- n>UIEventInit</c-></a> {
@@ -4530,12 +4522,12 @@ myDiv.addEventListener("auxclick", function(e) {
 </pre>
     <dl>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="CompositionEventInit" data-dfn-type="dict-member" data-export id="dom-compositioneventinit-data"><code>data</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString②⑧">DOMString</a>, defaulting to <code>""</code></span>
-     <dd> Initializes the <code>data</code> attribute of the
-					CompositionEvent object to the characters generated by the IME
-					composition. 
+     <dt class="custom-dfn"><i><code class="idl">data</code></i>， <code>data</code> <span class="replacement"> 类型，默认值为 <code>""</code> </span> 
+     <dd> 将 CompositionEvent 对象的 <code>data</code> 属性初始化为 IME
+					合成产生的字符。 
     </dl>
-    <h4 class="heading settled" data-level="5.7.2" id="events-composition-order"><span class="secno">5.7.2. </span><span class="content">Composition Event Order</span><a class="self-link" href="#events-composition-order"></a></h4>
-    <p>The Composition Events defined in this specification MUST occur in the following set order relative to one another:</p>
+    <h4 class="heading settled" data-level="5.7.2" id="events-composition-order"><span class="secno">5.7.2. </span><span class="content">合成事件顺序</span><a class="self-link" href="#events-composition-order"></a></h4>
+    <p> 本规范中定义的合成事件(Composition Events) <span class="zh-upper">必须</span> 按以下相对于彼此的固定顺序发生: </p>
     <table class="event-sequence-table">
      <tbody>
       <tr>
@@ -4549,16 +4541,16 @@ myDiv.addEventListener("auxclick", function(e) {
       <tr>
        <td class="cell-number">2
        <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate②"><code>compositionupdate</code></a>
-       <td>Multiple events
+       <td>多次派发事件
       <tr>
        <td class="cell-number">3
        <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend④"><code>compositionend</code></a>
        <td>
     </table>
-    <h4 class="heading settled" data-level="5.7.3" id="events-composition-handwriting"><span class="secno">5.7.3. </span><span class="content">Handwriting Recognition Systems</span><a class="self-link" href="#events-composition-handwriting"></a></h4>
-    <p>The following example describes a possible sequence of events when
-		composing a text passage <q>text</q> with a handwriting recognition
-		system, such as on a pen tablet, as modeled using Composition Events.</p>
+    <h4 class="heading settled" data-level="5.7.3" id="events-composition-handwriting"><span class="secno">5.7.3. </span><span class="content">手写识别系统</span><a class="self-link" href="#events-composition-handwriting"></a></h4>
+    <p>以下示例描述了使用手写识别系统(handwriting recognition system)
+		(例如在手写板上) <q>编写(text)</q> 一个文本段时可能发生的一系列事件，
+		这些事件序列基于合成事件(Composition Events)。</p>
     <table class="event-sequence-table">
      <tbody>
       <tr>
@@ -4575,7 +4567,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <td class="cell-number">
        <td>
        <td style="text-align:center">
-       <td><em>User writes word on tablet surface</em>
+       <td><em>用户在平板电脑屏幕上书写文字 </em>
       <tr>
        <td class="cell-number">2
        <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate③"><code>compositionupdate</code></a>
@@ -4585,7 +4577,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <td class="cell-number">
        <td>
        <td style="text-align:center">
-       <td><em>User rejects first word-match suggestion, selects different match</em>
+       <td><em>用户拒绝第一个单词匹配建议， 选择不同的匹配</em>
       <tr>
        <td class="cell-number">3
        <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate④"><code>compositionupdate</code></a>
@@ -4597,6 +4589,16 @@ myDiv.addEventListener("auxclick", function(e) {
        <td style="text-align:center"><code>"text"</code>
        <td>
     </table>
+    <div class="note custom-note" role="note">
+      对于中文输入法而言，无论是手写识别系统输入，还是拼音输入法输入，
+		亦或是五笔输入法输入，其本质都会触发合成事件，给出一系列中文词语选项，
+		让用户进行单词匹配的过程，合成事件发生顺序和上表是一致的。
+		下面是微软的中文拼音输入法图示: 
+     <figure id="figure-microsoft-pinyin-input-method-editor">
+       <img alt="拼音输入法编辑器" height="250" src="./images/microsoft-pinyin-input-method-editor.svg" width="750"> 
+      <div class="custom-figcaption"> 拼音输入法编辑器 </div>
+     </figure>
+    </div>
     <h4 class="heading settled" data-level="5.7.4" id="events-composition-canceling"><span class="secno">5.7.4. </span><span class="content">Canceling Composition Events</span><a class="self-link" href="#events-composition-canceling"></a></h4>
     <p>If a <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①②"><code>keydown</code></a> event is canceled then any Composition Events that
 		would have fired as a result of that <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①③"><code>keydown</code></a> SHOULD not be
@@ -4794,7 +4796,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑥">target</a></code> : focused element processing the composition
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑦">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑤">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑦"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑧">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑦">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑧">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data③">data</a></code> : the original string being edited, otherwise the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②">empty string</a>
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑧">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data③">data</a></code> : the original string being edited, otherwise the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑧">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent⑥⑧">user agent</a> MUST dispatch this event when a <a data-link-type="dfn" href="#text-composition-system" id="ref-for-text-composition-system①">text
@@ -4807,7 +4809,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			editor, this event type is generated after a <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①⑨"><code>keydown</code></a> event,
 			but speech or handwriting recognition systems MAY send this event
 			type without keyboard events.  Some implementations MAY populate the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data④">data</a></code> attribute of the <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①⓪"><code>compositionstart</code></a> event with the text currently selected in the document (for editing
-			and replacement). Otherwise, the value of the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑤">data</a></code> attribute MUST be  the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string③">empty string</a>.</p>
+			and replacement). Otherwise, the value of the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑤">data</a></code> attribute MUST be  the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①">empty string</a>.</p>
     <p>This event MUST be dispatched immediately before a <a data-link-type="dfn" href="#text-composition-system" id="ref-for-text-composition-system③">text
 			composition system</a> begins a new composition session, and before
 			the DOM is modified due to the composition process. The default
@@ -4816,7 +4818,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			composition session.</p>
     <p class="note" role="note"> Canceling the <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①①"><code>compositionstart</code></a> <em>event type</em> is
 			distinct from canceling the <a data-link-type="dfn" href="#text-composition-system" id="ref-for-text-composition-system⑥">text composition system</a> itself
-			(e.g., by hitting a cancel button or closing an <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> window). </p>
+			(e.g., by hitting a cancel button or closing an <a data-link-type="dfn" href="#ime" id="ref-for-ime①③">IME</a> window). </p>
     <p class="note" role="note"> Some IMEs do not support cancelling an in-progress composition
 			session (e.g., such as GTK which doesn’t presently have such an
 			API). In these cases, calling <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑧">preventDefault()</a></code> will not
@@ -4855,7 +4857,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑦">target</a></code> : focused element processing the composition, <code>null</code> if not accessible
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑥">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑧"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑧">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⓪">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑥">data</a></code> : the string comprising the current results of the composition session, which MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string④">empty string</a> if the content has been deleted
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⓪">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑥">data</a></code> : the string comprising the current results of the composition session, which MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②">empty string</a> if the content has been deleted
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①">user agent</a> SHOULD dispatch this event during a composition
@@ -4869,7 +4871,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			information to the DOM, in which case this event will not fire
 			during the composition process.</p>
     <p>If the composition session is canceled, this event will be fired
-			immediately before the <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①①"><code>compositionend</code></a> event, and the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑧">data</a></code> attribute will be set to the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑤">empty
+			immediately before the <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①①"><code>compositionend</code></a> event, and the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑧">data</a></code> attribute will be set to the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string③">empty
 			string</a>.</p>
     <h5 class="heading settled" data-level="5.7.7.3" id="event-type-compositionend"><span class="secno">5.7.7.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compositionend">compositionend</dfn></span><a class="self-link" href="#event-type-compositionend"></a></h5>
     <table class="event-definition">
@@ -4905,7 +4907,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑧">target</a></code> : focused element processing the composition
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦①">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑦">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑨"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦②">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑨">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①②">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑨">data</a></code> : the string comprising the final result of the composition session, which MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑥">empty string</a> if the content has been deleted or if the composition process has been canceled
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①②">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑨">data</a></code> : the string comprising the final result of the composition session, which MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string④">empty string</a> if the content has been deleted or if the composition process has been canceled
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②">user agent</a> MUST dispatch this event when a <a data-link-type="dfn" href="#text-composition-system" id="ref-for-text-composition-system①⓪">text
@@ -4913,7 +4915,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			session, and the <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①②"><code>compositionend</code></a> event MUST be dispatched
 			after the control is updated.</p>
     <p>This event is dispatched immediately after the <a data-link-type="dfn" href="#text-composition-system" id="ref-for-text-composition-system①①">text composition
-			system</a> completes the composition session (e.g., the <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> is closed, minimized, switched out of focus, or otherwise dismissed,
+			system</a> completes the composition session (e.g., the <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> is closed, minimized, switched out of focus, or otherwise dismissed,
 			and the focus switched back to the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent③">user agent</a>).</p>
    </section>
    <section>
@@ -5723,15 +5725,15 @@ of each key.</p>
     <p>This specification includes a model for <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑨">input method editors</a> (IMEs), through the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑤">CompositionEvent</a></code> interface and events.
 		However, Composition Events and Keyboard Events do not necessarily map
 		as a one-to-one relationship.  As an example, receiving a <a data-link-type="dfn" href="#keydown" id="ref-for-keydown②③"><code>keydown</code></a> for the <code class="keycap">Accept</code> key value does not necessarily imply that the
-		text currently selected in the <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> is being accepted, but
-		indicates only that a keystroke happened, disconnected from the <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> Accept functionality (which would normally result in a <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①③"><code>compositionend</code></a> event in most <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> systems).  Keyboard
+		text currently selected in the <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> is being accepted, but
+		indicates only that a keystroke happened, disconnected from the <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> Accept functionality (which would normally result in a <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①③"><code>compositionend</code></a> event in most <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> systems).  Keyboard
 		events cannot be used to determine the current state of the input method
-		editor, which can be obtained through the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑤">data</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> interface.  Additionally, <a data-link-type="dfn" href="#ime" id="ref-for-ime⑥">IME</a> systems and devices vary in their functionality, and in which
+		editor, which can be obtained through the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑤">data</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> interface.  Additionally, <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> systems and devices vary in their functionality, and in which
 		keys are used for activating that functionality, such that the <code class="keycap">Convert</code> and <code class="keycap">Accept</code> keys MAY be represented by other
 		available keys. Keyboard events correspond to the events generated by
 		the input device after the keyboard layout mapping.</p>
     <p class="note" role="note"> In some implementations or system configurations, some key events, or
-		their values, might be suppressed by the <a data-link-type="dfn" href="#ime" id="ref-for-ime⑦">IME</a> in use. </p>
+		their values, might be suppressed by the <a data-link-type="dfn" href="#ime" id="ref-for-ime⑥">IME</a> in use. </p>
     <p>The following example describes a possible sequence of keys to generate
 		the Unicode character <code class="glyph">"市"</code> (Kanji character, part of CJK
 		Unified Ideographs) using Japanese input methods. This example assumes
@@ -6088,17 +6090,17 @@ of each key.</p>
      </table>
     </div>
     <p class="note" role="note"> Some <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor①">input method editors</a> (such as on the MacOS operating system)
-		might set an <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑦">empty string</a> to the composition data attribute
+		might set an <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑤">empty string</a> to the composition data attribute
 		before canceling a composition. </p>
     <h5 class="heading settled" data-level="6.3.3.1" id="keys-IME-keys"><span class="secno">6.3.3.1. </span><span class="content">Input Method Editor mode keys</span><a class="self-link" href="#keys-IME-keys"></a></h5>
     <p>Some keys on certain devices are intended to activate <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor②">input
 			method editor</a> functionality, or to change the mode of an active <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor③">input method editor</a>.  Custom keys for this purpose can be
 			defined for different devices or language modes. The keys defined in
 			this specification for this purpose are: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-RomanCharacters">RomanCharacters</a>"</code>.  When one of these keys is
-			pressed, and no <a data-link-type="dfn" href="#ime" id="ref-for-ime⑧">IME</a> is currently active, the appropriate <a data-link-type="dfn" href="#ime" id="ref-for-ime⑨">IME</a> is expected to be activated in the mode indicated by the
-			key (if available). If an <a data-link-type="dfn" href="#ime" id="ref-for-ime①⓪">IME</a> is already active when the key
-			is pressed, the active <a data-link-type="dfn" href="#ime" id="ref-for-ime①①">IME</a> might change to the indicated
-			mode, or a different <a data-link-type="dfn" href="#ime" id="ref-for-ime①②">IME</a> might be launched, or the might MAY
+			pressed, and no <a data-link-type="dfn" href="#ime" id="ref-for-ime⑦">IME</a> is currently active, the appropriate <a data-link-type="dfn" href="#ime" id="ref-for-ime⑧">IME</a> is expected to be activated in the mode indicated by the
+			key (if available). If an <a data-link-type="dfn" href="#ime" id="ref-for-ime⑨">IME</a> is already active when the key
+			is pressed, the active <a data-link-type="dfn" href="#ime" id="ref-for-ime①⓪">IME</a> might change to the indicated
+			mode, or a different <a data-link-type="dfn" href="#ime" id="ref-for-ime①①">IME</a> might be launched, or the might MAY
 			be ignored, on a device- and application-specific basis.</p>
     <p>This specification also defines other keys which are intended for
 			operation specifically with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor④">input method editors</a>: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code>.  The functions of these
@@ -7465,13 +7467,13 @@ being entered.</p>
        <dt>Node? relatedNodeArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①①">MutationEvent</a></code>.<code>relatedNode</code>. 
        <dt>DOMString prevValueArg
-       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①②">MutationEvent</a></code>.<code>prevValue</code>. This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑧">empty string</a>. 
+       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①②">MutationEvent</a></code>.<code>prevValue</code>. This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑥">empty string</a>. 
        <dt>DOMString newValueArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①③">MutationEvent</a></code>.<code>newValue</code>.
-						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑨">empty string</a>. 
+						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑦">empty string</a>. 
        <dt>DOMString attrNameArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①④">MutationEvent</a></code>.<code>attrName</code>.
-						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⓪">empty string</a>. 
+						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑧">empty string</a>. 
        <dt>unsigned short attrChangeArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①⑤">MutationEvent</a></code>.<code>attrChange</code>.
 						This value MAY be <code>0</code>. 
@@ -7565,7 +7567,7 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③④">target</a></code> :
 								object whose content is being modified
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②④">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①①">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑨">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②⑤">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②⑥">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the object whose content is being modified
@@ -7615,14 +7617,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑤">target</a></code> :
 								element which is being inserted
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⓪">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①②">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⓪">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③①">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③②">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③③">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①③">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①①">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③④">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①④">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①②">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②③">user agent</a> MUST dispatch this event type when a node other
@@ -7666,14 +7668,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑥">target</a></code> :
 								element which is being inserted
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑥">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑤">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①③">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑦">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑧">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑨">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑥">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①④">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⓪">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑦">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑤">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②⑤">user agent</a> MUST dispatch this event when a node has been
@@ -7720,14 +7722,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥⓪">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑦">target</a></code> :
 								element which is being removed
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④②">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑧">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑥">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④③">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④④">MutationEvent</a></code>.<code>relatedNode</code> :
 								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑤">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑨">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑦">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑥">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⓪">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑧">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②⑦">user agent</a> MUST dispatch this event when a node other than
@@ -7770,14 +7772,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥①">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑧">target</a></code> :
 								element which is being removed
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑧">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②①">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑨">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑨">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⓪">MutationEvent</a></code>.<code>relatedNode</code> :
 								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤①">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②②">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⓪">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤②">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②③">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②①">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②⑨">user agent</a> MUST dispatch this event when a node is being
@@ -7825,13 +7827,13 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥②">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑨">target</a></code> :
 								parent node of subtree being modified
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤④">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②④">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②②">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑤">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑥">MutationEvent</a></code>.<code>relatedNode</code> : <code>null</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑦">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑤">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②③">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑧">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑥">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②④">empty string</a>
         </ul>
     </table>
     <p>This is a general event for notification of all changes to the
@@ -11078,8 +11080,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-compositionevent" style="display:none">Info about the 'CompositionEvent' definition.</span><b><a href="#compositionevent">#compositionevent</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-compositionevent">4.1. 事件类型列表</a> <a href="#ref-for-compositionevent①">(2)</a> <a href="#ref-for-compositionevent②">(3)</a>
-    <li><a href="#ref-for-compositionevent③">5.7.1. Interface CompositionEvent</a> <a href="#ref-for-compositionevent④">(2)</a> <a href="#ref-for-compositionevent⑤">(3)</a>
-    <li><a href="#ref-for-compositionevent⑥">5.7.3. Handwriting Recognition Systems</a>
+    <li><a href="#ref-for-compositionevent③">5.7.1. CompositionEvent 接口</a> <a href="#ref-for-compositionevent④">(2)</a> <a href="#ref-for-compositionevent⑤">(3)</a>
+    <li><a href="#ref-for-compositionevent⑥">5.7.3. 手写识别系统</a>
     <li><a href="#ref-for-compositionevent⑦">5.7.7.1. compositionstart</a> <a href="#ref-for-compositionevent⑧">(2)</a>
     <li><a href="#ref-for-compositionevent⑨">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionevent①⓪">(2)</a>
     <li><a href="#ref-for-compositionevent①①">5.7.7.3. compositionend</a> <a href="#ref-for-compositionevent①②">(2)</a>
@@ -11093,9 +11095,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
   <aside aria-labelledby="infopaneltitle-for-dom-compositionevent-data" class="dfn-panel" data-for="dom-compositionevent-data" id="infopanel-for-dom-compositionevent-data">
    <span id="infopaneltitle-for-dom-compositionevent-data" style="display:none">Info about the 'data' definition.</span><b><a href="#dom-compositionevent-data">#dom-compositionevent-data</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-compositionevent-data">5.7. Composition Events</a>
+    <li><a href="#ref-for-dom-compositionevent-data">5.7. 合成事件</a>
     <li><a href="#ref-for-dom-compositionevent-data①">5.7.1.1. CompositionEvent</a>
-    <li><a href="#ref-for-dom-compositionevent-data②">5.7.3. Handwriting Recognition Systems</a>
+    <li><a href="#ref-for-dom-compositionevent-data②">5.7.3. 手写识别系统</a>
     <li><a href="#ref-for-dom-compositionevent-data③">5.7.7.1. compositionstart</a> <a href="#ref-for-dom-compositionevent-data④">(2)</a> <a href="#ref-for-dom-compositionevent-data⑤">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data⑥">5.7.7.2. compositionupdate</a> <a href="#ref-for-dom-compositionevent-data⑦">(2)</a> <a href="#ref-for-dom-compositionevent-data⑧">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data⑨">5.7.7.3. compositionend</a>
@@ -11108,7 +11110,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
   <aside aria-labelledby="infopaneltitle-for-dictdef-compositioneventinit" class="dfn-panel" data-for="dictdef-compositioneventinit" id="infopanel-for-dictdef-compositioneventinit">
    <span id="infopaneltitle-for-dictdef-compositioneventinit" style="display:none">Info about the 'CompositionEventInit' definition.</span><b><a href="#dictdef-compositioneventinit">#dictdef-compositioneventinit</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dictdef-compositioneventinit">5.7.1. Interface CompositionEvent</a>
+    <li><a href="#ref-for-dictdef-compositioneventinit">5.7.1. CompositionEvent 接口</a>
     <li><a href="#ref-for-dictdef-compositioneventinit①">5.7.1.1. CompositionEvent</a>
    </ul>
   </aside>
@@ -11124,9 +11126,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionstart">4.1. 事件类型列表</a>
     <li><a href="#ref-for-compositionstart①">5.5.1.1. InputEvent</a>
     <li><a href="#ref-for-compositionstart②">5.6.1.1. KeyboardEvent</a>
-    <li><a href="#ref-for-compositionstart③">5.7. Composition Events</a> <a href="#ref-for-compositionstart④">(2)</a>
-    <li><a href="#ref-for-compositionstart⑤">5.7.2. Composition Event Order</a>
-    <li><a href="#ref-for-compositionstart⑥">5.7.3. Handwriting Recognition Systems</a>
+    <li><a href="#ref-for-compositionstart③">5.7. 合成事件</a> <a href="#ref-for-compositionstart④">(2)</a>
+    <li><a href="#ref-for-compositionstart⑤">5.7.2. 合成事件顺序</a>
+    <li><a href="#ref-for-compositionstart⑥">5.7.3. 手写识别系统</a>
     <li><a href="#ref-for-compositionstart⑦">5.7.4. Canceling Composition Events</a> <a href="#ref-for-compositionstart⑧">(2)</a>
     <li><a href="#ref-for-compositionstart⑨">5.7.5. Key Events During Composition</a>
     <li><a href="#ref-for-compositionstart①⓪">5.7.7.1. compositionstart</a> <a href="#ref-for-compositionstart①①">(2)</a>
@@ -11136,9 +11138,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-compositionupdate" style="display:none">Info about the 'compositionupdate' definition.</span><b><a href="#compositionupdate">#compositionupdate</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-compositionupdate">4.1. 事件类型列表</a>
-    <li><a href="#ref-for-compositionupdate①">5.7. Composition Events</a>
-    <li><a href="#ref-for-compositionupdate②">5.7.2. Composition Event Order</a>
-    <li><a href="#ref-for-compositionupdate③">5.7.3. Handwriting Recognition Systems</a> <a href="#ref-for-compositionupdate④">(2)</a>
+    <li><a href="#ref-for-compositionupdate①">5.7. 合成事件</a>
+    <li><a href="#ref-for-compositionupdate②">5.7.2. 合成事件顺序</a>
+    <li><a href="#ref-for-compositionupdate③">5.7.3. 手写识别系统</a> <a href="#ref-for-compositionupdate④">(2)</a>
     <li><a href="#ref-for-compositionupdate⑤">5.7.5. Key Events During Composition</a>
     <li><a href="#ref-for-compositionupdate⑥">5.7.6. Input Events During Composition</a> <a href="#ref-for-compositionupdate⑦">(2)</a> <a href="#ref-for-compositionupdate⑧">(3)</a> <a href="#ref-for-compositionupdate⑨">(4)</a>
     <li><a href="#ref-for-compositionupdate①⓪">5.7.7.2. compositionupdate</a>
@@ -11151,9 +11153,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionend">4.1. 事件类型列表</a>
     <li><a href="#ref-for-compositionend①">5.5.1.1. InputEvent</a>
     <li><a href="#ref-for-compositionend②">5.6.1.1. KeyboardEvent</a>
-    <li><a href="#ref-for-compositionend③">5.7. Composition Events</a>
-    <li><a href="#ref-for-compositionend④">5.7.2. Composition Event Order</a>
-    <li><a href="#ref-for-compositionend⑤">5.7.3. Handwriting Recognition Systems</a>
+    <li><a href="#ref-for-compositionend③">5.7. 合成事件</a>
+    <li><a href="#ref-for-compositionend④">5.7.2. 合成事件顺序</a>
+    <li><a href="#ref-for-compositionend⑤">5.7.3. 手写识别系统</a>
     <li><a href="#ref-for-compositionend⑥">5.7.4. Canceling Composition Events</a> <a href="#ref-for-compositionend⑦">(2)</a>
     <li><a href="#ref-for-compositionend⑧">5.7.5. Key Events During Composition</a>
     <li><a href="#ref-for-compositionend⑨">5.7.6. Input Events During Composition</a> <a href="#ref-for-compositionend①⓪">(2)</a>
@@ -11577,19 +11579,19 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-empty-string">5.5.1.1. InputEvent</a>
     <li><a href="#ref-for-empty-string">5.5.3.2. input</a>
-    <li><a href="#ref-for-empty-string">5.7. Composition Events</a>
-    <li><a href="#ref-for-empty-string①">5.7.1.1. CompositionEvent</a>
-    <li><a href="#ref-for-empty-string②">5.7.7.1. compositionstart</a> <a href="#ref-for-empty-string③">(2)</a>
-    <li><a href="#ref-for-empty-string④">5.7.7.2. compositionupdate</a> <a href="#ref-for-empty-string⑤">(2)</a>
-    <li><a href="#ref-for-empty-string⑥">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-empty-string⑦">6.3.3. Input Method Editors</a>
-    <li><a href="#ref-for-empty-string⑧">9.4.1. Interface MutationEvent</a> <a href="#ref-for-empty-string⑨">(2)</a> <a href="#ref-for-empty-string①⓪">(3)</a>
-    <li><a href="#ref-for-empty-string①①">9.4.2.2. DOMCharacterDataModified</a>
-    <li><a href="#ref-for-empty-string①②">9.4.2.3. DOMNodeInserted</a> <a href="#ref-for-empty-string①③">(2)</a> <a href="#ref-for-empty-string①④">(3)</a>
-    <li><a href="#ref-for-empty-string①⑤">9.4.2.4. DOMNodeInsertedIntoDocument</a> <a href="#ref-for-empty-string①⑥">(2)</a> <a href="#ref-for-empty-string①⑦">(3)</a>
-    <li><a href="#ref-for-empty-string①⑧">9.4.2.5. DOMNodeRemoved</a> <a href="#ref-for-empty-string①⑨">(2)</a> <a href="#ref-for-empty-string②⓪">(3)</a>
-    <li><a href="#ref-for-empty-string②①">9.4.2.6. DOMNodeRemovedFromDocument</a> <a href="#ref-for-empty-string②②">(2)</a> <a href="#ref-for-empty-string②③">(3)</a>
-    <li><a href="#ref-for-empty-string②④">9.4.2.7. DOMSubtreeModified</a> <a href="#ref-for-empty-string②⑤">(2)</a> <a href="#ref-for-empty-string②⑥">(3)</a>
+    <li><a href="#ref-for-empty-string">5.7. 合成事件</a>
+    <li><a href="#ref-for-empty-string">5.7.1.1. CompositionEvent</a>
+    <li><a href="#ref-for-empty-string">5.7.7.1. compositionstart</a> <a href="#ref-for-empty-string①">(2)</a>
+    <li><a href="#ref-for-empty-string②">5.7.7.2. compositionupdate</a> <a href="#ref-for-empty-string③">(2)</a>
+    <li><a href="#ref-for-empty-string④">5.7.7.3. compositionend</a>
+    <li><a href="#ref-for-empty-string⑤">6.3.3. Input Method Editors</a>
+    <li><a href="#ref-for-empty-string⑥">9.4.1. Interface MutationEvent</a> <a href="#ref-for-empty-string⑦">(2)</a> <a href="#ref-for-empty-string⑧">(3)</a>
+    <li><a href="#ref-for-empty-string⑨">9.4.2.2. DOMCharacterDataModified</a>
+    <li><a href="#ref-for-empty-string①⓪">9.4.2.3. DOMNodeInserted</a> <a href="#ref-for-empty-string①①">(2)</a> <a href="#ref-for-empty-string①②">(3)</a>
+    <li><a href="#ref-for-empty-string①③">9.4.2.4. DOMNodeInsertedIntoDocument</a> <a href="#ref-for-empty-string①④">(2)</a> <a href="#ref-for-empty-string①⑤">(3)</a>
+    <li><a href="#ref-for-empty-string①⑥">9.4.2.5. DOMNodeRemoved</a> <a href="#ref-for-empty-string①⑦">(2)</a> <a href="#ref-for-empty-string①⑧">(3)</a>
+    <li><a href="#ref-for-empty-string①⑨">9.4.2.6. DOMNodeRemovedFromDocument</a> <a href="#ref-for-empty-string②⓪">(2)</a> <a href="#ref-for-empty-string②①">(3)</a>
+    <li><a href="#ref-for-empty-string②②">9.4.2.7. DOMSubtreeModified</a> <a href="#ref-for-empty-string②③">(2)</a> <a href="#ref-for-empty-string②④">(3)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event" class="dfn-panel" data-for="event" id="infopanel-for-event">
@@ -11723,11 +11725,11 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-ime" style="display:none">Info about the 'IME' definition.</span><b><a href="#ime">#ime</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-ime">5.6.1.2. KeyboardEventInit</a>
-    <li><a href="#ref-for-ime">5.7. Composition Events</a>
-    <li><a href="#ref-for-ime①">5.7.7.1. compositionstart</a>
-    <li><a href="#ref-for-ime②">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-ime③">6.3.3. Input Method Editors</a> <a href="#ref-for-ime④">(2)</a> <a href="#ref-for-ime⑤">(3)</a> <a href="#ref-for-ime⑥">(4)</a> <a href="#ref-for-ime⑦">(5)</a>
-    <li><a href="#ref-for-ime⑧">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-ime⑨">(2)</a> <a href="#ref-for-ime①⓪">(3)</a> <a href="#ref-for-ime①①">(4)</a> <a href="#ref-for-ime①②">(5)</a>
+    <li><a href="#ref-for-ime">5.7. 合成事件</a>
+    <li><a href="#ref-for-ime">5.7.7.1. compositionstart</a>
+    <li><a href="#ref-for-ime①">5.7.7.3. compositionend</a>
+    <li><a href="#ref-for-ime②">6.3.3. Input Method Editors</a> <a href="#ref-for-ime③">(2)</a> <a href="#ref-for-ime④">(3)</a> <a href="#ref-for-ime⑤">(4)</a> <a href="#ref-for-ime⑥">(5)</a>
+    <li><a href="#ref-for-ime⑦">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-ime⑧">(2)</a> <a href="#ref-for-ime⑨">(3)</a> <a href="#ref-for-ime①⓪">(4)</a> <a href="#ref-for-ime①①">(5)</a>
     <li><a href="#ref-for-ime">9.3.1.1. keypress</a>
     <li><a href="#ref-for-ime">14. 术语表</a>
    </ul>
