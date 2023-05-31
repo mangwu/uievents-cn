@@ -3313,7 +3313,12 @@ myDiv.addEventListener("auxclick", function(e) {
 			而不仅仅是那些产生 <a href="#character-value">字符值</a> 的键。
 			</p>
 
-<h3 id="events-compositionevents">Composition Events</h3>
+<h3 id="events-compositionevents">合成事件</h3>
+	合成事件(Composition Events)提供了一种以补充或替代键盘事件(Keyboard Events)
+	的形式进行文本输入的方法，以便允许使用键盘上可能不常见(不能直接键入)的字符。
+	例如，尽管标准的美国键盘上不存在重音字符(比如"à")，
+	但合成事件可以用于为一般字符添加重音符号(以便输入重音字符); 
+	根据亚洲语言的基本组件或类别建立许多亚洲语言的徽标(logograms)，从移动设备键盘上的按键组合中选择单词，或使用语音识别处理器将语音命令转换为文本。参见§ 6.键盘事件和键值 例如组合事件如何与键盘事件结合使用。
 	Composition Events provide a means for inputing text in a supplementary or
 	alternate manner than by Keyboard Events, in order to allow the use of
 	characters that might not be commonly available on keyboard. For example,
