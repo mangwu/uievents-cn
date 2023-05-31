@@ -1,57 +1,54 @@
 <section>
-<h2 id="legacy-event-types">Legacy Event Types</h2>
+<h2 id="legacy-event-types">遗留事件类型</h2>
 
 
-<em>This section is normative. The following event types are obsolete and should
-only be implemented by <a>user agents</a> that require compatibility with legacy
-software.</em>
+<em>本节是规范的。以下事件类型已过时淘汰(obsolete)，只能由需要与旧版软件兼容的
+<a href="#user-agent">用户代理</a> 实现。</em>
 
-The purpose of this section is to document the current state of these features
-and their relation to normative events. For implementations which do support
-these events, it is suggested that the definitions provided in this section be
-used.
+本节的目的是记录这些(遗留)特性的现状及其与规范事件的关系。
+对于支持这些(遗留)事件的实现，建议使用本节中提供的定义。
 
-The following table provides an informative summary of the event types which are
-deprecated in this specification. They are included here for reference and
-completeness.
+下表提供了本规范中不推荐使用的事件类型的信息概要。
+它们被整理在这里是为了(规范的)参考引用和完整性。
 
-++-----------------------------+--------+----------+------------------------------------------+------------------+------------+-----------+------------------------------------------------+
-=|	  Event Type			   | Sync / | Bubbling | Trusted event							  |	 DOM Interface	 | Cancelable | Composed  | Default Action								   |
- |							   | Async	|  Phase   | target types							  |					 |			  |			  |						 						   |
- +-----------------------------+----o---+----o-----+--------------------o---------------------+--------o---------+------o-----+------o----+------------------------------------------------+
-+| DOMActivate				   | Sync	| Yes	   | <code>Element</code>					  | UIEvent			 | Yes		  | Yes		  | None										   |
-+| DOMAttrModified			   | Sync	| Yes	   | <code>Element</code>					  | MutationEvent	 | No		  | No		  | None										   |
-+| DOMCharacterDataModified	   | Sync	| Yes	   | <code>Text</code>,						  | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Comment</code>,					  |					 |			  |			  |												   |
- |							   |		|		   | <code>ProcessingInstruction</code>		  |					 |			  |			  |												   |
-+| DOMFocusIn				   | Sync	| Yes	   | <a><code>Window</code></a>,			  | FocusEvent		 | No		  | Yes		  | None										   |
- |							   |		|		   | <code>Element</code></td>				  |					 |			  |			  |												   |
-+| DOMFocusOut				   | Sync	| Yes	   | <a><code>Window</code></a>,			  | FocusEvent		 | No		  | Yes		  | None										   |
- |							   |		|		   | <code>Element</code></td>				  |					 |			  |			  |												   |
-+| DOMNodeInserted			   | Sync	| Yes	   | <code>Element</code>, <code>Attr</code>, | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Text</code>, <code>Comment</code>, |					 |			  |			  |												   |
- |							   |		|		   | <code>DocumentType</code>,				  |					 |			  |			  |												   |
- |							   |		|		   | <code>ProcessingInstruction</code>		  |					 |			  |			  |												   |
-+| DOMNodeInsertedIntoDocument | Sync	| No	   | <code>Element</code>, <code>Attr</code>, | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Text</code>, <code>Comment</code>, |					 |			  |			  |												   |
- |							   |		|		   | <code>DocumentType</code>,				  |					 |			  |			  |												   |
- |							   |		|		   | <code>ProcessingInstruction</code>		  |					 |			  |			  |												   |
-+| DOMNodeRemoved			   | Sync	| Yes	   | <code>Element</code>, <code>Attr</code>, | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Text</code>, <code>Comment</code>, |					 |			  |			  |												   |
- |							   |		|		   | <code>DocumentType</code>,				  |					 |			  |			  |												   |
- |							   |		|		   | <code>ProcessingInstruction</code>		  |					 |			  |			  |												   |
-+| DOMNodeRemovedFromDocument  | Sync	| No	   | <code>Element</code>, <code>Attr</code>, | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Text</code>, <code>Comment</code>, |					 |			  |			  |												   |
- |							   |		|		   | <code>DocumentType</code>,				  |					 |			  |			  |												   |
- |							   |		|		   | <code>ProcessingInstruction</code>		  |					 |			  |			  |												   |
-+| DOMSubtreeModified		   | Sync	| Yes	   | <a><code>Window</code></a>,			  | MutationEvent	 | No		  | No		  | None										   |
- |							   |		|		   | <code>Document</code>,					  |					 |			  |			  |												   |
- |							   |		|		   | <code>DocumentFragment</code>,			  |					 |			  |			  |												   |
- |							   |		|		   | <code>Element</code>, <code>Attr</code>  |					 |			  |			  |												   |
-+| keypress					   | Sync	| Yes	   | <code>Element</code>					  | KeyboardEvent	 | Yes		  | Yes		  | Varies: launch <a>text composition system</a>; |
- |							   |		|		   |										  |					 |			  |			  | EVENT{blur} and EVENT{focus} events;		   |
- |							   |		|		   |										  |					 |			  |			  | EVENT{DOMActivate} event; other event		   |
-++-----------------------------+--------+----------+------------------------------------------+------------------+------------+------------+------------------------------------------------+
+++-----------------------------+--------+----------+------------------------------------------+------------------+------------+--------------+------------------------------------------------+
+=| 事件类型   			           | 同步 / |  冒泡    | 可信事件目标 							              | DOM 接口	       | 可取消     | 能否从Shadow | 默认行为								                        |
+ |							               | 异步	  |  阶段    | 类型					                      		  |					         | 默认行为   |	DOM冒泡传递	 |						 						                        |
+ +-----------------------------+----o---+----o-----+--------------------o---------------------+--------o---------+------o-----+------o-------+------------------------------------------------+
++| DOMActivate				         | 同步	  | 冒泡     | <code>Element</code>		           			  | UIEvent			     | 能 		    | 能 		       | 没有                                           |
++| DOMAttrModified			       | 同步	  | 冒泡     | <code>Element</code>		           			  | MutationEvent	   | 不能       | 不能	       | 没有                                           |
++| DOMCharacterDataModified	   | 同步	  | 冒泡     | <code>Text</code>,			           			  | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Comment</code>,				        	  |					         |			      |			         |                                                |
+ |							               |		    |		       | <code>ProcessingInstruction</code>		    |					         |			      |		           |                                                |
++| DOMFocusIn				           | 同步	  | 冒泡     | <a><code>Window</code></a>,			        | FocusEvent		   | 不能       | 能 		       | 没有                                           |
+ |							               |		    |		       | <code>Element</code></td>				        |					         |			      |		           |                                                |
++| DOMFocusOut				         | 同步	  | 冒泡     | <a><code>Window</code></a>,			        | FocusEvent	     | 不能       | 能 		       | 没有                                           |
+ |							               |		    |		       | <code>Element</code></td>				        |					         |			      |		           |                                                |
++| DOMNodeInserted			       | 同步	  | 冒泡     | <code>Element</code>, <code>Attr</code>, | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Text</code>, <code>Comment</code>, |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>DocumentType</code>,				        |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>ProcessingInstruction</code>		    |					         |			      |		           |                                                |
++| DOMNodeInsertedIntoDocument | 同步	  | 不冒泡   | <code>Element</code>, <code>Attr</code>, | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Text</code>, <code>Comment</code>, |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>DocumentType</code>,				        |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>ProcessingInstruction</code>	  	  |					         |			      |		           |                                                |
++| DOMNodeRemoved			         | 同步	  | 冒泡     | <code>Element</code>, <code>Attr</code>, | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Text</code>, <code>Comment</code>, |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>DocumentType</code>,				        |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>ProcessingInstruction</code>	   	  |					         |			      |		           |                                                |
++| DOMNodeRemovedFromDocument  | 同步	  | 不冒泡   | <code>Element</code>, <code>Attr</code>, | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Text</code>, <code>Comment</code>, |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>DocumentType</code>,				        |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>ProcessingInstruction</code>		    |					         |			      |		           |                                                |
++| DOMSubtreeModified		       | 同步	  | 冒泡     | <a><code>Window</code></a>,			        | MutationEvent	   | 不能       | 不能	       | 没有                                           |
+ |							               |		    |		       | <code>Document</code>,					          |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>DocumentFragment</code>,			      |					         |			      |		           |                                                |
+ |							               |		    |		       | <code>Element</code>, <code>Attr</code>  |					         |			      |		           |                                                |
++| keypress					           | 同步	  | 冒泡     | <code>Element</code>		           			  | KeyboardEvent	   | 能 		    | 能 		       | 多种: 启动 <a href="#text-composition-system"> |
+ |							               |		    |		       |										                      |					         |			      |		           | 文本合成系统</a>; (触发) EVENT{blur} 和 		    |
+ |							               |		    |		       |										                      |					         |			      |		           | EVENT{focus} 事件; (触发) EVENT{DOMActivate}   |
+ |							               |		    |		       |										                      |					         |			      |		           | 事件; (触发)其它事件		                        |
+++-----------------------------+--------+----------+------------------------------------------+------------------+------------+--------------+------------------------------------------------+
 
 
 <h3 id="legacy-uievent-events">Legacy {{UIEvent}} events</h3>
@@ -70,12 +67,12 @@ completeness.
 					<td>{{UIEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -83,11 +80,11 @@ completeness.
 				</tr>
 				<tr>
 					<th>Cancelable</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Composed</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Default action</th>
@@ -224,12 +221,12 @@ completeness.
 					<td>{{FocusEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -241,7 +238,7 @@ completeness.
 				</tr>
 				<tr>
 					<th>Composed</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Default action</th>
@@ -288,12 +285,12 @@ completeness.
 					<td>{{FocusEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -305,7 +302,7 @@ completeness.
 				</tr>
 				<tr>
 					<th>Composed</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Default action</th>
@@ -391,12 +388,12 @@ completeness.
 					<td>{{KeyboardEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -404,11 +401,11 @@ completeness.
 				</tr>
 				<tr>
 					<th>Cancelable</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Composed</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Default action</th>
@@ -730,12 +727,12 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -801,12 +798,12 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -870,12 +867,12 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -946,8 +943,8 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
@@ -1019,12 +1016,12 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>
@@ -1095,8 +1092,8 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
@@ -1173,12 +1170,12 @@ completeness.
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
-					<th>Sync / Async</th>
-					<td>Sync</td>
+					<th>同步 / 异步</th>
+					<td>同步</td>
 				</tr>
 				<tr>
 					<th>Bubbles</th>
-					<td>Yes</td>
+					<td>能 </td>
 				</tr>
 				<tr>
 					<th>Trusted Targets</th>

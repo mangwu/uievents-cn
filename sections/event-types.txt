@@ -2846,10 +2846,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				</dt>
 				
 				<dd>
-					<code>true</code> if the meta (KEYCAP{Meta}) key modifier was
-					active.
-					如果meta( KEYCAP{Meta} )键修饰符处于活动状态，则为 <code>true</code>
-					。
+					如果meta( KEYCAP{Meta} )键修饰符处于活动状态，则为 <code>true</code> 。
 
 					<p class="note">
 					在Macintosh系统(苹果电脑)上的 GLYPH{Command} ( GLYPH{&#x2318;} )
@@ -2907,7 +2904,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				<dd>
 					如果按键事件作为合成会话(composition session)的一部分发生，即在
 					EVENT{compositionstart} 事件之后和相应的 EVENT{compositionend} 
-					事件之前，则为 <code>true</code> 。
+					事件之前，则为 <code>true</code> ，否则为 <code>false</code> 。
 	
 					该属性的 <a href="#un-initialized-value">未初始化值</a>
 					<span class="zh-upper">必须</span> 是

@@ -74,6 +74,7 @@ class Parser():
                     data = ''
             if not self.is_header_row and data != '':
                 if colname == 'Event Type':
+                    # print(data)
                     data = self.event_type(data)
                 if colname == 'DOM Interface':
                     data = '{{' + data + '}}'
