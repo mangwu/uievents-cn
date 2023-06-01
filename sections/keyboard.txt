@@ -29,205 +29,181 @@
 
 	本规范仅根据 <a href="#keys-keyvalues"><code>key</code></a> 值和 
 	<a href="#keys-codevalues"><code>code</code></a> 值定义了功能映射，
-	但简要描述了背景的图例。
-	This specification only defines the functional mapping, in terms of
-	<a href="#keys-keyvalues"><code>key</code></a> values and
-	<a href="#keys-codevalues"><code>code</code></a> values,
-	but briefly describes <a href="#key-legends">key legends</a>
-	for background.
+	但简要描述了背景的 <a href="#key-legends">按键图例(key legends)</a> 。
 
-	<h4 id="key-legends">Key Legends</h4>
+	<h4 id="key-legends">按键图例</h4>
 
-		<em>This section is informative</em>
+		<em>本节用于提供有用信息</em>
 
-		The key legend is the visual marking that is printed or embossed on the
-		<em>key cap</em> (the rectangular "cap" that covers the mechanical
-		switch for the key). These markings normally consist of one or more
-		characters that a keystroke on that key will produce (such as GLYPH{G},
-		GLYPH{8}, or GLYPH{ш}), or names or symbols which indicate that key's
-		function (such as an upward-pointing arrow GLYPH{&#x21E7;} indicating
-		KEYCAP{Shift}, or the string <code>"Enter"</code>). Keys are often
-		referred to by this marking (e.g., <q>Press the <code>"Shift"</code> and
-		<code>"G"</code> keys.</q>). Note, however, that the visual appearance
-		of the key has no bearing on its digital representation, and in many
-		configurations may be completely inaccurate. Even the control and
-		function keys, such as KEYCAP{Enter}, may be mapped to different
-		functionality, or even mapped as character keys.
+		按键图例是印在或浮雕在 <em><a href="#key-cap-note">键帽</a></em> 
+		(覆盖在键盘机械开关上的矩形"帽")上的视觉标记。
+		这些标记通常由一次击键时将产生的一个或多个字符组成(如 GLYPH{G} 、 GLYPH{8} 
+		或 GLYPH{ш} )，或指示该键功能的名称或符号(如向上的箭头 GLYPH{&#x21E7;} 
+		表示 KEYCAP{Shift} 按键，或字符串 <code>"Enter"</code> 表示 KEYCAP{Enter} 
+		按键)。按键通常由该标记表示(例如， <q>按下 <code>"Shift"</code> 和 
+		<code>"G"</code> 键。</q> )。但是，请注意，按键的视觉外观与其数字化表示无关，
+		在许多配置中可能完全不准确。甚至控制键和功能键(如 KEYCAP{Enter} )
+		也可以映射到不同的功能，甚至可以映射为字符键。
 
 		<p class="note">
-		Many keyboards contain keys that do not normally produce any characters,
-		even though the symbol might have a Unicode equivalent. For example, the
-		KEYCAP{Shift} key might bear the symbol GLYPH{&#x21E7;}, which has the
-		Unicode code point UNI{U+21E7}, but
-		pressing the KEYCAP{Shift} key will not produce this character value,
-		and there is no Unicode code point for KEYCAP{Shift}.
+		许多键盘通常包含不产生任何字符的键，即使该按键上的符号(按键图例)可能具有 
+		Unicode 等效符号。例如， KEYCAP{Shift} 键(键帽上)可能带有符号
+		GLYPH{&#x21E7;} ，其 Unicode 码点为 UNI{U+21E7} ，但按下 KEYCAP{Shift} 
+		键不会产生此字符值，并且 KEYCAP{Shift} 没有 Unicode 码点。
 		</p>
 
-<h3 id="keys-codevalues">Key codes</h3>
+<h3 id="keys-codevalues">键码</h3>
 
-	A key {{KeyboardEvent/code}} is an attribute of a keyboard event that can be
-	used to identify the physical key associated with the keyboard event. It is
-	similar to USB Usage IDs in that it provides a low-level value (similar to a
-	scancode) that is vendor-neutral.
+	键码 ( {{KeyboardEvent/code}} )是键盘事件的属性，
+	可用于识别与键盘事件相关联的物理键。它与 USB 使用 IDs 的相似之处在于，
+	它提供了一个与供应商无关(vendor-neutral)的底层值(类似于扫描码[scancode])。
 
-	The primary purpose of the {{KeyboardEvent/code}} attribute is to provide a
-	consistent and coherent way to identify keys based on their physical
-	location. In addition, it also provides a stable name (unaffected by the
-	current keyboard state) that uniquely identifies each key on the keyboard.
+	{{KeyboardEvent/code}} 属性的主要目的是提供一种一致和连贯的方法 ——
+	根据按键的物理位置来识别按键。此外，它还提供了一个稳定的名称
+	(不受当前键盘状态的影响)，用于唯一标识键盘上的每个键。
 
-	The list of valid {{KeyboardEvent/code}} values is defined in the
-	[[!UIEvents-Code]].
+	有效的 {{KeyboardEvent/code}} 值的列表在 [[!UIEvents-Code]] 中定义。
 
-	<h4 id="code-motivation">Motivation for the {{KeyboardEvent/code}} Attribute</h4>
+	<h4 id="code-motivation">定义 {{KeyboardEvent/code}} 属性的动机</h4>
 
-		The standard PC keyboard has a set of keys (which we refer to as
-		<em>writing system keys</em>) that generate different
-		{{KeyboardEvent/key}} values based on the current keyboard layout
-		selected by the user. This situation makes it difficult to write code
-		that detects keys based on their physical location since the code would
-		need to know which layout is in effect in order to know which
-		{{KeyboardEvent/key}} values to check for. A real-world example of this
-		is a game that wants to use the GLYPH{W}, GLYPH{A}, GLYPH{S} and
-		GLYPH{D} keys to control player movement. The {{KeyboardEvent/code}}
-		attribute solves this problem by providing a stable value to check that
-		is <em>not affected by the current keyboard layout</em>.
+		标准 PC 键盘有一组键(我们称之为<em> [=书写系统键=] </em>)，
+		这些键根据用户选择的当前键盘布局生成不同的 {{KeyboardEvent/key}} 值。
+		这种情况使得编写根据键的物理位置来检测标识键的代码变得困难，
+		因为代码需要知道哪个键盘布局在生效，才能知道哪些 {{KeyboardEvent/key}} 
+		值要检查。现实世界中的一个例子是一款想要使用 GLYPH{W} 、 GLYPH{A} 、 
+		GLYPH{S} 和 GLYPH{D} 键来控制玩家移动的游戏。 {{KeyboardEvent/code}} 
+		属性通过提供一个 <em>不受当前键盘布局影响的</em> 固定值来检查，
+		从而解决了这个问题。
 
-		In addition, the values in the {{KeyboardEvent/key}} attribute depend as
-		well on the current keyboard state. Because of this, the order in which
-		keys are pressed and released in relation to modifier keys can affect
-		the values stored in the {{KeyboardEvent/key}} attribute. The
-		{{KeyboardEvent/code}} attribute solves this problem by providing a
-		stable value that is <em>not affected by the current keyboard state</em>.
+		此外， {{KeyboardEvent/key}} 属性中的值也取决于当前键盘状态。因此，
+		被按下和释放的键相对于修饰键的顺序可能会影响存储在 {{KeyboardEvent/key}} 
+		属性中的值。 {{KeyboardEvent/code}} 属性通过提供一个 
+		<em>不受当前键盘布局影响的</em> 固定值来检查，从而解决了这个问题。
 
-	<h4 id="relationship-between-key-code">The Relationship Between {{KeyboardEvent/key}} and {{KeyboardEvent/code}}</h4>
+	<h4 id="relationship-between-key-code">{{KeyboardEvent/key}} 和 
+	{{KeyboardEvent/code}} 之间的关系</h4>
 
 		<dl>
 			<dt>{{KeyboardEvent/key}}</dt>
-			<dd>The {{KeyboardEvent/key}} attribute is intended for users who
-				are interested in the meaning of the key being pressed, taking
-				into account the current keyboard layout (and IME;
-				<a href="#keys-dead">dead keys</a> are given a unique
-				{{KeyboardEvent/key}} value). Example use case: Detecting
-				modified keys or bare modifier keys (e.g., to perform an action
-				in response to a keyboard shortcut).
+			<dd> {{KeyboardEvent/key}} 属性是为那些对按下的键的含义感兴趣的用户设计的，
+				需要考虑到当前的键盘布局(和IME; 死键被赋予一个唯一的 
+				{{KeyboardEvent/key}} 值)。使用例子: 检测修饰键或的基本的修饰键(例如，
+				响应键盘快捷键以执行操作)。
 			</dd>
 
 			<dt>{{KeyboardEvent/code}}</dt>
-			<dd>The {{KeyboardEvent/code}} attribute is intended for users who
-				are interested in the key that was pressed by the user, without
-				any layout modifications applied. Example use case: Detecting
-				WASD keys (e.g., for movement controls in a game) or trapping
-				all keys (e.g., in a remote desktop client to send all keys to
-				the remote host).
+			<dd> {{KeyboardEvent/code}} 属性适用于对用户按下的键感兴趣的用户，
+				而不考虑任何布局修饰。使用例子: 检测 WASD 键(例如，用于游戏中的移动控制)
+				或捕获所有键(例如，在远程桌面客户端中，将所有键发送到远程主机)。
 			</dd>
 		</dl>
 
-	<h4 id="code-examples"><code>code</code> Examples</h4>
+	<h4 id="code-examples"><code>code</code> 例子</h4>
 
+		<div class="note custom-note">
+		以下关于键盘布局的类型，可以查阅 [=标准键盘布局=] 。<br/> 美式键盘布局: 
+		标准 "101" 键盘布局; <br/> 日式键盘布局: 日式 "106" 键盘布局; <br/> 
+		美式国际键盘布局:  备用 "101" 键盘布局; <br/> 英式键盘布局: 
+		标准 "102" 键盘布局。
+		</div>
+		
 		<div class="example">
-			Handling the Left and Right Alt Keys
+			处理左右的Alt键
 
 			++----------+----------------------+----------------------+------------------------------------------+
-			=| Keyboard |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                                    |
-			 |  Layout  |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                          |
+			=| 键盘布局 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| 注释                                     |
+			 |          |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                          |
 			 +----------+----------o-----------+----------o-----------+------------------------------------------+
-			+| US       | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
-			+| French   | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
-			+| US       | KEY{Alt}             | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
-			+| French   | KEY{AltGr}           | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
+			+| 美式     | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
+			+| 法语     | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
+			+| 美式     | KEY{Alt}             | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
+			+| 法语     | KEY{AltGr}           | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
 			++----------+----------------------+----------------------+------------------------------------------+
 
-			In this example, checking the {{KeyboardEvent/key}} attribute permits
-			matching KEYCAP{Alt} without worrying about which Alt key (left or
-			right) was pressed. Checking the {{KeyboardEvent/code}} attribute
-			permits matching the right Alt key (CODE{AltRight}) without worrying
-			about which layout is currently in effect.
+			在本例中，检查 {{KeyboardEvent/key}} 属性允许匹配 KEYCAP{Alt} ，
+			而不必担心按下了哪个 Alt 键 ( CODE{AltLeft} 或 CODE{AltRight} )。
+			检查 {{KeyboardEvent/code}} 属性可以匹配右 Alt 键( CODE{AltRight} )，
+			而无需担心当前正在使用的键盘布局。
 
-			Note that, in the French example, the KEYCAP{Alt} and KEYCAP{AltGr} keys
-			retain their left and right location, even though there is only one of
-			each key.
+			请注意，在法语示例中， KEYCAP{Alt} 和 KEYCAP{AltGr} 键保留其左右位置( 
+			{{KeyboardEvent/code}} 值仍然是 CODE{AltLeft} 和 CODE{AltRight} )，
+			即使每个键只有一个。
 		</div>  <!-- Handling Left and Right Alt Keys -->
 
 		<div class="example">
-			Handling the Single Quote Key
+			处理单引号按键
 
 			++----------+----------------------+----------------------+--------+
-			=| Keyboard |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes  |
-			 |  Layout  |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|        |
+			=| 键盘布局 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| 注释   |
+			 |          |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|        |
 			 +----------+----------o-----------+-----------o----------+--------+
-			+| US       | KEY_NOLINK{'}        | CODE{Quote}          |        |
-			+| Japanese | KEY_NOLINK{:}        | CODE{Quote}          |        |
-			+| US Intl  | KEY{Dead}            | CODE{Quote}          |        |
+			+| 美式     | KEY_NOLINK{'}        | CODE{Quote}          |        |
+			+| 日式     | KEY_NOLINK{:}        | CODE{Quote}          |        |
+			+| 美式国际 | KEY{Dead}            | CODE{Quote}          |        |
 			++----------+----------------------+----------------------+--------+
 
-			This example shows how dead key values are encoded in the
-			attributes. The {{KeyboardEvent/key}} values vary based on the
-			current locale, whereas the {{KeyboardEvent/code}} attribute returns
-			a consistent value.
+			此示例显示了死键值是如何在属性中被编码的。 {{KeyboardEvent/key}} 
+			值根据当前区域设置而变化，而 {{KeyboardEvent/code}} 属性则返回一致的值。
 		</div><!-- Handling the Single Quote Key -->
 
 		<div class="example" id="example-key-2">
-			Handling the GLYPH{2} Key (with and without Shift pressed) on
-			various keyboard layouts.
+			在各种键盘布局上处理 GLYPH{2} 键(按下 Shift 键和不按下 Shift 键)。
 
 			++----------+----------------------+----------------------+----------------------------+
 			=| Keyboard |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                      |
 			 |  Layout  |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                            |
 			 +----------+----------o-----------+----------o-----------+----------------------------+
-			+| US       | KEY_NOLINK{2}        | CODE{Digit2}         |                            |
-			+| US       | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
-			+| UK       | KEY_NOLINK{2}        | CODE{Digit2}         |                            |
-			+| UK       | KEY_NOLINK{"}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
-			+| French   | KEY_NOLINK{é}        | CODE{Digit2}         |                            |
-			+| French   | KEY_NOLINK{2}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
+			+| 美式     | KEY_NOLINK{2}        | CODE{Digit2}         |                            |
+			+| 美式     | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
+			+| 英式     | KEY_NOLINK{2}        | CODE{Digit2}         |                            |
+			+| 英式     | KEY_NOLINK{"}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
+			+| 法语     | KEY_NOLINK{é}        | CODE{Digit2}         |                            |
+			+| 法语     | KEY_NOLINK{2}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
 			++----------+----------------------+----------------------+----------------------------+
 
-			Regardless of the current locale or the modifier key state, pressing
-			the key labelled GLYPH{2} on a US keyboard always results in
-			CODE{Digit2} in the {{KeyboardEvent/code}} attribute.
+			无论当前区域设置或修改键状态如何，在 US 键盘上键帽标签为 GLYPH{2} 
+			的键总是会在 {{KeyboardEvent/code}} 属性中产生 CODE{Digit2} 。
 
 		</div><!-- Handling the 2 Key -->
 
 		<div class="example" id="example-key-shift-2">
-			Sequence of Keyboard Events : KEYCAP{Shift} and KEYCAP{2}
+			键盘事件序列:  KEYCAP{Shift} 和 KEYCAP{2}
 
 
-			Compare the attribute values in the following two key event
-			sequences. They both produce the GLYPH{@} character on a US
-			keyboard, but differ in the order in which the keys are released. In
-			the first sequence, the order is: KEYCAP{Shift} (down), KEYCAP{2}
-			(down), KEYCAP{2} (up), KEYCAP{Shift} (up).
+			比较下面列出的两个(顺序不同)按键事件序列的属性值。它们都在美国键盘上产生 
+			GLYPH{@} 字符，但按键释放的顺序不同。在第一个序列中，顺序为: 
+			KEYCAP{Shift} (按下)， KEYCAP{2} (按下)、 KEYCAP{2} (释放)、 
+			KEYCAP{Shift} (释放)。
 
 			++---+----------+----------------------+----------------------+-----------------------------------------+
-			=| # | Event    |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                                   |
-			 |   | Type     |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                         |
+			=| # | 事件类型 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| 注释                                    |
+			 |   |          |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                         |
 			 +---+----------+----------o-----------+----------o-----------+-----------------------------------------+
 			+| 1 | keydown  | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 2 | keydown  | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
-			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (if supported)                          |
+			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (如果支持)                              |
 			+| 4 | keyup    | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
 			+| 5 | keyup    | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			++---+----------+----------------------+----------------------+-----------------------------------------+
 
-			In the second sequence, the Shift is released before the 2,
-			resulting in the following event order: KEYCAP{Shift} (down),
-			KEYCAP{2} (down), KEYCAP{Shift} (up), KEYCAP{2} (up).
+			在第二个序列中， KEYCAP{Shift} 在 KEYCAP{2} 之前释放，
+			从而产生以下事件顺序：KEYCAP{Shift} (按下)， KEYCAP{2} (按下)、 
+			KEYCAP{Shift} (释放)、 KEYCAP{2} (释放)。
 
 			++---+----------+----------------------+----------------------+-----------------------------------------+
-			=| # | Event    |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                                   |
-			 |   | Type     |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                         |
+			=| # | 事件类型 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                                   |
+			 |   |          |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                         |
 			 +---+----------+----------o-----------+----------o-----------+-----------------------------------------+
 			+| 1 | keydown  | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 2 | keydown  | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
-			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (if supported)                          |
+			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (如果支持)                              |
 			+| 4 | keyup    | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 5 | keyup    | KEY_NOLINK{2}        | CODE{Digit2}         |                                         |
 			++---+----------+----------------------+----------------------+-----------------------------------------+
 
-			Note that the values contained in the {{KeyboardEvent/key}}
-			attribute does not match between the keydown and keyup events for
-			the GLYPH{2} key. The {{KeyboardEvent/code}} attribute provides a
-			consistent value that is not affected by the current modifier state.
+			请注意，在 GLYPH{2} 键的 EVENT{keydown} 和 EVENT{keyup} 事件之间的 
+			{{KeyboardEvent/key}} 属性值不匹配。 {{KeyboardEvent/code}} 
+			属性提供了一个不受当前修饰键状态影响的一致值。
 
 		</div><!-- Sequence of Keyboard Events: Shift and 2 -->
 

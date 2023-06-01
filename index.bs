@@ -131,6 +131,10 @@ url: https://mangwu.github.io/uievents-code-cn/#keypad; type: dfn; spec: uievent
 	text: 小键盘
 url: https://mangwu.github.io/uievents-code-cn/#keyboard-layout; type: dfn; spec: uievents-code;
 	text: 键盘布局
+url: https://mangwu.github.io/uievents-code-cn/#key-alphanumeric-writing-system; type: dfn; spec: uievents-code;
+	text: 书写系统键
+url: https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts; type: dfn; spec: uievents-code;
+	text: 标准键盘布局
 </pre>
 
 <pre class="link-defaults">
