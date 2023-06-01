@@ -333,9 +333,9 @@
 	event flow for more details.
 
 : <dfn>text composition system</dfn>
-::	A software component that interprets some form of alternate input (such as a
-	<a>input method editor</a>, a speech processor, or a handwriting recognition
-	system) and converts it to text.
+::	一种软件组件(software component )，用于解释某种形式的替代输入(alternate 
+	input，如 <a href="#ime">输入法编辑器</a> 、语音处理器或手写识别系统)
+	并将其转换为文本。
 
 : <dfn>topmost event target</dfn>
 ::	The <a>topmost event target</a> MUST be the element highest in the rendering

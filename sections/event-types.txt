@@ -2436,7 +2436,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				</dt>
 				
 				<dd>
-					<code>data</code> 保存由一种输入方法生成的字符的值。
+					<code>data</code> 保存由一种输入法生成的字符的值。
 					这 <span class="zh-upper">可以</span> 是一个简单的 Unicode 
 					字符或一个非空的 Unicode 字符序列 [[Unicode]] 。字符  
 					<span class="zh-upper">应当</span> 按照 Unicode 
@@ -3368,7 +3368,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				</dt>
 				
 				<dd>
-					<code>data</code> 保存由输入方法生成的字符值。这 
+					<code>data</code> 保存由输入法生成的字符值。这 
 					<span class="zh-upper">可以</span> 是单个 Unicode 字符，也可能是非空的
 					Unicode 字符序列 [[Unicode]] 。字符 <span class="zh-upper">应当</span> 
 					按照 [[UAX15]] 中定义的 Unicode 规范化形式 <em>NFC</em> 进行标准化。
@@ -3456,99 +3456,154 @@ myDiv.addEventListener("auxclick", function(e) {
 		</div>
 		
 	
-	<h4 id="events-composition-canceling">Canceling Composition Events</h4>
+	<h4 id="events-composition-canceling">取消合成事件</h4>
 	
-		If a EVENT{keydown} event is canceled then any Composition Events that
-		would have fired as a result of that EVENT{keydown} SHOULD not be
-		dispatched:
+		如果某个 EVENT{keydown} 事件被取消，则 <span class="zh-upper">不应</span> 
+		派发因该 EVENT{keydown} 而触发的任何组合事件(Composition Events): 
 	
 		++---+------------+----------------------------------------------------+
 		=| # | 事件类型   | 注释                                               |
 		 +---+------------+----------------------------------------------------+
-		+| 1 | keydown    | The <a>default action</a> is prevented, e.g., by   |
-		 |   |            | invoking {{Event/preventDefault()}}.               |
-		+|   |            | <em>No Composition Events are dispatched</em>      |
+		+| 1 | keydown    | <a href="#default-action">默认行为</a> 被阻止，即，|
+		 |   |            | 通过调用 {{Event/preventDefault()}} 。             |
+		+|   |            | <em>不会派发合成事件</em>                          |
 		+| 2 | keyup      |                                                    |
 		++---+------------+----------------------------------------------------+
 	
-		If the initial EVENT{compositionstart} event is canceled then the text
-		composition session SHOULD be terminated. Regardless of whether or not
-		the composition session is terminated, the EVENT{compositionend} event
-		MUST be sent.
+		如果取消了初始的 EVENT{compositionstart} 事件，则 
+		<span class="zh-upper">应当</span> 终止文本合成会话(composition session)。
+		无论合成会话是否终止，都 <span class="zh-upper">必须</span> 发送 
+		EVENT{compositionend} 事件。
 	
 		++---+------------------+-----------------------------------------------+
 		=| # | 事件类型         | 注释                                          |
 		 +---+------------------+-----------------------------------------------+
 		+| 1 | keydown          |                                               |
-		+| 2 | compositionstart | The <a>default action</a> is prevented,       |
-		 |   |                  | e.g., by invoking {{Event/preventDefault()}}. |
-		+|   |                  | <em>No Composition Events are dispatched</em> |
+		+| 2 | compositionstart | <a href="#default-action">默认行为</a> 被阻止 |
+		 |   |                  | ，即，通过调用 {{Event/preventDefault()}} 。  |
+		+|   |                  | <em>没有其它合成事件被派发</em>               |
 		+| 3 | compositionend   |                                               |
 		+| 4 | keyup            |                                               |
 		++---+------------------+-----------------------------------------------+
 	
-	<h4 id="events-composition-key-events">Key Events During Composition</h4>
+	<h4 id="events-composition-key-events">合成过程中的按键事件</h4>
+
+		在合成会话期间， EVENT{keydown} 和 EVENT{keyup} 事件仍 
+		<span class="zh-upper">必须</span> 发送，并且这些事件 
+		<span class="zh-upper">必须</span> 将 {{KeyboardEvent/isComposing}} 
+		属性设置为 <code>true</code> 。
 	
-		During the composition session, EVENT{keydown} and EVENT{keyup} events
-		MUST still be sent, and these events MUST have the
-		{{KeyboardEvent/isComposing}} attribute set to <code>true</code>.
+		++---+-------------------+-------------------------------+-----------------------------------+
+		=| # | 事件类型          | {{KeyboardEvent}}<br/>        | 注释                              |
+		 |   |                   | {{KeyboardEvent/isComposing}} |                                   |
+		 +---+-------------------+--------------o----------------+-----------------------------------+
+		+| 1 | keydown           | false                         | 这是启动合成的按键事件。          |
+		+| 2 | compositionstart  |                               |                                   |
+		+| 3 | compositionupdate |                               |                                   |
+		+| 4 | keyup             | true                          |                                   |
+		+|   | ...               |                               | 合成会话期间发送的任何按键事件都  |
+		 |   |                   |                               | <span class="zh-upper">必须</span>|
+		 |   |                   |                               | 将 <code>isComposing</code> 设置为|
+		 |   |                   |                               | <code>true</code> 。              |
+		+| 5 | keydown           | true                          | 这是退出合成的按键事件。          |
+		+| 6 | compositionend    |                               |                                   |
+		+| 7 | keyup             | false                         |                                   |
+		++---+-------------------+-------------------------------+-----------------------------------+
 	
-		++---+-------------------+-------------------------------+------------------------------+
-		=| # | 事件类型          | {{KeyboardEvent}}<br/>        | 注释                         |
-		 |   |                   | {{KeyboardEvent/isComposing}} |                              |
-		 +---+-------------------+--------------o----------------+------------------------------+
-		+| 1 | keydown           | false                         | This is the key event that   |
-		 |   |                   |                               | initiates the composition.   |
-		+| 2 | compositionstart  |                               |                              |
-		+| 3 | compositionupdate |                               |                              |
-		+| 4 | keyup             | true                          |                              |
-		+|   | ...               |                               | Any key events sent during   |
-		 |   |                   |                               | the composition session MUST |
-		 |   |                   |                               | have <code>isComposing</code>|
-		 |   |                   |                               | set to <code>true</code>.    |
-		+| 5 | keydown           | true                          | This is the key event that   |
-		 |   |                   |                               | exits the composition.       |
-		+| 6 | compositionend    |                               |                              |
-		+| 7 | keyup             | false                         |                              |
-		++---+-------------------+-------------------------------+------------------------------+
+	<h4 id="events-composition-input-events">合成过程中的输入事件</h4>
 	
-	<h4 id="events-composition-input-events">Input Events During Composition</h4>
-	
-		During the composition session, the EVENT{compositionupdate} MUST be
-		dispatched after the EVENT{beforeinput} is sent, but before the
-		EVENT{input} event is sent.
+		在合成会话(composition session)期间，EVENT{compositionupdate} 
+		<span class="zh-upper">必须</span> 在发送 EVENT{beforeinput} 之后，但在发送 
+		EVENT{input} 事件之前被派发。
 	
 		++---+-------------------+-----------------------------------------------+
 		=| # | 事件类型          | 注释                                          |
 		 +---+-------------------+-----------------------------------------------+
 		+| 1 | beforeinput       |                                               |
 		+| 2 | compositionupdate |                                               |
-		+|   |                   | <em>Any DOM updates occur at this point.</em> |
+		+|   |                   | <em>此时会发生任何可能的 DOM 更新。</em>      |
 		+| 3 | input             |                                               |
 		++---+-------------------+-----------------------------------------------+
 	
 		<p class="note">
-		Most IMEs do not support canceling updates during a composition session.
+		大多数 [=IMEs=] 不支持在合成会话期间取消更新。
 		</p>
 	
-		The EVENT{beforeinput} and EVENT{input} events are sent along with the
-		EVENT{compositionupdate} event whenever the DOM is updated as part of
-		the composition. Since there are no DOM updates associated with the
-		EVENT{compositionend} event, EVENT{beforeinput} and EVENT{input} events
-		should not be sent at that time.
+		每当 DOM 作为合成的一部分更新时， EVENT{beforeinput} 和 EVENT{input} 
+		事件都会与 EVENT{compositionupdate} 事件一起被派发。由于没有与 
+		EVENT{compositionend} 事件相关联的DOM更新，因此此时(合成结束时)不应发送 
+		EVENT{beforeinput} 和 EVENT{input} 事件。
 	
 		++---+-------------------+-----------------------------------------------+
 		=| # | 事件类型          | 注释                                          |
 		 +---+-------------------+-----------------------------------------------+
-		+| 1 | beforeinput       | <em> Canceling this will prevent the DOM      |
-		 |   |                   | update and the EVENT{input} event.</em>       |
+		+| 1 | beforeinput       | <em> 取消此操作将阻止 DOM 更新和 EVENT{input} |
+		 |   |                   | 事件(的派发)。</em>                           |
 		+| 2 | compositionupdate |                                               |
-		+|   |                   | <em>Any DOM updates occur at this point.</em> |
-		+| 3 | input             | <em>Sent only if the DOM was updated.</em>    |
+		+|   |                   | <em>此时会发生任何可能的 DOM 更新。</em>      |
+		+| 3 | input             | <em>仅当 DOM 已更新时才发送。</em>            |
 		+| 4 | compositionend    |                                               |
 		++---+-------------------+-----------------------------------------------+
+
+		<div class="note custom-note">
+		结合上面两节的内容，我们可以得出如下的表格，它显示出了合成事件，输入事件，
+		键盘事件三种在使用 IME 输入自定义字符时触发的事件顺序:
+		++----+-------------------+-------------------------------+-------------------------------------------+
+		=| #  | 事件类型          | {{KeyboardEvent}}<br/>        | 注释                                      |
+		 |    |                   | {{KeyboardEvent/isComposing}} |                                           |
+		 +----+-------------------+--------------o----------------+-------------------------------------------+
+		+| 1  | keydown           | false                         | 这是启动合成的按键事件。                  |
+		+| 2  | compositionstart  |                               |                                           |
+		+|    |                   |                               | 合成会话期间发送的任何按键事件和输入事件都|
+		 |    |                   |                               | <span class="zh-upper">必须</span> 将     |
+		 |    |                   |                               | <code>isComposing</code> 设置为           |
+		 |    |                   |                               | <code>true</code> 。                      |
+		+| 3  | beforeinput       | true                          | <em> 取消此操作将阻止 DOM 更新和          |
+		 |    |                   |                               | EVENT{input} 事件(的派发)。</em>          |
+		+| 4  | compositionupdate |                               |                                           |
+		+|    |                   |                               | <em>此时会发生任何可能的 DOM 更新。</em>  |
+		+| 5  | input             | true                          | <em>仅当 DOM 已更新时才发送。</em>        |
+		+| 6  | keyup             | true                          |                                           |
+		+| 7  | keydown           | true                          | 这是持续进行合成的按键事件。              |
+		+| 8  | beforeinput       | true                          | <em> 取消此操作将阻止 DOM 更新和          |
+		 |    |                   |                               | EVENT{input} 事件(的派发)。</em>          |
+		+| 9  | compositionupdate |                               |                                           |
+		+|    |                   |                               | <em>此时会发生任何可能的 DOM 更新。</em>  |
+		+| 10 | input             | true                          | <em>仅当 DOM 已更新时才发送。</em>        |
+		+| 11 | keyup             | true                          |                                           |
+		+|    | ...               |                               | 对7 - 11 事件派发的重复                   |
+		 |    |                   |                               | (如果这一次合成会话持续进行的话)          |
+		+| 12 | keydown           | true                          | 这是退出合成的按键事件。(可能为空格按键)  |
+		+| 13 | beforeinput       | true                          |                                           |
+		+| 14 | compositionupdate |                               |                                           |
+		+| 15 | input             | true                          | <em>仅当 DOM 已更新时才发送。一般而言，   |
+		 |    |                   |                               | 该事件的 {{InputEvent/data}}              |
+		 |    |                   |                               | 是用户在合成完成后选择的匹配字符</em>     |
+		+| 16 | compositionend    |                               |                                           |
+		+| 17 | keyup             | false                         |                                           |
+		++----+-------------------+-------------------------------+-------------------------------------------+	
+		</div>
+   
+		<div class="note custom-note">
+		为了更好的显示出按键事件，合成事件和输入事件的触发关系和时机，在 
+		<a href="https://domeventviewer.com/key-event-viewer.html">
+		https://domeventviewer.com/key-event-viewer.html</a> 
+		网址上使用微软中文拼音输入法对这三类事件进行了输入测试，
+		检查了它们之间的触发先后关系以及事件行为的正确性:
+		<figure id="figure-key-and-input-events-during-composition">
+			<img
+				src="images/key-and-input-events-during-composition.gif"
+				width="800"
+				height="600"
+				alt="使用微软中文拼音输入法对键盘事件，合成事件，输入事件进行测试"
+			/>
+			<div class="custom-figcaption">
+			使用微软中文拼音输入法对键盘事件，合成事件，输入事件进行测试
+			</div>
+		</figure>
+		</div>
 	
-	<h4 id="events-composition-types">Composition Event Types</h4>
+	<h4 id="events-composition-types">合成事件类型</h4>
 	
 		<h5 id="event-type-compositionstart"><dfn>compositionstart</dfn></h5>
 	
@@ -3563,50 +3618,49 @@ myDiv.addEventListener("auxclick", function(e) {
 			+| 可取消默认行为   | 能                                                                                   |
 			+| 能否从Shadow<br/>| 能                                                                                   |
 			 | DOM冒泡传递      |                                                                                      |
-			+| 默认行为         | Start a new composition session when a <a>text composition system</a> is enabled     |
+			+| 默认行为         | 激活 <a href="#text-composition-system">文本合成系统</a> ，并启动一个新的合成会话     |
 			+| 上下文<br/>      | <ul>                                                                                 |
-			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : focused element processing the composition</li>     |
+			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : 正在处理合成事件的焦点元素</li>                     |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/view}} : <a><code>Window</code></a></li>                   |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/detail}} : <code>0</code></li>                             |
-			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : the original string being       |
-			 |                  |     edited, otherwise the <a>empty string</a></li>                                   |
+			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : 正在被编辑的原始字符串，否则为  |
+			 |                  |     <a href="#empty-string">空字符串</a> </li>                                       |
 			 |                  | </ul>                                                                                |
 			++------------------+--------------------------------------------------------------------------------------+
 	
-			A <a>user agent</a> MUST dispatch this event when a <a>text
-			composition system</a> is enabled and a new composition session is
-			about to begin (or has begun, depending on the <a>text composition
-			system</a>) in preparation for composing a passage of text. This
-			event type is device-dependent, and MAY rely upon the capabilities
-			of the text conversion system and how it is mapped into the
-			operating system. When a keyboard is used to feed an input method
-			editor, this event type is generated after a EVENT{keydown} event,
-			but speech or handwriting recognition systems MAY send this event
-			type without keyboard events.  Some implementations MAY populate the
-			{{CompositionEvent/data}} attribute of the EVENT{compositionstart}
-			event with the text currently selected in the document (for editing
-			and replacement). Otherwise, the value of the
-			{{CompositionEvent/data}} attribute MUST be  the <a>empty string</a>.
+			当 <a href="#text-composition-system">文本合成系统</a> 激活后，
+			并且新的合成会话即将开始(或已经开始，具体取决于 
+			<a href="#text-composition-system">文本合成系统</a> )，准备合成一段文本时，
+			<a href="#user-agent">用户代理</a> 必须派发此事件。此事件类型是设备依赖的
+			(device-dependent)， <span class="zh-upper">可以</span> 
+			依赖于文本转换系统的功能及其映射到操作系统的方式。当键盘用于馈送
+			(feed)输入法编辑器时，此事件类型是在 EVENT{keydown} 事件之后生成的，
+			但语音或 [[#events-composition-handwriting]]
+			<span class="zh-upper">可以</span> 在没有键盘事件的情况下发送此事件类型。
+			某些实现 <span class="zh-upper">可以</span> 使用文档中当前选择的文本
+			(用于编辑和替换)填充 EVENT{compositionstart} 事件的 
+			{{CompositionEvent/data}} 属性。否则， {{CompositionEvent/data}} 属性的值 
+			<span class="zh-upper">必须</span> 是 <a href="#empty-string">空字符串</a>
+			。
 	
-			This event MUST be dispatched immediately before a <a>text
-			composition system</a> begins a new composition session, and before
-			the DOM is modified due to the composition process. The default
-			action of this event is for the <a>text composition system</a> to
-			start a new composition session. If this event is canceled, the
-			<a>text composition system</a> SHOULD discard the current
-			composition session.
-	
+			此事件 <span class="zh-upper">必须</span> 在 
+			<a href="#text-composition-system">文本合成系统</a>
+			开始一个新的合成会话之前，以及由于合成过程而导致 DOM 修改之前，立即被派发。
+			此事件的默认行为是 <a href="#text-composition-system">文本合成系统</a> 
+			启动一个新的合成会话。如果此事件被取消， 
+			<a href="#text-composition-system">文本合成系统</a>  
+			<span class="zh-upper">应当</span> 放弃当前合成会话。
+
 			<p class="note">
-			Canceling the EVENT{compositionstart} <em>event type</em> is
-			distinct from canceling the <a>text composition system</a> itself
-			(e.g., by hitting a cancel button or closing an <a>IME</a> window).
+			取消 EVENT{compositionstart} <em>事件类型</em> 不等同于取消 
+			<a href="#text-composition-system">文本合成系统</a> 本身(例如，
+			通过点击一个取消按钮或关闭一个 <a href="#ime">IME</a> 窗口)。
 			</p>
 	
 			<p class="note">
-			Some IMEs do not support cancelling an in-progress composition
-			session (e.g., such as GTK which doesn't presently have such an
-			API). In these cases, calling {{Event/preventDefault()}} will not
-			stop this event's default action.
+			一些 <a href="#ime">IMEs</a> 不支持取消正在进行的合成会话(例如，
+			GTK目前没有这样的API)。在这些情况下，调用 {{Event/preventDefault()}} 
+			不会停止此事件的默认行为。
 			</p>
 	
 		<h5 id="event-type-compositionupdate"><dfn>compositionupdate</dfn></h5>
@@ -3624,34 +3678,41 @@ myDiv.addEventListener("auxclick", function(e) {
 			 | DOM冒泡传递      |                                                                                      |
 			+| 默认行为         | 没有                                                                                 |
 			+| 上下文<br/>      | <ul>                                                                                 |
-			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : focused element processing the composition,         |
-			 |                  |     <code>null</code> if not accessible</li>                                         |
+			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : 正在处理合成事件的焦点元素，如果不可访问，就是      |
+			 |                  |     <code>null</code> </li>                                                          |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/view}} : <a><code>Window</code></a></li>                   |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/detail}} : <code>0</code></li>                             |
-			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : the string comprising the       |
-			 |                  |     current results of the composition session, which MAY be the <a>empty string</a> |
-			 |                  |     if the content has been deleted</li>                                             |
+			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : 包含合成会话的当前结果的字符串，|
+			 |                  |     如果内容结果已被删除，则该字符串 <span class="zh-upper">可以</span> 为           |
+			 |                  |     <a href="#empty-string">空字符串</a> </li>                                       |
 			 |                  | </ul>                                                                                |
 			++------------------+--------------------------------------------------------------------------------------+
 	
-			A <a>user agent</a> SHOULD dispatch this event during a composition
-			session when a <a>text composition system</a> updates its active
-			text passage with a new character, which is reflected in the string
-			in {{CompositionEvent/data}}.
+			当 <a href="#text-composition-system">文本合成系统</a> 
+			用新字符更新其活动文本段落(active text passage)时， 
+			<a href="#user-agent">用户代理</a>  <span class="zh-upper">应当</span> 
+			在合成会话期间派发此事件，该新字符反映在 {{CompositionEvent/data}} 
+			包含的字符串中。
 	
-			In <a>text composition systems</a> which keep the ongoing
-			composition in sync with the input control, the
-			EVENT{compositionupdate} event MUST be dispatched before the control
-			is updated.
+			在持续与输入控件(如 &lt;input /&gt; )同步从而进行合成的 
+			<a href="#text-composition-system">文本合成系统</a> 中， 
+			EVENT{compositionupdate} 事件 <span class="zh-upper">必须</span> 
+			在更新控件之前被派发。(参见 [[#events-composition-input-events]] 
+			中事件触发顺序表格的注释)
 	
-			Some <a>text composition systems</a> might not expose this
-			information to the DOM, in which case this event will not fire
-			during the composition process.
+			某些 <a href="#text-composition-system">文本合成系统</a> 可能不会向 
+			DOM 公开此信息，在这种情况下，在合成过程中不会触发此事件。
 	
-			If the composition session is canceled, this event will be fired
-			immediately before the EVENT{compositionend} event, and the
-			{{CompositionEvent/data}} attribute will be set to the <a>empty
-			string</a>.
+			如果合成会话被取消，则此事件将在 EVENT{compositionend} 之前立即触发，
+			并且 {{CompositionEvent/data}} 属性将设置为 
+			<a href="#empty-string">空字符串</a> 。
+
+			<div class="note custom-note">
+			例如使用微软中文拼音输入法输入汉字，在合成会话进行时，单击 KEYCAP{Esc} 
+			按键，关闭 IME ，同时取消合成会话，就会在 EVENT{beforeinput} 之后和 
+			EVENT{compositionend} 之前派发 EVENT{compositionupdate} 事件，并且 
+			{{CompositionEvent/data}} 属性值为 <a href="#empty-string">空字符串</a>。
+			</div>
 	
 		<h5 id="event-type-compositionend"><dfn>compositionend</dfn></h5>
 	
@@ -3668,23 +3729,24 @@ myDiv.addEventListener("auxclick", function(e) {
 			 | DOM冒泡传递      |                                                                                      |
 			+| 默认行为         | 没有                                                                                 |
 			+| 上下文<br/>      | <ul>                                                                                 |
-			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : focused element processing the composition</li>     |
+			 | (可信事件)       | <li>{{Event}}.{{Event/target}} : 正在处理合成事件的焦点元素</li>                     |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/view}} : <a><code>Window</code></a></li>                   |
 			 |                  | <li>{{UIEvent}}.{{UIEvent/detail}} : <code>0</code></li>                             |
-			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : the string comprising the final |
-			 |                  |     result of the composition session, which MAY be the <a>empty string</a> if the   |
-			 |                  |     content has been deleted or if the composition process has been canceled</li>    |
+			 |                  | <li>{{CompositionEvent}}.{{CompositionEvent/data}} : 包含合成会话的最终结果的字符串，|
+			 |                  |     如果内容结果已被删除，或者合成会话被取消，则该字符串                             |
+			 |                  |     <span class="zh-upper">可以</span> 为 <a href="#empty-string">空字符串</a> </li> |
 			 |                  | </ul>                                                                                |
 			++------------------+--------------------------------------------------------------------------------------+
 	
-			A <a>user agent</a> MUST dispatch this event when a <a>text
-			composition system</a> completes or cancels the current composition
-			session, and the EVENT{compositionend} event MUST be dispatched
-			after the control is updated.
+			当 <a href="#text-composition-system">文本合成系统</a> 
+			完成或取消当前合成会话时，  <a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">必须</span> 派发此事件，并且 EVENT{compositionend} 
+			事件 <span class="zh-upper">必须</span> 在控件更新后调度。(参见 
+			[[#events-composition-input-events]] 中事件触发顺序表格的注释)
 	
-			This event is dispatched immediately after the <a>text composition
-			system</a> completes the composition session (e.g., the <a>IME</a>
-			is closed, minimized, switched out of focus, or otherwise dismissed,
-			and the focus switched back to the <a>user agent</a>).
+			该事件在 <a href="#text-composition-system">文本合成系统</a> 
+			完成合成会话后立即派发(例如，<a href="#ime">IME</a> 被关闭、最小化、
+			切换到焦点之外，或者以其他方式被解除并且焦点切回到 
+			<a href="#user-agent">用户代理</a> )。
 
 </section>
