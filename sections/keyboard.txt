@@ -21,13 +21,15 @@
 	每个键与整个键盘的关系有三个独立的方面，
 	每个方面在不同型号和配置的键盘中都有所不同，尤其是地区不同时，键盘差异更大: 
 
-	*	<strong>Mechanical layout:</strong> the dimensions, size, and placement
-		of the physical keys on the keyboard
-	*	<strong>Visual markings:</strong> the labels (or <em>legends</em>) that
-		mark each key
-	*	<strong>Functional mapping:</strong> the abstract key-value association
-		of each key.
+	*	<strong>机械布局(Mechanical layout):</strong> 键盘上物理按键的尺寸、
+		大小和位置
+	*	<strong>视觉标记(Visual markings):</strong> 标记每个按键的标签(或 
+		<em>图例(legends)</em> )
+	*	<strong>功能映射:</strong> 每个键的抽象键值关联。
 
+	本规范仅根据 <a href="#keys-keyvalues"><code>key</code></a> 值和 
+	<a href="#keys-codevalues"><code>code</code></a> 值定义了功能映射，
+	但简要描述了背景的图例。
 	This specification only defines the functional mapping, in terms of
 	<a href="#keys-keyvalues"><code>key</code></a> values and
 	<a href="#keys-codevalues"><code>code</code></a> values,
