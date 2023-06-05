@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="ff8aa3576fabd1dfcef3c857de5da796a689cc9c" name="document-revision">
+  <meta content="9d8d82f59ac7c14a250303f1680f26b24f4400e4" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1076,7 +1076,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li><a href="#keys-modifiers"><span class="secno">6.3.1</span> <span class="content">修饰符按键</span></a>
         <li><a href="#keys-dead"><span class="secno">6.3.2</span> <span class="content">死键</span></a>
         <li>
-         <a href="#keys-IME"><span class="secno">6.3.3</span> <span class="content">Input Method Editors</span></a>
+         <a href="#keys-IME"><span class="secno">6.3.3</span> <span class="content">输入法编辑器</span></a>
          <ol class="toc">
           <li><a href="#keys-IME-keys"><span class="secno">6.3.3.1</span> <span class="content">Input Method Editor mode keys</span></a>
          </ol>
@@ -4040,7 +4040,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②②">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④④"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②④">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string②⓪">空字符串</a>
-         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑦">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-iscomposing" id="ref-for-dom-inputevent-iscomposing②">isComposing</a></code> : 如果此事件是在 <a href="#keys-dead">死键</a> 序列(dead key sequence) 期间 或在<a href="#input-method-editor" id="ref-for-input-method-editor⑦">输入法编辑器</a>处于活动状态时派发的 (以便派发<a href="#events-compositionevents">合成事件</a>)， 则为 <code>true</code> ; 否则为 <code>false</code> 。 
+         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑦">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-iscomposing" id="ref-for-dom-inputevent-iscomposing②">isComposing</a></code> : 如果此事件是在 <a href="#keys-dead">死键</a> 序列(dead key sequence) 期间 或在<a href="#input-method-editor" id="ref-for-input-method-editor⑥">输入法编辑器</a>处于活动状态时派发的 (以便派发<a href="#events-compositionevents">合成事件</a>)， 则为 <code>true</code> ; 否则为 <code>false</code> 。 
         </ul>
     </table>
     <p>当DOM被更新后，<a href="#user-agent" id="ref-for-user-agent⑥⓪">用户代理</a>必须立即派发此事件</p>
@@ -4491,7 +4491,7 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>从概念上讲，合成会话(composition session)由一个 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart③"><code>compositionstart</code></a> (合成启动)事件、一个或多个 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①"><code>compositionupdate</code></a> (合成更新)事件和一个 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend③"><code>compositionend</code></a> (合成结束)事件组成， <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data">data</a></code> 属性的值在每个会话期间保持在该事件链的每个 <q>阶段(stage)</q> 之间。</p>
     <p class="note" role="note"><strong>注意: </strong> 当合成会话(composition session)处于活动状态时，如果键盘输入设备能使用合成会话，
 	则可以将键盘事件分派到 DOM 。请参阅 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart④"><code>compositionstart</code></a> 事件详细信息和 <a href="#keys-IME">IME 部分</a> 以了解相关事件的触发排序。 </p>
-    <p>并非所有 <a href="#ime" id="ref-for-ime①①">输入法编辑器</a> 系统或设备都将必要的数据暴露给 DOM ，
+    <p>并非所有 <a href="#ime" id="ref-for-ime⑥">输入法编辑器</a> 系统或设备都将必要的数据暴露给 DOM ，
 	因此活动的合成字符串( <q>阅读窗口(Reading Window)</q> 或 <q>候补选择菜单选项</q> )可能无法通过该接口(指合成事件 API)使用，
 	在这种情况下，选择文本 <span class="zh-upper">可以</span> 由 <a href="#empty-string" id="ref-for-empty-string②①">空字符串</a> 表示。</p>
     <h4 class="heading settled" data-level="5.7.1" id="interface-compositionevent"><span class="secno">5.7.1. </span><span class="content">CompositionEvent 接口</span><a class="self-link" href="#interface-compositionevent"></a></h4>
@@ -4724,7 +4724,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <td><a data-link-type="dfn" href="#input" id="ref-for-input①②"><code>input</code></a>
        <td>
     </table>
-    <p class="note" role="note"> 大多数 <a data-link-type="dfn" href="#ime" id="ref-for-ime①②">IMEs</a> 不支持在合成会话期间取消更新。 </p>
+    <p class="note" role="note"> 大多数 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑦">IMEs</a> 不支持在合成会话期间取消更新。 </p>
     <p>每当 DOM 作为合成的一部分更新时， <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①③"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input①③"><code>input</code></a> 事件都会与 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate⑧"><code>compositionupdate</code></a> 事件一起被派发。由于没有与 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend⑨"><code>compositionend</code></a> 事件相关联的DOM更新，因此此时(合成结束时)不应发送 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①④"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input①④"><code>input</code></a> 事件。</p>
     <table class="event-sequence-table">
      <tbody>
@@ -4926,8 +4926,8 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>此事件 <span class="zh-upper">必须</span> 在 <a href="#text-composition-system" id="ref-for-text-composition-system⑦">文本合成系统</a> 开始一个新的合成会话之前，以及由于合成过程而导致 DOM 修改之前，立即被派发。
 			此事件的默认行为是 <a href="#text-composition-system" id="ref-for-text-composition-system⑧">文本合成系统</a> 启动一个新的合成会话。如果此事件被取消， <a href="#text-composition-system" id="ref-for-text-composition-system⑨">文本合成系统</a> <span class="zh-upper">应当</span> 放弃当前合成会话。</p>
     <p class="note" role="note"> 取消 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①②"><code>compositionstart</code></a> <em>事件类型</em> 不等同于取消 <a href="#text-composition-system" id="ref-for-text-composition-system①⓪">文本合成系统</a> 本身(例如，
-			通过点击一个取消按钮或关闭一个 <a href="#ime" id="ref-for-ime①③">IME</a> 窗口)。 </p>
-    <p class="note" role="note"> 一些 <a href="#ime" id="ref-for-ime①④">IMEs</a> 不支持取消正在进行的合成会话(例如，
+			通过点击一个取消按钮或关闭一个 <a href="#ime" id="ref-for-ime⑧">IME</a> 窗口)。 </p>
+    <p class="note" role="note"> 一些 <a href="#ime" id="ref-for-ime⑨">IMEs</a> 不支持取消正在进行的合成会话(例如，
 			GTK目前没有这样的API)。在这些情况下，调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑧">preventDefault()</a></code> 不会停止此事件的默认行为。 </p>
     <h5 class="heading settled" data-level="5.7.7.2" id="event-type-compositionupdate"><span class="secno">5.7.7.2. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compositionupdate">compositionupdate</dfn></span><a class="self-link" href="#event-type-compositionupdate"></a></h5>
     <table class="event-definition">
@@ -5011,7 +5011,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>当 <a href="#text-composition-system" id="ref-for-text-composition-system①④">文本合成系统</a> 完成或取消当前合成会话时， <a href="#user-agent" id="ref-for-user-agent⑥⑥">用户代理</a> <span class="zh-upper">必须</span> 派发此事件，并且 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①④"><code>compositionend</code></a> 事件 <span class="zh-upper">必须</span> 在控件更新后调度。(参见 <a href="#events-composition-input-events">§ 5.7.6 合成过程中的输入事件</a> 中事件触发顺序表格的注释)</p>
-    <p>该事件在 <a href="#text-composition-system" id="ref-for-text-composition-system①⑤">文本合成系统</a> 完成合成会话后立即派发(例如，<a href="#ime" id="ref-for-ime①⑤">IME</a> 被关闭、最小化、
+    <p>该事件在 <a href="#text-composition-system" id="ref-for-text-composition-system①⑤">文本合成系统</a> 完成合成会话后立即派发(例如，<a href="#ime" id="ref-for-ime①⓪">IME</a> 被关闭、最小化、
 			切换到焦点之外，或者以其他方式被解除并且焦点切回到 <a href="#user-agent" id="ref-for-user-agent⑥⑦">用户代理</a> )。</p>
    </section>
    <section>
@@ -5743,19 +5743,13 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
      </table>
     </div>
-    <h4 class="heading settled" data-level="6.3.3" id="keys-IME"><span class="secno">6.3.3. </span><span class="content">Input Method Editors</span><a class="self-link" href="#keys-IME"></a></h4>
-    <p>This specification includes a model for <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑧">input method editors</a> (IMEs), through the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑤">CompositionEvent</a></code> interface and events.
-		However, Composition Events and Keyboard Events do not necessarily map
-		as a one-to-one relationship.  As an example, receiving a <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⑥"><code>keydown</code></a> for the <code class="keycap">Accept</code> key value does not necessarily imply that the
-		text currently selected in the <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> is being accepted, but
-		indicates only that a keystroke happened, disconnected from the <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> Accept functionality (which would normally result in a <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑦"><code>compositionend</code></a> event in most <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> systems).  Keyboard
-		events cannot be used to determine the current state of the input method
-		editor, which can be obtained through the <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑦">data</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> interface.  Additionally, <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> systems and devices vary in their functionality, and in which
-		keys are used for activating that functionality, such that the <code class="keycap">Convert</code> and <code class="keycap">Accept</code> keys MAY be represented by other
-		available keys. Keyboard events correspond to the events generated by
-		the input device after the keyboard layout mapping.</p>
-    <p class="note" role="note"> In some implementations or system configurations, some key events, or
-		their values, might be suppressed by the <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> in use. </p>
+    <h4 class="heading settled" data-level="6.3.3" id="keys-IME"><span class="secno">6.3.3. </span><span class="content">输入法编辑器</span><a class="self-link" href="#keys-IME"></a></h4>
+    <p>该规范通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑤">CompositionEvent</a></code> 接口和事件定义了 <a href="#ime" id="ref-for-ime①①">输入法编辑器</a> (IMEs)的模型。但是，
+		组合事件和键盘事件不一定映射为一对一的关系。例如，接收 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> 键值的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⑥"><code>keydown</code></a> 并不一定意味着当前在 <a href="#ime" id="ref-for-ime①②">输入法</a> 中选择的文本正在被接受，而仅表示发生了击键并且与 <a href="#ime" id="ref-for-ime①③">输入法</a> 的接收功能(Accept functionality，在大多数输入法系统中，这通常会导致合成事件)
+		断开了连接。键盘事件不能用于确定输入法编辑器的当前状态，可以通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> 接口的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑦">data</a></code> 属性获取。此外， <a href="#ime" id="ref-for-ime①④">输入法</a> 系统和设备的功能各不相同，
+		其中那些用于激活这些功能的按键，例如 <code class="keycap">Convert</code> 和 <code class="keycap">Accept</code> 键 <span class="zh-upper">可以</span> 由其他可用键表示。
+		键盘事件就是(correspond to)输入设备在键盘布局映射之后生成的事件。</p>
+    <p class="note" role="note"> 在某些实现或系统配置中，某些按键事件或其值可能会被使用中的 <a href="#ime" id="ref-for-ime①⑤">输入法</a> 阻止(suppressed)。 </p>
     <p>The following example describes a possible sequence of keys to generate
 		the Unicode character <code class="glyph">"市"</code> (Kanji character, part of CJK
 		Unified Ideographs) using Japanese input methods. This example assumes
@@ -5961,7 +5955,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>Accept
        <tr>
         <td class="cell-number">23
-        <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑧"><code>compositionend</code></a>
+        <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑦"><code>compositionend</code></a>
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center"><code class="glyph">"市"</code>
@@ -6097,7 +6091,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
        <tr>
         <td class="cell-number">16
-        <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑨"><code>compositionend</code></a>
+        <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑧"><code>compositionend</code></a>
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center"><code class="glyph">""</code>
@@ -6111,24 +6105,24 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
      </table>
     </div>
-    <p class="note" role="note"> Some <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor①">input method editors</a> (such as on the MacOS operating system)
+    <p class="note" role="note"> Some <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑦">input method editors</a> (such as on the MacOS operating system)
 		might set an <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑨">empty string</a> to the composition data attribute
 		before canceling a composition. </p>
     <h5 class="heading settled" data-level="6.3.3.1" id="keys-IME-keys"><span class="secno">6.3.3.1. </span><span class="content">Input Method Editor mode keys</span><a class="self-link" href="#keys-IME-keys"></a></h5>
-    <p>Some keys on certain devices are intended to activate <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor②">input
-			method editor</a> functionality, or to change the mode of an active <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor③">input method editor</a>.  Custom keys for this purpose can be
+    <p>Some keys on certain devices are intended to activate <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor①">input
+			method editor</a> functionality, or to change the mode of an active <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor②">input method editor</a>.  Custom keys for this purpose can be
 			defined for different devices or language modes. The keys defined in
 			this specification for this purpose are: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-RomanCharacters">RomanCharacters</a>"</code>.  When one of these keys is
-			pressed, and no <a data-link-type="dfn" href="#ime" id="ref-for-ime⑥">IME</a> is currently active, the appropriate <a data-link-type="dfn" href="#ime" id="ref-for-ime⑦">IME</a> is expected to be activated in the mode indicated by the
-			key (if available). If an <a data-link-type="dfn" href="#ime" id="ref-for-ime⑧">IME</a> is already active when the key
-			is pressed, the active <a data-link-type="dfn" href="#ime" id="ref-for-ime⑨">IME</a> might change to the indicated
-			mode, or a different <a data-link-type="dfn" href="#ime" id="ref-for-ime①⓪">IME</a> might be launched, or the might MAY
+			pressed, and no <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> is currently active, the appropriate <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> is expected to be activated in the mode indicated by the
+			key (if available). If an <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> is already active when the key
+			is pressed, the active <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> might change to the indicated
+			mode, or a different <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> might be launched, or the might MAY
 			be ignored, on a device- and application-specific basis.</p>
     <p>This specification also defines other keys which are intended for
-			operation specifically with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor④">input method editors</a>: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code>.  The functions of these
+			operation specifically with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor③">input method editors</a>: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code>.  The functions of these
 			keys are not defined in this specification — refer to other
-			resources for details on <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑤">input method editor</a> functionality.</p>
-    <p class="note" role="note"> Keys with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑥">input method editor</a> functions are not restricted to
+			resources for details on <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor④">input method editor</a> functionality.</p>
+    <p class="note" role="note"> Keys with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑤">input method editor</a> functions are not restricted to
 			that purpose, and can have other device- or implementation-specific
 			purposes. </p>
     <h4 class="heading settled" data-level="6.3.4" id="keys-cancelable-keys"><span class="secno">6.3.4. </span><span class="content">Default actions and cancelable keyboard events</span><a class="self-link" href="#keys-cancelable-keys"></a></h4>
@@ -8442,7 +8436,7 @@ Level 0</q>.</p>
 processer)，是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs
 or other characters，中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，
 这种输入应用程序常在东亚语言(如中文，日语，韩语)中使用。一个输入法编辑器( <a href="#ime" id="ref-for-ime①⑦">IME</a> )也可被用于基于词语的单词补全，常用在移动设备上。
-参见本规范中用于讨论IMEs的 <a href="#keys-IME">§ 6.3.3 Input Method Editors</a> 。也可查看 <a href="#text-composition-system" id="ref-for-text-composition-system①⑧">文本合成系统</a> 。</p>
+参见本规范中用于讨论IMEs的 <a href="#keys-IME">§ 6.3.3 输入法编辑器</a> 。也可查看 <a href="#text-composition-system" id="ref-for-text-composition-system①⑧">文本合成系统</a> 。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="key-mapping">key mapping</dfn>
      <dd data-md>
       <p>键映射是将键值分配给特定键的过程，是多种因素组合的结果，
@@ -10810,7 +10804,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-beforeinput①①">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-beforeinput①②">(2)</a> <a href="#ref-for-beforeinput①③">(3)</a> <a href="#ref-for-beforeinput①④">(4)</a> <a href="#ref-for-beforeinput①⑤">(5)</a> <a href="#ref-for-beforeinput①⑥">(6)</a> <a href="#ref-for-beforeinput①⑦">(7)</a> <a href="#ref-for-beforeinput①⑧">(8)</a>
     <li><a href="#ref-for-beforeinput①⑨">5.7.7.2. compositionupdate</a>
     <li><a href="#ref-for-beforeinput②⓪">6.3.1. 修饰符按键</a> <a href="#ref-for-beforeinput②①">(2)</a> <a href="#ref-for-beforeinput②②">(3)</a> <a href="#ref-for-beforeinput②③">(4)</a> <a href="#ref-for-beforeinput②④">(5)</a> <a href="#ref-for-beforeinput②⑤">(6)</a> <a href="#ref-for-beforeinput②⑥">(7)</a> <a href="#ref-for-beforeinput②⑦">(8)</a> <a href="#ref-for-beforeinput②⑧">(9)</a> <a href="#ref-for-beforeinput②⑨">(10)</a>
-    <li><a href="#ref-for-beforeinput③⓪">6.3.3. Input Method Editors</a> <a href="#ref-for-beforeinput③①">(2)</a> <a href="#ref-for-beforeinput③②">(3)</a> <a href="#ref-for-beforeinput③③">(4)</a>
+    <li><a href="#ref-for-beforeinput③⓪">6.3.3. 输入法编辑器</a> <a href="#ref-for-beforeinput③①">(2)</a> <a href="#ref-for-beforeinput③②">(3)</a> <a href="#ref-for-beforeinput③③">(4)</a>
     <li><a href="#ref-for-beforeinput③④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-beforeinput③⑤">(2)</a> <a href="#ref-for-beforeinput③⑥">(3)</a> <a href="#ref-for-beforeinput③⑦">(4)</a> <a href="#ref-for-beforeinput③⑧">(5)</a>
     <li><a href="#ref-for-beforeinput③⑨">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-beforeinput④⓪">(2)</a>
     <li><a href="#ref-for-beforeinput④①">9.3.1.1. keypress</a> <a href="#ref-for-beforeinput④②">(2)</a>
@@ -10829,7 +10823,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-input①⓪">5.6.4.2. keyup</a>
     <li><a href="#ref-for-input①①">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-input①②">(2)</a> <a href="#ref-for-input①③">(3)</a> <a href="#ref-for-input①④">(4)</a> <a href="#ref-for-input①⑤">(5)</a> <a href="#ref-for-input①⑥">(6)</a> <a href="#ref-for-input①⑦">(7)</a> <a href="#ref-for-input①⑧">(8)</a> <a href="#ref-for-input①⑨">(9)</a> <a href="#ref-for-input②⓪">(10)</a> <a href="#ref-for-input②①">(11)</a>
     <li><a href="#ref-for-input②②">6.3.1. 修饰符按键</a> <a href="#ref-for-input②③">(2)</a> <a href="#ref-for-input②④">(3)</a> <a href="#ref-for-input②⑤">(4)</a> <a href="#ref-for-input②⑥">(5)</a> <a href="#ref-for-input②⑦">(6)</a> <a href="#ref-for-input②⑧">(7)</a> <a href="#ref-for-input②⑨">(8)</a> <a href="#ref-for-input③⓪">(9)</a> <a href="#ref-for-input③①">(10)</a>
-    <li><a href="#ref-for-input③②">6.3.3. Input Method Editors</a> <a href="#ref-for-input③③">(2)</a> <a href="#ref-for-input③④">(3)</a> <a href="#ref-for-input③⑤">(4)</a>
+    <li><a href="#ref-for-input③②">6.3.3. 输入法编辑器</a> <a href="#ref-for-input③③">(2)</a> <a href="#ref-for-input③④">(3)</a> <a href="#ref-for-input③⑤">(4)</a>
     <li><a href="#ref-for-input③⑥">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-input③⑦">(2)</a> <a href="#ref-for-input③⑧">(3)</a> <a href="#ref-for-input③⑨">(4)</a> <a href="#ref-for-input④⓪">(5)</a>
     <li><a href="#ref-for-input④①">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-input④②">(2)</a>
     <li><a href="#ref-for-input④③">9.3.1.1. keypress</a>
@@ -10854,7 +10848,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyboardevent⑤⓪">6.2.3. code 例子</a> <a href="#ref-for-keyboardevent⑤①">(2)</a> <a href="#ref-for-keyboardevent⑤②">(3)</a> <a href="#ref-for-keyboardevent⑤③">(4)</a> <a href="#ref-for-keyboardevent⑤④">(5)</a> <a href="#ref-for-keyboardevent⑤⑤">(6)</a> <a href="#ref-for-keyboardevent⑤⑥">(7)</a> <a href="#ref-for-keyboardevent⑤⑦">(8)</a> <a href="#ref-for-keyboardevent⑤⑧">(9)</a> <a href="#ref-for-keyboardevent⑤⑨">(10)</a>
     <li><a href="#ref-for-keyboardevent⑥⓪">6.3.1. 修饰符按键</a> <a href="#ref-for-keyboardevent⑥①">(2)</a> <a href="#ref-for-keyboardevent⑥②">(3)</a> <a href="#ref-for-keyboardevent⑥③">(4)</a> <a href="#ref-for-keyboardevent⑥④">(5)</a> <a href="#ref-for-keyboardevent⑥⑤">(6)</a>
     <li><a href="#ref-for-keyboardevent⑥⑥">6.3.2. 死键</a> <a href="#ref-for-keyboardevent⑥⑦">(2)</a> <a href="#ref-for-keyboardevent⑥⑧">(3)</a> <a href="#ref-for-keyboardevent⑥⑨">(4)</a>
-    <li><a href="#ref-for-keyboardevent⑦⓪">6.3.3. Input Method Editors</a> <a href="#ref-for-keyboardevent⑦①">(2)</a> <a href="#ref-for-keyboardevent⑦②">(3)</a> <a href="#ref-for-keyboardevent⑦③">(4)</a>
+    <li><a href="#ref-for-keyboardevent⑦⓪">6.3.3. 输入法编辑器</a> <a href="#ref-for-keyboardevent⑦①">(2)</a> <a href="#ref-for-keyboardevent⑦②">(3)</a> <a href="#ref-for-keyboardevent⑦③">(4)</a>
     <li><a href="#ref-for-keyboardevent⑦④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyboardevent⑦⑤">(2)</a> <a href="#ref-for-keyboardevent⑦⑥">(3)</a>
     <li><a href="#ref-for-keyboardevent⑦⑦">7.1.4. Initializers for interface KeyboardEvent</a> <a href="#ref-for-keyboardevent⑦⑧">(2)</a>
     <li><a href="#ref-for-keyboardevent⑦⑨">8.1. Legacy UIEvent supplemental interface</a> <a href="#ref-for-keyboardevent⑧⓪">(2)</a>
@@ -10927,7 +10921,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-key②⑥">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-keyboardevent-key②⑦">(2)</a> <a href="#ref-for-dom-keyboardevent-key②⑧">(3)</a> <a href="#ref-for-dom-keyboardevent-key②⑨">(4)</a> <a href="#ref-for-dom-keyboardevent-key③⓪">(5)</a> <a href="#ref-for-dom-keyboardevent-key③①">(6)</a>
     <li><a href="#ref-for-dom-keyboardevent-key③②">6.3.1. 修饰符按键</a> <a href="#ref-for-dom-keyboardevent-key③③">(2)</a> <a href="#ref-for-dom-keyboardevent-key③④">(3)</a> <a href="#ref-for-dom-keyboardevent-key③⑤">(4)</a> <a href="#ref-for-dom-keyboardevent-key③⑥">(5)</a> <a href="#ref-for-dom-keyboardevent-key③⑦">(6)</a> <a href="#ref-for-dom-keyboardevent-key③⑧">(7)</a>
     <li><a href="#ref-for-dom-keyboardevent-key③⑨">6.3.2. 死键</a> <a href="#ref-for-dom-keyboardevent-key④⓪">(2)</a>
-    <li><a href="#ref-for-dom-keyboardevent-key④①">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-keyboardevent-key④②">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-key④①">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-keyboardevent-key④②">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④③">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-keyboardevent-key④④">(2)</a> <a href="#ref-for-dom-keyboardevent-key④⑤">(3)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑥">7.1.4. Initializers for interface KeyboardEvent</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑦">8. Legacy Key &amp; Mouse Event Attributes</a>
@@ -11038,7 +11032,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-iscomposing③">5.7.5. 合成过程中的按键事件</a> <a href="#ref-for-dom-keyboardevent-iscomposing④">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing⑤">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing⑥">6.3.2. 死键</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑦">(2)</a>
-    <li><a href="#ref-for-dom-keyboardevent-iscomposing⑧">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑨">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-iscomposing⑧">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑨">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing①⓪">9.3.1.1. keypress</a>
    </ul>
   </aside>
@@ -11109,7 +11103,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keydown②③">6.2.3. code 例子</a> <a href="#ref-for-keydown②④">(2)</a> <a href="#ref-for-keydown②⑤">(3)</a> <a href="#ref-for-keydown②⑥">(4)</a> <a href="#ref-for-keydown②⑦">(5)</a>
     <li><a href="#ref-for-keydown②⑧">6.3.1. 修饰符按键</a> <a href="#ref-for-keydown②⑨">(2)</a> <a href="#ref-for-keydown③⓪">(3)</a> <a href="#ref-for-keydown③①">(4)</a> <a href="#ref-for-keydown③②">(5)</a> <a href="#ref-for-keydown③③">(6)</a> <a href="#ref-for-keydown③④">(7)</a> <a href="#ref-for-keydown③⑤">(8)</a> <a href="#ref-for-keydown③⑥">(9)</a> <a href="#ref-for-keydown③⑦">(10)</a> <a href="#ref-for-keydown③⑧">(11)</a> <a href="#ref-for-keydown③⑨">(12)</a> <a href="#ref-for-keydown④⓪">(13)</a>
     <li><a href="#ref-for-keydown④①">6.3.2. 死键</a> <a href="#ref-for-keydown④②">(2)</a> <a href="#ref-for-keydown④③">(3)</a> <a href="#ref-for-keydown④④">(4)</a> <a href="#ref-for-keydown④⑤">(5)</a>
-    <li><a href="#ref-for-keydown④⑥">6.3.3. Input Method Editors</a> <a href="#ref-for-keydown④⑦">(2)</a> <a href="#ref-for-keydown④⑧">(3)</a> <a href="#ref-for-keydown④⑨">(4)</a> <a href="#ref-for-keydown⑤⓪">(5)</a> <a href="#ref-for-keydown⑤①">(6)</a> <a href="#ref-for-keydown⑤②">(7)</a> <a href="#ref-for-keydown⑤③">(8)</a> <a href="#ref-for-keydown⑤④">(9)</a> <a href="#ref-for-keydown⑤⑤">(10)</a> <a href="#ref-for-keydown⑤⑥">(11)</a>
+    <li><a href="#ref-for-keydown④⑥">6.3.3. 输入法编辑器</a> <a href="#ref-for-keydown④⑦">(2)</a> <a href="#ref-for-keydown④⑧">(3)</a> <a href="#ref-for-keydown④⑨">(4)</a> <a href="#ref-for-keydown⑤⓪">(5)</a> <a href="#ref-for-keydown⑤①">(6)</a> <a href="#ref-for-keydown⑤②">(7)</a> <a href="#ref-for-keydown⑤③">(8)</a> <a href="#ref-for-keydown⑤④">(9)</a> <a href="#ref-for-keydown⑤⑤">(10)</a> <a href="#ref-for-keydown⑤⑥">(11)</a>
     <li><a href="#ref-for-keydown⑤⑦">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keydown⑤⑧">(2)</a> <a href="#ref-for-keydown⑤⑨">(3)</a> <a href="#ref-for-keydown⑥⓪">(4)</a> <a href="#ref-for-keydown⑥①">(5)</a> <a href="#ref-for-keydown⑥②">(6)</a> <a href="#ref-for-keydown⑥③">(7)</a> <a href="#ref-for-keydown⑥④">(8)</a>
     <li><a href="#ref-for-keydown⑥⑤">8.2.1. Interface KeyboardEvent (supplemental)</a>
     <li><a href="#ref-for-keydown⑥⑥">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keydown⑥⑦">(2)</a> <a href="#ref-for-keydown⑥⑧">(3)</a>
@@ -11130,7 +11124,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyup①⑦">6.2.3. code 例子</a> <a href="#ref-for-keyup①⑧">(2)</a> <a href="#ref-for-keyup①⑨">(3)</a> <a href="#ref-for-keyup②⓪">(4)</a> <a href="#ref-for-keyup②①">(5)</a>
     <li><a href="#ref-for-keyup②②">6.3.1. 修饰符按键</a> <a href="#ref-for-keyup②③">(2)</a> <a href="#ref-for-keyup②④">(3)</a> <a href="#ref-for-keyup②⑤">(4)</a> <a href="#ref-for-keyup②⑥">(5)</a> <a href="#ref-for-keyup②⑦">(6)</a> <a href="#ref-for-keyup②⑧">(7)</a> <a href="#ref-for-keyup②⑨">(8)</a> <a href="#ref-for-keyup③⓪">(9)</a> <a href="#ref-for-keyup③①">(10)</a> <a href="#ref-for-keyup③②">(11)</a> <a href="#ref-for-keyup③③">(12)</a> <a href="#ref-for-keyup③④">(13)</a> <a href="#ref-for-keyup③⑤">(14)</a> <a href="#ref-for-keyup③⑥">(15)</a>
     <li><a href="#ref-for-keyup③⑦">6.3.2. 死键</a> <a href="#ref-for-keyup③⑧">(2)</a> <a href="#ref-for-keyup③⑨">(3)</a> <a href="#ref-for-keyup④⓪">(4)</a>
-    <li><a href="#ref-for-keyup④①">6.3.3. Input Method Editors</a> <a href="#ref-for-keyup④②">(2)</a> <a href="#ref-for-keyup④③">(3)</a> <a href="#ref-for-keyup④④">(4)</a> <a href="#ref-for-keyup④⑤">(5)</a> <a href="#ref-for-keyup④⑥">(6)</a> <a href="#ref-for-keyup④⑦">(7)</a> <a href="#ref-for-keyup④⑧">(8)</a> <a href="#ref-for-keyup④⑨">(9)</a> <a href="#ref-for-keyup⑤⓪">(10)</a>
+    <li><a href="#ref-for-keyup④①">6.3.3. 输入法编辑器</a> <a href="#ref-for-keyup④②">(2)</a> <a href="#ref-for-keyup④③">(3)</a> <a href="#ref-for-keyup④④">(4)</a> <a href="#ref-for-keyup④⑤">(5)</a> <a href="#ref-for-keyup④⑥">(6)</a> <a href="#ref-for-keyup④⑦">(7)</a> <a href="#ref-for-keyup④⑧">(8)</a> <a href="#ref-for-keyup④⑨">(9)</a> <a href="#ref-for-keyup⑤⓪">(10)</a>
     <li><a href="#ref-for-keyup⑤①">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyup⑤②">(2)</a> <a href="#ref-for-keyup⑤③">(3)</a> <a href="#ref-for-keyup⑤④">(4)</a> <a href="#ref-for-keyup⑤⑤">(5)</a> <a href="#ref-for-keyup⑤⑥">(6)</a> <a href="#ref-for-keyup⑤⑦">(7)</a> <a href="#ref-for-keyup⑤⑧">(8)</a>
     <li><a href="#ref-for-keyup⑤⑨">8.2.1. Interface KeyboardEvent (supplemental)</a>
     <li><a href="#ref-for-keyup⑥⓪">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keyup⑥①">(2)</a>
@@ -11147,7 +11141,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionevent⑨">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionevent①⓪">(2)</a>
     <li><a href="#ref-for-compositionevent①①">5.7.7.3. compositionend</a> <a href="#ref-for-compositionevent①②">(2)</a>
     <li><a href="#ref-for-compositionevent①③">6.3.2. 死键</a> <a href="#ref-for-compositionevent①④">(2)</a>
-    <li><a href="#ref-for-compositionevent①⑤">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionevent①⑥">(2)</a> <a href="#ref-for-compositionevent①⑦">(3)</a> <a href="#ref-for-compositionevent①⑧">(4)</a>
+    <li><a href="#ref-for-compositionevent①⑤">6.3.3. 输入法编辑器</a> <a href="#ref-for-compositionevent①⑥">(2)</a> <a href="#ref-for-compositionevent①⑦">(3)</a> <a href="#ref-for-compositionevent①⑧">(4)</a>
     <li><a href="#ref-for-compositionevent①⑨">7.1.5. Initializers for interface CompositionEvent</a>
     <li><a href="#ref-for-compositionevent②⓪">12.1.4. New Interfaces</a>
     <li><a href="#ref-for-compositionevent②①">12.2. Changes between different drafts of UI Events</a>
@@ -11164,7 +11158,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-compositionevent-data①⓪">5.7.7.3. compositionend</a>
     <li><a href="#ref-for-dom-compositionevent-data①①">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-compositionevent-data①②">(2)</a> <a href="#ref-for-dom-compositionevent-data①③">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data①④">6.3.2. 死键</a> <a href="#ref-for-dom-compositionevent-data①⑤">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑥">(3)</a>
-    <li><a href="#ref-for-dom-compositionevent-data①⑦">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-compositionevent-data①⑧">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑨">(3)</a>
+    <li><a href="#ref-for-dom-compositionevent-data①⑦">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-compositionevent-data①⑧">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑨">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data②⓪">7.1.5. Initializers for interface CompositionEvent</a>
    </ul>
   </aside>
@@ -11195,7 +11189,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionstart①⓪">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-compositionstart①①">5.7.7.1. compositionstart</a> <a href="#ref-for-compositionstart①②">(2)</a>
     <li><a href="#ref-for-compositionstart①③">6.3.2. 死键</a> <a href="#ref-for-compositionstart①④">(2)</a>
-    <li><a href="#ref-for-compositionstart①⑤">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionstart①⑥">(2)</a>
+    <li><a href="#ref-for-compositionstart①⑤">6.3.3. 输入法编辑器</a> <a href="#ref-for-compositionstart①⑥">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-compositionupdate" class="dfn-panel" data-for="compositionupdate" id="infopanel-for-compositionupdate">
@@ -11209,7 +11203,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionupdate⑥">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-compositionupdate⑦">(2)</a> <a href="#ref-for-compositionupdate⑧">(3)</a> <a href="#ref-for-compositionupdate⑨">(4)</a> <a href="#ref-for-compositionupdate①⓪">(5)</a> <a href="#ref-for-compositionupdate①①">(6)</a> <a href="#ref-for-compositionupdate①②">(7)</a>
     <li><a href="#ref-for-compositionupdate①③">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionupdate①④">(2)</a>
     <li><a href="#ref-for-compositionupdate①⑤">6.3.2. 死键</a> <a href="#ref-for-compositionupdate①⑥">(2)</a> <a href="#ref-for-compositionupdate①⑦">(3)</a> <a href="#ref-for-compositionupdate①⑧">(4)</a> <a href="#ref-for-compositionupdate①⑨">(5)</a>
-    <li><a href="#ref-for-compositionupdate②⓪">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionupdate②①">(2)</a> <a href="#ref-for-compositionupdate②②">(3)</a> <a href="#ref-for-compositionupdate②③">(4)</a> <a href="#ref-for-compositionupdate②④">(5)</a> <a href="#ref-for-compositionupdate②⑤">(6)</a> <a href="#ref-for-compositionupdate②⑥">(7)</a> <a href="#ref-for-compositionupdate②⑦">(8)</a> <a href="#ref-for-compositionupdate②⑧">(9)</a>
+    <li><a href="#ref-for-compositionupdate②⓪">6.3.3. 输入法编辑器</a> <a href="#ref-for-compositionupdate②①">(2)</a> <a href="#ref-for-compositionupdate②②">(3)</a> <a href="#ref-for-compositionupdate②③">(4)</a> <a href="#ref-for-compositionupdate②④">(5)</a> <a href="#ref-for-compositionupdate②⑤">(6)</a> <a href="#ref-for-compositionupdate②⑥">(7)</a> <a href="#ref-for-compositionupdate②⑦">(8)</a> <a href="#ref-for-compositionupdate②⑧">(9)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-compositionend" class="dfn-panel" data-for="compositionend" id="infopanel-for-compositionend">
@@ -11227,7 +11221,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionend①②">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionend①③">(2)</a>
     <li><a href="#ref-for-compositionend①④">5.7.7.3. compositionend</a>
     <li><a href="#ref-for-compositionend①⑤">6.3.2. 死键</a> <a href="#ref-for-compositionend①⑥">(2)</a>
-    <li><a href="#ref-for-compositionend①⑦">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionend①⑧">(2)</a> <a href="#ref-for-compositionend①⑨">(3)</a>
+    <li><a href="#ref-for-compositionend①⑦">6.3.3. 输入法编辑器</a> <a href="#ref-for-compositionend①⑧">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-uievent-inituievent" class="dfn-panel" data-for="dom-uievent-inituievent" id="infopanel-for-dom-uievent-inituievent">
@@ -11651,7 +11645,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-empty-string">5.7.7.1. compositionstart</a> <a href="#ref-for-empty-string">(2)</a>
     <li><a href="#ref-for-empty-string">5.7.7.2. compositionupdate</a> <a href="#ref-for-empty-string">(2)</a> <a href="#ref-for-empty-string">(3)</a>
     <li><a href="#ref-for-empty-string">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-empty-string">6.3.3. Input Method Editors</a>
+    <li><a href="#ref-for-empty-string">6.3.3. 输入法编辑器</a>
     <li><a href="#ref-for-empty-string①">9.4.1. Interface MutationEvent</a> <a href="#ref-for-empty-string②">(2)</a> <a href="#ref-for-empty-string③">(3)</a>
     <li><a href="#ref-for-empty-string④">9.4.2.2. DOMCharacterDataModified</a>
     <li><a href="#ref-for-empty-string⑤">9.4.2.3. DOMNodeInserted</a> <a href="#ref-for-empty-string⑥">(2)</a> <a href="#ref-for-empty-string⑦">(3)</a>
@@ -11796,8 +11790,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-ime">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-ime">5.7.7.1. compositionstart</a> <a href="#ref-for-ime">(2)</a>
     <li><a href="#ref-for-ime">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-ime①">6.3.3. Input Method Editors</a> <a href="#ref-for-ime②">(2)</a> <a href="#ref-for-ime③">(3)</a> <a href="#ref-for-ime④">(4)</a> <a href="#ref-for-ime⑤">(5)</a>
-    <li><a href="#ref-for-ime⑥">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-ime⑦">(2)</a> <a href="#ref-for-ime⑧">(3)</a> <a href="#ref-for-ime⑨">(4)</a> <a href="#ref-for-ime①⓪">(5)</a>
+    <li><a href="#ref-for-ime">6.3.3. 输入法编辑器</a> <a href="#ref-for-ime">(2)</a> <a href="#ref-for-ime">(3)</a> <a href="#ref-for-ime">(4)</a> <a href="#ref-for-ime">(5)</a>
+    <li><a href="#ref-for-ime①">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-ime②">(2)</a> <a href="#ref-for-ime③">(3)</a> <a href="#ref-for-ime④">(4)</a> <a href="#ref-for-ime⑤">(5)</a>
     <li><a href="#ref-for-ime">9.3.1.1. keypress</a>
     <li><a href="#ref-for-ime">14. 术语表</a> <a href="#ref-for-ime">(2)</a>
    </ul>
@@ -11807,8 +11801,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-input-method-editor">5.5.3.1. beforeinput</a>
     <li><a href="#ref-for-input-method-editor">5.5.3.2. input</a>
-    <li><a href="#ref-for-input-method-editor">6.3.3. Input Method Editors</a> <a href="#ref-for-input-method-editor①">(2)</a>
-    <li><a href="#ref-for-input-method-editor②">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-input-method-editor③">(2)</a> <a href="#ref-for-input-method-editor④">(3)</a> <a href="#ref-for-input-method-editor⑤">(4)</a> <a href="#ref-for-input-method-editor⑥">(5)</a>
+    <li><a href="#ref-for-input-method-editor">6.3.3. 输入法编辑器</a>
+    <li><a href="#ref-for-input-method-editor①">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-input-method-editor②">(2)</a> <a href="#ref-for-input-method-editor③">(3)</a> <a href="#ref-for-input-method-editor④">(4)</a> <a href="#ref-for-input-method-editor⑤">(5)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-key-mapping" class="dfn-panel" data-for="key-mapping" id="infopanel-for-key-mapping">
