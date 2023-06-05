@@ -135,6 +135,8 @@ url: https://mangwu.github.io/uievents-code-cn/#key-alphanumeric-writing-system;
 	text: 书写系统键
 url: https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts; type: dfn; spec: uievents-code;
 	text: 标准键盘布局
+url: https://mangwu.github.io/uievents-key-cn/#combining-character; type: dfn; spec: uievents-key;
+	text: 组合字符
 </pre>
 
 <pre class="link-defaults">

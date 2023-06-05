@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="dea65f1cc1131a834cc371174a3df50302d6b735" name="document-revision">
+  <meta content="ff8aa3576fabd1dfcef3c857de5da796a689cc9c" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1074,7 +1074,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <a href="#keys-keyvalues"><span class="secno">6.3</span> <span class="content">键盘事件 <code>key</code> 属性值</span></a>
        <ol class="toc">
         <li><a href="#keys-modifiers"><span class="secno">6.3.1</span> <span class="content">修饰符按键</span></a>
-        <li><a href="#keys-dead"><span class="secno">6.3.2</span> <span class="content">Dead keys</span></a>
+        <li><a href="#keys-dead"><span class="secno">6.3.2</span> <span class="content">死键</span></a>
         <li>
          <a href="#keys-IME"><span class="secno">6.3.3</span> <span class="content">Input Method Editors</span></a>
          <ol class="toc">
@@ -4254,7 +4254,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEventInit" data-dfn-type="dict-member" data-export id="dom-keyboardeventinit-repeat"><code>repeat</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-boolean" id="ref-for-idl-boolean⑤⑥">boolean</a>, defaulting to <code>false</code></span>
      <dt class="custom-dfn"><i><code class="idl">repeat</code></i>， <code>boolean</code> <span class="replacement"> 类型，默认值为 <code>false</code> </span> 
      <dd> 初始化键盘事件(KeyboardEvent)对象的 <code>repeat</code> 属性。
-					如果当前键盘事件(KeyboardEvent)被认为是由长时间按下(非规范补充: 见于 <a href="#reapeat-custom-note">reapeat属性注释</a> )
+					如果当前键盘事件(KeyboardEvent)被认为是由长时间按下(非规范补充: 见于 <a href="#reapeat-custom-note">reapeat属性自定义注释</a> )
 					任何单个键引起的类似事件的重复序列的一部分，则该属性应设置为 <code>true</code> ，否则为 <code>false</code> 。 
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEventInit" data-dfn-type="dict-member" data-export id="dom-keyboardeventinit-iscomposing"><code>isComposing</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-boolean" id="ref-for-idl-boolean⑤⑦">boolean</a>, defaulting to <code>false</code></span>
      <dt class="custom-dfn"><i><code class="idl">isComposing</code></i>， <code>boolean</code> <span class="replacement"> 类型，默认值为 <code>false</code></span> 
@@ -5021,7 +5021,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <li data-md>
       <p>键盘布局、映射和键值的说明。</p>
      <li data-md>
-      <p>键之间的关系，例如 <a href="#dead-key" id="ref-for-dead-key⑦">死键</a> 或 修饰符键。</p>
+      <p>键之间的关系，例如 <a href="#dead-key" id="ref-for-dead-key②">死键</a> 或 修饰符键。</p>
      <li data-md>
       <p>键盘事件和其默认行为之间的关系。</p>
      <li data-md>
@@ -5079,7 +5079,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				或捕获所有键(例如，在远程桌面客户端中，将所有键发送到远程主机)。 
     </dl>
     <h4 class="heading settled" data-level="6.2.3" id="code-examples"><span class="secno">6.2.3. </span><span class="content"><code>code</code> 例子</span><a class="self-link" href="#code-examples"></a></h4>
-    <div class="note custom-note" role="note"> 以下关于键盘布局的类型，可以查阅 <a data-link-type="dfn" href="https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts" id="ref-for-keyboard-common-layouts">标准键盘布局</a> 。<br> 美式键盘布局:
+    <div class="note custom-note" id="keyboard-layout-custom-note" role="note"><a class="self-link" href="#keyboard-layout-custom-note"></a> 以下关于键盘布局的类型，可以查阅 <a data-link-type="dfn" href="https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts" id="ref-for-keyboard-common-layouts">标准键盘布局</a> 。<br> 美式键盘布局:
 		标准 "101" 键盘布局; <br> 日式键盘布局: 日式 "106" 键盘布局; <br> 美式国际键盘布局:  备用 "101" 键盘布局; <br> 英式键盘布局:
 		标准 "102" 键盘布局。 </div>
     <div class="example" id="example-842663ed">
@@ -5186,7 +5186,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Digit2">Digit2</a>"</code>
         <td><code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-shiftkey" id="ref-for-dom-keyboardevent-shiftkey⑧">shiftKey</a></code>
      </table>
-     <p>无论当前区域设置或修改键状态如何，在 US 键盘上键帽标签为 <code class="glyph">"2"</code> 的键总是会在 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code②②">code</a></code> 属性中产生 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Digit2">Digit2</a>"</code> 。</p>
+     <p>无论当前区域设置或修改键状态如何，在美式(US)键盘上键帽标签为 <code class="glyph">"2"</code> 的键总是会在 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code②②">code</a></code> 属性中产生 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Digit2">Digit2</a>"</code> 。</p>
     </div>
     <div class="example" id="example-key-shift-2">
      <a class="self-link" href="#example-key-shift-2"></a> 键盘事件序列: <code class="keycap">Shift</code> 和 <code class="keycap">2</code> 
@@ -5304,7 +5304,7 @@ myDiv.addEventListener("auxclick", function(e) {
 	和次要表示形式(小写或小写字母)之间存在关系，而是鼓励内容作者使用 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key②⑧">key</a></code> 属性的值。例如， <a data-link-type="biblio" href="#biblio-uievents-code" title="UI Events KeyboardEvent code Values">[UIEvents-Code]</a> 中描述的标准 "102"
 	键盘布局阐明了一个可能的键盘布局上的一组可能的 <a href="#key-mapping" id="ref-for-key-mapping②">键映射</a> 。还有许多其他存在的键盘布局，既有标准的，
 	也有特殊的。</p>
-    <p class="note" role="note"> 为了简化 <a href="#dead-key" id="ref-for-dead-key⑧">死键</a> 支持，当键盘的操作系统映射处理 <a href="#dead-key" id="ref-for-dead-key⑨">死键</a> 状态时，不会通过 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key②⑨">key</a></code> 属性报告死键序列的当前状态，相反，一个 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code> 键值会被 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⓪">key</a></code> 报告。取而代之的是(要获取死键序列状态)，实现会生成 <a href="#events-compositionevents">组合事件</a> ，事件中包含通过 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①①">data</a></code> 属性报告的死键序列的中间状态。与前面的例子一样， <a data-link-type="dfn" href="#qwerty" id="ref-for-qwerty①">QWERTY</a> 键盘上键帽标签为 <code class="keycap">O</code> 的键的按键值在操作死键以添加变音符号的期间，在未换挡(unshifted)状态下具有 <code class="char">"ö"</code> 的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①②">data</a></code> 属性值 ;
+    <p class="note" role="note"> 为了简化 <a href="#dead-key" id="ref-for-dead-key③">死键</a> 支持，当键盘的操作系统映射处理 <a href="#dead-key" id="ref-for-dead-key④">死键</a> 状态时，不会通过 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key②⑨">key</a></code> 属性报告死键序列的当前状态，相反，一个 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code> 键值会被 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⓪">key</a></code> 报告。取而代之的是(要获取死键序列状态)，实现会生成 <a href="#events-compositionevents">组合事件</a> ，事件中包含通过 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①①">data</a></code> 属性报告的死键序列的中间状态。与前面的例子一样， <a data-link-type="dfn" href="#qwerty" id="ref-for-qwerty①">QWERTY</a> 键盘上键帽标签为 <code class="keycap">O</code> 的键的按键值在操作死键以添加变音符号的期间，在未换挡(unshifted)状态下具有 <code class="char">"ö"</code> 的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①②">data</a></code> 属性值 ;
 	在操作死键以添加变音符号的期间，在换挡(shifted)状态下具有 <code class="char">"ö"</code> 的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①③">data</a></code> 属性值。 </p>
     <p>同样重要到需要注意是，按键事件状态和键值之间没有一一对应的关系。
 	一个特定的键值可能与多个键相关联。例如，许多标准键盘包含不止一个具有 <code class="keycap">Shift</code> 键帽标签的键(通常通过 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-location" id="ref-for-dom-keyboardevent-location①⑨">location</a></code> 值 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_left" id="ref-for-dom-keyboardevent-dom_key_location_left①⓪">DOM_KEY_LOCATION_LEFT</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_right" id="ref-for-dom-keyboardevent-dom_key_location_right⑥">DOM_KEY_LOCATION_RIGHT</a></code> 区分)或 <code class="keycap">8</code> 键帽标签的键(通常由 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-location" id="ref-for-dom-keyboardevent-location②⓪">location</a></code> 值 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_standard" id="ref-for-dom-keyboardevent-dom_key_location_standard⑧">DOM_KEY_LOCATION_STANDARD</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_numpad" id="ref-for-dom-keyboardevent-dom_key_location_numpad⑤">DOM_KEY_LOCATION_NUMPAD</a></code> 区分)，并且用户配置的自定义键盘布局 <span class="zh-upper">可以</span> 在多个键状态(multiple key-state)
@@ -5315,13 +5315,13 @@ myDiv.addEventListener("auxclick", function(e) {
 	它相当于数学乘法运算，而在其他文档或可运行程序中，该功能键预留为乘法符号( <code class="glyph">"×"</code> ，Unicode 值 <code class="unicode">U+00D7</code> )或小写拉丁字母 <code>"x"</code> (由于许多键盘上没有乘法键，而且字形 <code class="glyph">"×"</code> 和 <code class="glyph">"x"</code> 表面上很相似)。
 	这样，字符表示(representation)的语义或功能不在本规范的论述范围内。</p>
     <h4 class="heading settled" data-level="6.3.1" id="keys-modifiers"><span class="secno">6.3.1. </span><span class="content">修饰符按键</span><a class="self-link" href="#keys-modifiers"></a></h4>
-    <div class="note custom-note" role="note"> 关于 <q>Modifier keys</q> 的翻译和说明，可以参阅 <a href="#modifier-keys-custom-note">自定义修饰符按键注释</a> 。 </div>
+    <div class="note custom-note" role="note"> 关于 <q>Modifier keys</q> 的翻译和说明，可以参阅 <a href="#modifier-keys-custom-note">修饰符按键自定义注释</a> 。<br> 关于键盘布局的相关说明，可以参阅 <a href="#keyboard-layout-custom-note">键盘布局自定义注释</a> </div>
     <p>键盘输入使用修饰键来更改键的正常行为。与其他按键一样，修饰符按键生成 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown②⑧"><code>keydown</code></a> 和 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup②②"><code>keyup</code></a>事件，如下面的例子所示。
 		某些修饰符在按键被按下或保持按下时被激活，如 <code class="keycap">Alt</code> 、 <code class="keycap">Control</code> 、 <code class="keycap">Shift</code> 、 <code class="keycap">AltGraph</code> 或 <code class="keycap">Meta</code> 。
 		其他修饰符会根据其状态激活，例如 <code class="keycap">CapsLock</code> 、 <code class="keycap">NumLock</code> 或 <code class="keycap">ScrollLock</code>。当按下修饰键时，(这些按键对应的修饰)状态会发生变化。 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑥⓪">KeyboardEvent</a></code> 接口为一些常见的修饰符键提供了方便的属性: <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-ctrlkey" id="ref-for-dom-keyboardevent-ctrlkey⑥">ctrlKey</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-shiftkey" id="ref-for-dom-keyboardevent-shiftkey①②">shiftKey</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-altkey" id="ref-for-dom-keyboardevent-altkey⑥">altKey</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-metakey" id="ref-for-dom-keyboardevent-metakey⑥">metaKey</a></code>。
 		某些操作系统使用 <code class="keycap">AltGraph</code> 和 <code class="keycap">Control</code> 修饰键的组合来模拟 <code class="keycap">AltGraph</code> 修饰键。鼓励实现使用 <code class="keycap">AltGraph</code> 修饰符按键。</p>
-    <div class="example" id="example-fd59cd0c">
-     <a class="self-link" href="#example-fd59cd0c"></a> 此示例描述了与在使用 US 映射的 US 键盘上生成的 Unicode 字符 Q
+    <div class="example" id="example-7b5456de">
+     <a class="self-link" href="#example-7b5456de"></a> 此示例描述了与在使用美式(US)映射的美式(US)键盘上生成的 Unicode 字符 Q
 			(大写拉丁字母 Q ，Unicode 码点 <code class="unicode">U+0051</code> )相关联的可能的事件序列: 
      <table class="event-sequence-table">
       <tbody>
@@ -5526,11 +5526,9 @@ myDiv.addEventListener("auxclick", function(e) {
      </table>
      <div class="note custom-note" role="note"> 这里的 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput②⑧"><code>beforeinput</code></a> 或 <a data-link-type="dfn" href="#input" id="ref-for-input③⓪"><code>input</code></a> 事件的生成情况和例子23中的 <a href="#example23-custom-note">注释</a> 说明的情况一致，<code class="keycap">Ctrl</code> + <code class="keycap">Shift</code> + <code class="keycap">v</code> 组合按键仍然有粘贴的功能。除此之外，还有考虑加入 <code class="keycap">Shift</code> 后浏览器可能的其它快捷键对浏览器事件派发的影响，例如 <code class="keycap">Ctrl</code> + <code class="keycap">Shift</code> + <code class="keycap">i</code> 组合快捷键可以打开浏览器的开发者工具(devTool)，打开后可能会阻止 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③③"><code>keyup</code></a> 事件的后续派发。 </div>
     </div>
-    <div class="example" id="example-e08a4c43">
-     <a class="self-link" href="#example-e08a4c43"></a> For non-US keyboard layouts, the sequence of events is the same, but
-			the value of the key is based on the current keyboard layout. This
-			example shows a sequence of events when an Arabic keyboard layout is
-			used: 
+    <div class="example" id="example-de2ee0e1">
+     <a class="self-link" href="#example-de2ee0e1"></a> 对于非美式(non-US)键盘布局，事件序列相同，但键的值基于当前键盘布局。
+			此示例显示了使用阿拉伯键盘布局时的事件序列: 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5571,42 +5569,38 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
      </table>
     </div>
-    <p class="note" role="note"> The value in the <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⓪"><code>keydown</code></a> and <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③⑥"><code>keyup</code></a> events varies based on
-		the current keyboard layout in effect when the key is pressed. This
-		means that the <code class="keycap">v</code> key on a US layout and the <code class="keycap">ر</code> key on an
-		Arabic layout will generate different events even though they are the
-		same physical key. To identify these events as coming from the same
-		physical key, you will need to make use of the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code③①">code</a></code> attribute. </p>
-    <p>In some cases, <a data-link-type="dfn" href="#modifier-key" id="ref-for-modifier-key①">modifier keys</a> change the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⑦">key</a></code> value for a key event. For example, on some MacOS keyboards, the  key
-		labeled "delete" functions the same as the <code class="keycap">Backspace</code> key on the
-		Windows OS when unmodified, but when modified by the <code class="keycap">Fn</code> key,
-		acts as the <code class="keycap">Delete</code> key, and the value of <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⑧">key</a></code> will match the most appropriate function of the key in its current
-		modified state.</p>
-    <h4 class="heading settled" data-level="6.3.2" id="keys-dead"><span class="secno">6.3.2. </span><span class="content">Dead keys</span><a class="self-link" href="#keys-dead"></a></h4>
-    <p>Some keyboard input uses <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①⓪">dead keys</a> for the input of composed
-		character sequences. Unlike the handwriting sequence, in which users
-		enter the base character first, keyboard input requires to enter a
-		special state when a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①">dead key</a> is pressed and emit the
-		character(s) only when one of a limited number of <q>legal</q> base
-		character is entered.</p>
-    <p class="note" role="note"> The MacOS and Linux operating systems use input methods to process <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key②">dead keys</a>. </p>
-    <p>The <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key③">dead keys</a> (across all keyboard layouts and mappings) are
-		represented by the key value <code class="keycap">Dead</code>. In response to any dead key
-		press, <a href="#events-compositionevents"> composition events</a> must
-		be dispatched by the user agent and the <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①⑤"><code>compositionupdate</code></a> event’s <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①④">data</a></code> value must be the character value of the
-		current state of the dead key combining sequence.</p>
-    <p>While Unicode combining characters always follow the handwriting
-		sequence, with the combining character trailing the corresponding
-		letter, typical dead key input MAY reverse the sequence, with the
-		combining character before the corresponding letter. For example, the
-		word <em>naïve</em>, using the combining diacritic <em>¨</em>, would be
-		represented sequentially in Unicode as <em>nai¨ve</em>, but MAY be typed <em>na¨ive</em>. The sequence of keystrokes <code class="unicode">U+0302</code> (Combining
-		Circumflex Accent key) and <code class="unicode">U+0065</code> (key marked with the Latin Small
-		Letter E) will likely produce (on a French keyboard using a french
-		mapping and without any modifier activated) the Unicode character <code class="glyph">"ê"</code> (Latin Small Letter E With Circumflex), as preferred by
-		the Unicode Normalization Form <em>NFC</em>.</p>
-    <div class="example" id="example-b026f653">
-     <a class="self-link" href="#example-b026f653"></a> 
+    <p class="note" role="note"> 当按键按下时，触发的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⓪"><code>keydown</code></a> 和 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③⑥"><code>keyup</code></a> 事件中的值根据当前的键盘布局变化。这意味着美式布局上的 <code class="keycap">v</code> 键和阿拉伯布局上的 <code class="keycap">ر</code> 键将生成(具有)不同(键值)的事件，
+		即使它们是相同的物理键。要将这些事件标识为来自同一个物理键，您需要使用 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code③①">code</a></code> 属性。 </p>
+    <p>在某些情况下， <a href="#modifier-key" id="ref-for-modifier-key①">修饰键</a> 会更改键事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⑦">key</a></code> 值。例如，在一些 MacOS 键盘上，标签为 "delete"
+		的键在未修饰(unmodified)时的功能与 Windows 操作系统上的 <code class="keycap">Backspace</code> 键相同，但当被 <code class="keycap">Fn</code> 键修饰后，它充当 <code class="keycap">Delete</code> 键，并且 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key③⑧">key</a></code> 的值将与当前修饰符状态下按键的最合适功能相匹配。</p>
+    <h4 class="heading settled" data-level="6.3.2" id="keys-dead"><span class="secno">6.3.2. </span><span class="content">死键</span><a class="self-link" href="#keys-dead"></a></h4>
+    <div class="note custom-note" role="note"> 死键(dead key)实际上属于修饰符按键，如下是一些参考解释: <br> <q>它是电脑键盘或打字机上一种特殊的快捷键。
+		它们通常用来对原始的拉丁字母加上附加符号。死键并不会输出一个完整的字母，
+		而是改变下一个按下的键的输出结果。
+		因此不需要为每一个字母与每一个标音的组合都对应一个单独的键;
+		只要为每一个标音对应一个死键便足够。举例来说，若键盘上有一个重音符( <code class="keycap">`</code> )的死键，要输出法文字母 à 只需要先按下 <code class="keycap">`</code> ，再按下 <code class="keycap">A</code> 。如果是 è 则是先按下 <code class="keycap">`</code> 再按下 E 。而通常来说，通过键入 <code class="keycap">`</code> 与 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Space">Space</a>"</code> 可以产生一个单独的标音符号。</q> —— 维基百科 <a href="https://zh.wikipedia.org/wiki/死键">死键</a> 。<br> <q>基本上，美式标准键盘没有任何死键，
+		所以沿用这种键盘的中国大陆地区使用的键盘也没有死键，
+		但是世界上大多数地区销售的键盘都有一个 <code class="keycap">AltGr</code> (Alternative graphic)键，
+		它可以直接修改一些字母，并将其他字母变成死键(取决于键盘设置)。 <q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，它与 <code class="keycap">Ctrl</code> 键和 <code class="keycap">Shift</code> 键相结合，可以用来将西欧语言中常见的一些变音符号( <code>´</code> 、 <code>`</code> 、 <code>ˆ</code> 和 <code>¨</code> )添加到随后键入的元音中。</q> —— 维基百科 <a href="https://en.wikipedia.org/wiki/Dead_key">Dead key</a> </q></div>
+    <p>一些键盘输入使用 <a href="#dead-key" id="ref-for-dead-key⑤">死键</a> 来输入合成字符序列(composed
+		character sequences)。与在手写序列(见 <a href="#events-composition-handwriting">§ 5.7.3 手写识别系统</a> )中，用户可以首先输入基本字符不同，键盘输入需要在按下 <a href="#dead-key" id="ref-for-dead-key⑥">死键</a> 时进入特殊状态，并且只有在输入有限数量的 <q>合法(legal)</q> 基本字符中的一个时才发出(emit)字符。</p>
+    <p class="note" role="note"> MacOS 和 Linux 操作系统使用输入法来处理 <a href="#dead-key" id="ref-for-dead-key⑦">死键</a> 。 </p>
+    <p><a href="#dead-key" id="ref-for-dead-key⑧">死键</a> (在所有键盘布局和映射中)由键值 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code> 表示。
+		为了响应任何死键的按下，<a href="#events-compositionevents">合成事件</a> 必须由用户代理派发，并且 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①⑤"><code>compositionupdate</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①④">data</a></code> 值必须是死键组合序列的当前状态的字符值。</p>
+    <p>虽然 Unicode <a data-link-type="dfn" href="https://mangwu.github.io/uievents-key-cn/#combining-character" id="ref-for-combining-character">组合字符</a> 总是遵循手写顺序 —— 组合字符在相应的字母后面，
+		但典型的死键输入 <span class="zh-upper">可以</span> 颠倒顺序 ——<wbr>将组合字符放在对应的字母前面。例如，单词 <em>naïve</em> 使用组合分音符号
+		(combining diacritic) <em>¨</em> ，在 Unicode (编码)中按顺序表示为 <em>nai¨ve</em> ，但(在输入这个单词的过程中) <span class="zh-upper">可以</span> 键入 <em>na¨ive</em> 。击键(keystrokes)
+		序列 <code class="unicode">U+0302</code> (组合扬抑音符(Combining Circumflex Accent)键)和 <code class="unicode">U+0065</code> (用小写拉丁字母 E 作为标签的键)很可能会产生
+		(在使用法语映射且未激活任何修饰符的法语键盘上) Unicode 字符 <code class="glyph">"ê"</code> (带扬抑符(Circumflex)的小写拉丁字母 E )，这是 Unicode 规范化形式
+		(Unicode Normalization Form) <em>NFC</em> 的首选。</p>
+    <div class="note custom-note" role="note"> 扬抑符(Circumflex， <code class="IPA">◌̂</code> )，分音符(Diacritic， <code class="IPA">◌̈</code>)，
+		是某些文字罗马化和音译方案所使用的拉丁字母和希腊字母的 <strong>变音符号</strong> ，它们添加在字母上面，
+		或以更改字母的发音或者以区分拼写相似词语。通常而言，这些 <strong>变音符号</strong> 在各自语言的键盘布局上就是死键。在输入 Unicode
+		中的组合字符时，需要首先按下死键表示用户正在输入组合字符，
+		使用空格表示结束了组合字符的输入，而输入的字符最终会依据 Unicode
+		的规范化形式组合成字符串，其具体的码元可能会发生变化(见于 <a href="https://mangwu.github.io/uievents-key-cn/#precomposed-char-note"> uievents-key-precomposed-character</a> ) </div>
+    <div class="example" id="example-d6e2f9d1">
+     <a class="self-link" href="#example-d6e2f9d1"></a> 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5622,7 +5616,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code>
         <td style="text-align:center"><code>false</code>
         <td style="text-align:center">
-        <td>Combining Circumflex Accent (Dead Key)
+        <td>组合扬抑音符(死键)
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①③"><code>compositionstart</code></a>
@@ -5671,18 +5665,17 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"e"</code>
         <td style="text-align:center"><code>false</code>
         <td style="text-align:center">
-        <td>Latin Small Letter E
+        <td>小写拉丁字母 E
      </table>
     </div>
-    <p class="note" role="note"> In the second <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④③"><code>keydown</code></a> event (step 5), the key value (assuming the
-		event is not suppressed) will <em>not</em> be <code class="key">"e"</code> (Latin Small
-		Letter E key) under normal circumstances because the value delivered to
-		the user agent will already be modified by the dead key operation. </p>
-    <p>This process might be aborted when a user types an unsupported base
-		character (that is, a base character for which the active
-		diacritical mark is not available) after pressing a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key④">dead key</a>:</p>
-    <div class="example" id="example-e98935d5">
-     <a class="self-link" href="#example-e98935d5"></a> 
+    <p class="note" role="note"> 在第二个 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④③"><code>keydown</code></a> 事件(步骤5)中，键值(假设事件没有被阻止(suppressed))
+		在正常情况下 <em>不</em> 会是 <code class="key">"e"</code>(小写拉丁字母 E 键)，
+		因为传递给用户代理的值已经被死键操作修改了(modified)。 </p>
+    <p>当用户在按下一个 <a href="#dead-key" id="ref-for-dead-key⑨">死键</a> 后，
+		再键入一个不受支持的基本字符(即一个没有活动变音标记的基本字符)时，
+		此过程可能会中止:</p>
+    <div class="example" id="example-fe8d5749">
+     <a class="self-link" href="#example-fe8d5749"></a> 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5698,7 +5691,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code>
         <td style="text-align:center"><code>false</code>
         <td style="text-align:center">
-        <td>Combining Circumflex Accent (Dead Key)
+        <td>组合扬抑音符(死键)
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①④"><code>compositionstart</code></a>
@@ -6252,10 +6245,10 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
      </table>
     </div>
-    <p>If the key is part of a sequence of several keystrokes, whether it is a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key⑤">dead key</a> or it is contributing to an Input Method Editor
+    <p>If the key is part of a sequence of several keystrokes, whether it is a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①⓪">dead key</a> or it is contributing to an Input Method Editor
 		sequence, the keystroke MUST be ignored (not taken into account) only if
 		the <a data-link-type="dfn" href="#default-action" id="ref-for-default-action③">default action</a> is canceled on the <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥②"><code>keydown</code></a> event.
-		Canceling a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key⑥">dead key</a> on a <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑥"><code>keyup</code></a> event has no effect on <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③⑦"><code>beforeinput</code></a> or <a data-link-type="dfn" href="#input" id="ref-for-input③⑨"><code>input</code></a> events. The following example uses
+		Canceling a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①">dead key</a> on a <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑥"><code>keyup</code></a> event has no effect on <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③⑦"><code>beforeinput</code></a> or <a data-link-type="dfn" href="#input" id="ref-for-input③⑨"><code>input</code></a> events. The following example uses
 		the dead key <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code> (<code class="unicode">U+0302</code> Combining Circumflex Accent key) and <code class="key">"e"</code> (<code class="unicode">U+0065</code>, Latin Small Letter E key) on a French
 		keyboard using a French mapping and without any modifier activated:</p>
     <div class="example" id="example-23e97a2d">
@@ -9352,6 +9345,12 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keys-modifier③">14. 术语表</a>
    </ul>
   </aside>
+  <aside aria-labelledby="infopaneltitle-for-c6f110e6e7491da4626f71c3bc016d79" class="dfn-panel" data-for="c6f110e6e7491da4626f71c3bc016d79" id="infopanel-for-c6f110e6e7491da4626f71c3bc016d79">
+   <span id="infopaneltitle-for-c6f110e6e7491da4626f71c3bc016d79" style="display:none">Info about the '组合字符' external reference.</span><a href="https://mangwu.github.io/uievents-key-cn/#combining-character">https://mangwu.github.io/uievents-key-cn/#combining-character</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-combining-character">6.3.2. 死键</a>
+   </ul>
+  </aside>
   <aside aria-labelledby="infopaneltitle-for-04f943f4a660801dbd90f3fac3519f57" class="dfn-panel" data-for="04f943f4a660801dbd90f3fac3519f57" id="infopanel-for-04f943f4a660801dbd90f3fac3519f57">
    <span id="infopaneltitle-for-04f943f4a660801dbd90f3fac3519f57" style="display:none">Info about the '键属性值' external reference.</span><a href="https://mangwu.github.io/uievents-key-cn/#key-attribute-value">https://mangwu.github.io/uievents-key-cn/#key-attribute-value</a><b>Referenced in:</b>
    <ul>
@@ -9518,6 +9517,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <a data-link-type="biblio">[UIEvents-Key]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="1e81173af44f2119b61fcb320a283df1">修饰符键值表格</span>
+     <li><span class="dfn-paneled" id="c6f110e6e7491da4626f71c3bc016d79">组合字符</span>
      <li><span class="dfn-paneled" id="04f943f4a660801dbd90f3fac3519f57">键属性值</span>
     </ul>
    <li>
@@ -10853,7 +10853,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyboardevent④⑨">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-keyboardevent⑤⓪">6.2.3. code 例子</a> <a href="#ref-for-keyboardevent⑤①">(2)</a> <a href="#ref-for-keyboardevent⑤②">(3)</a> <a href="#ref-for-keyboardevent⑤③">(4)</a> <a href="#ref-for-keyboardevent⑤④">(5)</a> <a href="#ref-for-keyboardevent⑤⑤">(6)</a> <a href="#ref-for-keyboardevent⑤⑥">(7)</a> <a href="#ref-for-keyboardevent⑤⑦">(8)</a> <a href="#ref-for-keyboardevent⑤⑧">(9)</a> <a href="#ref-for-keyboardevent⑤⑨">(10)</a>
     <li><a href="#ref-for-keyboardevent⑥⓪">6.3.1. 修饰符按键</a> <a href="#ref-for-keyboardevent⑥①">(2)</a> <a href="#ref-for-keyboardevent⑥②">(3)</a> <a href="#ref-for-keyboardevent⑥③">(4)</a> <a href="#ref-for-keyboardevent⑥④">(5)</a> <a href="#ref-for-keyboardevent⑥⑤">(6)</a>
-    <li><a href="#ref-for-keyboardevent⑥⑥">6.3.2. Dead keys</a> <a href="#ref-for-keyboardevent⑥⑦">(2)</a> <a href="#ref-for-keyboardevent⑥⑧">(3)</a> <a href="#ref-for-keyboardevent⑥⑨">(4)</a>
+    <li><a href="#ref-for-keyboardevent⑥⑥">6.3.2. 死键</a> <a href="#ref-for-keyboardevent⑥⑦">(2)</a> <a href="#ref-for-keyboardevent⑥⑧">(3)</a> <a href="#ref-for-keyboardevent⑥⑨">(4)</a>
     <li><a href="#ref-for-keyboardevent⑦⓪">6.3.3. Input Method Editors</a> <a href="#ref-for-keyboardevent⑦①">(2)</a> <a href="#ref-for-keyboardevent⑦②">(3)</a> <a href="#ref-for-keyboardevent⑦③">(4)</a>
     <li><a href="#ref-for-keyboardevent⑦④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyboardevent⑦⑤">(2)</a> <a href="#ref-for-keyboardevent⑦⑥">(3)</a>
     <li><a href="#ref-for-keyboardevent⑦⑦">7.1.4. Initializers for interface KeyboardEvent</a> <a href="#ref-for-keyboardevent⑦⑧">(2)</a>
@@ -10926,7 +10926,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-key②⑤">6.2.4. code 和虚拟键盘</a>
     <li><a href="#ref-for-dom-keyboardevent-key②⑥">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-keyboardevent-key②⑦">(2)</a> <a href="#ref-for-dom-keyboardevent-key②⑧">(3)</a> <a href="#ref-for-dom-keyboardevent-key②⑨">(4)</a> <a href="#ref-for-dom-keyboardevent-key③⓪">(5)</a> <a href="#ref-for-dom-keyboardevent-key③①">(6)</a>
     <li><a href="#ref-for-dom-keyboardevent-key③②">6.3.1. 修饰符按键</a> <a href="#ref-for-dom-keyboardevent-key③③">(2)</a> <a href="#ref-for-dom-keyboardevent-key③④">(3)</a> <a href="#ref-for-dom-keyboardevent-key③⑤">(4)</a> <a href="#ref-for-dom-keyboardevent-key③⑥">(5)</a> <a href="#ref-for-dom-keyboardevent-key③⑦">(6)</a> <a href="#ref-for-dom-keyboardevent-key③⑧">(7)</a>
-    <li><a href="#ref-for-dom-keyboardevent-key③⑨">6.3.2. Dead keys</a> <a href="#ref-for-dom-keyboardevent-key④⓪">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-key③⑨">6.3.2. 死键</a> <a href="#ref-for-dom-keyboardevent-key④⓪">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④①">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-keyboardevent-key④②">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④③">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-keyboardevent-key④④">(2)</a> <a href="#ref-for-dom-keyboardevent-key④⑤">(3)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑥">7.1.4. Initializers for interface KeyboardEvent</a>
@@ -11037,7 +11037,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-iscomposing②">5.6.4.2. keyup</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing③">5.7.5. 合成过程中的按键事件</a> <a href="#ref-for-dom-keyboardevent-iscomposing④">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing⑤">5.7.6. 合成过程中的输入事件</a>
-    <li><a href="#ref-for-dom-keyboardevent-iscomposing⑥">6.3.2. Dead keys</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑦">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-iscomposing⑥">6.3.2. 死键</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑦">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing⑧">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-keyboardevent-iscomposing⑨">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-iscomposing①⓪">9.3.1.1. keypress</a>
    </ul>
@@ -11108,7 +11108,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keydown②②">5.7.7.1. compositionstart</a>
     <li><a href="#ref-for-keydown②③">6.2.3. code 例子</a> <a href="#ref-for-keydown②④">(2)</a> <a href="#ref-for-keydown②⑤">(3)</a> <a href="#ref-for-keydown②⑥">(4)</a> <a href="#ref-for-keydown②⑦">(5)</a>
     <li><a href="#ref-for-keydown②⑧">6.3.1. 修饰符按键</a> <a href="#ref-for-keydown②⑨">(2)</a> <a href="#ref-for-keydown③⓪">(3)</a> <a href="#ref-for-keydown③①">(4)</a> <a href="#ref-for-keydown③②">(5)</a> <a href="#ref-for-keydown③③">(6)</a> <a href="#ref-for-keydown③④">(7)</a> <a href="#ref-for-keydown③⑤">(8)</a> <a href="#ref-for-keydown③⑥">(9)</a> <a href="#ref-for-keydown③⑦">(10)</a> <a href="#ref-for-keydown③⑧">(11)</a> <a href="#ref-for-keydown③⑨">(12)</a> <a href="#ref-for-keydown④⓪">(13)</a>
-    <li><a href="#ref-for-keydown④①">6.3.2. Dead keys</a> <a href="#ref-for-keydown④②">(2)</a> <a href="#ref-for-keydown④③">(3)</a> <a href="#ref-for-keydown④④">(4)</a> <a href="#ref-for-keydown④⑤">(5)</a>
+    <li><a href="#ref-for-keydown④①">6.3.2. 死键</a> <a href="#ref-for-keydown④②">(2)</a> <a href="#ref-for-keydown④③">(3)</a> <a href="#ref-for-keydown④④">(4)</a> <a href="#ref-for-keydown④⑤">(5)</a>
     <li><a href="#ref-for-keydown④⑥">6.3.3. Input Method Editors</a> <a href="#ref-for-keydown④⑦">(2)</a> <a href="#ref-for-keydown④⑧">(3)</a> <a href="#ref-for-keydown④⑨">(4)</a> <a href="#ref-for-keydown⑤⓪">(5)</a> <a href="#ref-for-keydown⑤①">(6)</a> <a href="#ref-for-keydown⑤②">(7)</a> <a href="#ref-for-keydown⑤③">(8)</a> <a href="#ref-for-keydown⑤④">(9)</a> <a href="#ref-for-keydown⑤⑤">(10)</a> <a href="#ref-for-keydown⑤⑥">(11)</a>
     <li><a href="#ref-for-keydown⑤⑦">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keydown⑤⑧">(2)</a> <a href="#ref-for-keydown⑤⑨">(3)</a> <a href="#ref-for-keydown⑥⓪">(4)</a> <a href="#ref-for-keydown⑥①">(5)</a> <a href="#ref-for-keydown⑥②">(6)</a> <a href="#ref-for-keydown⑥③">(7)</a> <a href="#ref-for-keydown⑥④">(8)</a>
     <li><a href="#ref-for-keydown⑥⑤">8.2.1. Interface KeyboardEvent (supplemental)</a>
@@ -11129,7 +11129,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyup①④">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-keyup①⑤">(2)</a> <a href="#ref-for-keyup①⑥">(3)</a>
     <li><a href="#ref-for-keyup①⑦">6.2.3. code 例子</a> <a href="#ref-for-keyup①⑧">(2)</a> <a href="#ref-for-keyup①⑨">(3)</a> <a href="#ref-for-keyup②⓪">(4)</a> <a href="#ref-for-keyup②①">(5)</a>
     <li><a href="#ref-for-keyup②②">6.3.1. 修饰符按键</a> <a href="#ref-for-keyup②③">(2)</a> <a href="#ref-for-keyup②④">(3)</a> <a href="#ref-for-keyup②⑤">(4)</a> <a href="#ref-for-keyup②⑥">(5)</a> <a href="#ref-for-keyup②⑦">(6)</a> <a href="#ref-for-keyup②⑧">(7)</a> <a href="#ref-for-keyup②⑨">(8)</a> <a href="#ref-for-keyup③⓪">(9)</a> <a href="#ref-for-keyup③①">(10)</a> <a href="#ref-for-keyup③②">(11)</a> <a href="#ref-for-keyup③③">(12)</a> <a href="#ref-for-keyup③④">(13)</a> <a href="#ref-for-keyup③⑤">(14)</a> <a href="#ref-for-keyup③⑥">(15)</a>
-    <li><a href="#ref-for-keyup③⑦">6.3.2. Dead keys</a> <a href="#ref-for-keyup③⑧">(2)</a> <a href="#ref-for-keyup③⑨">(3)</a> <a href="#ref-for-keyup④⓪">(4)</a>
+    <li><a href="#ref-for-keyup③⑦">6.3.2. 死键</a> <a href="#ref-for-keyup③⑧">(2)</a> <a href="#ref-for-keyup③⑨">(3)</a> <a href="#ref-for-keyup④⓪">(4)</a>
     <li><a href="#ref-for-keyup④①">6.3.3. Input Method Editors</a> <a href="#ref-for-keyup④②">(2)</a> <a href="#ref-for-keyup④③">(3)</a> <a href="#ref-for-keyup④④">(4)</a> <a href="#ref-for-keyup④⑤">(5)</a> <a href="#ref-for-keyup④⑥">(6)</a> <a href="#ref-for-keyup④⑦">(7)</a> <a href="#ref-for-keyup④⑧">(8)</a> <a href="#ref-for-keyup④⑨">(9)</a> <a href="#ref-for-keyup⑤⓪">(10)</a>
     <li><a href="#ref-for-keyup⑤①">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyup⑤②">(2)</a> <a href="#ref-for-keyup⑤③">(3)</a> <a href="#ref-for-keyup⑤④">(4)</a> <a href="#ref-for-keyup⑤⑤">(5)</a> <a href="#ref-for-keyup⑤⑥">(6)</a> <a href="#ref-for-keyup⑤⑦">(7)</a> <a href="#ref-for-keyup⑤⑧">(8)</a>
     <li><a href="#ref-for-keyup⑤⑨">8.2.1. Interface KeyboardEvent (supplemental)</a>
@@ -11146,7 +11146,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionevent⑦">5.7.7.1. compositionstart</a> <a href="#ref-for-compositionevent⑧">(2)</a>
     <li><a href="#ref-for-compositionevent⑨">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionevent①⓪">(2)</a>
     <li><a href="#ref-for-compositionevent①①">5.7.7.3. compositionend</a> <a href="#ref-for-compositionevent①②">(2)</a>
-    <li><a href="#ref-for-compositionevent①③">6.3.2. Dead keys</a> <a href="#ref-for-compositionevent①④">(2)</a>
+    <li><a href="#ref-for-compositionevent①③">6.3.2. 死键</a> <a href="#ref-for-compositionevent①④">(2)</a>
     <li><a href="#ref-for-compositionevent①⑤">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionevent①⑥">(2)</a> <a href="#ref-for-compositionevent①⑦">(3)</a> <a href="#ref-for-compositionevent①⑧">(4)</a>
     <li><a href="#ref-for-compositionevent①⑨">7.1.5. Initializers for interface CompositionEvent</a>
     <li><a href="#ref-for-compositionevent②⓪">12.1.4. New Interfaces</a>
@@ -11163,7 +11163,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-compositionevent-data⑥">5.7.7.2. compositionupdate</a> <a href="#ref-for-dom-compositionevent-data⑦">(2)</a> <a href="#ref-for-dom-compositionevent-data⑧">(3)</a> <a href="#ref-for-dom-compositionevent-data⑨">(4)</a>
     <li><a href="#ref-for-dom-compositionevent-data①⓪">5.7.7.3. compositionend</a>
     <li><a href="#ref-for-dom-compositionevent-data①①">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-compositionevent-data①②">(2)</a> <a href="#ref-for-dom-compositionevent-data①③">(3)</a>
-    <li><a href="#ref-for-dom-compositionevent-data①④">6.3.2. Dead keys</a> <a href="#ref-for-dom-compositionevent-data①⑤">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑥">(3)</a>
+    <li><a href="#ref-for-dom-compositionevent-data①④">6.3.2. 死键</a> <a href="#ref-for-dom-compositionevent-data①⑤">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑥">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data①⑦">6.3.3. Input Method Editors</a> <a href="#ref-for-dom-compositionevent-data①⑧">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑨">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data②⓪">7.1.5. Initializers for interface CompositionEvent</a>
    </ul>
@@ -11194,7 +11194,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionstart⑨">5.7.5. 合成过程中的按键事件</a>
     <li><a href="#ref-for-compositionstart①⓪">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-compositionstart①①">5.7.7.1. compositionstart</a> <a href="#ref-for-compositionstart①②">(2)</a>
-    <li><a href="#ref-for-compositionstart①③">6.3.2. Dead keys</a> <a href="#ref-for-compositionstart①④">(2)</a>
+    <li><a href="#ref-for-compositionstart①③">6.3.2. 死键</a> <a href="#ref-for-compositionstart①④">(2)</a>
     <li><a href="#ref-for-compositionstart①⑤">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionstart①⑥">(2)</a>
    </ul>
   </aside>
@@ -11208,7 +11208,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionupdate⑤">5.7.5. 合成过程中的按键事件</a>
     <li><a href="#ref-for-compositionupdate⑥">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-compositionupdate⑦">(2)</a> <a href="#ref-for-compositionupdate⑧">(3)</a> <a href="#ref-for-compositionupdate⑨">(4)</a> <a href="#ref-for-compositionupdate①⓪">(5)</a> <a href="#ref-for-compositionupdate①①">(6)</a> <a href="#ref-for-compositionupdate①②">(7)</a>
     <li><a href="#ref-for-compositionupdate①③">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionupdate①④">(2)</a>
-    <li><a href="#ref-for-compositionupdate①⑤">6.3.2. Dead keys</a> <a href="#ref-for-compositionupdate①⑥">(2)</a> <a href="#ref-for-compositionupdate①⑦">(3)</a> <a href="#ref-for-compositionupdate①⑧">(4)</a> <a href="#ref-for-compositionupdate①⑨">(5)</a>
+    <li><a href="#ref-for-compositionupdate①⑤">6.3.2. 死键</a> <a href="#ref-for-compositionupdate①⑥">(2)</a> <a href="#ref-for-compositionupdate①⑦">(3)</a> <a href="#ref-for-compositionupdate①⑧">(4)</a> <a href="#ref-for-compositionupdate①⑨">(5)</a>
     <li><a href="#ref-for-compositionupdate②⓪">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionupdate②①">(2)</a> <a href="#ref-for-compositionupdate②②">(3)</a> <a href="#ref-for-compositionupdate②③">(4)</a> <a href="#ref-for-compositionupdate②④">(5)</a> <a href="#ref-for-compositionupdate②⑤">(6)</a> <a href="#ref-for-compositionupdate②⑥">(7)</a> <a href="#ref-for-compositionupdate②⑦">(8)</a> <a href="#ref-for-compositionupdate②⑧">(9)</a>
    </ul>
   </aside>
@@ -11226,7 +11226,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionend⑨">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-compositionend①⓪">(2)</a> <a href="#ref-for-compositionend①①">(3)</a>
     <li><a href="#ref-for-compositionend①②">5.7.7.2. compositionupdate</a> <a href="#ref-for-compositionend①③">(2)</a>
     <li><a href="#ref-for-compositionend①④">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-compositionend①⑤">6.3.2. Dead keys</a> <a href="#ref-for-compositionend①⑥">(2)</a>
+    <li><a href="#ref-for-compositionend①⑤">6.3.2. 死键</a> <a href="#ref-for-compositionend①⑥">(2)</a>
     <li><a href="#ref-for-compositionend①⑦">6.3.3. Input Method Editors</a> <a href="#ref-for-compositionend①⑧">(2)</a> <a href="#ref-for-compositionend①⑨">(3)</a>
    </ul>
   </aside>
@@ -11554,8 +11554,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dead-key">5.6.4.1. keydown</a>
     <li><a href="#ref-for-dead-key">6. 键盘事件和键值</a>
     <li><a href="#ref-for-dead-key">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dead-key">(2)</a>
-    <li><a href="#ref-for-dead-key">6.3.2. Dead keys</a> <a href="#ref-for-dead-key①">(2)</a> <a href="#ref-for-dead-key②">(3)</a> <a href="#ref-for-dead-key③">(4)</a> <a href="#ref-for-dead-key④">(5)</a>
-    <li><a href="#ref-for-dead-key⑤">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dead-key⑥">(2)</a>
+    <li><a href="#ref-for-dead-key">6.3.2. 死键</a> <a href="#ref-for-dead-key">(2)</a> <a href="#ref-for-dead-key">(3)</a> <a href="#ref-for-dead-key">(4)</a> <a href="#ref-for-dead-key">(5)</a>
+    <li><a href="#ref-for-dead-key">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dead-key①">(2)</a>
     <li><a href="#ref-for-dead-key">14. 术语表</a> <a href="#ref-for-dead-key">(2)</a>
    </ul>
   </aside>

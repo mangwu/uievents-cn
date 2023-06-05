@@ -161,7 +161,7 @@
 			+| 法语     | KEY_NOLINK{2}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}} |
 			++----------+----------------------+----------------------+----------------------------+
 
-			无论当前区域设置或修改键状态如何，在 US 键盘上键帽标签为 GLYPH{2} 
+			无论当前区域设置或修改键状态如何，在美式(US)键盘上键帽标签为 GLYPH{2} 
 			的键总是会在 {{KeyboardEvent/code}} 属性中产生 CODE{Digit2} 。
 
 		</div><!-- Handling the 2 Key -->
@@ -319,7 +319,7 @@
 		KEYCAP{AltGraph} 修饰键。鼓励实现使用 KEYCAP{AltGraph} 修饰符按键。
 
 		<div class="example">
-			此示例描述了与在使用 US 映射的 US 键盘上生成的 Unicode 字符 Q 
+			此示例描述了与在使用美式(US)映射的美式(US)键盘上生成的 Unicode 字符 Q 
 			(大写拉丁字母 Q ，Unicode 码点 UNI{U+0051} )相关联的可能的事件序列: 
 
 			++---+-------------+----------------------+----------------------------+------------------------+
@@ -436,11 +436,8 @@
 		</div>
 
 		<div class="example">
-			对于非 US 键盘布局，事件顺序相同，但键的值基于当前键盘布局。此示例显示了使用阿拉伯键盘布局时的一系列事件：
-			For non-US keyboard layouts, the sequence of events is the same, but
-			the value of the key is based on the current keyboard layout. This
-			example shows a sequence of events when an Arabic keyboard layout is
-			used:
+			对于非美式(non-US)键盘布局，事件序列相同，但键的值基于当前键盘布局。
+			此示例显示了使用阿拉伯键盘布局时的事件序列:
 
 			++---+-------------+----------------------+----------------------------+----------------------------+
 			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                       |
@@ -457,92 +454,116 @@
 		</div>
 
 		<p class="note">
-		The value in the EVENT{keydown} and EVENT{keyup} events varies based on
-		the current keyboard layout in effect when the key is pressed. This
-		means that the KEYCAP{v} key on a US layout and the KEYCAP{ر} key on an
-		Arabic layout will generate different events even though they are the
-		same physical key. To identify these events as coming from the same
-		physical key, you will need to make use of the {{KeyboardEvent/code}}
-		attribute.
+		当按键按下时，触发的 EVENT{keydown} 和 EVENT{keyup} 
+		事件中的值根据当前的键盘布局变化。这意味着美式布局上的 KEYCAP{v} 
+		键和阿拉伯布局上的 KEYCAP{ر} 键将生成(具有)不同(键值)的事件，
+		即使它们是相同的物理键。要将这些事件标识为来自同一个物理键，您需要使用 
+		{{KeyboardEvent/code}} 属性。
 		</p>
 
-		In some cases, <a>modifier keys</a> change the {{KeyboardEvent/key}}
-		value for a key event. For example, on some MacOS keyboards, the  key
-		labeled "delete" functions the same as the KEYCAP{Backspace} key on the
-		Windows OS when unmodified, but when modified by the KEYCAP{Fn} key,
-		acts as the KEYCAP{Delete} key, and the value of {{KeyboardEvent/key}}
-		will match the most appropriate function of the key in its current
-		modified state.
+		在某些情况下， <a href="#modifier-key">修饰键</a> 会更改键事件的
+		{{KeyboardEvent/key}} 值。例如，在一些 MacOS 键盘上，标签为 "delete" 
+		的键在未修饰(unmodified)时的功能与 Windows 操作系统上的 KEYCAP{Backspace} 
+		键相同，但当被 KEYCAP{Fn} 键修饰后，它充当 KEYCAP{Delete} 键，并且
+		{{KeyboardEvent/key}} 的值将与当前修饰符状态下按键的最合适功能相匹配。
 
-	<h4 id="keys-dead">Dead keys</h4>
+	<h4 id="keys-dead">死键</h4>
 
-		Some keyboard input uses <a>dead keys</a> for the input of composed
-		character sequences. Unlike the handwriting sequence, in which users
-		enter the base character first, keyboard input requires to enter a
-		special state when a <a>dead key</a> is pressed and emit the
-		character(s) only when one of a limited number of <q>legal</q> base
-		character is entered.
+		<div class="note custom-note">
+		死键(dead key)实际上属于修饰符按键，如下是一些参考解释: <br/>
+		<q>它是电脑键盘或打字机上一种特殊的快捷键。
+		它们通常用来对原始的拉丁字母加上附加符号。死键并不会输出一个完整的字母，
+		而是改变下一个按下的键的输出结果。
+		因此不需要为每一个字母与每一个标音的组合都对应一个单独的键; 
+		只要为每一个标音对应一个死键便足够。举例来说，若键盘上有一个重音符( 
+		KEYCAP{`} )的死键，要输出法文字母 à 只需要先按下 KEYCAP{`} ，再按下 
+		KEYCAP{A} 。如果是 è 则是先按下 KEYCAP{`} 再按下 E 。而通常来说，通过键入 
+		KEYCAP{`} 与 CODE{Space} 可以产生一个单独的标音符号。</q> —— 维基百科 
+		<a href="https://zh.wikipedia.org/wiki/死键">死键</a> 。<br/>
+		<q>基本上，美式标准键盘没有任何死键，
+		所以沿用这种键盘的中国大陆地区使用的键盘也没有死键，
+		但是世界上大多数地区销售的键盘都有一个 KEYCAP{AltGr} (Alternative graphic)键，
+		它可以直接修改一些字母，并将其他字母变成死键(取决于键盘设置)。
+		<q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，它与 KEYCAP{Ctrl} 
+		键和 KEYCAP{Shift} 键相结合，可以用来将西欧语言中常见的一些变音符号(
+		<code>´</code> 、 <code>`</code> 、 <code>ˆ</code> 和 <code>¨</code> 
+		)添加到随后键入的元音中。</q> —— 维基百科 
+		<a href="https://en.wikipedia.org/wiki/Dead_key">Dead key</a>
+		</div>
+
+		一些键盘输入使用 <a href="#dead-key">死键</a> 来输入合成字符序列(composed
+		character sequences)。与在手写序列(见 [[#events-composition-handwriting]] 
+		)中，用户可以首先输入基本字符不同，键盘输入需要在按下 
+		<a href="#dead-key">死键</a> 时进入特殊状态，并且只有在输入有限数量的 
+		<q>合法(legal)</q> 基本字符中的一个时才发出(emit)字符。
 
 		<p class="note">
-		The MacOS and Linux operating systems use input methods to process
-		<a>dead keys</a>.
+		MacOS 和 Linux 操作系统使用输入法来处理 <a href="#dead-key">死键</a> 。
 		</p>
 
-		The <a>dead keys</a> (across all keyboard layouts and mappings) are
-		represented by the key value KEYCAP{Dead}. In response to any dead key
-		press, <a href="#events-compositionevents"> composition events</a> must
-		be dispatched by the user agent and the EVENT{compositionupdate} event's
-		{{CompositionEvent/data}} value must be the character value of the
-		current state of the dead key combining sequence.
+		<a href="#dead-key">死键</a> (在所有键盘布局和映射中)由键值 KEY{Dead} 表示。
+		为了响应任何死键的按下，<a href="#events-compositionevents">合成事件</a> 
+		必须由用户代理派发，并且 EVENT{compositionupdate} 事件的 
+		{{CompositionEvent/data}} 值必须是死键组合序列的当前状态的字符值。
 
-		While Unicode combining characters always follow the handwriting
-		sequence, with the combining character trailing the corresponding
-		letter, typical dead key input MAY reverse the sequence, with the
-		combining character before the corresponding letter. For example, the
-		word <em>naïve</em>, using the combining diacritic <em>¨</em>, would be
-		represented sequentially in Unicode as <em>nai¨ve</em>, but MAY be typed
-		<em>na¨ive</em>. The sequence of keystrokes UNI{U+0302} (Combining
-		Circumflex Accent key) and UNI{U+0065} (key marked with the Latin Small
-		Letter E) will likely produce (on a French keyboard using a french
-		mapping and without any modifier activated) the Unicode character
-		GLYPH{&#xEA;} (Latin Small Letter E With Circumflex), as preferred by
-		the Unicode Normalization Form <em>NFC</em>.
+		虽然 Unicode [=组合字符=] 总是遵循手写顺序 —— 组合字符在相应的字母后面，
+		但典型的死键输入 <span class="zh-upper">可以</span> 颠倒顺序 —— 
+		将组合字符放在对应的字母前面。例如，单词 <em>naïve</em> 使用组合分音符号
+		(combining diacritic) <em>¨</em> ，在 Unicode (编码)中按顺序表示为 
+		<em>nai¨ve</em> ，但(在输入这个单词的过程中) 
+		<span class="zh-upper">可以</span> 键入 <em>na¨ive</em> 。击键(keystrokes)
+		序列 UNI{U+0302} (组合扬抑音符(Combining Circumflex Accent)键)和 UNI{U+0065}
+		(用小写拉丁字母 E 作为标签的键)很可能会产生
+		(在使用法语映射且未激活任何修饰符的法语键盘上) Unicode 字符 GLYPH{&#xEA;} 
+		(带扬抑符(Circumflex)的小写拉丁字母 E )，这是 Unicode 规范化形式
+		(Unicode Normalization Form) <em>NFC</em> 的首选。
+
+		<div class="note custom-note">
+		扬抑符(Circumflex， <code class="IPA">◌̂</code> )，分音符(Diacritic， 
+		<code class="IPA">◌̈</code>)，
+		是某些文字罗马化和音译方案所使用的拉丁字母和希腊字母的 
+		<strong>变音符号</strong> ，它们添加在字母上面，
+		或以更改字母的发音或者以区分拼写相似词语。通常而言，这些 
+		<strong>变音符号</strong> 在各自语言的键盘布局上就是死键。在输入 Unicode 
+		中的组合字符时，需要首先按下死键表示用户正在输入组合字符，
+		使用空格表示结束了组合字符的输入，而输入的字符最终会依据 Unicode 
+		的规范化形式组合成字符串，其具体的码元可能会发生变化(见于 
+		<a href="https://mangwu.github.io/uievents-key-cn/#precomposed-char-note">
+		uievents-key-precomposed-character</a> )
+		</div>
 
 		<div class="example">
 		++---+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
 		=| # | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |   |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +---+-------------------+----------o-----------+-------------o---------------+------------o------------+----------------------+
-		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | Combining Circumflex |
-		 |   |                   |                      |                             |                         | Accent (Dead Key)    |
+		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | 组合扬抑音符(死键)   |
 		+| 2 | compositionstart  |                      |                             | <code>""</code>         |                      |
 		+| 3 | compositionupdate |                      |                             | UNI{U+0302}             |                      |
 		+| 4 | keyup             | KEY{Dead}            | <code>true</code>           |                         |                      |
 		+| 5 | keydown           | KEY_NOLINK{ê}        | <code>true</code>           |                         |                      |
 		+| 6 | compositionupdate |                      |                             | GLYPH{ê}                |                      |
 		+| 7 | compositionend    |                      |                             | GLYPH{ê}                |                      |
-		+| 8 | keyup             | KEY_NOLINK{e}        | <code>false</code>          |                         | Latin Small Letter E |
+		+| 8 | keyup             | KEY_NOLINK{e}        | <code>false</code>          |                         | 小写拉丁字母 E       |
 		++---+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
 		</div>
 
 		<p class="note">
-		In the second EVENT{keydown} event (step 5), the key value (assuming the
-		event is not suppressed) will <em>not</em> be KEY_NOLINK{e} (Latin Small
-		Letter E key) under normal circumstances because the value delivered to
-		the user agent will already be modified by the dead key operation.
+		在第二个 EVENT{keydown} 事件(步骤5)中，键值(假设事件没有被阻止(suppressed))
+		在正常情况下 <em>不</em> 会是 KEY_NOLINK{e}(小写拉丁字母 E 键)，
+		因为传递给用户代理的值已经被死键操作修改了(modified)。
 		</p>
 
-		This process might be aborted when a user types an unsupported base
-		character (that is, a base character for which the active
-		diacritical mark is not available) after pressing a <a>dead key</a>:
+		当用户在按下一个 <a href="#dead-key">死键</a> 后，
+		再键入一个不受支持的基本字符(即一个没有活动变音标记的基本字符)时，
+		此过程可能会中止: 
 
 		<div class="example">
 		++---+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
 		=| # | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |   |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +---+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
-		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | Combining Circumflex |
-		 |   |                   |                      |                             |                         | Accent (Dead Key)    |
+		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | 组合扬抑音符(死键)   |
 		+| 2 | compositionstart  |                      |                             | <code>""</code>         |                      |
 		+| 3 | compositionupdate |                      |                             | UNI{U+0302}             |                      |
 		+| 4 | keyup             | KEY{Dead}            | <code>true</code>           |                         |                      |
