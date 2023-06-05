@@ -2870,7 +2870,7 @@ myDiv.addEventListener("auxclick", function(e) {
 					<span class="zh-upper">必须</span> 被按下的时间长度是依赖配置的
 					(由配置决定)。
 
-					<div class="note custom-note" id="custom-reapeat-note">
+					<div class="note custom-note" id="reapeat-custom-note">
 					<q>Long-key-press行为是一种用户交互行为，
 					通常指用户在按下键盘上的某个键时，停留的时间超过了一定的阈值，
 					例如超过0.5秒或者1秒。
@@ -2929,7 +2929,7 @@ myDiv.addEventListener("auxclick", function(e) {
 							{{KeyboardEvent/location}} 来推断此信息。
 							</p>
 
-							<div class="note custom-note">
+							<div class="note custom-note" id="modifier-keys-custom-note">
 							"修饰按键"，"修饰符按键"，"修饰键"，"修饰符"，这几种不同的说法，
 							在本规范的翻译中都表示"修饰符按键"，即"Modifier Keys"，
 							有时候也会使用"modifiers"简化表示。它是计算机键盘上的一种特殊键
@@ -3027,7 +3027,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				<dd>
 					初始化键盘事件(KeyboardEvent)对象的 <code>repeat</code> 属性。
 					如果当前键盘事件(KeyboardEvent)被认为是由长时间按下(非规范补充: 见于 
-					<a href="#custom-reapeat-note">reapeat属性注释</a> )
+					<a href="#reapeat-custom-note">reapeat属性自定义注释</a> )
 					任何单个键引起的类似事件的重复序列的一部分，则该属性应设置为 
 					<code>true</code> ，否则为 <code>false</code> 。
 				</dd>

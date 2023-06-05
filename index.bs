@@ -173,62 +173,62 @@ path: sections/introduction.include
 path: sections/conventions.include
 </pre>
 
-<!-- Section 3: Architecture =============================================== -->
+<!-- 章节 3: 结构 =============================================== -->
 <pre class="include">
 path: sections/architecture.include
 </pre>
 
-<!-- Section 4: Basic Event Interfaces ===================================== -->
+<!-- 章节 4: 基本事件接口 ===================================== -->
 <pre class="include">
 path: sections/event-interfaces.include
 </pre>
 
-<!-- Section 5: The Events ================================================= -->
+<!-- 章节 5: 事件类型 ================================================= -->
 <pre class="include">
 path: sections/event-types.include
 </pre>
 
-<!-- Section 6: Keyboard and key values ==================================== -->
+<!-- 章节 6: 键盘事件和键值 ==================================== -->
 <pre class="include">
 path: sections/keyboard.include
 </pre>
 
-<!-- Appendix A: Legacy Event Initializers ================================= -->
+<!-- 附录 A: Legacy Event Initializers ================================= -->
 <pre class="include">
 path: sections/legacy-event-initializers.include
 </pre>
 
-<!-- Appendix B: Legacy Key Attributes ===================================== -->
+<!-- 附录 B: Legacy Key Attributes ===================================== -->
 <pre class="include">
 path: sections/legacy-key-attributes.include
 </pre>
 
-<!-- Appendix C: Legacy Event Types ======================================== -->
+<!-- 附录 C: Legacy Event Types ======================================== -->
 <pre class="include">
 path: sections/legacy-event-types.include
 </pre>
 
-<!-- Appendix D: Extending Events ========================================== -->
+<!-- 附录 D: Extending Events ========================================== -->
 <pre class="include">
 path: sections/extending-events.include
 </pre>
 
-<!-- Appendix E: Security Considerations =================================== -->
+<!-- 附录 E: Security Considerations =================================== -->
 <pre class="include">
 path: sections/security.include
 </pre>
 
-<!-- Appendix F: Changes =================================================== -->
+<!-- 附录 F: Changes =================================================== -->
 <pre class="include">
 path: sections/changes.include
 </pre>
 
-<!-- Appendix G: Acknowledgements ========================================== -->
+<!-- 附录 G: Acknowledgements ========================================== -->
 <pre class="include">
 path: sections/acknowledgements.include
 </pre>
 
-<!-- Appendix H: Glossary  ================================================= -->
+<!-- 附录 H: Glossary  ================================================= -->
 <pre class="include">
 path: sections/glossary.include
 </pre>

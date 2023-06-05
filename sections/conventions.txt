@@ -13,7 +13,7 @@
     而不考虑生成的 {{KeyboardEvent}} 事件中的 
     {{KeyboardEvent/key}} (键) 和 {{KeyboardEvent/code}} (键码)。
 
-    <p class="note custom-note" id="key-cap-note">
+    <p class="note custom-note" id="key-cap-custom-note">
         <q>键帽是放置在计算机键盘的键开关上的塑料、金属或其他材料的小盖子。
         键帽通常用于指示它们所对应的键功能或字母数字字符。</q> —— 
         <a href="https://en.wikipedia.org/wiki/Keycap">英文维基</a>。

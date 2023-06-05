@@ -5,7 +5,7 @@
 本节包含有关键盘事件的必要信息：
 
 *	键盘布局、映射和键值的说明。
-*	键之间的关系，例如<a href="#dead-key">死键</a> 或 修饰符键。
+*	键之间的关系，例如 <a href="#dead-key">死键</a> 或 修饰符键。
 *	键盘事件和其默认行为之间的关系。
 *	一组 <code>键</code> 值集合，以及如何扩展这集合的指导方针。
 
@@ -35,7 +35,7 @@
 
 		<em>本节用于提供有用信息</em>
 
-		按键图例是印在或浮雕在 <em><a href="#key-cap-note">键帽</a></em> 
+		按键图例是印在或浮雕在 <em><a href="#key-cap-custom-note">键帽</a></em> 
 		(覆盖在键盘机械开关上的矩形"帽")上的视觉标记。
 		这些标记通常由一次击键时将产生的一个或多个字符组成(如 GLYPH{G} 、 GLYPH{8} 
 		或 GLYPH{ш} )，或指示该键功能的名称或符号(如向上的箭头 GLYPH{&#x21E7;} 
@@ -100,7 +100,7 @@
 
 	<h4 id="code-examples"><code>code</code> 例子</h4>
 
-		<div class="note custom-note">
+		<div class="note custom-note" id="keyboard-layout-custom-note">
 		以下关于键盘布局的类型，可以查阅 [=标准键盘布局=] 。<br/> 美式键盘布局: 
 		标准 "101" 键盘布局; <br/> 日式键盘布局: 日式 "106" 键盘布局; <br/> 
 		美式国际键盘布局:  备用 "101" 键盘布局; <br/> 英式键盘布局: 
@@ -150,7 +150,7 @@
 			在各种键盘布局上处理 GLYPH{2} 键(按下 Shift 键和不按下 Shift 键)。
 
 			++----------+----------------------+----------------------+----------------------------+
-			=| Keyboard |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                      |
+			=| Keyboard |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| 注释                       |
 			 |  Layout  |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                            |
 			 +----------+----------o-----------+----------o-----------+----------------------------+
 			+| 美式     | KEY_NOLINK{2}        | CODE{Digit2}         |                            |
@@ -191,7 +191,7 @@
 			KEYCAP{Shift} (释放)、 KEYCAP{2} (释放)。
 
 			++---+----------+----------------------+----------------------+-----------------------------------------+
-			=| # | 事件类型 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| Notes                                   |
+			=| # | 事件类型 |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>| 注释                                    |
 			 |   |          |{{KeyboardEvent/key}} |{{KeyboardEvent/code}}|                                         |
 			 +---+----------+----------o-----------+----------o-----------+-----------------------------------------+
 			+| 1 | keydown  | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
@@ -209,7 +209,7 @@
 
 	<h4 id="code-virtual-keyboards">{{KeyboardEvent/code}} 和虚拟键盘</h4>
 
-		{{KeyboardEvent/code}} 属性的有用性对于虚拟键盘(以及遥控器和和弦键盘)
+		{{KeyboardEvent/code}} 属性的用处对于虚拟键盘(以及遥控器和和弦键盘)
 		来说不太明显。通常，如果虚拟(或遥控器)键盘模仿标准键盘的布局和功能，
 		则它还 <span class="zh-upper">必须</span> 适当地设置 {{KeyboardEvent/code}} 
 		属性。对于不模仿标准键盘布局的键盘，则 {{KeyboardEvent/code}} 
@@ -236,114 +236,98 @@
 	这些值可以用于: 监控特定的输入字符串; 用于检测和作用于结合了其他输入(例如鼠标)
 	的修饰键输入; 用于创建虚拟键盘; 或用于任何数量的其他目的。
 
-	键值也可以由内容作者在字符串比较中使用，作为符合宿主语言的标记属性
-	(如HTML访问键)的值，或用于其他相关目的。一致的宿主语言应该允许内容作者使用两个等价字符串值中的任意一个作为键值：字符值或键值。
-	Key values can also be used by content authors in string comparisons, as
-	values for markup attributes (such as the HTML <code>accesskey</code>) in
-	conforming <a>host languages</a>, or for other related purposes.   A
-	conforming <a>host language</a> SHOULD allow content authors to use either
-	of the two equivalent string values for a key value: the <a>character
-	value</a>, or the <a>key value</a>.
+	键值也可以由内容作者在字符串比较中使用，能作为符合规范的
+	<a href="#host-language">宿主语言</a> 的标记属性
+	(如 HTML 的 <code>accesskey</code> )的值，或用于其他相关目的。符合规范的
+	<a href="#host-language">宿主语言</a> <span class="zh-upper">应当</span> 
+	允许内容作者使用两个等价字符串值中的任意一个作为键值: 
+	<a href="#character-value">字符值</a> 或 <a href="#key-value">键值</a> 。
 
 	<p class="note">
-	While implementations will use the most relevant value for a key
-	independently of the platform or keyboard layout mappings, content authors
-	can not make assumptions on the ability of keyboard devices to generate
-	them.  When using keyboard events and key values for shortcut-key
-	combinations, content authors can <q>consider using numbers and function
-	keys (KEYCAP{F4}, KEYCAP{F5}, and so on) instead of letters</q> ([[DWW95]])
-	given that most keyboard layouts will provide keys for those.
+	虽然独立于平台或键盘布局映射的实现将使用键的最相关值，
+	但内容作者不能对键盘设备生成它们的能力做出假设。
+	当使用键盘事件和快捷键组合的键值时，内容作者可以 <q>考虑使用数字和功能键( 
+	KEYCAP{F4} 、 KEYCAP{F5} 等)而不是字母</q> ( [[DWW95]] )，
+	因为大多数键盘布局都会为这些键值提供键。
 	</p>
 
-	A key value does not indicate a specific key on the physical keyboard, nor
-	does it reflect the character printed on the key. A key value indicates the
-	current value of the event with consideration to the current state of all
-	active keys and key input modes (including shift modes), as reflected in the
-	operating-system mapping of the keyboard and reported to the implementation.
-	In other words, the key value for the key labeled KEYCAP{O} on a
-	<a>QWERTY</a> keyboard has the key value KEY_NOLINK{o} in an unshifted state and
-	KEY_NOLINK{O} in a shifted state. Because a user can map their keyboard to an
-	arbitrary custom configuration, the content author is encouraged not to
-	assume that a relationship exists between the shifted and unshifted states
-	of a key and the majuscule form (uppercase or capital letters) and minuscule
-	form (lowercase or small letters) of a character representation, but is
-	encouraged instead to use the value of the {{KeyboardEvent/key}} attribute.
-	For example, the Standard "102" Keyboard layout depicted in [[UIEvents-Code]]
-	illustrates one possible set of <a>key mappings</a> on one possible keyboard
-	layout. Many others exist, both standard and idiosyncratic.
+	键值并不标识(indicate)物理键盘上的特定键，也不反映打印在按键上的字符
+	(键帽标签)。键值表示的是: 考虑到在所有活动按键和键输入模式(包括换档模式 [shift 
+	modes] )的当前状态下的按键事件的当前值(通过 {{KeyboardEvent/key}} 属性获取)，
+	这个值反映在键盘的操作系统映射中，并报告给实现。换言之， <a>QWERTY</a> 
+	键盘上键帽标签为 KEYCAP{O} 的键的键值在未换挡(unshifted)状态下具有键值 
+	KEY_NOLINK{o} ，在换挡(shifted)状态下为键值 KEY_NOLINK{O} 。
+	由于用户可以将其键盘映射到任意自定义配置，因此鼓励内容作者不要假设键的换档
+	(shifted)和未换挡(unshifted)状态与字符的主要表示形式(大写或大写字母)
+	和次要表示形式(小写或小写字母)之间存在关系，而是鼓励内容作者使用 
+	{{KeyboardEvent/key}} 属性的值。例如， [[UIEvents-Code]] 中描述的标准 "102"
+	键盘布局阐明了一个可能的键盘布局上的一组可能的 
+	<a href="#key-mapping">键映射</a> 。还有许多其他存在的键盘布局，既有标准的，
+	也有特殊的。
 
 	<p class="note">
-	To simplify <a>dead key</a> support, when the operating-system mapping of
-	the keyboard is handling a <a>dead key</a> state, the current state of the
-	dead key sequence is not reported via the {{KeyboardEvent/key}} attribute.
-	Rather, a key value of KEY{Dead} is reported. Instead, implementations
-	generate <a href="#events-compositionevents">composition events</a> which
-	contain the intermediate state of the dead key sequence reported via the
-	{{CompositionEvent/data}} attribute. As in the previous example, the key
-	value for the key marked KEYCAP{O} on a <a>QWERTY</a> keyboard has a
-	{{CompositionEvent/data}} value of <code class="char">"&#xF6;"</code> in an
-	unshifted state during a dead-key operation to add an umlaut diacritic, and
-	<code class="char">"&#xD6;"</code> in a shifted state during a dead-key
-	operation to add an umlaut diacritic.
+	为了简化 <a href="#dead-key">死键</a> 支持，当键盘的操作系统映射处理 
+	<a href="#dead-key">死键</a> 状态时，不会通过 {{KeyboardEvent/key}} 
+	属性报告死键序列的当前状态，相反，一个 KEY{Dead} 键值会被 
+	{{KeyboardEvent/key}} 报告。取而代之的是(要获取死键序列状态)，实现会生成 
+	<a href="#events-compositionevents">组合事件</a> ，事件中包含通过 
+	{{CompositionEvent/data}} 属性报告的死键序列的中间状态。与前面的例子一样，
+	<a>QWERTY</a> 键盘上键帽标签为 KEYCAP{O} 
+	的键的按键值在操作死键以添加变音符号的期间，在未换挡(unshifted)状态下具有 
+	<code class="char">"&#xF6;"</code> 的 {{CompositionEvent/data}} 属性值 ; 
+	在操作死键以添加变音符号的期间，在换挡(shifted)状态下具有
+	<code class="char">"&#xF6;"</code> 的 {{CompositionEvent/data}} 属性值。
 	</p>
 
-	It is also important to note that there is not a one-to-one relationship
-	between key event states and key values.  A particular key value might be
-	associated with multiple keys. For example, many standard keyboards contain
-	more than one key with the KEYCAP{Shift} key value (normally distinguished
-	by the {{KeyboardEvent/location}} values
-	{{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} and
-	{{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}}) or KEYCAP{8} key value (normally
-	distinguished by the {{KeyboardEvent/location}} values
-	{{KeyboardEvent/DOM_KEY_LOCATION_STANDARD}} and
-	{{KeyboardEvent/DOM_KEY_LOCATION_NUMPAD}}), and user-configured custom
-	keyboard layouts MAY duplicate any key value in multiple key-state scenarios
-	(note that {{KeyboardEvent/location}} is intended for standard keyboard
-	layouts, and cannot always indicate a meaningful distinction).
+	同样重要到需要注意是，按键事件状态和键值之间没有一一对应的关系。
+	一个特定的键值可能与多个键相关联。例如，许多标准键盘包含不止一个具有 
+	KEYCAP{Shift} 键帽标签的键(通常通过 {{KeyboardEvent/location}} 值
+	{{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} 和 
+	{{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} 区分)或 KEYCAP{8} 键帽标签的键(通常由 
+	{{KeyboardEvent/location}} 值 {{KeyboardEvent/DOM_KEY_LOCATION_STANDARD}} 和 
+	{{KeyboardEvent/DOM_KEY_LOCATION_NUMPAD}} 区分)，并且用户配置的自定义键盘布局
+	<span class="zh-upper">可以</span> 在多个键状态(multiple key-state)
+	场景中复用任何键值(请注意，{{KeyboardEvent/location}} 只用于标准键盘布局，
+	并且不总能指示出有意义的区别)。
 
-	Finally, the meaning of any given character representation is
-	context-dependent and complex.  For example, in some contexts, the asterisk
-	(star) glyph (GLYPH{*}) represents a footnote or
-	emphasis (when bracketing a passage of text). However, in some documents or
-	executable programs it is equivalent to the mathematical multiplication
-	operation, while in other documents or executable programs, that function is
-	reserved for the multiplication symbol (GLYPH{&#xD7;}, Unicode value
-	UNI{U+00D7}) or the Latin small letter <code>"x"</code>
-	(due to the lack of a multiplication key on many keyboards and the
-	superficial resemblance of the glyphs GLYPH{&#xD7;} and GLYPH{x}).  Thus,
-	the semantic meaning or function of character representations is outside the
-	scope of this specification.
+	最后，任何( {{KeyboardEvent/key}} )给定的字符表示(representation)
+	的含义都是上下文相关的并且复杂的。例如，在某些上下文中，星号(星形)字形( 
+	GLYPH{*} )表示脚注或强调(将一段文字括起来时)。然而，在一些文档或可执行程序中，
+	它相当于数学乘法运算，而在其他文档或可运行程序中，该功能键预留为乘法符号( 
+	GLYPH{&#xD7;} ，Unicode 值 UNI{U+00D7} )或小写拉丁字母 <code>"x"</code> 
+	(由于许多键盘上没有乘法键，而且字形 GLYPH{&#xD7;} 和 GLYPH{x} 表面上很相似)。
+	这样，字符表示(representation)的语义或功能不在本规范的论述范围内。
 
-	<h4 id="keys-modifiers">Modifier keys</h4>
+	<h4 id="keys-modifiers">修饰符按键</h4>
+		
+		<div class="note custom-note">
+		关于 <q>Modifier keys</q> 的翻译和说明，可以参阅 
+		<a href="#modifier-keys-custom-note">修饰符按键自定义注释</a> 。<br/>
+		关于键盘布局的相关说明，可以参阅 <a href="#keyboard-layout-custom-note">键盘布局自定义注释</a> 
+		</div>
 
-		Keyboard input uses modifier keys to change the normal behavior of a
-		key. Like other keys, modifier keys generate EVENT{keydown} and
-		EVENT{keyup} events, as shown in the example below. Some modifiers are
-		activated while the key is being pressed down or maintained pressed such
-		as KEYCAP{Alt}, KEYCAP{Control}, KEYCAP{Shift}, KEYCAP{AltGraph}, or
-		KEYCAP{Meta}. Other modifiers are activated depending on their state
-		such as KEYCAP{CapsLock}, KEYCAP{NumLock}, or KEYCAP{ScrollLock}. Change
-		in the state happens when the modifier key is being pressed down. The
-		{{KeyboardEvent}} interface provides convenient attributes for some
-		common modifiers keys: {{KeyboardEvent/ctrlKey}},
-		{{KeyboardEvent/shiftKey}}, {{KeyboardEvent/altKey}},
-		{{KeyboardEvent/metaKey}}. Some operating systems simulate the
-		KEYCAP{AltGraph} modifier key with the combination of the KEYCAP{Alt}
-		and KEYCAP{Control} modifier keys. Implementations are encouraged to use
-		the KEYCAP{AltGraph} modifier key.
+		键盘输入使用修饰键来更改键的正常行为。与其他按键一样，修饰符按键生成 
+		EVENT{keydown} 和 EVENT{keyup}事件，如下面的例子所示。
+		某些修饰符在按键被按下或保持按下时被激活，如 KEYCAP{Alt} 、 KEYCAP{Control} 
+		、 KEYCAP{Shift} 、 KEYCAP{AltGraph} 或 KEYCAP{Meta} 。
+		其他修饰符会根据其状态激活，例如 KEYCAP{CapsLock} 、 KEYCAP{NumLock} 或 
+		KEYCAP{ScrollLock}。当按下修饰键时，(这些按键对应的修饰)状态会发生变化。
+		{{KeyboardEvent}} 接口为一些常见的修饰符键提供了方便的属性: 
+		{{KeyboardEvent/ctrlKey}} 、 {{KeyboardEvent/shiftKey}} 、 
+		{{KeyboardEvent/altKey}} 、 {{KeyboardEvent/metaKey}}。
+		某些操作系统使用 KEYCAP{AltGraph} 和 KEYCAP{Control} 修饰键的组合来模拟 
+		KEYCAP{AltGraph} 修饰键。鼓励实现使用 KEYCAP{AltGraph} 修饰符按键。
 
 		<div class="example">
-			This example describes a possible sequence of events
-			associated with the generation of the Unicode character Q (Latin
-			Capital Letter Q, Unicode code point UNI{U+0051}) on a US
-			keyboard using a US mapping:
+			此示例描述了与在使用 US 映射的 US 键盘上生成的 Unicode 字符 Q 
+			(大写拉丁字母 Q ，Unicode 码点 UNI{U+0051} )相关联的可能的事件序列: 
 
 			++---+-------------+----------------------+----------------------------+------------------------+
-			=| # | Event Type  |{{KeyboardEvent}}<br/>| Modifiers                  | Notes                  |
+			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                  |
 			 |   |             |{{KeyboardEvent/key}} |                            |                        |
 			 +---+-------------+----------o-----------+-------------o--------------+------------------------+
 			+| 1 | keydown     | KEY{Shift}           | {{KeyboardEvent/shiftKey}} |                        |
-			+| 2 | keydown     | KEY_NOLINK{Q}        | {{KeyboardEvent/shiftKey}} | Latin Capital Letter Q |
+			+| 2 | keydown     | KEY_NOLINK{Q}        | {{KeyboardEvent/shiftKey}} | 大写拉丁字母 Q         |
 			+| 3 | beforeinput |                      |                            |                        |
 			+| 4 | input       |                      |                            |                        |
 			+| 5 | keyup       | KEY_NOLINK{Q}        | {{KeyboardEvent/shiftKey}} |                        |
@@ -352,82 +336,122 @@
 		</div>
 
 		<div class="example">
-			Th example describes an alternate sequence of keys to the
-			example above, where the KEYCAP{Shift} key is released before the
-			KEYCAP{Q} key.  The key value for the KEYCAP{Q} key will revert to its
-			unshifted value for the EVENT{keyup} event:
+			该示例描述了上述示例的键交替序列，其中 KEYCAP{Shift} 键在 KEYCAP{Q} 
+			键之前释放。对于 EVENT{keyup} 事件， KEYCAP{Q} 键的键值将恢复为其未换挡
+			(unshifted)的值: 
 
 			++---+-------------+----------------------+----------------------------+------------------------+
-			=| # | Event Type  |{{KeyboardEvent}}<br/>| Modifiers                  | Notes                  |
+			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                   |
 			 |   |             |{{KeyboardEvent/key}} |                            |                        |
 			 +---+-------------+----------o-----------+-------------o--------------+------------------------+
 			+| 1 | keydown     | KEY{Shift}           | {{KeyboardEvent/shiftKey}} |                        |
-			+| 2 | keydown     | KEY_NOLINK{Q}        | {{KeyboardEvent/shiftKey}} | Latin Capital Letter Q |
+			+| 2 | keydown     | KEY_NOLINK{Q}        | {{KeyboardEvent/shiftKey}} | 大写拉丁字母 Q         |
 			+| 3 | beforeinput |                      |                            |                        |
 			+| 4 | input       |                      |                            |                        |
 			+| 5 | keyup       | KEY{Shift}           |                            |                        |
-			+| 6 | keyup       | KEY_NOLINK{q}        |                            | Latin Small Letter Q   |
+			+| 6 | keyup       | KEY_NOLINK{q}        |                            | 小写拉丁字母 Q         |
 			++---+-------------+----------------------+----------------------------+------------------------+
 		</div>
 
 		<div class="example">
-			The following example describes a possible sequence of keys that
-			does not generate a Unicode character (using the same configuration
-			as the previous example):
+			以下示例描述了一个可能的不生成 Unicode 字符的键序列
+			(使用与上上个示例相同的配置):
 
 			++---+-------------+----------------------+----------------------------+----------------------------+
-			=| # | Event Type  |{{KeyboardEvent}}<br/>| Modifiers                  | Notes                      |
+			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                       |
 			 |   |             |{{KeyboardEvent/key}} |                            |                            |
 			 +---+-------------+----------o-----------+-------------o--------------+----------------------------+
 			+| 1 | keydown     | KEY{Control}         | {{KeyboardEvent/ctrlKey}}  |                            |
-			+| 2 | keydown     | KEY_NOLINK{v}        | {{KeyboardEvent/ctrlKey}}  | Latin Small Letter V       |
-			+|   |             |                      |                            | <em>No EVENT{beforeinput}  |
-			 |   |             |                      |                            | or EVENT{input} events are |
-			 |   |             |                      |                            | generated.</em>            |
-			+| 3 | keyup       | KEY_NOLINK{v}        | {{KeyboardEvent/ctrlKey}}  | Latin Small Letter V       |
+			+| 2 | keydown     | KEY_NOLINK{v}        | {{KeyboardEvent/ctrlKey}}  | 小写拉丁字母 V             |
+			+|   |             |                      |                            | <em>不生成                 |
+			 |   |             |                      |                            | EVENT{beforeinput} 或      |
+			 |   |             |                      |                            | EVENT{input} 事件。</em>   |
+			+| 3 | keyup       | KEY_NOLINK{v}        | {{KeyboardEvent/ctrlKey}}  | 小写拉丁字母 V             |
 			+| 4 | keyup       | KEY{Control}         |                            |                            |
 			++---+-------------+----------------------+----------------------------+----------------------------+
+
+			<div class="note custom-note" id="example23-custom-note">
+			在一般的操作系统上，KEYCAP{Ctrl} + KEYCAP{v} 是粘贴的快捷组合键，
+			用户将剪贴板的内容粘贴到输入控件。无论剪贴板是否包含复制的内容，在 
+			<a href="https://domeventviewer.com/key-event-viewer.html">
+			键盘事件测试网站</a> 上测试， <strong>谷歌浏览器</strong> 
+			(113.0.5672.129(正式版本) (64 位))都会派发 EVENT{beforeinput} 和 
+			EVENT{input} 事件，而 <strong>火狐浏览器</strong> (113.0.2(64位))只在剪贴板有内容时才派发
+			EVENT{beforeinput} 和 EVENT{input} 事件。<br/>
+			当然，如果组合键的第二个按键不是 KEYCAP{v} ，而是非快捷组合按键，如 
+			KEYCAP{i} ，则两个浏览器就如例子所述都不会触发 EVENT{beforeinput} 和 
+			EVENT{input} 事件。因此，在考虑实际的事件发生情况时，
+			要将修饰按键和字符数字按键组合形成组合按键纳入考虑范围。
+
+			<figure id="figure-example23-beforeinput-and-input">
+				<img
+					src="images/example23-beforeinput-and-input.png"
+					width="900"
+					height="300"
+					alt="谷歌浏览器在使用 Ctrl + v 按键时，会派发data属性值为null的 
+					Event{beforeinput} 和 EVENT{input} 事件"
+				/>
+				<div class="custom-figcaption">
+				谷歌浏览器在使用 KEYCAP{Ctrl} + KEYCAP{v} 按键时，会派发 
+				{{InputEvent/data}}  为 <code>null</code> 的 EVENT{beforeinput} 和 
+				EVENT{input} 事件
+				</div>
+			</figure>
+			
+			</div>
+
 		</div>
 
 		<div class="example">
-			The following example shows the sequence of events when both KEYCAP{Shift} and
-			KEYCAP{Control} are pressed:
+			以下示例显示了同时按下 KEYCAP{Shift} 和 KEYCAP{Control} 时的事件序列: 
 
 			++---+-------------+----------------------+----------------------------+----------------------------+
-			=| # | Event Type  |{{KeyboardEvent}}<br/>| Modifiers                  | Notes                      |
+			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                       |
 			 |   |             |{{KeyboardEvent/key}} |                            |                            |
 			 +---+-------------+----------o-----------+-------------o--------------+----------------------------+
 			+| 1 | keydown     | KEY{Control}         | {{KeyboardEvent/ctrlKey}}  |                            |
 			+| 2 | keydown     | KEY{Shift}           | {{KeyboardEvent/ctrlKey}}, |                            |
 			 |   |             |                      | {{KeyboardEvent/shiftKey}} |                            |
-			+| 3 | keydown     | KEY_NOLINK{V}        | {{KeyboardEvent/ctrlKey}}, | Latin Capital Letter V     |
+			+| 3 | keydown     | KEY_NOLINK{V}        | {{KeyboardEvent/ctrlKey}}, | 大写拉丁字母 V             |
 			 |   |             |                      | {{KeyboardEvent/shiftKey}} |                            |
-			+|   |             |                      |                            | <em>No EVENT{beforeinput}  |
-			 |   |             |                      |                            | or EVENT{input} events are |
-			 |   |             |                      |                            | generated.</em>            |
-			+| 4 | keyup       | KEY_NOLINK{V}        | {{KeyboardEvent/ctrlKey}}, | Latin Capital Letter V     |
+			+|   |             |                      |                            | <em>不生成                 |
+			 |   |             |                      |                            | EVENT{beforeinput} 或      |
+			 |   |             |                      |                            | EVENT{input} 事件。</em>   |
+			+| 4 | keyup       | KEY_NOLINK{V}        | {{KeyboardEvent/ctrlKey}}, | 大写拉丁字母 V             |
 			 |   |             |                      | {{KeyboardEvent/shiftKey}} |                            |
 			+| 5 | keyup       | KEY{Shift}           | {{KeyboardEvent/ctrlKey}}  |                            |
 			+| 6 | keyup       | KEY{Control}         |                            |                            |
 			++---+-------------+----------------------+----------------------------+----------------------------+
+
+			<div class="note custom-note">
+			这里的 EVENT{beforeinput} 或 EVENT{input} 事件的生成情况和例子23中的 
+			<a href="#example23-custom-note">注释</a> 说明的情况一致，KEYCAP{Ctrl} + 
+			KEYCAP{Shift} + KEYCAP{v} 组合按键仍然有粘贴的功能。除此之外，还有考虑加入
+			KEYCAP{Shift} 后浏览器可能的其它快捷键对浏览器事件派发的影响，例如 
+			KEYCAP{Ctrl} + KEYCAP{Shift} + KEYCAP{i} 
+			组合快捷键可以打开浏览器的开发者工具(devTool)，打开后可能会阻止 
+			EVENT{keyup} 事件的后续派发。
+			</div>
+			
 		</div>
 
 		<div class="example">
+			对于非 US 键盘布局，事件顺序相同，但键的值基于当前键盘布局。此示例显示了使用阿拉伯键盘布局时的一系列事件：
 			For non-US keyboard layouts, the sequence of events is the same, but
 			the value of the key is based on the current keyboard layout. This
 			example shows a sequence of events when an Arabic keyboard layout is
 			used:
 
 			++---+-------------+----------------------+----------------------------+----------------------------+
-			=| # | Event Type  |{{KeyboardEvent}}<br/>| Modifiers                  | Notes                      |
+			=| # | 事件类型    |{{KeyboardEvent}}<br/>| 修饰符                     | 注释                       |
 			 |   |             |{{KeyboardEvent/key}} |                            |                            |
 			 +---+-------------+----------o-----------+-------------o--------------+----------------------------+
 			+| 1 | keydown     | KEY{Control}         | {{KeyboardEvent/ctrlKey}}  |                            |
-			+| 2 | keydown     | KEY_NOLINK{ر}        | {{KeyboardEvent/ctrlKey}}  | Arabic Letter Reh          |
-			+|   |             |                      |                            | <em>No EVENT{beforeinput}  |
-			 |   |             |                      |                            | or EVENT{input} events are |
-			 |   |             |                      |                            | generated.</em>            |
-			+| 3 | keyup       | KEY_NOLINK{ر}        | {{KeyboardEvent/ctrlKey}}  | Arabic Letter Reh          |
+			+| 2 | keydown     | KEY_NOLINK{ر}        | {{KeyboardEvent/ctrlKey}}  | 阿拉伯字母 Reh             |
+			+|   |             |                      |                            | <em>不生成                 |
+			 |   |             |                      |                            | EVENT{beforeinput} 或      |
+			 |   |             |                      |                            | EVENT{input} 事件。</em>   |
+			+| 3 | keyup       | KEY_NOLINK{ر}        | {{KeyboardEvent/ctrlKey}}  | 阿拉伯字母 Reh             |
 			+| 4 | keyup       | KEY{Control}         |                            |                            |
 			++---+-------------+----------------------+----------------------------+----------------------------+
 		</div>
@@ -486,7 +510,7 @@
 
 		<div class="example">
 		++---+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
-		=| # | Event Type        |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| Notes                |
+		=| # | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |   |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +---+-------------------+----------o-----------+-------------o---------------+------------o------------+----------------------+
 		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | Combining Circumflex |
@@ -514,7 +538,7 @@
 
 		<div class="example">
 		++---+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
-		=| # | Event Type        |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| Notes                |
+		=| # | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |   |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +---+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
 		+| 1 | keydown           | KEY{Dead}            | <code>false</code>          |                         | Combining Circumflex |
@@ -522,7 +546,7 @@
 		+| 2 | compositionstart  |                      |                             | <code>""</code>         |                      |
 		+| 3 | compositionupdate |                      |                             | UNI{U+0302}             |                      |
 		+| 4 | keyup             | KEY{Dead}            | <code>true</code>           |                         |                      |
-		+| 5 | keydown           | KEY_NOLINK{q}        | <code>true</code>           |                         | Latin Small Letter Q |
+		+| 5 | keydown           | KEY_NOLINK{q}        | <code>true</code>           |                         | 小写拉丁字母 Q       |
 		+| 6 | compositionupdate |                      |                             | <code>""</code>         |                      |
 		+| 7 | compositionend    |                      |                             | <code>""</code>         |                      |
 		+| 8 | keyup             | KEY_NOLINK{q}        | <code>false</code>          |                         |                      |
@@ -571,7 +595,7 @@
 
 		<div class="example">
 		++----+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
-		=| #  | Event Type        |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| Notes                |
+		=| #  | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |    |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +----+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
 		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | Latin Small Letter S |
@@ -613,7 +637,7 @@
 
 		<div class="example">
 		++----+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
-		=| #  | Event Type        |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| Notes                |
+		=| #  | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |    |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +----+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
 		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | Latin Small Letter S |
@@ -684,7 +708,7 @@
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
-		=| # | Event Type  |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | Modifiers                  | Notes                             |
+		=| # | 事件类型    |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | 修饰符                     | 注释                              |
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                            |                                   |
 		 +---+-------------+----------o-----------+---------o----------+--------------o-------------+-----------------------------------+
 		+| 1 | keydown     | KEY{Shift}           |                    | {{KeyboardEvent/shiftKey}} |                                   |
@@ -707,7 +731,7 @@
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
-		=| # | Event Type  |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | Modifiers                  | Notes                             |
+		=| # | 事件类型    |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | 修饰符                     | 注释                              |
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                            |                                   |
 		 +---+-------------+----------o-----------+---------o----------+--------------o-------------+-----------------------------------+
 		+| 1 | keydown     | KEY{Shift}           |                    | {{KeyboardEvent/shiftKey}} | The <a>default action</a> is      |
@@ -733,7 +757,7 @@
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+-----------------------------------+
-		=| # | Event Type  |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | Notes                             |
+		=| # | 事件类型    |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | 注释                              |
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                                   |
 		 +---+-------------+----------o-----------+---------o----------+-----------------------------------+
 		+| 1 | keydown     | KEY{Dead}            |                    | The <a>default action</a> is      |

@@ -61,7 +61,7 @@
 ::	在键值的上下文中，字符值是表示一个或多个 Unicode 字符的字符串，
 	例如一个字母或符号，或一组字母，每个字符都属于一组有效的 
 	<a href="#unicode-character-categories">Unicode 字符类别</a> 。在本规范中，
-	字符值表示为 unicode 字符串(例如，NI{U+0020})或同一码点(code point)的字形表示
+	字符值表示为 unicode 字符串(例如，UNI{U+0020})或同一码点(code point)的字形表示
 	(例如，GLYPH{&nbsp;})，并且字符值会进行颜色编码以帮助区分这两种表示。
 
 	<p class="note">
@@ -239,18 +239,21 @@
 	它们集成并扩展了本规范中定义的对象和模型。
 
 : <dfn>hysteresis</dfn>
-::	滞后，人机界面设计的一种特性，在一定的位置或时间范围内接受用户输入，以改善用户体验。
-	例如，在用户双击鼠标按键时，允许其花费的时间有一定小偏差是时间上的滞后作用，
-	如果用户操作鼠标指针从父窗口移动到子菜单，则不立即关闭嵌套菜单是位置上的滞后作用。
+::	滞后，人机界面设计的一种特性，在一定的位置或时间范围内接受用户输入，
+	以改善用户体验。例如，在用户双击鼠标按键时，
+	允许其花费的时间有一定小偏差是时间上的滞后作用，
+	如果用户操作鼠标指针从父窗口移动到子菜单，
+	则不立即关闭嵌套菜单是位置上的滞后作用。
 
 : <dfn>IME</dfn>
 : <dfn>input method editor</dfn>
-:: 	<em>输入法编辑器</em>(IME) ，也被称为<em>前端处理器</em>(front end processer)，
-	是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs or other characters，
-	中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，这种输入应用程序常在东亚语言
-	(如中文，日语，韩语)中使用。一个输入法编辑器(<a href="#ime">IME</a>)也可被用于基于
-	词语的单词补全，常用在移动设备上。参见本规范中用于讨论IMEs的 [[#keys-IME]] 。
-	也可查看 <a href="#text-composition-system">文本合成系统</a> 。
+:: 	<em>输入法编辑器</em>(IME) ，也被称为<em>前端处理器</em>(front end 
+	processer)，是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs 
+	or other characters，中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，
+	这种输入应用程序常在东亚语言(如中文，日语，韩语)中使用。一个输入法编辑器( 
+	<a href="#ime">IME</a> )也可被用于基于词语的单词补全，常用在移动设备上。
+	参见本规范中用于讨论IMEs的 [[#keys-IME]] 。也可查看 
+	<a href="#text-composition-system">文本合成系统</a> 。
 
 : <dfn>key mapping</dfn>
 ::	键映射是将键值分配给特定键的过程，是多种因素组合的结果，
@@ -260,18 +263,18 @@
 	<a href="#dead-key">死键</a> 的状态纳入考虑因素。
 
 : <dfn>key value</dfn>
-::	A key value is a <a>character value</a> or multi-character string (such as
-	KEY{Enter}, KEY{Tab}, or KEY{MediaTrackNext}) associated with a key in a
-	particular state. Every key has a key value, whether or not it has a
-	<a>character value</a>. This includes control keys, function keys,
-	<a>modifier keys</a>, <a>dead keys</a>, and any other key. The key value of
-	any given key at any given time depends upon the <a>key mapping</a>.
+::	键值是与处于特定状态的键相关联的 <a href="#character-value">字符值</a> 
+	或多字符字符串(如 KEY{Enter} 、 KEY{Tab} 或 KEY{MediaTrackNext} )。
+	无论按键是否有 <a href="#character-value">字符值</a> ，它们各自都有一个键值。
+	这包括控制键、功能键、 <a href="#modifier-key">修饰键</a>  、 
+	<a href="#dead-key">死键</a> 和任何其他键。
+	任何给定按键在任何给定时间的键值取决于 <a href="#key-mapping">键映射</a> 。
 
 : <dfn>modifier key</dfn>
 ::	修饰符键可更改键的正常行为，例如生成不同大小写的字符(如 KEYCAP{Shift} 键)，
-	或更改键触发的功能(如 KEYCAP{Fn} 键或 KEYCAP{Alt} 键)。参阅 [[#keys-modifiers]] 
-	获取有关修饰符键的更多信息，并参阅 [[UIEvents-Key]] 中的 [=修饰符键值表格=] 
-	以获取有效的修饰符键列表。
+	或更改键触发的功能(如 KEYCAP{Fn} 键或 KEYCAP{Alt} 键)。参阅 
+	[[#keys-modifiers]] 获取有关修饰符键的更多信息，并参阅 [[UIEvents-Key]] 中的 
+	[=修饰符键值表格=] 以获取有效的修饰符键列表。
 
 : <dfn lt="namespace URIs">namespace URI</dfn>
 ::	A <em>namespace URI</em> is a URI that identifies an XML namespace. This is
