@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="9d8d82f59ac7c14a250303f1680f26b24f4400e4" name="document-revision">
+  <meta content="650e874d20e035bfa123d08cee9829cd46d0d2fa" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1078,9 +1078,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li>
          <a href="#keys-IME"><span class="secno">6.3.3</span> <span class="content">输入法编辑器</span></a>
          <ol class="toc">
-          <li><a href="#keys-IME-keys"><span class="secno">6.3.3.1</span> <span class="content">Input Method Editor mode keys</span></a>
+          <li><a href="#keys-IME-keys"><span class="secno">6.3.3.1</span> <span class="content">输入法编辑器模式按键</span></a>
          </ol>
-        <li><a href="#keys-cancelable-keys"><span class="secno">6.3.4</span> <span class="content">Default actions and cancelable keyboard events</span></a>
+        <li><a href="#keys-cancelable-keys"><span class="secno">6.3.4</span> <span class="content">默认行为和可取消的键盘事件</span></a>
        </ol>
      </ol>
     <li>
@@ -1516,17 +1516,17 @@ Web 应用程序的人。</p>
     一些事件可被用于控制这些行为(或撤消实现已经采取的操作)。这类事件被认为是 <em>可以取消的(cancelable)</em> ，并且这种可以被取消的行为称为事件的 <em><a href="#default-action" id="ref-for-default-action">默认行为</a></em> 。
     可取消的事件对象可以与一个或多个"默认行为"相关联。要取消一个事件，请调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault">preventDefault()</a></code> 方法。 
     <p class="example" id="example-9dab150b"><a class="self-link" href="#example-9dab150b"></a> 用户按下定位设备(通常是鼠标)上的按键后，会立即派发 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown"><code>mousedown</code></a> 事件。
-    实现所采取的一个可能的 <a href="#default-action" id="ref-for-default-action①②">默认行为</a> 是建立一个状态机(state machine)，以允许用户拖动图像或选择文本。 <a href="#default-action" id="ref-for-default-action①③">默认行为</a> 取决于接下来会发生什么——<wbr>例如，如果用户的定位设备在文本上，则可能会开始文本选择;
+    实现所采取的一个可能的 <a href="#default-action" id="ref-for-default-action①①">默认行为</a> 是建立一个状态机(state machine)，以允许用户拖动图像或选择文本。 <a href="#default-action" id="ref-for-default-action①②">默认行为</a> 取决于接下来会发生什么——<wbr>例如，如果用户的定位设备在文本上，则可能会开始文本选择;
     如果用户的定位设备在图像上，则可以开始图像拖动操作。
-    阻止 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①"><code>mousedown</code></a> 事件的 <a href="#default-action" id="ref-for-default-action①④">默认行为</a> 将阻止这些操作的发生。 </p>
-    <p><a href="#default-action" id="ref-for-default-action①⑤">默认行为</a> 通常在事件派发完成后执行，
+    阻止 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①"><code>mousedown</code></a> 事件的 <a href="#default-action" id="ref-for-default-action①③">默认行为</a> 将阻止这些操作的发生。 </p>
+    <p><a href="#default-action" id="ref-for-default-action①④">默认行为</a> 通常在事件派发完成后执行，
     但在特殊情况下，也可能在事件派发之前立即执行。</p>
     <p class="example" id="example-aa47c614"><a class="self-link" href="#example-aa47c614"></a> 与 <code>&lt;input type="checkbox"></code> 元素上的 <a data-link-type="dfn" href="#click" id="ref-for-click"><code>click</code></a> 事件相关联的默认行为是切换(toggles)该元素的 <code>checked</code> IDL 属性值。如果 <a data-link-type="dfn" href="#click" id="ref-for-click①"><code>click</code></a> 事件的默认操作被取消，
     则该值将恢复到以前的状态。 </p>
-    <p>当一个事件被取消时，与该事件相关联的有条件的(conditional) <a href="#default-action" id="ref-for-default-action①⑥">默认行为</a> 将被跳过(或者如上所述，
-    如果 <a href="#default-action" id="ref-for-default-action①⑦">默认行为</a> 在派发之前执行，
-    则其作用将被撤消)。一个事件对象是否可取消由 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable">cancelable</a></code> 属性指示。调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①">preventDefault()</a></code> 方法将取消事件对象相关的所有 <a href="#default-action" id="ref-for-default-action①⑧">默认行为</a> 。 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-defaultprevented" id="ref-for-dom-event-defaultprevented">defaultPrevented</a></code> 属性表示事件是否已经被取消(例如，由先前的事件侦听器取消)。如果 <a href="#dom-application" id="ref-for-dom-application">DOM 应用程序</a> 本身发起了派发操作，那么 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent①">dispatchEvent()</a></code> 方法的返回值能表示事件对象是否被成功取消。</p>
-    <p class="note" role="note"> 许多实现还将 <a href="#event-listener" id="ref-for-event-listener④">事件监听器</a> 的返回值(如值 <code>false</code> )解释为可取消事件的 <a href="#default-action" id="ref-for-default-action①⑨">默认行为</a> 将被被取消
+    <p>当一个事件被取消时，与该事件相关联的有条件的(conditional) <a href="#default-action" id="ref-for-default-action①⑤">默认行为</a> 将被跳过(或者如上所述，
+    如果 <a href="#default-action" id="ref-for-default-action①⑥">默认行为</a> 在派发之前执行，
+    则其作用将被撤消)。一个事件对象是否可取消由 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable">cancelable</a></code> 属性指示。调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①">preventDefault()</a></code> 方法将取消事件对象相关的所有 <a href="#default-action" id="ref-for-default-action①⑦">默认行为</a> 。 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-defaultprevented" id="ref-for-dom-event-defaultprevented">defaultPrevented</a></code> 属性表示事件是否已经被取消(例如，由先前的事件侦听器取消)。如果 <a href="#dom-application" id="ref-for-dom-application">DOM 应用程序</a> 本身发起了派发操作，那么 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent①">dispatchEvent()</a></code> 方法的返回值能表示事件对象是否被成功取消。</p>
+    <p class="note" role="note"> 许多实现还将 <a href="#event-listener" id="ref-for-event-listener④">事件监听器</a> 的返回值(如值 <code>false</code> )解释为可取消事件的 <a href="#default-action" id="ref-for-default-action①⑧">默认行为</a> 将被被取消
     (尽管 <code>window.onerror</code> 的处理程序通过返回 <code>true</code> 来取消)。 </p>
     <h3 class="heading settled" data-level="3.3" id="sync-async"><span class="secno">3.3. </span><span class="content">同步和异步事件</span><a class="self-link" href="#sync-async"></a></h3>
     <p>事件可以被同步派发，也可以被异步派发。</p>
@@ -1547,7 +1547,7 @@ Web 应用程序的人。</p>
     并拥有用户代理给予的特殊权限(privileges)，而脚本代码通过 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-document-createevent" id="ref-for-dom-document-createevent">createEvent()</a></code> 方法生成、使用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-initevent" id="ref-for-dom-event-initevent">initEvent()</a></code> 方法修改、
     经过 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent②">dispatchEvent()</a></code> 方法派发的事件不具有这种特殊权限
     (即不受 <a href="#user-agent" id="ref-for-user-agent③⑥">用户代理</a> 的信任)。受信任事件(可信事件)的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-istrusted" id="ref-for-dom-event-istrusted">isTrusted</a></code> 属性的值为 <code>true</code> ，而不受信任的事件的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-istrusted" id="ref-for-dom-event-istrusted①">isTrusted</a></code> 属性值为 <code>false</code> 。</p>
-    <p>除 <a data-link-type="dfn" href="#click" id="ref-for-click②"><code>click</code></a> 事件外，大多数不受信任的事件不会触发 <a href="#default-action" id="ref-for-default-action②⓪">默认行为</a> 。 <a data-link-type="dfn" href="#click" id="ref-for-click③"><code>click</code></a> 事件始终触发 <a href="#default-action" id="ref-for-default-action②①">默认行为</a> ，即使它的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-istrusted" id="ref-for-dom-event-istrusted②">isTrusted</a></code> 属性为 <code>false</code> (为了向后兼容，保留此行为)。
+    <p>除 <a data-link-type="dfn" href="#click" id="ref-for-click②"><code>click</code></a> 事件外，大多数不受信任的事件不会触发 <a href="#default-action" id="ref-for-default-action①⑨">默认行为</a> 。 <a data-link-type="dfn" href="#click" id="ref-for-click③"><code>click</code></a> 事件始终触发 <a href="#default-action" id="ref-for-default-action②⓪">默认行为</a> ，即使它的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-istrusted" id="ref-for-dom-event-istrusted②">isTrusted</a></code> 属性为 <code>false</code> (为了向后兼容，保留此行为)。
     所有其他不受信任的事件表现地就好像在该事件上调用了 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault②">preventDefault()</a></code> 方法一样。</p>
     <h3 class="heading settled" data-level="3.5" id="event-flow-activation"><span class="secno">3.5. </span><span class="content">激活触发器和行为</span><a class="self-link" href="#event-flow-activation"></a></h3>
     <p>某些 <a href="#event-target" id="ref-for-event-target①⑥">事件目标</a> (例如链接或按钮元素)
@@ -2536,7 +2536,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
       <p>一些定位设备提供或模拟更多的按键状态，并且 <span class="zh-upper">可以</span> 使用高于 <code>2</code> 或低于 <code>0</code> 的值来表示这样的按键状态。</p>
       <p class="note" role="note"> 对于不是由按下/释放鼠标按键引起的事件， <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button③">button</a></code> 的值不会更新。
 					在这些场景中，请注意不要将值 <code>0</code> 解释为左按键的激活状态，而是将其解释为 <a href="#un-initialized-value" id="ref-for-un-initialized-value①⑤">未初始化值</a> 。 </p>
-      <p class="note" role="note"> 一些与 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown③"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①"><code>mouseup</code></a> 等事件相关的 <a href="#default-action" id="ref-for-default-action②②">默认操作</a> 取决于触发事件的特定鼠标按键。 </p>
+      <p class="note" role="note"> 一些与 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown③"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①"><code>mouseup</code></a> 等事件相关的 <a href="#default-action" id="ref-for-default-action②①">默认操作</a> 取决于触发事件的特定鼠标按键。 </p>
       <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value①⑥">未初始化值</a> <span class="zh-upper">必须</span> 为 <code>0</code> 。</p>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="MouseEvent" data-dfn-type="attribute" data-export id="dom-mouseevent-buttons"><code>buttons</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-unsigned-short" id="ref-for-idl-unsigned-short①">unsigned short</a>, readonly</span>
      <dt class="custom-dfn"><i><code class="idl">buttons</code></i>， <code>unsigned short</code> <span class="replacement"> 类型(无符号2字节整型)，只读</span> 
@@ -2566,7 +2566,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 					所以对于一个拥有任意数量的鼠标按键的设备而言，
 					开发者可以使用逐位(遍历)操作来确定当前被按下的按钮数量，
 					以及它们是哪些按键。例如，值 <code>3</code> 表示当前同时按下了左按键和右按键，而值 <code>5</code> 表示当前同时按住了左按键和中间按键。 </p>
-      <p class="note" role="note"> 一些与 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown⑤"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup③"><code>mouseup</code></a> 等事件相关的 <a href="#default-action" id="ref-for-default-action②③">默认操作</a> 取决于使用中的特定鼠标按键。 </p>
+      <p class="note" role="note"> 一些与 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown⑤"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup③"><code>mouseup</code></a> 等事件相关的 <a href="#default-action" id="ref-for-default-action②②">默认操作</a> 取决于使用中的特定鼠标按键。 </p>
       <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value①⑦">未初始化值</a> <span class="zh-upper">必须</span> 为 <code>0</code> 。</p>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="MouseEvent" data-dfn-type="attribute" data-export id="dom-mouseevent-relatedtarget"><code>relatedTarget</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget⑨">EventTarget</a>, readonly, nullable</span>
      <dt class="custom-dfn"><i><code class="idl">relatedTarget</code></i>， <code>EventTarget</code> <span class="replacement"> 类型，只读，可空</span> 
@@ -3110,10 +3110,10 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
     <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick④"><code>auxclick</code></a> 事件触发之前 <span class="zh-upper">可以</span> 是同一元素上触发的 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①④"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①④"><code>mouseup</code></a> 事件，而不考虑其他节点类型 (例如文本节点) 之间的更改。
 			根据环境配置，如果在按下和释放指针设备按键之间发生一个或多个 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover⑦"><code>mouseover</code></a> 、 <a data-link-type="dfn" href="#mousemove" id="ref-for-mousemove①⑧"><code>mousemove</code></a> 和 <a data-link-type="dfn" href="#mouseout" id="ref-for-mouseout⑧"><code>mouseout</code></a> 事件，
 			则 <span class="zh-upper">可以</span> 会派发 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑤"><code>auxclick</code></a> 事件。</p>
-    <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑥"><code>auxclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②④">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③④">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button⑨">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①②">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑦"><code>auxclick</code></a> 事件类型的典型默认操作如下:</p>
+    <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑥"><code>auxclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②③">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③④">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button⑨">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①②">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑦"><code>auxclick</code></a> 事件类型的典型默认操作如下:</p>
     <ul>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target③⑤">事件目标</a> 具有相关的 <a href="#activation-behavior" id="ref-for-activation-behavior⑥">激活行为</a> ，则 <a href="#default-action" id="ref-for-default-action②⑤">默认操作</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target③⑤">事件目标</a> 具有相关的 <a href="#activation-behavior" id="ref-for-activation-behavior⑥">激活行为</a> ，则 <a href="#default-action" id="ref-for-default-action②④">默认操作</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
     </ul>
     <p class="example" id="example-f22d02c8"><a class="self-link" href="#example-f22d02c8"></a> 接收和处理点击中间按键触发的 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑧"><code>auxclick</code></a> 事件。<br> <code class="pre custom-code">myLink.addEventListener("auxclick", function(e) {
   if (e.button === 1) {
@@ -3202,12 +3202,12 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>除了与指针设备关联外， <a data-link-type="dfn" href="#click" id="ref-for-click②③"><code>click</code></a> 事件类型<span class="zh-upper">必须</span> 作为元素激活的一部分进行调度，如 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> 所述。</p>
     <p class="note" role="note"> 为了最大限度地提高可访问性，鼓励开发者在定义自定义控件的激活行为时使用 <a data-link-type="dfn" href="#click" id="ref-for-click②④"><code>click</code></a> 事件类型，而不是其他更特定于设备的定位设备事件类型，如 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①⑥"><code>mousedown</code></a> 或 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①⑥"><code>mouseup</code></a> 。尽管 <a data-link-type="dfn" href="#click" id="ref-for-click②⑤"><code>click</code></a> 事件类型起源于指针设备(例如鼠标)，但随后的实现增强将其扩展到了该关联之外，
 			并且可以将其视为用于元素激活的设备独立的事件类型。 </p>
-    <p><a data-link-type="dfn" href="#click" id="ref-for-click②⑥"><code>click</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②⑥">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③⑥">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①②">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑤">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#click" id="ref-for-click②⑦"><code>click</code></a> 事件类型的典型默认操作如下:</p>
+    <p><a data-link-type="dfn" href="#click" id="ref-for-click②⑥"><code>click</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②⑤">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③⑥">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①②">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑤">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#click" id="ref-for-click②⑦"><code>click</code></a> 事件类型的典型默认操作如下:</p>
     <ul>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target③⑦">事件目标</a> 具有相关的激活行为，则 <a href="#default-action" id="ref-for-default-action②⑦">默认行为</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target③⑦">事件目标</a> 具有相关的激活行为，则 <a href="#default-action" id="ref-for-default-action②⑥">默认行为</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target③⑧">事件目标</a> 是可聚焦的，则 <a href="#default-action" id="ref-for-default-action②⑧">默认行为</a> <span class="zh-upper">必须</span> 是给予该元素文档焦点。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target③⑧">事件目标</a> 是可聚焦的，则 <a href="#default-action" id="ref-for-default-action②⑦">默认行为</a> <span class="zh-upper">必须</span> 是给予该元素文档焦点。</p>
     </ul>
     <h5 class="heading settled" data-level="5.3.4.3" id="event-type-contextmenu"><span class="secno">5.3.4.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="contextmenu">contextmenu</dfn></span><a class="self-link" href="#event-type-contextmenu"></a></h5>
     <table class="event-definition">
@@ -3313,7 +3313,7 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click②⑨"><code>click</code></a> 事件一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick⑨"><code>dblclick</code></a> 事件应该仅针对主要指针按键触发。
 			次要按键 <span class="zh-upper">必须</span> 触发 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⓪"><code>dblclick</code></a> 事件。</p>
     <p class="note" role="note"> 取消(调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault④">preventDefault()</a></code> 方法) <a data-link-type="dfn" href="#click" id="ref-for-click③⓪"><code>click</code></a> 事件不会影响触发 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①①"><code>dblclick</code></a> 事件。 </p>
-    <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click③①"><code>click</code></a> 事件类型一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①②"><code>dblclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②⑨">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③⑨">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑤">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑧">buttons</a></code> 属性的值而变化。通常， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①③"><code>dblclick</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action③⓪">默认行为</a> 与对应的 <a data-link-type="dfn" href="#click" id="ref-for-click③②"><code>click</code></a> 事件类型的行为相匹配。</p>
+    <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click③①"><code>click</code></a> 事件类型一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①②"><code>dblclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action②⑧">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target③⑨">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑤">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑧">buttons</a></code> 属性的值而变化。通常， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①③"><code>dblclick</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action②⑨">默认行为</a> 与对应的 <a data-link-type="dfn" href="#click" id="ref-for-click③②"><code>click</code></a> 事件类型的行为相匹配。</p>
     <figure id="dbclick-default-action">
       <img alt="译者添加的 <strong>非标准</strong> 图示: 在一个具有文本内容的
 				<p> 元素中进行双击操作，双击后触发的 <a><code>dblclick</code></a>
@@ -3371,8 +3371,8 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>当在元素上按下定位设备按键时，<a href="#user-agent" id="ref-for-user-agent④⑧">用户代理</a> <span class="zh-upper">必须</span> 必须派发此事件。</p>
-    <p class="note" role="note"> 许多实现使用 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown②⓪"><code>mousedown</code></a> 事件来开始各种上下文相关的 <a href="#default-action" id="ref-for-default-action③①">默认行为</a> 。如果取消此事件，
-			则可以阻止这些 <a href="#default-action" id="ref-for-default-action③②">默认行为</a> 。
+    <p class="note" role="note"> 许多实现使用 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown②⓪"><code>mousedown</code></a> 事件来开始各种上下文相关的 <a href="#default-action" id="ref-for-default-action③⓪">默认行为</a> 。如果取消此事件，
+			则可以阻止这些 <a href="#default-action" id="ref-for-default-action③①">默认行为</a> 。
 			其中一些默认行为可能包括: 开始一个图像或链接的 拖/放  (drag/drop) 操作，
 			开始文本选择等。此外，一些实现提供了鼠标驱动的平移功能——当按下鼠标中键时， <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown②①"><code>mousedown</code></a> 被派发，该功能会被激活。 </p>
     <h5 class="heading settled" data-level="5.3.4.6" id="event-type-mouseenter"><span class="secno">5.3.4.6. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="mouseenter">mouseenter</dfn></span><a class="self-link" href="#event-type-mouseenter"></a></h5>
@@ -3865,7 +3865,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			上述介绍了两种处理旋钮操作产生多个轴方向不同的 <a data-link-type="dfn" href="#delta" id="ref-for-delta⑨">deltas</a> 值时的交付方式——既可以整合到一个 <a data-link-type="dfn" href="#wheel" id="ref-for-wheel①⓪"><code>wheel</code></a> ，
 			使用三个轴对应的 <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltax" id="ref-for-dom-wheelevent-deltax②">deltaX</a></code> ， <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltay" id="ref-for-dom-wheelevent-deltay②">deltaY</a></code> ， <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltaz" id="ref-for-dom-wheelevent-deltaz④">deltaZ</a></code> 属性指示各种轴增量值;
 			又可以为三个轴上的增量值派发三个 <a data-link-type="dfn" href="#wheel" id="ref-for-wheel①①"><code>wheel</code></a> 事件，只使用各自的 <a data-link-type="dfn" href="#delta" id="ref-for-delta①⓪">delta</a> 指示对应的属性值。 </p>
-    <p><a data-link-type="dfn" href="#wheel" id="ref-for-wheel①②"><code>wheel</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action③③">默认行为</a> 是按(用户代理)指定的数量滚动(或在某些情况下缩放)文档。如果此事件被取消，
+    <p><a data-link-type="dfn" href="#wheel" id="ref-for-wheel①②"><code>wheel</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action③②">默认行为</a> 是按(用户代理)指定的数量滚动(或在某些情况下缩放)文档。如果此事件被取消，
 			则实现 <span class="zh-upper">不得</span> 滚动或缩放文档
 			(或执行与此事件类型相关的任何其他实现决定的的默认行为)。</p>
     <p class="note" role="note"> 在一些 <a href="#user-agent" id="ref-for-user-agent⑤⑧">用户代理</a> 中，或者在一些输入设备中，
@@ -4039,8 +4039,8 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④④">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②③">target</a></code> : 刚刚被更新的<a href="#event-target" id="ref-for-event-target④⑥"> 事件目标对象</a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②②">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④④"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②④">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string②⓪">空字符串</a>
-         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑦">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-iscomposing" id="ref-for-dom-inputevent-iscomposing②">isComposing</a></code> : 如果此事件是在 <a href="#keys-dead">死键</a> 序列(dead key sequence) 期间 或在<a href="#input-method-editor" id="ref-for-input-method-editor⑥">输入法编辑器</a>处于活动状态时派发的 (以便派发<a href="#events-compositionevents">合成事件</a>)， 则为 <code>true</code> ; 否则为 <code>false</code> 。 
+         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string①⑨">空字符串</a>
+         <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑦">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-iscomposing" id="ref-for-dom-inputevent-iscomposing②">isComposing</a></code> : 如果此事件是在 <a href="#keys-dead">死键</a> 序列(dead key sequence) 期间 或在<a href="#input-method-editor" id="ref-for-input-method-editor①">输入法编辑器</a>处于活动状态时派发的 (以便派发<a href="#events-compositionevents">合成事件</a>)， 则为 <code>true</code> ; 否则为 <code>false</code> 。 
         </ul>
     </table>
     <p>当DOM被更新后，<a href="#user-agent" id="ref-for-user-agent⑥⓪">用户代理</a>必须立即派发此事件</p>
@@ -4320,7 +4320,7 @@ myDiv.addEventListener("auxclick", function(e) {
       <tr>
        <td class="cell-number">
        <td>
-       <td><em>与该键相关的任何 <a href="#default-action" id="ref-for-default-action③④">默认行为 </a> , 例如在 DOM 中插入字符。</em>
+       <td><em>与该键相关的任何 <a href="#default-action" id="ref-for-default-action③③">默认行为 </a> , 例如在 DOM 中插入字符。</em>
       <tr>
        <td class="cell-number">3
        <td><a data-link-type="dfn" href="#input" id="ref-for-input④"><code>input</code></a>
@@ -4352,13 +4352,13 @@ myDiv.addEventListener("auxclick", function(e) {
       <tr>
        <td class="cell-number">
        <td>
-       <td><em>与该键相关的任何 <a href="#default-action" id="ref-for-default-action③⑤"> 默认行为</a> , 例如在 DOM 中插入字符。</em>
+       <td><em>与该键相关的任何 <a href="#default-action" id="ref-for-default-action③④"> 默认行为</a> , 例如在 DOM 中插入字符。</em>
       <tr>
        <td class="cell-number">3
        <td><a data-link-type="dfn" href="#input" id="ref-for-input⑤"><code>input</code></a>
        <td><em>(仅适用于已用于更新了 DOM 的键)</em>
     </table>
-    <p class="note" role="note"> 通常，与任何特定键相关联的任何 <a href="#default-action" id="ref-for-default-action③⑥">默认行为</a> 都会在派发 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup②"><code>keyup</code></a> 事件之前完成。这可能会稍微延迟 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③"><code>keyup</code></a> 事件的派发(尽管该延迟难以感知)。 </p>
+    <p class="note" role="note"> 通常，与任何特定键相关联的任何 <a href="#default-action" id="ref-for-default-action③⑤">默认行为</a> 都会在派发 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup②"><code>keyup</code></a> 事件之前完成。这可能会稍微延迟 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③"><code>keyup</code></a> 事件的派发(尽管该延迟难以感知)。 </p>
     <p>键事件的 <a href="#event-target" id="ref-for-event-target④⑦">事件目标</a> 是当前的焦点元素，
 		即正在处理键盘活动的元素。这通常是 HTML <code>input</code> 元素或可编辑的文本元素，但也 <span class="zh-upper">可以</span> 是由 <a href="#host-language" id="ref-for-host-language⑧">宿主语言</a> 定义的元素，
 		用于接受非文本目的的键盘输入，例如加速按键(accelerator key)
@@ -4491,9 +4491,9 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>从概念上讲，合成会话(composition session)由一个 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart③"><code>compositionstart</code></a> (合成启动)事件、一个或多个 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①"><code>compositionupdate</code></a> (合成更新)事件和一个 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend③"><code>compositionend</code></a> (合成结束)事件组成， <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data">data</a></code> 属性的值在每个会话期间保持在该事件链的每个 <q>阶段(stage)</q> 之间。</p>
     <p class="note" role="note"><strong>注意: </strong> 当合成会话(composition session)处于活动状态时，如果键盘输入设备能使用合成会话，
 	则可以将键盘事件分派到 DOM 。请参阅 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart④"><code>compositionstart</code></a> 事件详细信息和 <a href="#keys-IME">IME 部分</a> 以了解相关事件的触发排序。 </p>
-    <p>并非所有 <a href="#ime" id="ref-for-ime⑥">输入法编辑器</a> 系统或设备都将必要的数据暴露给 DOM ，
+    <p>并非所有 <a href="#ime" id="ref-for-ime⑦">输入法编辑器</a> 系统或设备都将必要的数据暴露给 DOM ，
 	因此活动的合成字符串( <q>阅读窗口(Reading Window)</q> 或 <q>候补选择菜单选项</q> )可能无法通过该接口(指合成事件 API)使用，
-	在这种情况下，选择文本 <span class="zh-upper">可以</span> 由 <a href="#empty-string" id="ref-for-empty-string②①">空字符串</a> 表示。</p>
+	在这种情况下，选择文本 <span class="zh-upper">可以</span> 由 <a href="#empty-string" id="ref-for-empty-string②⓪">空字符串</a> 表示。</p>
     <h4 class="heading settled" data-level="5.7.1" id="interface-compositionevent"><span class="secno">5.7.1. </span><span class="content">CompositionEvent 接口</span><a class="self-link" href="#interface-compositionevent"></a></h4>
     <p class="intro-dom">在本规范中引入介绍</p>
     <p><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent③">CompositionEvent</a></code> 接口提供与合成事件(Composition Events)
@@ -4512,7 +4512,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <dd>
        <code>data</code> 保存由输入法生成的字符值。这 <span class="zh-upper">可以</span> 是单个 Unicode 字符，也可能是非空的
 					Unicode 字符序列 <a data-link-type="biblio" href="#biblio-unicode" title="The Unicode Standard">[Unicode]</a> 。字符 <span class="zh-upper">应当</span> 按照 <a data-link-type="biblio" href="#biblio-uax15" title="Unicode Normalization Forms">[UAX15]</a> 中定义的 Unicode 规范化形式 <em>NFC</em> 进行标准化。
-					此属性 <span class="zh-upper">可以</span> 是 <a href="#empty-string" id="ref-for-empty-string②②">空字符串</a> 。 
+					此属性 <span class="zh-upper">可以</span> 是 <a href="#empty-string" id="ref-for-empty-string②①">空字符串</a> 。 
       <p>该属性的 <a href="#un-initialized-value" id="ref-for-un-initialized-value③⑤">未初始化值</a> <span class="zh-upper">必须</span> 是 <code>""</code> (空字符串)。</p>
     </dl>
     <h5 class="heading settled" data-level="5.7.1.2" id="idl-compositioneventinit"><span class="secno">5.7.1.2. </span><span class="content">CompositionEventInit</span><a class="self-link" href="#idl-compositioneventinit"></a></h5>
@@ -4610,7 +4610,7 @@ myDiv.addEventListener("auxclick", function(e) {
       <tr>
        <td class="cell-number">1
        <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown①④"><code>keydown</code></a>
-       <td><a href="#default-action" id="ref-for-default-action③⑦">默认行为</a> 被阻止，即， 通过调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑥">preventDefault()</a></code> 。
+       <td><a href="#default-action" id="ref-for-default-action③⑥">默认行为</a> 被阻止，即， 通过调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑥">preventDefault()</a></code> 。
       <tr>
        <td class="cell-number">
        <td>
@@ -4635,7 +4635,7 @@ myDiv.addEventListener("auxclick", function(e) {
       <tr>
        <td class="cell-number">2
        <td><a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart⑧"><code>compositionstart</code></a>
-       <td><a href="#default-action" id="ref-for-default-action③⑧">默认行为</a> 被阻止 ，即，通过调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑦">preventDefault()</a></code> 。
+       <td><a href="#default-action" id="ref-for-default-action③⑦">默认行为</a> 被阻止 ，即，通过调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑦">preventDefault()</a></code> 。
       <tr>
        <td class="cell-number">
        <td>
@@ -4724,7 +4724,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <td><a data-link-type="dfn" href="#input" id="ref-for-input①②"><code>input</code></a>
        <td>
     </table>
-    <p class="note" role="note"> 大多数 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑦">IMEs</a> 不支持在合成会话期间取消更新。 </p>
+    <p class="note" role="note"> 大多数 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑧">IMEs</a> 不支持在合成会话期间取消更新。 </p>
     <p>每当 DOM 作为合成的一部分更新时， <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①③"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input①③"><code>input</code></a> 事件都会与 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate⑧"><code>compositionupdate</code></a> 事件一起被派发。由于没有与 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend⑨"><code>compositionend</code></a> 事件相关联的DOM更新，因此此时(合成结束时)不应发送 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①④"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input①④"><code>input</code></a> 事件。</p>
     <table class="event-sequence-table">
      <tbody>
@@ -4913,7 +4913,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑥">target</a></code> : 正在处理合成事件的焦点元素
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑦">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑤">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑦"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑧">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑦">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑧">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data③">data</a></code> : 正在被编辑的原始字符串，否则为 <a href="#empty-string" id="ref-for-empty-string②③">空字符串</a> 
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent⑧">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data③">data</a></code> : 正在被编辑的原始字符串，否则为 <a href="#empty-string" id="ref-for-empty-string②②">空字符串</a> 
         </ul>
     </table>
     <p>当 <a href="#text-composition-system" id="ref-for-text-composition-system⑤">文本合成系统</a> 激活后，
@@ -4922,12 +4922,12 @@ myDiv.addEventListener("auxclick", function(e) {
 			(feed)输入法编辑器时，此事件类型是在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown②②"><code>keydown</code></a> 事件之后生成的，
 			但语音或 <a href="#events-composition-handwriting">§ 5.7.3 手写识别系统</a> <span class="zh-upper">可以</span> 在没有键盘事件的情况下发送此事件类型。
 			某些实现 <span class="zh-upper">可以</span> 使用文档中当前选择的文本
-			(用于编辑和替换)填充 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①①"><code>compositionstart</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data④">data</a></code> 属性。否则， <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑤">data</a></code> 属性的值 <span class="zh-upper">必须</span> 是 <a href="#empty-string" id="ref-for-empty-string②④">空字符串</a> 。</p>
+			(用于编辑和替换)填充 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①①"><code>compositionstart</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data④">data</a></code> 属性。否则， <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑤">data</a></code> 属性的值 <span class="zh-upper">必须</span> 是 <a href="#empty-string" id="ref-for-empty-string②③">空字符串</a> 。</p>
     <p>此事件 <span class="zh-upper">必须</span> 在 <a href="#text-composition-system" id="ref-for-text-composition-system⑦">文本合成系统</a> 开始一个新的合成会话之前，以及由于合成过程而导致 DOM 修改之前，立即被派发。
 			此事件的默认行为是 <a href="#text-composition-system" id="ref-for-text-composition-system⑧">文本合成系统</a> 启动一个新的合成会话。如果此事件被取消， <a href="#text-composition-system" id="ref-for-text-composition-system⑨">文本合成系统</a> <span class="zh-upper">应当</span> 放弃当前合成会话。</p>
     <p class="note" role="note"> 取消 <a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①②"><code>compositionstart</code></a> <em>事件类型</em> 不等同于取消 <a href="#text-composition-system" id="ref-for-text-composition-system①⓪">文本合成系统</a> 本身(例如，
-			通过点击一个取消按钮或关闭一个 <a href="#ime" id="ref-for-ime⑧">IME</a> 窗口)。 </p>
-    <p class="note" role="note"> 一些 <a href="#ime" id="ref-for-ime⑨">IMEs</a> 不支持取消正在进行的合成会话(例如，
+			通过点击一个取消按钮或关闭一个 <a href="#ime" id="ref-for-ime⑨">IME</a> 窗口)。 </p>
+    <p class="note" role="note"> 一些 <a href="#ime" id="ref-for-ime①⓪">IMEs</a> 不支持取消正在进行的合成会话(例如，
 			GTK目前没有这样的API)。在这些情况下，调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑧">preventDefault()</a></code> 不会停止此事件的默认行为。 </p>
     <h5 class="heading settled" data-level="5.7.7.2" id="event-type-compositionupdate"><span class="secno">5.7.7.2. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compositionupdate">compositionupdate</dfn></span><a class="self-link" href="#event-type-compositionupdate"></a></h5>
     <table class="event-definition">
@@ -4963,7 +4963,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑦">target</a></code> : 正在处理合成事件的焦点元素，如果不可访问，就是 <code>null</code> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑥">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑧"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑧">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⓪">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑥">data</a></code> : 包含合成会话的当前结果的字符串， 如果内容结果已被删除，则该字符串 <span class="zh-upper">可以</span> 为 <a href="#empty-string" id="ref-for-empty-string②⑤">空字符串</a> 
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⓪">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑥">data</a></code> : 包含合成会话的当前结果的字符串， 如果内容结果已被删除，则该字符串 <span class="zh-upper">可以</span> 为 <a href="#empty-string" id="ref-for-empty-string②④">空字符串</a> 
         </ul>
     </table>
     <p>当 <a href="#text-composition-system" id="ref-for-text-composition-system①①">文本合成系统</a> 用新字符更新其活动文本段落(active text passage)时， <a href="#user-agent" id="ref-for-user-agent⑥⑤">用户代理</a> <span class="zh-upper">应当</span> 在合成会话期间派发此事件，该新字符反映在 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑦">data</a></code> 包含的字符串中。</p>
@@ -4971,8 +4971,8 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>某些 <a href="#text-composition-system" id="ref-for-text-composition-system①③">文本合成系统</a> 可能不会向
 			DOM 公开此信息，在这种情况下，在合成过程中不会触发此事件。</p>
     <p>如果合成会话被取消，则此事件将在 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①②"><code>compositionend</code></a> 之前立即触发，
-			并且 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑧">data</a></code> 属性将设置为 <a href="#empty-string" id="ref-for-empty-string②⑥">空字符串</a> 。</p>
-    <div class="note custom-note" role="note"> 例如使用微软中文拼音输入法输入汉字，在合成会话进行时，单击 <code class="keycap">Esc</code> 按键，关闭 IME ，同时取消合成会话，就会在 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①⑨"><code>beforeinput</code></a> 之后和 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①③"><code>compositionend</code></a> 之前派发 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①④"><code>compositionupdate</code></a> 事件，并且 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑨">data</a></code> 属性值为 <a href="#empty-string" id="ref-for-empty-string②⑦">空字符串</a>。 </div>
+			并且 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑧">data</a></code> 属性将设置为 <a href="#empty-string" id="ref-for-empty-string②⑤">空字符串</a> 。</p>
+    <div class="note custom-note" role="note"> 例如使用微软中文拼音输入法输入汉字，在合成会话进行时，单击 <code class="keycap">Esc</code> 按键，关闭 IME ，同时取消合成会话，就会在 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput①⑨"><code>beforeinput</code></a> 之后和 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①③"><code>compositionend</code></a> 之前派发 <a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate①④"><code>compositionupdate</code></a> 事件，并且 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data⑨">data</a></code> 属性值为 <a href="#empty-string" id="ref-for-empty-string②⑥">空字符串</a>。 </div>
     <h5 class="heading settled" data-level="5.7.7.3" id="event-type-compositionend"><span class="secno">5.7.7.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="compositionend">compositionend</dfn></span><a class="self-link" href="#event-type-compositionend"></a></h5>
     <table class="event-definition">
      <tbody>
@@ -5007,11 +5007,11 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑧">target</a></code> : 正在处理合成事件的焦点元素
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦①">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②⑦">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④⑨"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑦②">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②⑨">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①②">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⓪">data</a></code> : 包含合成会话的最终结果的字符串， 如果内容结果已被删除，或者合成会话被取消，则该字符串 <span class="zh-upper">可以</span> 为 <a href="#empty-string" id="ref-for-empty-string②⑧">空字符串</a> 
+         <li><code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①②">CompositionEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⓪">data</a></code> : 包含合成会话的最终结果的字符串， 如果内容结果已被删除，或者合成会话被取消，则该字符串 <span class="zh-upper">可以</span> 为 <a href="#empty-string" id="ref-for-empty-string②⑦">空字符串</a> 
         </ul>
     </table>
     <p>当 <a href="#text-composition-system" id="ref-for-text-composition-system①④">文本合成系统</a> 完成或取消当前合成会话时， <a href="#user-agent" id="ref-for-user-agent⑥⑥">用户代理</a> <span class="zh-upper">必须</span> 派发此事件，并且 <a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①④"><code>compositionend</code></a> 事件 <span class="zh-upper">必须</span> 在控件更新后调度。(参见 <a href="#events-composition-input-events">§ 5.7.6 合成过程中的输入事件</a> 中事件触发顺序表格的注释)</p>
-    <p>该事件在 <a href="#text-composition-system" id="ref-for-text-composition-system①⑤">文本合成系统</a> 完成合成会话后立即派发(例如，<a href="#ime" id="ref-for-ime①⓪">IME</a> 被关闭、最小化、
+    <p>该事件在 <a href="#text-composition-system" id="ref-for-text-composition-system①⑤">文本合成系统</a> 完成合成会话后立即派发(例如，<a href="#ime" id="ref-for-ime①①">IME</a> 被关闭、最小化、
 			切换到焦点之外，或者以其他方式被解除并且焦点切回到 <a href="#user-agent" id="ref-for-user-agent⑥⑦">用户代理</a> )。</p>
    </section>
    <section>
@@ -5744,24 +5744,21 @@ myDiv.addEventListener("auxclick", function(e) {
      </table>
     </div>
     <h4 class="heading settled" data-level="6.3.3" id="keys-IME"><span class="secno">6.3.3. </span><span class="content">输入法编辑器</span><a class="self-link" href="#keys-IME"></a></h4>
-    <p>该规范通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑤">CompositionEvent</a></code> 接口和事件定义了 <a href="#ime" id="ref-for-ime①①">输入法编辑器</a> (IMEs)的模型。但是，
-		组合事件和键盘事件不一定映射为一对一的关系。例如，接收 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> 键值的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⑥"><code>keydown</code></a> 并不一定意味着当前在 <a href="#ime" id="ref-for-ime①②">输入法</a> 中选择的文本正在被接受，而仅表示发生了击键并且与 <a href="#ime" id="ref-for-ime①③">输入法</a> 的接收功能(Accept functionality，在大多数输入法系统中，这通常会导致合成事件)
-		断开了连接。键盘事件不能用于确定输入法编辑器的当前状态，可以通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> 接口的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑦">data</a></code> 属性获取。此外， <a href="#ime" id="ref-for-ime①④">输入法</a> 系统和设备的功能各不相同，
+    <p>本规范通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑤">CompositionEvent</a></code> 接口和事件定义了 <a href="#ime" id="ref-for-ime①②">输入法编辑器</a> (IMEs)的模型。但是，
+		组合事件和键盘事件不一定映射为一对一的关系。例如，接收 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> 键值的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown④⑥"><code>keydown</code></a> 并不一定意味着当前在 <a href="#ime" id="ref-for-ime①③">输入法</a> 中选择的文本正在被接受，而仅表示发生了击键并且与 <a href="#ime" id="ref-for-ime①④">输入法</a> 的接收功能(Accept functionality，在大多数输入法系统中，这通常会导致合成事件)
+		断开了连接。键盘事件不能用于确定输入法编辑器的当前状态，可以通过 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent①⑥">CompositionEvent</a></code> 接口的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data①⑦">data</a></code> 属性获取。此外， <a href="#ime" id="ref-for-ime①⑤">输入法</a> 系统和设备的功能各不相同，
 		其中那些用于激活这些功能的按键，例如 <code class="keycap">Convert</code> 和 <code class="keycap">Accept</code> 键 <span class="zh-upper">可以</span> 由其他可用键表示。
 		键盘事件就是(correspond to)输入设备在键盘布局映射之后生成的事件。</p>
-    <p class="note" role="note"> 在某些实现或系统配置中，某些按键事件或其值可能会被使用中的 <a href="#ime" id="ref-for-ime①⑤">输入法</a> 阻止(suppressed)。 </p>
-    <p>The following example describes a possible sequence of keys to generate
-		the Unicode character <code class="glyph">"市"</code> (Kanji character, part of CJK
-		Unified Ideographs) using Japanese input methods. This example assumes
-		that the input method editor is activated and in the Japanese-Romaji
-		input mode. The keys <code class="keycap">Convert</code> and <code class="keycap">Accept</code> MAY be replaced
-		by others depending on the input device in use and the configuration of
-		the IME, e.g., it can be respectively <code class="unicode">U+0020</code> (Space key) and <code class="keycap">Enter</code>.</p>
-    <p class="note" role="note"> <code class="glyph">"詩"</code> (<q>poem</q>) and <code class="glyph">"市"</code> (<q>city</q>) are
-		homophones, both pronounced し (<q>shi</q>/<q>si</q>), so the user
-		needs to use the <code class="keycap">Convert</code> key to select the proper option. </p>
-    <div class="example" id="example-80456e10">
-     <a class="self-link" href="#example-80456e10"></a> 
+    <p class="note" role="note"> 在某些实现或系统配置中，某些按键事件或其值可能会被使用中的 <a href="#ime" id="ref-for-ime①⑥">输入法</a> 阻止(suppressed)。 </p>
+    <p>以下示例描述了使用日语输入法生成 Unicode 字符 <code class="glyph">"市"</code> (汉字，CJK
+		统一象形文字的一部分) 的可能的按键序列。
+		此示例假设输入法编辑器已激活并处于日语罗马字(Japanese-Romaji)输入模式。
+		根据使用的输入设备和 <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> 的配置， <code class="keycap">Convert</code> 和 <code class="keycap">Accept</code> 键 <span class="zh-upper">可以</span> 被其他键取代，例如，
+		它可以分别为 <code class="unicode">U+0020</code> (空格键)和 <code class="keycap">Enter</code> 。</p>
+    <p class="note" role="note"> <code class="glyph">"詩"</code> (<q>poem</q>) 和 <code class="glyph">"市"</code> (<q>city</q>) 是同音词，
+		发音都是 し (<q>shi</q>/<q>si</q>)，因此用户需要使用 <code class="keycap">Convert</code> 键来选择正确的选项。 </p>
+    <div class="example" id="example-c017cdf7">
+     <a class="self-link" href="#example-c017cdf7"></a> 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5777,7 +5774,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"s"</code>
         <td style="text-align:center"><code>false</code>
         <td style="text-align:center">
-        <td>Latin Small Letter S
+        <td>小写拉丁字母 S
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①⑤"><code>compositionstart</code></a>
@@ -5805,7 +5802,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center">
-        <td>DOM is updated
+        <td>DOM 被更新了
        <tr>
         <td class="cell-number">5
         <td><a data-link-type="dfn" href="#input" id="ref-for-input③②"><code>input</code></a>
@@ -5826,7 +5823,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"i"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Latin Small Letter I
+        <td>小写拉丁字母 I
        <tr>
         <td class="cell-number">8
         <td><a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③①"><code>beforeinput</code></a>
@@ -5847,7 +5844,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center">
-        <td>DOM is updated
+        <td>DOM 被更新了
        <tr>
         <td class="cell-number">10
         <td><a data-link-type="dfn" href="#input" id="ref-for-input③③"><code>input</code></a>
@@ -5868,7 +5865,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Convert
+        <td>转换键
        <tr>
         <td class="cell-number">13
         <td><a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③②"><code>beforeinput</code></a>
@@ -5889,7 +5886,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center">
-        <td>DOM is updated
+        <td>DOM 被更新了
        <tr>
         <td class="cell-number">15
         <td><a data-link-type="dfn" href="#input" id="ref-for-input③④"><code>input</code></a>
@@ -5910,7 +5907,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Convert
+        <td>转换键
        <tr>
         <td class="cell-number">18
         <td><a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③③"><code>beforeinput</code></a>
@@ -5931,7 +5928,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center">
         <td style="text-align:center">
         <td style="text-align:center">
-        <td>DOM is updated
+        <td>DOM 被更新了
        <tr>
         <td class="cell-number">20
         <td><a data-link-type="dfn" href="#input" id="ref-for-input③⑤"><code>input</code></a>
@@ -5952,7 +5949,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Accept
+        <td>接收键
        <tr>
         <td class="cell-number">23
         <td><a data-link-type="dfn" href="#compositionend" id="ref-for-compositionend①⑦"><code>compositionend</code></a>
@@ -5968,13 +5965,31 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center">
         <td>
      </table>
+     <div class="note custom-note" role="note">
+       <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Convert">Convert</a>"</code> 键的键帽标签为 <code class="keycap">変換</code> ，它是 <a href="https://mangwu.github.io/uievents-code-cn/#keyboard-106">日式 "106"
+		键盘布局</a> 上，位于空格按键右边的键，它用于把输入的假名转换成汉字。<br> <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> 键属于多媒体按键，接收当前选项结果或接收当前输入法序列的转换结果
+		。但是大多数情况下，输入法都使用 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Space">Space</a>"</code> 键和 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Enter">Enter</a>"</code> 键来接收选择当前合成转换结果。<br> 日语输入法存在罗马字(字母)，假名，汉字三种形式的转换，
+		罗马字(字母)可以转换成平假名和片假名，平假名又可以转换成具体的汉字，
+		所以需要借助额外的 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Convert">Convert</a>"</code> 进行"変換"。<br> 但是中文输入就没有日语输入那么复杂了，现代拼音输入法只有拼音(字母)
+		到汉字的转换过程，汉字输入的解决方案已经很成熟:
+		利用拼音去匹配字库和词语库中的常用汉字和词语，
+		通过快捷键翻页查看下一批匹配的汉字和词语，
+		再通过数字键或编辑键选择对应的汉字或词语，
+		用户的选择结果会影响汉字被匹配的优先级。
+		翻页查看下一批或上一批汉字的快捷键包括 <code class="keycap">PgUp PgDn</code>，<code class="keycap">&lt; ></code>， <code class="keycap">- +</code> 和 <code class="keycap">[ ]</code> ，选择匹配的汉字的按键包括字母数字区域的数字键，
+		和空格按键(默认第一项)。查看手写识别系统中的 <a href="#figure-microsoft-pinyin-input-method-editor">拼音输入法编辑器</a> 非规范图示可以加深对 IME 的理解。下面是通过微软拼音输入法输入 "诗"
+		("詩"的简体汉字)的事件触发图示: 
+      <figure id="figure-ime-poem">
+        <img alt="使用微软拼音输入法输入 &quot;诗&quot; 时派发的事件序列" src="images/ime-poem.gif" width="900"> 
+       <div class="custom-figcaption"> 使用微软拼音输入法输入 "诗" 时派发的事件序列 </div>
+      </figure>
+     </div>
     </div>
-    <p>IME composition can also be canceled as in the following example, with
-		conditions identical to the previous example. The key <code class="keycap">Cancel</code> might also be replaced by others depending on the input device in use
-		and the configuration of the IME, e.g., it could be <code class="unicode">U+001B</code> (Escape
-		key).</p>
-    <div class="example" id="example-a9a6d599">
-     <a class="self-link" href="#example-a9a6d599"></a> 
+    <p>IME 合成也可以像下面的例子一样被取消，输入条件与前面的例子完全相同。
+		根据所使用的输入设备和输入法的配置，键 <code class="keycap">Cancel</code> 也可能被其他键取代，
+		例如，它可以是 <code class="unicode">U+001B</code> (退出键，<code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Escape">Escape</a>"</code> )。</p>
+    <div class="example" id="example-43459473">
+     <a class="self-link" href="#example-43459473"></a> 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5990,7 +6005,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"s"</code>
         <td style="text-align:center"><code>false</code>
         <td style="text-align:center">
-        <td>Latin Small Letter S
+        <td>小写拉丁字母 S
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#compositionstart" id="ref-for-compositionstart①⑥"><code>compositionstart</code></a>
@@ -6018,7 +6033,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"i"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Latin Small Letter I
+        <td>小写拉丁字母 I
        <tr>
         <td class="cell-number">6
         <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate②⑤"><code>compositionupdate</code></a>
@@ -6039,7 +6054,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Convert
+        <td>转换键
        <tr>
         <td class="cell-number">9
         <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate②⑥"><code>compositionupdate</code></a>
@@ -6060,7 +6075,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Convert
+        <td>转换键
        <tr>
         <td class="cell-number">12
         <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate②⑦"><code>compositionupdate</code></a>
@@ -6081,7 +6096,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code>
         <td style="text-align:center"><code>true</code>
         <td style="text-align:center">
-        <td>Cancel
+        <td>取消键
        <tr>
         <td class="cell-number">15
         <td><a data-link-type="dfn" href="#compositionupdate" id="ref-for-compositionupdate②⑧"><code>compositionupdate</code></a>
@@ -6105,33 +6120,26 @@ myDiv.addEventListener("auxclick", function(e) {
         <td>
      </table>
     </div>
-    <p class="note" role="note"> Some <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑦">input method editors</a> (such as on the MacOS operating system)
-		might set an <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑨">empty string</a> to the composition data attribute
-		before canceling a composition. </p>
-    <h5 class="heading settled" data-level="6.3.3.1" id="keys-IME-keys"><span class="secno">6.3.3.1. </span><span class="content">Input Method Editor mode keys</span><a class="self-link" href="#keys-IME-keys"></a></h5>
-    <p>Some keys on certain devices are intended to activate <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor①">input
-			method editor</a> functionality, or to change the mode of an active <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor②">input method editor</a>.  Custom keys for this purpose can be
-			defined for different devices or language modes. The keys defined in
-			this specification for this purpose are: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-RomanCharacters">RomanCharacters</a>"</code>.  When one of these keys is
-			pressed, and no <a data-link-type="dfn" href="#ime" id="ref-for-ime①">IME</a> is currently active, the appropriate <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> is expected to be activated in the mode indicated by the
-			key (if available). If an <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> is already active when the key
-			is pressed, the active <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> might change to the indicated
-			mode, or a different <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> might be launched, or the might MAY
-			be ignored, on a device- and application-specific basis.</p>
-    <p>This specification also defines other keys which are intended for
-			operation specifically with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor③">input method editors</a>: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code>, <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code>, and <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code>.  The functions of these
-			keys are not defined in this specification — refer to other
-			resources for details on <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor④">input method editor</a> functionality.</p>
-    <p class="note" role="note"> Keys with <a data-link-type="dfn" href="#input-method-editor" id="ref-for-input-method-editor⑤">input method editor</a> functions are not restricted to
-			that purpose, and can have other device- or implementation-specific
-			purposes. </p>
-    <h4 class="heading settled" data-level="6.3.4" id="keys-cancelable-keys"><span class="secno">6.3.4. </span><span class="content">Default actions and cancelable keyboard events</span><a class="self-link" href="#keys-cancelable-keys"></a></h4>
-    <p>Canceling the <a data-link-type="dfn" href="#default-action" id="ref-for-default-action③⑨">default action</a> of a <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑤⑦"><code>keydown</code></a> event MUST NOT
-		affect its respective <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤①"><code>keyup</code></a> event, but it MUST prevent the
-		respective <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③④"><code>beforeinput</code></a> and <a data-link-type="dfn" href="#input" id="ref-for-input③⑥"><code>input</code></a> (and <a data-link-type="dfn" href="#keypress" id="ref-for-keypress④"><code>keypress</code></a> if
-		supported) events from being generated. The following example describes
-		a possible sequence of keys to generate the Unicode character Q (Latin
-		Capital Letter Q) on a US keyboard using a US mapping:</p>
+    <p class="note" role="note"> 一些 <a href="#ime" id="ref-for-ime①⑦">输入法编辑器</a> (例如在 MacOS 操作系统上)
+		可能会在取消合成之前为合成事件的 <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data②⓪">data</a></code> 属性设置一个 <a href="#empty-string" id="ref-for-empty-string②⑧">空字符串</a> 。 </p>
+    <h5 class="heading settled" data-level="6.3.3.1" id="keys-IME-keys"><span class="secno">6.3.3.1. </span><span class="content">输入法编辑器模式按键</span><a class="self-link" href="#keys-IME-keys"></a></h5>
+    <p>一些设备上的某些键用于激活 <a href="#ime" id="ref-for-ime①⑧">输入法编辑器</a> 功能，
+			或更改活动状态 <a href="#ime" id="ref-for-ime①⑨">输入法编辑器</a> 的模式。
+			可以为不同的设备或语言模式自定义用于上述功能的按键。
+			本规范中为此定义的键为: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-RomanCharacters">RomanCharacters</a>"</code> 。当按下这些键中的一个，
+			并且当前没有任何 <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> 处于活动状态时，
+			期望在该键的指示下激活对应的 <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> (如果可用)模式。
+			如果击键时某个 <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> 已经处于活动状态，则活动状态的 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> 可能会更改为(按键)对应的模式，或者可能会启动不同的 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑥">IME</a> ，或者也 <span class="zh-upper">可以</span> 被忽略，取决于设备和具体应用程序
+			(application-specific)。</p>
+    <p>本规范还定义了其他键，这些键专门用于 <a href="#ime" id="ref-for-ime②⓪">输入法编辑器</a> 的操作: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code> 。
+			这些键的功能在本规范中没有定义 —— 有关 <a href="#ime" id="ref-for-ime②①">输入法编辑器</a> 功能的详细信息，请参阅其他资源。</p>
+    <p class="note" role="note"> 具有 <a href="#ime" id="ref-for-ime②②">输入法编辑器</a> 功能的键不限于此目的(激活输入法功能，
+			更输入法模式)，还可以具有其他特定于设备或实现的目的。 </p>
+    <div class="note custom-note" role="note"> 上面列出的一些与输入法有关的按键通常和使用的键盘设备有关系，可以查阅 <a data-link-type="biblio" href="#biblio-uievents-key" title="UI Events KeyboardEvent key Values">[UIEvents-Key]</a> 和 <a data-link-type="biblio" href="#biblio-uievents-code" title="UI Events KeyboardEvent code Values">[UIEvents-Code]</a> 获取更多信息。 </div>
+    <h4 class="heading settled" data-level="6.3.4" id="keys-cancelable-keys"><span class="secno">6.3.4. </span><span class="content">默认行为和可取消的键盘事件</span><a class="self-link" href="#keys-cancelable-keys"></a></h4>
+    <p>取消 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑤⑦"><code>keydown</code></a> 事件的 <a href="#default-action" id="ref-for-default-action③⑧">默认行为</a> <span class="zh-upper">不得</span> 影响其相应的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤①"><code>keyup</code></a> 事件，但 <span class="zh-upper">必须</span> 防止生成相应的 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③④"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input③⑥"><code>input</code></a> (以及 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress④"><code>keypress</code></a> ，如果支持的话)事件。
+		以下示例描述了在使用美式映射的美式键盘上生成 Unicode 字符 Q (大写拉丁字母Q)
+		的可能按键序列:</p>
     <div class="example" id="example-816ecb35">
      <a class="self-link" href="#example-816ecb35"></a> 
      <table class="event-sequence-table">
@@ -6156,7 +6164,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"Q"</code>
         <td style="text-align:center">
         <td style="text-align:center"><code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-shiftkey" id="ref-for-dom-keyboardevent-shiftkey②②">shiftKey</a></code>
-        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action①">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑨">preventDefault()</a></code>.
+        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action③⑨">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑨">preventDefault()</a></code>.
        <tr>
         <td class="cell-number">
         <td>
@@ -6201,7 +6209,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Shift">Shift</a>"</code>
         <td style="text-align:center">
         <td style="text-align:center"><code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-shiftkey" id="ref-for-dom-keyboardevent-shiftkey②④">shiftKey</a></code>
-        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action②">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①⓪">preventDefault()</a></code>.
+        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action①">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①⓪">preventDefault()</a></code>.
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥①"><code>keydown</code></a>
@@ -6241,7 +6249,7 @@ myDiv.addEventListener("auxclick", function(e) {
     </div>
     <p>If the key is part of a sequence of several keystrokes, whether it is a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①⓪">dead key</a> or it is contributing to an Input Method Editor
 		sequence, the keystroke MUST be ignored (not taken into account) only if
-		the <a data-link-type="dfn" href="#default-action" id="ref-for-default-action③">default action</a> is canceled on the <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥②"><code>keydown</code></a> event.
+		the <a data-link-type="dfn" href="#default-action" id="ref-for-default-action②">default action</a> is canceled on the <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥②"><code>keydown</code></a> event.
 		Canceling a <a data-link-type="dfn" href="#dead-key" id="ref-for-dead-key①">dead key</a> on a <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑥"><code>keyup</code></a> event has no effect on <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput③⑦"><code>beforeinput</code></a> or <a data-link-type="dfn" href="#input" id="ref-for-input③⑨"><code>input</code></a> events. The following example uses
 		the dead key <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code> (<code class="unicode">U+0302</code> Combining Circumflex Accent key) and <code class="key">"e"</code> (<code class="unicode">U+0065</code>, Latin Small Letter E key) on a French
 		keyboard using a French mapping and without any modifier activated:</p>
@@ -6260,7 +6268,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥③"><code>keydown</code></a>
         <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Dead">Dead</a>"</code>
         <td style="text-align:center">
-        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action④">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①①">preventDefault()</a></code>.
+        <td>The <a data-link-type="dfn" href="#default-action" id="ref-for-default-action③">default action</a> is prevented, e.g., by invoking <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①①">preventDefault()</a></code>.
        <tr>
         <td class="cell-number">2
         <td><a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑦"><code>keyup</code></a>
@@ -6515,7 +6523,7 @@ described in this Appendix.</p>
        <dt>Window? viewArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view③②">view</a></code>. This value MAY be <code>null</code>. 
        <dt>DOMString dataArg
-       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data②⓪">data</a></code>. 
+       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#dom-compositionevent-data" id="ref-for-dom-compositionevent-data②①">data</a></code>. 
        <dt>DOMString locale
        <dd> Specifies the <code>locale</code> attribute of the CompositionEvent. 
       </dl>
@@ -7029,7 +7037,7 @@ being entered.</p>
 			developed to encompass the most critical accessibility aspects for which
 			the <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate⑦"><code>DOMActivate</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type④">event type</a> was designed, and is more
 			widely implemented.  Content authors are encouraged to use the <a data-link-type="dfn" href="#click" id="ref-for-click③⑦"><code>click</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type⑤">event type</a> rather than the related <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown②②"><code>mousedown</code></a> or <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup②①"><code>mouseup</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type⑥">event type</a> to ensure maximum accessibility. </p>
-    <p>Implementations which support the <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate⑧"><code>DOMActivate</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type⑦">event type</a> SHOULD also dispatch a <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate⑨"><code>DOMActivate</code></a> event as a <a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑤">default
+    <p>Implementations which support the <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate⑧"><code>DOMActivate</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type⑦">event type</a> SHOULD also dispatch a <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate⑨"><code>DOMActivate</code></a> event as a <a data-link-type="dfn" href="#default-action" id="ref-for-default-action④">default
 		action</a> of a <a data-link-type="dfn" href="#click" id="ref-for-click③⑧"><code>click</code></a> event which is associated with an <a data-link-type="dfn" href="#activation-trigger" id="ref-for-activation-trigger⑧">activation trigger</a>. However, such implementations SHOULD only
 		initiate the associated <a data-link-type="dfn" href="#activation-behavior" id="ref-for-activation-behavior⑧">activation behavior</a> once for any given
 		occurrence of an <a data-link-type="dfn" href="#activation-trigger" id="ref-for-activation-trigger①">activation trigger</a>.</p>
@@ -7044,7 +7052,7 @@ being entered.</p>
 		the appropriate <a data-link-type="dfn" href="#activation-trigger" id="ref-for-activation-trigger②">activation triggers</a>. </p>
      <p> Thus, when a <a data-link-type="dfn" href="#click" id="ref-for-click③⑨"><code>click</code></a> event is dispatched by a <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent⑧">user agent</a> conforming to UI Events, the XForms <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent⑨">user agent</a> has to determine
 		whether to synthesize a <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①③"><code>DOMActivate</code></a> event with the same relevant
-		properties as a <a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑥">default action</a> of that <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> event.
+		properties as a <a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑤">default action</a> of that <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> event.
 		Appropriate cues might be whether the <a data-link-type="dfn" href="#click" id="ref-for-click④①"><code>click</code></a> event is <a href="#trusted-events">trusted</a>, or whether its <a data-link-type="dfn" href="#event-target" id="ref-for-event-target⑤⓪">event target</a> has a <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①④"><code>DOMActivate</code></a> <a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener①①">event listener</a> registered. </p>
     </div>
     <p class="note" role="note"> Don’t rely upon the interoperable support of <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑤"><code>DOMActivate</code></a> in many <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①⓪">user agents</a>. Instead, the <a data-link-type="dfn" href="#click" id="ref-for-click④②"><code>click</code></a> <a data-link-type="dfn" href="#event-type" id="ref-for-event-type①⓪">event type</a> should
@@ -7069,11 +7077,11 @@ being entered.</p>
       <tr>
        <td class="cell-number">2
        <td>DOMActivate
-       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑦">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①②">user agent</a>; synthesized; <code>isTrusted="true"</code>
+       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑥">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①②">user agent</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">3
        <td>
-       <td><em>All other <a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑧">default actions</a>, including the <a data-link-type="dfn" href="#activation-behavior" id="ref-for-activation-behavior①">activation behavior</a></em>
+       <td><em>All other <a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑦">default actions</a>, including the <a data-link-type="dfn" href="#activation-behavior" id="ref-for-activation-behavior①">activation behavior</a></em>
     </table>
     <p>If the focused element is activated by a key event, then the following
 		shows the typical sequence of events (with only pertinent events listed):</p>
@@ -7090,15 +7098,15 @@ being entered.</p>
       <tr>
        <td class="cell-number">2
        <td>click
-       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑨">default action</a>; synthesized; <code>isTrusted="true"</code>
+       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑧">default action</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">3
        <td>DOMActivate
-       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action①⓪">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①③">user agent</a>; synthesized; <code>isTrusted="true"</code>
+       <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑨">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①③">user agent</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">4
        <td>
-       <td><em>All other <a data-link-type="dfn" href="#default-action" id="ref-for-default-action①①">default actions</a>, including the <a data-link-type="dfn" href="#activation-behavior" id="ref-for-activation-behavior②">activation behavior</a></em>
+       <td><em>All other <a data-link-type="dfn" href="#default-action" id="ref-for-default-action①⓪">default actions</a>, including the <a data-link-type="dfn" href="#activation-behavior" id="ref-for-activation-behavior②">activation behavior</a></em>
     </table>
     <h3 class="heading settled" data-level="9.2" id="legacy-focusevent-events"><span class="secno">9.2. </span><span class="content">Legacy <code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①⑥">FocusEvent</a></code> events</span><a class="self-link" href="#legacy-focusevent-events"></a></h3>
     <h4 class="heading settled" data-level="9.2.1" id="legacy-focusevent-event-types"><span class="secno">9.2.1. </span><span class="content">Legacy <code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①⑦">FocusEvent</a></code> event types</span><a class="self-link" href="#legacy-focusevent-event-types"></a></h4>
@@ -7323,7 +7331,7 @@ being entered.</p>
     </table>
     <p>如果 <a href="#user-agent" id="ref-for-user-agent⑦⓪">用户代理</a> 支持，并且当且仅当该键能正常产生 <a href="#character-value" id="ref-for-character-value⑦">字符值</a> 时，则 <span class="zh-upper">必须</span> 在按下这个键时派发此事件。 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①④"><code>keypress</code></a> 事件类型是依赖设备的，
 			取决于输入设备的功能以及它们在操作系统中的映射方式。</p>
-    <p>此事件类型 <span class="zh-upper">必须</span> 在 <a href="#key-mapping" id="ref-for-key-mapping③">键映射</a> 之后生成。使用 <a href="#ime" id="ref-for-ime①⑥">输入法编辑器</a> 时， <span class="zh-upper">不得</span> 派发它。</p>
+    <p>此事件类型 <span class="zh-upper">必须</span> 在 <a href="#key-mapping" id="ref-for-key-mapping③">键映射</a> 之后生成。使用 <a href="#ime" id="ref-for-ime②③">输入法编辑器</a> 时， <span class="zh-upper">不得</span> 派发它。</p>
     <p>如果取消此事件，除了取消 <a href="#default-action" id="ref-for-default-action④⓪">默认行为</a> 外，
 			还应阻止 <a data-link-type="dfn" href="#input" id="ref-for-input④③"><code>input</code></a> 事件的触发。</p>
     <p>作者 <span class="zh-upper">应当</span> 使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④①"><code>beforeinput</code></a> 事件而不是遗留的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑤"><code>keypress</code></a> 事件。</p>
@@ -7483,13 +7491,13 @@ being entered.</p>
        <dt>Node? relatedNodeArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①①">MutationEvent</a></code>.<code>relatedNode</code>. 
        <dt>DOMString prevValueArg
-       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①②">MutationEvent</a></code>.<code>prevValue</code>. This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①">empty string</a>. 
+       <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①②">MutationEvent</a></code>.<code>prevValue</code>. This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②⑨">empty string</a>. 
        <dt>DOMString newValueArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①③">MutationEvent</a></code>.<code>newValue</code>.
-						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②">empty string</a>. 
+						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①">empty string</a>. 
        <dt>DOMString attrNameArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①④">MutationEvent</a></code>.<code>attrName</code>.
-						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string③">empty string</a>. 
+						This value MAY be the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string②">empty string</a>. 
        <dt>unsigned short attrChangeArg
        <dd> Specifies <code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①⑤">MutationEvent</a></code>.<code>attrChange</code>.
 						This value MAY be <code>0</code>. 
@@ -7583,7 +7591,7 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③④">target</a></code> :
 								object whose content is being modified
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②④">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string④">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string③">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②⑤">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②⑥">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the object whose content is being modified
@@ -7633,14 +7641,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑤">target</a></code> :
 								element which is being inserted
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⓪">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑤">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string④">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③①">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③②">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③③">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑥">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑤">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③④">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑦">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑥">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent①⑨">user agent</a> MUST dispatch this event type when a node other
@@ -7684,14 +7692,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑥">target</a></code> :
 								element which is being inserted
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑥">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑧">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑦">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑦">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑧">MutationEvent</a></code>.<code>relatedNode</code> :
 								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑨">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑨">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑧">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⓪">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⓪">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string⑨">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②①">user agent</a> MUST dispatch this event when a node has been
@@ -7738,14 +7746,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥⓪">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑦">target</a></code> :
 								element which is being removed
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④②">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①①">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⓪">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④③">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④④">MutationEvent</a></code>.<code>relatedNode</code> :
 								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑤">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①②">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①①">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑥">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①③">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①②">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②③">user agent</a> MUST dispatch this event when a node other than
@@ -7788,14 +7796,14 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥①">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑧">target</a></code> :
 								element which is being removed
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑧">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①④">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①③">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑨">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⓪">MutationEvent</a></code>.<code>relatedNode</code> :
 								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤①">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑤">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①④">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤②">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑥">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑤">empty string</a>
         </ul>
     </table>
     <p>A <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent②⑤">user agent</a> MUST dispatch this event when a node is being
@@ -7843,13 +7851,13 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥②">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑨">target</a></code> :
 								parent node of subtree being modified
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤④">MutationEvent</a></code>.<code>attrName</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑦">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑥">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑤">MutationEvent</a></code>.<code>attrChange</code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑥">MutationEvent</a></code>.<code>relatedNode</code> : <code>null</code>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑦">MutationEvent</a></code>.<code>newValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑧">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑦">empty string</a>
          <li><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤⑧">MutationEvent</a></code>.<code>prevValue</code> :
-								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑨">empty string</a>
+								the <a data-link-type="dfn" href="#empty-string" id="ref-for-empty-string①⑧">empty string</a>
         </ul>
     </table>
     <p>This is a general event for notification of all changes to the
@@ -8435,7 +8443,7 @@ Level 0</q>.</p>
       <p><em>输入法编辑器</em>(IME) ，也被称为<em>前端处理器</em>(front end
 processer)，是一种通过引导用户进行字典查找，在击键(key)和表意文字(ideographs
 or other characters，中日韩统一表意文字和其他字符)之间执行转换的输入应用程序，
-这种输入应用程序常在东亚语言(如中文，日语，韩语)中使用。一个输入法编辑器( <a href="#ime" id="ref-for-ime①⑦">IME</a> )也可被用于基于词语的单词补全，常用在移动设备上。
+这种输入应用程序常在东亚语言(如中文，日语，韩语)中使用。一个输入法编辑器( <a href="#ime" id="ref-for-ime②④">IME</a> )也可被用于基于词语的单词补全，常用在移动设备上。
 参见本规范中用于讨论IMEs的 <a href="#keys-IME">§ 6.3.3 输入法编辑器</a> 。也可查看 <a href="#text-composition-system" id="ref-for-text-composition-system①⑧">文本合成系统</a> 。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="key-mapping">key mapping</dfn>
      <dd data-md>
@@ -8493,7 +8501,7 @@ event flow for more details.</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="text-composition-system">text composition system</dfn>
      <dd data-md>
       <p>一种软件组件(software component )，用于解释某种形式的替代输入(alternate
-input，如 <a href="#ime" id="ref-for-ime①⑧">输入法编辑器</a> 、语音处理器或手写识别系统)
+input，如 <a href="#ime" id="ref-for-ime②⑤">输入法编辑器</a> 、语音处理器或手写识别系统)
 并将其转换为文本。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="topmost-event-target">topmost event target</dfn>
      <dd data-md>
@@ -9185,7 +9193,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-event-preventdefault⑤">5.4.2.2. 滚轮事件的可取消性</a>
     <li><a href="#ref-for-dom-event-preventdefault⑥">5.7.4. 取消合成事件</a> <a href="#ref-for-dom-event-preventdefault⑦">(2)</a>
     <li><a href="#ref-for-dom-event-preventdefault⑧">5.7.7.1. compositionstart</a>
-    <li><a href="#ref-for-dom-event-preventdefault⑨">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-event-preventdefault①⓪">(2)</a> <a href="#ref-for-dom-event-preventdefault①①">(3)</a>
+    <li><a href="#ref-for-dom-event-preventdefault⑨">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dom-event-preventdefault①⓪">(2)</a> <a href="#ref-for-dom-event-preventdefault①①">(3)</a>
     <li><a href="#ref-for-dom-event-preventdefault①②">14. 术语表</a>
    </ul>
   </aside>
@@ -10738,7 +10746,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-inputevent②">5.5.3.1. beforeinput</a> <a href="#ref-for-inputevent③">(2)</a> <a href="#ref-for-inputevent④">(3)</a>
     <li><a href="#ref-for-inputevent⑤">5.5.3.2. input</a> <a href="#ref-for-inputevent⑥">(2)</a> <a href="#ref-for-inputevent⑦">(3)</a>
     <li><a href="#ref-for-inputevent⑧">5.6. 键盘事件</a>
-    <li><a href="#ref-for-inputevent⑨">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-inputevent①⓪">(2)</a> <a href="#ref-for-inputevent①①">(3)</a>
+    <li><a href="#ref-for-inputevent⑨">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-inputevent①⓪">(2)</a> <a href="#ref-for-inputevent①①">(3)</a>
     <li><a href="#ref-for-inputevent①②">9.3.2. keypress 事件顺序</a>
    </ul>
   </aside>
@@ -10750,7 +10758,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-inputevent-data②">5.5.3.2. input</a>
     <li><a href="#ref-for-dom-inputevent-data③">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-dom-inputevent-data④">6.3.1. 修饰符按键</a>
-    <li><a href="#ref-for-dom-inputevent-data⑤">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-inputevent-data⑥">(2)</a> <a href="#ref-for-dom-inputevent-data⑦">(3)</a>
+    <li><a href="#ref-for-dom-inputevent-data⑤">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dom-inputevent-data⑥">(2)</a> <a href="#ref-for-dom-inputevent-data⑦">(3)</a>
     <li><a href="#ref-for-dom-inputevent-data⑧">9.3.2. keypress 事件顺序</a>
    </ul>
   </aside>
@@ -10805,7 +10813,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-beforeinput①⑨">5.7.7.2. compositionupdate</a>
     <li><a href="#ref-for-beforeinput②⓪">6.3.1. 修饰符按键</a> <a href="#ref-for-beforeinput②①">(2)</a> <a href="#ref-for-beforeinput②②">(3)</a> <a href="#ref-for-beforeinput②③">(4)</a> <a href="#ref-for-beforeinput②④">(5)</a> <a href="#ref-for-beforeinput②⑤">(6)</a> <a href="#ref-for-beforeinput②⑥">(7)</a> <a href="#ref-for-beforeinput②⑦">(8)</a> <a href="#ref-for-beforeinput②⑧">(9)</a> <a href="#ref-for-beforeinput②⑨">(10)</a>
     <li><a href="#ref-for-beforeinput③⓪">6.3.3. 输入法编辑器</a> <a href="#ref-for-beforeinput③①">(2)</a> <a href="#ref-for-beforeinput③②">(3)</a> <a href="#ref-for-beforeinput③③">(4)</a>
-    <li><a href="#ref-for-beforeinput③④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-beforeinput③⑤">(2)</a> <a href="#ref-for-beforeinput③⑥">(3)</a> <a href="#ref-for-beforeinput③⑦">(4)</a> <a href="#ref-for-beforeinput③⑧">(5)</a>
+    <li><a href="#ref-for-beforeinput③④">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-beforeinput③⑤">(2)</a> <a href="#ref-for-beforeinput③⑥">(3)</a> <a href="#ref-for-beforeinput③⑦">(4)</a> <a href="#ref-for-beforeinput③⑧">(5)</a>
     <li><a href="#ref-for-beforeinput③⑨">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-beforeinput④⓪">(2)</a>
     <li><a href="#ref-for-beforeinput④①">9.3.1.1. keypress</a> <a href="#ref-for-beforeinput④②">(2)</a>
     <li><a href="#ref-for-beforeinput④③">9.3.2. keypress 事件顺序</a> <a href="#ref-for-beforeinput④④">(2)</a>
@@ -10824,7 +10832,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-input①①">5.7.6. 合成过程中的输入事件</a> <a href="#ref-for-input①②">(2)</a> <a href="#ref-for-input①③">(3)</a> <a href="#ref-for-input①④">(4)</a> <a href="#ref-for-input①⑤">(5)</a> <a href="#ref-for-input①⑥">(6)</a> <a href="#ref-for-input①⑦">(7)</a> <a href="#ref-for-input①⑧">(8)</a> <a href="#ref-for-input①⑨">(9)</a> <a href="#ref-for-input②⓪">(10)</a> <a href="#ref-for-input②①">(11)</a>
     <li><a href="#ref-for-input②②">6.3.1. 修饰符按键</a> <a href="#ref-for-input②③">(2)</a> <a href="#ref-for-input②④">(3)</a> <a href="#ref-for-input②⑤">(4)</a> <a href="#ref-for-input②⑥">(5)</a> <a href="#ref-for-input②⑦">(6)</a> <a href="#ref-for-input②⑧">(7)</a> <a href="#ref-for-input②⑨">(8)</a> <a href="#ref-for-input③⓪">(9)</a> <a href="#ref-for-input③①">(10)</a>
     <li><a href="#ref-for-input③②">6.3.3. 输入法编辑器</a> <a href="#ref-for-input③③">(2)</a> <a href="#ref-for-input③④">(3)</a> <a href="#ref-for-input③⑤">(4)</a>
-    <li><a href="#ref-for-input③⑥">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-input③⑦">(2)</a> <a href="#ref-for-input③⑧">(3)</a> <a href="#ref-for-input③⑨">(4)</a> <a href="#ref-for-input④⓪">(5)</a>
+    <li><a href="#ref-for-input③⑥">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-input③⑦">(2)</a> <a href="#ref-for-input③⑧">(3)</a> <a href="#ref-for-input③⑨">(4)</a> <a href="#ref-for-input④⓪">(5)</a>
     <li><a href="#ref-for-input④①">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-input④②">(2)</a>
     <li><a href="#ref-for-input④③">9.3.1.1. keypress</a>
     <li><a href="#ref-for-input④④">9.3.2. keypress 事件顺序</a> <a href="#ref-for-input④⑤">(2)</a>
@@ -10849,7 +10857,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyboardevent⑥⓪">6.3.1. 修饰符按键</a> <a href="#ref-for-keyboardevent⑥①">(2)</a> <a href="#ref-for-keyboardevent⑥②">(3)</a> <a href="#ref-for-keyboardevent⑥③">(4)</a> <a href="#ref-for-keyboardevent⑥④">(5)</a> <a href="#ref-for-keyboardevent⑥⑤">(6)</a>
     <li><a href="#ref-for-keyboardevent⑥⑥">6.3.2. 死键</a> <a href="#ref-for-keyboardevent⑥⑦">(2)</a> <a href="#ref-for-keyboardevent⑥⑧">(3)</a> <a href="#ref-for-keyboardevent⑥⑨">(4)</a>
     <li><a href="#ref-for-keyboardevent⑦⓪">6.3.3. 输入法编辑器</a> <a href="#ref-for-keyboardevent⑦①">(2)</a> <a href="#ref-for-keyboardevent⑦②">(3)</a> <a href="#ref-for-keyboardevent⑦③">(4)</a>
-    <li><a href="#ref-for-keyboardevent⑦④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyboardevent⑦⑤">(2)</a> <a href="#ref-for-keyboardevent⑦⑥">(3)</a>
+    <li><a href="#ref-for-keyboardevent⑦④">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keyboardevent⑦⑤">(2)</a> <a href="#ref-for-keyboardevent⑦⑥">(3)</a>
     <li><a href="#ref-for-keyboardevent⑦⑦">7.1.4. Initializers for interface KeyboardEvent</a> <a href="#ref-for-keyboardevent⑦⑧">(2)</a>
     <li><a href="#ref-for-keyboardevent⑦⑨">8.1. Legacy UIEvent supplemental interface</a> <a href="#ref-for-keyboardevent⑧⓪">(2)</a>
     <li><a href="#ref-for-keyboardevent⑧①">8.1.1. Interface UIEvent (supplemental)</a>
@@ -10922,7 +10930,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-key③②">6.3.1. 修饰符按键</a> <a href="#ref-for-dom-keyboardevent-key③③">(2)</a> <a href="#ref-for-dom-keyboardevent-key③④">(3)</a> <a href="#ref-for-dom-keyboardevent-key③⑤">(4)</a> <a href="#ref-for-dom-keyboardevent-key③⑥">(5)</a> <a href="#ref-for-dom-keyboardevent-key③⑦">(6)</a> <a href="#ref-for-dom-keyboardevent-key③⑧">(7)</a>
     <li><a href="#ref-for-dom-keyboardevent-key③⑨">6.3.2. 死键</a> <a href="#ref-for-dom-keyboardevent-key④⓪">(2)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④①">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-keyboardevent-key④②">(2)</a>
-    <li><a href="#ref-for-dom-keyboardevent-key④③">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-keyboardevent-key④④">(2)</a> <a href="#ref-for-dom-keyboardevent-key④⑤">(3)</a>
+    <li><a href="#ref-for-dom-keyboardevent-key④③">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dom-keyboardevent-key④④">(2)</a> <a href="#ref-for-dom-keyboardevent-key④⑤">(3)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑥">7.1.4. Initializers for interface KeyboardEvent</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑦">8. Legacy Key &amp; Mouse Event Attributes</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑧">8.2.1. Interface KeyboardEvent (supplemental)</a>
@@ -10985,7 +10993,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-shiftkey⑤">5.6.4.2. keyup</a>
     <li><a href="#ref-for-dom-keyboardevent-shiftkey⑥">6.2.3. code 例子</a> <a href="#ref-for-dom-keyboardevent-shiftkey⑦">(2)</a> <a href="#ref-for-dom-keyboardevent-shiftkey⑧">(3)</a> <a href="#ref-for-dom-keyboardevent-shiftkey⑨">(4)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⓪">(5)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①①">(6)</a>
     <li><a href="#ref-for-dom-keyboardevent-shiftkey①②">6.3.1. 修饰符按键</a> <a href="#ref-for-dom-keyboardevent-shiftkey①③">(2)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①④">(3)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⑤">(4)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⑥">(5)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⑦">(6)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⑧">(7)</a> <a href="#ref-for-dom-keyboardevent-shiftkey①⑨">(8)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②⓪">(9)</a>
-    <li><a href="#ref-for-dom-keyboardevent-shiftkey②①">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dom-keyboardevent-shiftkey②②">(2)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②③">(3)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②④">(4)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②⑤">(5)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②⑥">(6)</a>
+    <li><a href="#ref-for-dom-keyboardevent-shiftkey②①">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dom-keyboardevent-shiftkey②②">(2)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②③">(3)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②④">(4)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②⑤">(5)</a> <a href="#ref-for-dom-keyboardevent-shiftkey②⑥">(6)</a>
     <li><a href="#ref-for-dom-keyboardevent-shiftkey②⑦">9.3.1.1. keypress</a>
    </ul>
   </aside>
@@ -11104,7 +11112,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keydown②⑧">6.3.1. 修饰符按键</a> <a href="#ref-for-keydown②⑨">(2)</a> <a href="#ref-for-keydown③⓪">(3)</a> <a href="#ref-for-keydown③①">(4)</a> <a href="#ref-for-keydown③②">(5)</a> <a href="#ref-for-keydown③③">(6)</a> <a href="#ref-for-keydown③④">(7)</a> <a href="#ref-for-keydown③⑤">(8)</a> <a href="#ref-for-keydown③⑥">(9)</a> <a href="#ref-for-keydown③⑦">(10)</a> <a href="#ref-for-keydown③⑧">(11)</a> <a href="#ref-for-keydown③⑨">(12)</a> <a href="#ref-for-keydown④⓪">(13)</a>
     <li><a href="#ref-for-keydown④①">6.3.2. 死键</a> <a href="#ref-for-keydown④②">(2)</a> <a href="#ref-for-keydown④③">(3)</a> <a href="#ref-for-keydown④④">(4)</a> <a href="#ref-for-keydown④⑤">(5)</a>
     <li><a href="#ref-for-keydown④⑥">6.3.3. 输入法编辑器</a> <a href="#ref-for-keydown④⑦">(2)</a> <a href="#ref-for-keydown④⑧">(3)</a> <a href="#ref-for-keydown④⑨">(4)</a> <a href="#ref-for-keydown⑤⓪">(5)</a> <a href="#ref-for-keydown⑤①">(6)</a> <a href="#ref-for-keydown⑤②">(7)</a> <a href="#ref-for-keydown⑤③">(8)</a> <a href="#ref-for-keydown⑤④">(9)</a> <a href="#ref-for-keydown⑤⑤">(10)</a> <a href="#ref-for-keydown⑤⑥">(11)</a>
-    <li><a href="#ref-for-keydown⑤⑦">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keydown⑤⑧">(2)</a> <a href="#ref-for-keydown⑤⑨">(3)</a> <a href="#ref-for-keydown⑥⓪">(4)</a> <a href="#ref-for-keydown⑥①">(5)</a> <a href="#ref-for-keydown⑥②">(6)</a> <a href="#ref-for-keydown⑥③">(7)</a> <a href="#ref-for-keydown⑥④">(8)</a>
+    <li><a href="#ref-for-keydown⑤⑦">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keydown⑤⑧">(2)</a> <a href="#ref-for-keydown⑤⑨">(3)</a> <a href="#ref-for-keydown⑥⓪">(4)</a> <a href="#ref-for-keydown⑥①">(5)</a> <a href="#ref-for-keydown⑥②">(6)</a> <a href="#ref-for-keydown⑥③">(7)</a> <a href="#ref-for-keydown⑥④">(8)</a>
     <li><a href="#ref-for-keydown⑥⑤">8.2.1. Interface KeyboardEvent (supplemental)</a>
     <li><a href="#ref-for-keydown⑥⑥">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keydown⑥⑦">(2)</a> <a href="#ref-for-keydown⑥⑧">(3)</a>
     <li><a href="#ref-for-keydown⑥⑨">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keydown⑦⓪">(2)</a>
@@ -11125,7 +11133,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyup②②">6.3.1. 修饰符按键</a> <a href="#ref-for-keyup②③">(2)</a> <a href="#ref-for-keyup②④">(3)</a> <a href="#ref-for-keyup②⑤">(4)</a> <a href="#ref-for-keyup②⑥">(5)</a> <a href="#ref-for-keyup②⑦">(6)</a> <a href="#ref-for-keyup②⑧">(7)</a> <a href="#ref-for-keyup②⑨">(8)</a> <a href="#ref-for-keyup③⓪">(9)</a> <a href="#ref-for-keyup③①">(10)</a> <a href="#ref-for-keyup③②">(11)</a> <a href="#ref-for-keyup③③">(12)</a> <a href="#ref-for-keyup③④">(13)</a> <a href="#ref-for-keyup③⑤">(14)</a> <a href="#ref-for-keyup③⑥">(15)</a>
     <li><a href="#ref-for-keyup③⑦">6.3.2. 死键</a> <a href="#ref-for-keyup③⑧">(2)</a> <a href="#ref-for-keyup③⑨">(3)</a> <a href="#ref-for-keyup④⓪">(4)</a>
     <li><a href="#ref-for-keyup④①">6.3.3. 输入法编辑器</a> <a href="#ref-for-keyup④②">(2)</a> <a href="#ref-for-keyup④③">(3)</a> <a href="#ref-for-keyup④④">(4)</a> <a href="#ref-for-keyup④⑤">(5)</a> <a href="#ref-for-keyup④⑥">(6)</a> <a href="#ref-for-keyup④⑦">(7)</a> <a href="#ref-for-keyup④⑧">(8)</a> <a href="#ref-for-keyup④⑨">(9)</a> <a href="#ref-for-keyup⑤⓪">(10)</a>
-    <li><a href="#ref-for-keyup⑤①">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keyup⑤②">(2)</a> <a href="#ref-for-keyup⑤③">(3)</a> <a href="#ref-for-keyup⑤④">(4)</a> <a href="#ref-for-keyup⑤⑤">(5)</a> <a href="#ref-for-keyup⑤⑥">(6)</a> <a href="#ref-for-keyup⑤⑦">(7)</a> <a href="#ref-for-keyup⑤⑧">(8)</a>
+    <li><a href="#ref-for-keyup⑤①">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keyup⑤②">(2)</a> <a href="#ref-for-keyup⑤③">(3)</a> <a href="#ref-for-keyup⑤④">(4)</a> <a href="#ref-for-keyup⑤⑤">(5)</a> <a href="#ref-for-keyup⑤⑥">(6)</a> <a href="#ref-for-keyup⑤⑦">(7)</a> <a href="#ref-for-keyup⑤⑧">(8)</a>
     <li><a href="#ref-for-keyup⑤⑨">8.2.1. Interface KeyboardEvent (supplemental)</a>
     <li><a href="#ref-for-keyup⑥⓪">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keyup⑥①">(2)</a>
     <li><a href="#ref-for-keyup⑥②">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keyup⑥③">(2)</a>
@@ -11158,8 +11166,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-compositionevent-data①⓪">5.7.7.3. compositionend</a>
     <li><a href="#ref-for-dom-compositionevent-data①①">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-compositionevent-data①②">(2)</a> <a href="#ref-for-dom-compositionevent-data①③">(3)</a>
     <li><a href="#ref-for-dom-compositionevent-data①④">6.3.2. 死键</a> <a href="#ref-for-dom-compositionevent-data①⑤">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑥">(3)</a>
-    <li><a href="#ref-for-dom-compositionevent-data①⑦">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-compositionevent-data①⑧">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑨">(3)</a>
-    <li><a href="#ref-for-dom-compositionevent-data②⓪">7.1.5. Initializers for interface CompositionEvent</a>
+    <li><a href="#ref-for-dom-compositionevent-data①⑦">6.3.3. 输入法编辑器</a> <a href="#ref-for-dom-compositionevent-data①⑧">(2)</a> <a href="#ref-for-dom-compositionevent-data①⑨">(3)</a> <a href="#ref-for-dom-compositionevent-data②⓪">(4)</a>
+    <li><a href="#ref-for-dom-compositionevent-data②①">7.1.5. Initializers for interface CompositionEvent</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dictdef-compositioneventinit" class="dfn-panel" data-for="dictdef-compositioneventinit" id="infopanel-for-dictdef-compositioneventinit">
@@ -11335,7 +11343,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keypress">4.1. 事件类型列表</a>
     <li><a href="#ref-for-keypress①">5.6.4.1. keydown</a>
     <li><a href="#ref-for-keypress②">6.2.3. code 例子</a> <a href="#ref-for-keypress③">(2)</a>
-    <li><a href="#ref-for-keypress④">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-keypress⑤">(2)</a>
+    <li><a href="#ref-for-keypress④">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keypress⑤">(2)</a>
     <li><a href="#ref-for-keypress⑥">8.2.1. Interface KeyboardEvent (supplemental)</a>
     <li><a href="#ref-for-keypress⑦">8.3.2. How to determine keyCode for keypress events</a> <a href="#ref-for-keypress⑧">(2)</a>
     <li><a href="#ref-for-keypress⑨">9. 遗留事件类型</a>
@@ -11549,7 +11557,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dead-key">6. 键盘事件和键值</a>
     <li><a href="#ref-for-dead-key">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dead-key">(2)</a>
     <li><a href="#ref-for-dead-key">6.3.2. 死键</a> <a href="#ref-for-dead-key">(2)</a> <a href="#ref-for-dead-key">(3)</a> <a href="#ref-for-dead-key">(4)</a> <a href="#ref-for-dead-key">(5)</a>
-    <li><a href="#ref-for-dead-key">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-dead-key①">(2)</a>
+    <li><a href="#ref-for-dead-key">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dead-key①">(2)</a>
     <li><a href="#ref-for-dead-key">14. 术语表</a> <a href="#ref-for-dead-key">(2)</a>
    </ul>
   </aside>
@@ -11566,9 +11574,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-default-action">5.4.2.1. wheel</a>
     <li><a href="#ref-for-default-action">5.6.3. 键盘事件顺序</a> <a href="#ref-for-default-action">(2)</a> <a href="#ref-for-default-action">(3)</a>
     <li><a href="#ref-for-default-action">5.7.4. 取消合成事件</a> <a href="#ref-for-default-action">(2)</a>
-    <li><a href="#ref-for-default-action">6.3.4. Default actions and cancelable keyboard events</a> <a href="#ref-for-default-action①">(2)</a> <a href="#ref-for-default-action②">(3)</a> <a href="#ref-for-default-action③">(4)</a> <a href="#ref-for-default-action④">(5)</a>
-    <li><a href="#ref-for-default-action⑤">9.1.1.1. DOMActivate</a> <a href="#ref-for-default-action⑥">(2)</a>
-    <li><a href="#ref-for-default-action⑦">9.1.2. Activation event order</a> <a href="#ref-for-default-action⑧">(2)</a> <a href="#ref-for-default-action⑨">(3)</a> <a href="#ref-for-default-action①⓪">(4)</a> <a href="#ref-for-default-action①①">(5)</a>
+    <li><a href="#ref-for-default-action">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-default-action">(2)</a> <a href="#ref-for-default-action①">(3)</a> <a href="#ref-for-default-action②">(4)</a> <a href="#ref-for-default-action③">(5)</a>
+    <li><a href="#ref-for-default-action④">9.1.1.1. DOMActivate</a> <a href="#ref-for-default-action⑤">(2)</a>
+    <li><a href="#ref-for-default-action⑥">9.1.2. Activation event order</a> <a href="#ref-for-default-action⑦">(2)</a> <a href="#ref-for-default-action⑧">(3)</a> <a href="#ref-for-default-action⑨">(4)</a> <a href="#ref-for-default-action①⓪">(5)</a>
     <li><a href="#ref-for-default-action">9.3.1.1. keypress</a>
     <li><a href="#ref-for-default-action">9.3.2. keypress 事件顺序</a>
     <li><a href="#ref-for-default-action">14. 术语表</a> <a href="#ref-for-default-action">(2)</a> <a href="#ref-for-default-action">(3)</a> <a href="#ref-for-default-action">(4)</a>
@@ -11646,13 +11654,13 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-empty-string">5.7.7.2. compositionupdate</a> <a href="#ref-for-empty-string">(2)</a> <a href="#ref-for-empty-string">(3)</a>
     <li><a href="#ref-for-empty-string">5.7.7.3. compositionend</a>
     <li><a href="#ref-for-empty-string">6.3.3. 输入法编辑器</a>
-    <li><a href="#ref-for-empty-string①">9.4.1. Interface MutationEvent</a> <a href="#ref-for-empty-string②">(2)</a> <a href="#ref-for-empty-string③">(3)</a>
-    <li><a href="#ref-for-empty-string④">9.4.2.2. DOMCharacterDataModified</a>
-    <li><a href="#ref-for-empty-string⑤">9.4.2.3. DOMNodeInserted</a> <a href="#ref-for-empty-string⑥">(2)</a> <a href="#ref-for-empty-string⑦">(3)</a>
-    <li><a href="#ref-for-empty-string⑧">9.4.2.4. DOMNodeInsertedIntoDocument</a> <a href="#ref-for-empty-string⑨">(2)</a> <a href="#ref-for-empty-string①⓪">(3)</a>
-    <li><a href="#ref-for-empty-string①①">9.4.2.5. DOMNodeRemoved</a> <a href="#ref-for-empty-string①②">(2)</a> <a href="#ref-for-empty-string①③">(3)</a>
-    <li><a href="#ref-for-empty-string①④">9.4.2.6. DOMNodeRemovedFromDocument</a> <a href="#ref-for-empty-string①⑤">(2)</a> <a href="#ref-for-empty-string①⑥">(3)</a>
-    <li><a href="#ref-for-empty-string①⑦">9.4.2.7. DOMSubtreeModified</a> <a href="#ref-for-empty-string①⑧">(2)</a> <a href="#ref-for-empty-string①⑨">(3)</a>
+    <li><a href="#ref-for-empty-string">9.4.1. Interface MutationEvent</a> <a href="#ref-for-empty-string①">(2)</a> <a href="#ref-for-empty-string②">(3)</a>
+    <li><a href="#ref-for-empty-string③">9.4.2.2. DOMCharacterDataModified</a>
+    <li><a href="#ref-for-empty-string④">9.4.2.3. DOMNodeInserted</a> <a href="#ref-for-empty-string⑤">(2)</a> <a href="#ref-for-empty-string⑥">(3)</a>
+    <li><a href="#ref-for-empty-string⑦">9.4.2.4. DOMNodeInsertedIntoDocument</a> <a href="#ref-for-empty-string⑧">(2)</a> <a href="#ref-for-empty-string⑨">(3)</a>
+    <li><a href="#ref-for-empty-string①⓪">9.4.2.5. DOMNodeRemoved</a> <a href="#ref-for-empty-string①①">(2)</a> <a href="#ref-for-empty-string①②">(3)</a>
+    <li><a href="#ref-for-empty-string①③">9.4.2.6. DOMNodeRemovedFromDocument</a> <a href="#ref-for-empty-string①④">(2)</a> <a href="#ref-for-empty-string①⑤">(3)</a>
+    <li><a href="#ref-for-empty-string①⑥">9.4.2.7. DOMSubtreeModified</a> <a href="#ref-for-empty-string①⑦">(2)</a> <a href="#ref-for-empty-string①⑧">(3)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event" class="dfn-panel" data-for="event" id="infopanel-for-event">
@@ -11790,8 +11798,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-ime">5.7.6. 合成过程中的输入事件</a>
     <li><a href="#ref-for-ime">5.7.7.1. compositionstart</a> <a href="#ref-for-ime">(2)</a>
     <li><a href="#ref-for-ime">5.7.7.3. compositionend</a>
-    <li><a href="#ref-for-ime">6.3.3. 输入法编辑器</a> <a href="#ref-for-ime">(2)</a> <a href="#ref-for-ime">(3)</a> <a href="#ref-for-ime">(4)</a> <a href="#ref-for-ime">(5)</a>
-    <li><a href="#ref-for-ime①">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-ime②">(2)</a> <a href="#ref-for-ime③">(3)</a> <a href="#ref-for-ime④">(4)</a> <a href="#ref-for-ime⑤">(5)</a>
+    <li><a href="#ref-for-ime">6.3.3. 输入法编辑器</a> <a href="#ref-for-ime">(2)</a> <a href="#ref-for-ime">(3)</a> <a href="#ref-for-ime">(4)</a> <a href="#ref-for-ime">(5)</a> <a href="#ref-for-ime①">(6)</a> <a href="#ref-for-ime">(7)</a>
+    <li><a href="#ref-for-ime">6.3.3.1. 输入法编辑器模式按键</a> <a href="#ref-for-ime">(2)</a> <a href="#ref-for-ime②">(3)</a> <a href="#ref-for-ime③">(4)</a> <a href="#ref-for-ime④">(5)</a> <a href="#ref-for-ime⑤">(6)</a> <a href="#ref-for-ime⑥">(7)</a> <a href="#ref-for-ime">(8)</a> <a href="#ref-for-ime">(9)</a> <a href="#ref-for-ime">(10)</a>
     <li><a href="#ref-for-ime">9.3.1.1. keypress</a>
     <li><a href="#ref-for-ime">14. 术语表</a> <a href="#ref-for-ime">(2)</a>
    </ul>
@@ -11801,8 +11809,6 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-input-method-editor">5.5.3.1. beforeinput</a>
     <li><a href="#ref-for-input-method-editor">5.5.3.2. input</a>
-    <li><a href="#ref-for-input-method-editor">6.3.3. 输入法编辑器</a>
-    <li><a href="#ref-for-input-method-editor①">6.3.3.1. Input Method Editor mode keys</a> <a href="#ref-for-input-method-editor②">(2)</a> <a href="#ref-for-input-method-editor③">(3)</a> <a href="#ref-for-input-method-editor④">(4)</a> <a href="#ref-for-input-method-editor⑤">(5)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-key-mapping" class="dfn-panel" data-for="key-mapping" id="infopanel-for-key-mapping">

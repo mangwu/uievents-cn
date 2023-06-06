@@ -595,20 +595,16 @@
 		</p>
 
 		以下示例描述了使用日语输入法生成 Unicode 字符 GLYPH{&#x5E02;} (汉字，CJK 
-		统一象形文字的一部分) 的可能的按键序列。此示例假设输入法编辑器已激活并处于日语罗马字输入模式。根据使用的输入设备和IME的配置，转换和接受键可能会被其他键取代，例如，它可以分别为U+0020（空格键）和Enter。
-		The following example describes a possible sequence of keys to generate
-		the Unicode character GLYPH{&#x5E02;} (Kanji character, part of CJK
-		Unified Ideographs) using Japanese input methods. This example assumes
-		that the input method editor is activated and in the Japanese-Romaji
-		input mode. The keys KEYCAP{Convert} and KEYCAP{Accept} MAY be replaced
-		by others depending on the input device in use and the configuration of
-		the IME, e.g., it can be respectively UNI{U+0020} (Space key) and
-		KEYCAP{Enter}.
+		统一象形文字的一部分) 的可能的按键序列。
+		此示例假设输入法编辑器已激活并处于日语罗马字(Japanese-Romaji)输入模式。
+		根据使用的输入设备和 <a>IME</a> 的配置， KEYCAP{Convert} 和 KEYCAP{Accept} 
+		键 <span class="zh-upper">可以</span> 被其他键取代，例如，
+		它可以分别为 UNI{U+0020} (空格键)和 KEYCAP{Enter} 。
 
 		<p class="note">
-		GLYPH{&#x8A69;} (<q>poem</q>) and GLYPH{&#x5E02;} (<q>city</q>) are
-		homophones, both pronounced &#x3057; (<q>shi</q>/<q>si</q>), so the user
-		needs to use the KEYCAP{Convert} key to select the proper option.
+		GLYPH{&#x8A69;} (<q>poem</q>) 和 GLYPH{&#x5E02;} (<q>city</q>) 是同音词，
+		发音都是 &#x3057; (<q>shi</q>/<q>si</q>)，因此用户需要使用 KEYCAP{Convert} 
+		键来选择正确的选项。
 		</p>
 
 		<div class="example">
@@ -616,62 +612,96 @@
 		=| #  | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |    |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +----+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
-		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | Latin Small Letter S |
+		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | 小写拉丁字母 S       |
 		+|  2 | compositionstart  |                      |                             | GLYPH{}                 |                      |
 		+|  3 | beforeinput       |                      |                             |                         |                      |
 		+|  4 | compositionupdate |                      |                             | GLYPH{s}                |                      |
-		+|    |                   |                      |                             |                         | DOM is updated       |
+		+|    |                   |                      |                             |                         | DOM 被更新了         |
 		+|  5 | input             |                      |                             |                         |                      |
 		+|  6 | keyup             | KEY_NOLINK{s}        | <code>true</code>           |                         |                      |
-		+|  7 | keydown           | KEY_NOLINK{i}        | <code>true</code>           |                         | Latin Small Letter I |
+		+|  7 | keydown           | KEY_NOLINK{i}        | <code>true</code>           |                         | 小写拉丁字母 I       |
 		+|  8 | beforeinput       |                      |                             |                         |                      |
 		+|  9 | compositionupdate |                      |                             | GLYPH{&#x3057;}         | <em>shi</em>         |
-		+|    |                   |                      |                             |                         | DOM is updated       |
+		+|    |                   |                      |                             |                         | DOM 被更新了         |
 		+| 10 | input             |                      |                             |                         |                      |
 		+| 11 | keyup             | KEY_NOLINK{i}        | <code>true</code>           |                         |                      |
-		+| 12 | keydown           | KEY{Convert}         | <code>true</code>           |                         | Convert              |
+		+| 12 | keydown           | KEY{Convert}         | <code>true</code>           |                         | 转换键               |
 		+| 13 | beforeinput       |                      |                             |                         |                      |
 		+| 14 | compositionupdate |                      |                             | GLYPH{&#x8A69;}         | "poem"               |
-		+|    |                   |                      |                             |                         | DOM is updated       |
+		+|    |                   |                      |                             |                         | DOM 被更新了         |
 		+| 15 | input             |                      |                             |                         |                      |
 		+| 16 | keyup             | KEY{Convert}         | <code>true</code>           |                         |                      |
-		+| 17 | keydown           | KEY{Convert}         | <code>true</code>           |                         | Convert              |
+		+| 17 | keydown           | KEY{Convert}         | <code>true</code>           |                         | 转换键               |
 		+| 18 | beforeinput       |                      |                             |                         |                      |
 		+| 19 | compositionupdate |                      |                             | GLYPH{&#x5E02;}         | "city"               |
-		+|    |                   |                      |                             |                         | DOM is updated       |
+		+|    |                   |                      |                             |                         | DOM 被更新了         |
 		+| 20 | input             |                      |                             |                         |                      |
 		+| 21 | keyup             | KEY{Convert}         | <code>true</code>           |                         |                      |
-		+| 22 | keydown           | KEY{Accept}          | <code>true</code>           |                         | Accept               |
+		+| 22 | keydown           | KEY{Accept}          | <code>true</code>           |                         | 接收键               |
 		+| 23 | compositionend    |                      |                             | GLYPH{&#x5E02;}         |                      |
 		+| 24 | keyup             | KEY{Accept}          | <code>false</code>          |                         |                      |
 		++----+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
+
+		<div class="note custom-note">
+		CODE{Convert} 键的键帽标签为 KEYCAP{変換} ，它是 
+		<a href="https://mangwu.github.io/uievents-code-cn/#keyboard-106">日式 "106"
+		键盘布局</a> 上，位于空格按键右边的键，它用于把输入的假名转换成汉字。<br/>
+		KEY{Accept} 键属于多媒体按键，接收当前选项结果或接收当前输入法序列的转换结果
+		。但是大多数情况下，输入法都使用 CODE{Space} 键和 CODE{Enter} 
+		键来接收选择当前合成转换结果。<br/>
+		日语输入法存在罗马字(字母)，假名，汉字三种形式的转换，
+		罗马字(字母)可以转换成平假名和片假名，平假名又可以转换成具体的汉字，
+		所以需要借助额外的 CODE{Convert} 进行"変換"。<br/>
+		但是中文输入就没有日语输入那么复杂了，现代拼音输入法只有拼音(字母)
+		到汉字的转换过程，汉字输入的解决方案已经很成熟: 
+		利用拼音去匹配字库和词语库中的常用汉字和词语，
+		通过快捷键翻页查看下一批匹配的汉字和词语，
+		再通过数字键或编辑键选择对应的汉字或词语，
+		用户的选择结果会影响汉字被匹配的优先级。
+		翻页查看下一批或上一批汉字的快捷键包括 KEYCAP{PgUp PgDn}，KEYCAP{&lt; &gt;}，
+		KEYCAP{- +} 和 KEYCAP{[ ]} ，选择匹配的汉字的按键包括字母数字区域的数字键，
+		和空格按键(默认第一项)。查看手写识别系统中的
+		<a href="#figure-microsoft-pinyin-input-method-editor">拼音输入法编辑器</a> 
+		非规范图示可以加深对 IME 的理解。下面是通过微软拼音输入法输入 "诗" 
+		("詩"的简体汉字)的事件触发图示:
+
+		<figure id="figure-ime-poem">
+			<img
+				src="images/ime-poem.gif"
+				width="900"
+				alt='使用微软拼音输入法输入 "诗" 时派发的事件序列'
+			/>
+			<div class="custom-figcaption">
+			使用微软拼音输入法输入 "诗" 时派发的事件序列
+			</div>
+		</figure>
+		
+		</div>
 		</div>
 
-		IME composition can also be canceled as in the following example, with
-		conditions identical to the previous example. The key KEYCAP{Cancel}
-		might also be replaced by others depending on the input device in use
-		and the configuration of the IME, e.g., it could be UNI{U+001B} (Escape
-		key).
+		IME 合成也可以像下面的例子一样被取消，输入条件与前面的例子完全相同。
+		根据所使用的输入设备和输入法的配置，键 KEYCAP{Cancel} 也可能被其他键取代，
+		例如，它可以是 UNI{U+001B} (退出键，CODE{Escape} )。
 
 		<div class="example">
 		++----+-------------------+----------------------+-----------------------------+-------------------------+----------------------+
 		=| #  | 事件类型          |{{KeyboardEvent}}<br/>|{{KeyboardEvent}}<br/>       |{{CompositionEvent}}<br/>| 注释                 |
 		 |    |                   |{{KeyboardEvent/key}} |{{KeyboardEvent/isComposing}}|{{CompositionEvent/data}}|                      |
 		 +----+-------------------+----------o-----------+--------------o--------------+------------o------------+----------------------+
-		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | Latin Small Letter S |
+		+|  1 | keydown           | KEY_NOLINK{s}        | <code>false</code>          |                         | 小写拉丁字母 S       |
 		+|  2 | compositionstart  |                      |                             | GLYPH{}                 |                      |
 		+|  3 | compositionupdate |                      |                             | GLYPH{s}                |                      |
 		+|  4 | keyup             | KEY_NOLINK{s}        | <code>true</code>           |                         |                      |
-		+|  5 | keydown           | KEY_NOLINK{i}        | <code>true</code>           |                         | Latin Small Letter I |
+		+|  5 | keydown           | KEY_NOLINK{i}        | <code>true</code>           |                         | 小写拉丁字母 I       |
 		+|  6 | compositionupdate |                      |                             | GLYPH{&#x3057;}         | <em>shi</em>         |
 		+|  7 | keyup             | KEY_NOLINK{i}        | <code>true</code>           |                         |                      |
-		+|  8 | keydown           | KEY{Convert}         | <code>true</code>           |                         | Convert              |
+		+|  8 | keydown           | KEY{Convert}         | <code>true</code>           |                         | 转换键               |
 		+|  9 | compositionupdate |                      |                             | GLYPH{&#x8A69;}         | "poem"               |
 		+| 10 | keyup             | KEY{Convert}         | <code>true</code>           |                         |                      |
-		+| 11 | keydown           | KEY{Convert}         | <code>true</code>           |                         | Convert              |
+		+| 11 | keydown           | KEY{Convert}         | <code>true</code>           |                         | 转换键               |
 		+| 12 | compositionupdate |                      |                             | GLYPH{&#x5E02;}         | "city"               |
 		+| 13 | keyup             | KEY{Convert}         | <code>true</code>           |                         |                      |
-		+| 14 | keydown           | KEY{Cancel}          | <code>true</code>           |                         | Cancel               |
+		+| 14 | keydown           | KEY{Cancel}          | <code>true</code>           |                         | 取消键               |
 		+| 15 | compositionupdate |                      |                             | GLYPH{}                 |                      |
 		+| 16 | compositionend    |                      |                             | GLYPH{}                 |                      |
 		+| 17 | keyup             | KEY{Cancel}          | <code>false</code>          |                         |                      |
@@ -679,50 +709,52 @@
 		</div>
 
 		<p class="note">
-		Some <a>input method editors</a> (such as on the MacOS operating system)
-		might set an <a>empty string</a> to the composition data attribute
-		before canceling a composition.
+		一些 <a href="#ime">输入法编辑器</a> (例如在 MacOS 操作系统上) 
+		可能会在取消合成之前为合成事件的 {{CompositionEvent/data}} 属性设置一个 
+		<a href="#empty-string">空字符串</a> 。
 		</p>
 
-		<h5 id="keys-IME-keys">Input Method Editor mode keys</h5>
+		<h5 id="keys-IME-keys">输入法编辑器模式按键</h5>
 
-			Some keys on certain devices are intended to activate <a>input
-			method editor</a> functionality, or to change the mode of an active
-			<a>input method editor</a>.  Custom keys for this purpose can be
-			defined for different devices or language modes. The keys defined in
-			this specification for this purpose are: KEY{Alphanumeric},
-			KEY{CodeInput}, KEY{FinalMode}, KEY{HangulMode}, KEY{HanjaMode},
-			KEY{Hiragana}, KEY{JunjaMode}, KEY{KanaMode}, KEY{KanjiMode},
-			KEY{Katakana}, and KEY{RomanCharacters}.  When one of these keys is
-			pressed, and no <a>IME</a> is currently active, the appropriate
-			<a>IME</a> is expected to be activated in the mode indicated by the
-			key (if available). If an <a>IME</a> is already active when the key
-			is pressed, the active <a>IME</a> might change to the indicated
-			mode, or a different <a>IME</a> might be launched, or the might MAY
-			be ignored, on a device- and application-specific basis.
+			一些设备上的某些键用于激活 <a href="#ime">输入法编辑器</a> 功能，
+			或更改活动状态 <a href="#ime">输入法编辑器</a> 的模式。
+			可以为不同的设备或语言模式自定义用于上述功能的按键。
+			本规范中为此定义的键为: KEY{Alphanumeric} ， KEY{CodeInput} ，  
+			KEY{FinalMode} ，  KEY{HangulMode} ，  KEY{HanjaMode} ， 
+			KEY{Hiragana} ，  KEY{JunjaMode} ，  KEY{KanaMode} ，  KEY{KanjiMode} ， 
+			KEY{Katakana} 和 KEY{RomanCharacters} 。当按下这些键中的一个，
+			并且当前没有任何 <a>IME</a> 处于活动状态时，
+			期望在该键的指示下激活对应的 <a>IME</a> (如果可用)模式。
+			如果击键时某个 <a>IME</a> 已经处于活动状态，则活动状态的 <a>IME</a> 
+			可能会更改为(按键)对应的模式，或者可能会启动不同的 <a>IME</a> ，或者也 
+			<span class="zh-upper">可以</span> 被忽略，取决于设备和具体应用程序
+			(application-specific)。
 
-			This specification also defines other keys which are intended for
-			operation specifically with <a>input method editors</a>:
-			KEY{Accept}, KEY{AllCandidates}, KEY{Cancel}, KEY{Convert},
-			KEY{Compose}, KEY{FullWidth}, KEY{HalfWidth}, KEY{NextCandidate},
-			KEY{Nonconvert}, and KEY{PreviousCandidate}.  The functions of these
-			keys are not defined in this specification &mdash; refer to other
-			resources for details on <a>input method editor</a> functionality.
+			本规范还定义了其他键，这些键专门用于 <a href="#ime">输入法编辑器</a> 
+			的操作: KEY{Accept} ，  KEY{AllCandidates} ，  KEY{Cancel} ，  
+			KEY{Convert} ， KEY{Compose} ，  KEY{FullWidth} ，  KEY{HalfWidth} ，  
+			KEY{NextCandidate} ， KEY{Nonconvert} 和 KEY{PreviousCandidate} 。
+			这些键的功能在本规范中没有定义 —— 有关 <a href="#ime">输入法编辑器</a> 
+			功能的详细信息，请参阅其他资源。
 
 			<p class="note">
-			Keys with <a>input method editor</a> functions are not restricted to
-			that purpose, and can have other device- or implementation-specific
-			purposes.
+			具有 <a href="#ime">输入法编辑器</a> 功能的键不限于此目的(激活输入法功能，
+			更输入法模式)，还可以具有其他特定于设备或实现的目的。
 			</p>
 
-	<h4 id="keys-cancelable-keys">Default actions and cancelable keyboard events</h4>
+			<div class="note custom-note">
+			上面列出的一些与输入法有关的按键通常和使用的键盘设备有关系，可以查阅 
+			[[UIEvents-Key]] 和 [[UIEvents-Code]] 获取更多信息。
+ 			</div>
 
-		Canceling the <a>default action</a> of a EVENT{keydown} event MUST NOT
-		affect its respective EVENT{keyup} event, but it MUST prevent the
-		respective EVENT{beforeinput} and EVENT{input} (and EVENT{keypress} if
-		supported) events from being generated. The following example describes
-		a possible sequence of keys to generate the Unicode character Q (Latin
-		Capital Letter Q) on a US keyboard using a US mapping:
+	<h4 id="keys-cancelable-keys">默认行为和可取消的键盘事件</h4>
+
+		取消 EVENT{keydown} 事件的 <a href="#default-action">默认行为</a> 
+		<span class="zh-upper">不得</span> 影响其相应的 EVENT{keyup} 事件，但  
+		<span class="zh-upper">必须</span> 防止生成相应的 EVENT{beforeinput} 和
+		EVENT{input} (以及 EVENT{keypress} ，如果支持的话)事件。
+		以下示例描述了在使用美式映射的美式键盘上生成 Unicode 字符 Q (大写拉丁字母Q)
+		的可能按键序列:
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
@@ -730,37 +762,41 @@
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                            |                                   |
 		 +---+-------------+----------o-----------+---------o----------+--------------o-------------+-----------------------------------+
 		+| 1 | keydown     | KEY{Shift}           |                    | {{KeyboardEvent/shiftKey}} |                                   |
-		+| 2 | keydown     | KEY_NOLINK{Q}        |                    | {{KeyboardEvent/shiftKey}} | The <a>default action</a> is      |
-		 |   |             |                      |                    |                            | prevented, e.g., by invoking      |
-		 |   |             |                      |                    |                            | {{Event/preventDefault()}}.       |
-		+|   |             |                      |                    |                            | <em>No EVENT{beforeinput} or      |
-		 |   |             |                      |                    |                            | EVENT{input} (or EVENT{keypress}, |
-		 |   |             |                      |                    |                            | if supported) events are          |
-		 |   |             |                      |                    |                            | generated</em>                    |
+		+| 2 | keydown     | KEY_NOLINK{Q}        |                    | {{KeyboardEvent/shiftKey}} | <a href="#default-action">默认行为|
+		 |   |             |                      |                    |                            | </a>被阻止，即通过调用            |
+		 |   |             |                      |                    |                            | {{Event/preventDefault()}} 。     |
+		+|   |             |                      |                    |                            | <em>没有 EVENT{beforeinput} 或    |
+		 |   |             |                      |                    |                            | EVENT{input} (或 EVENT{keypress}  |
+		 |   |             |                      |                    |                            | ，如果支持的话) 事件被生成</em>   |
 		+| 3 | keyup       | KEY_NOLINK{Q}        |                    | {{KeyboardEvent/shiftKey}} |                                   |
 		+| 4 | keyup       | KEY{Shift}           |                    |                            |                                   |
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
 		</div>
 
-		If the key is a modifier key, the keystroke MUST still be taken into
-		account for the modifiers states. The following example describes a
-		possible sequence of keys to generate the Unicode character Q (Latin
-		Capital Letter Q) on a US keyboard using a US mapping:
+		如果(被阻止的)按键是修饰符键，则在击键时仍 
+		<span class="zh-upper">必须</span> 考虑修饰符按键的状态。
+		以下示例描述了在使用美式映射的美式键盘上生成 Unicode 字符 Q 
+		(大写拉丁字母 Q )的可能键序列: 
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
 		=| # | 事件类型    |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | 修饰符                     | 注释                              |
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                            |                                   |
 		 +---+-------------+----------o-----------+---------o----------+--------------o-------------+-----------------------------------+
-		+| 1 | keydown     | KEY{Shift}           |                    | {{KeyboardEvent/shiftKey}} | The <a>default action</a> is      |
-		 |   |             |                      |                    |                            | prevented, e.g., by invoking      |
-		 |   |             |                      |                    |                            | {{Event/preventDefault()}}.       |
+		+| 1 | keydown     | KEY{Shift}           |                    | {{KeyboardEvent/shiftKey}} | <a href="#default-action">默认行为|
+		 |   |             |                      |                    |                            | </a>被阻止，即通过调用            |
+		 |   |             |                      |                    |                            | {{Event/preventDefault()}} 。     |
 		+| 2 | keydown     | KEY_NOLINK{Q}        |                    | {{KeyboardEvent/shiftKey}} |                                   |
 		+| 3 | beforeinput |                      | GLYPH{Q}           |                            |                                   |
 		+| 4 | input       |                      |                    |                            |                                   |
 		+| 5 | keyup       | KEY_NOLINK{Q}        |                    | {{KeyboardEvent/shiftKey}} |                                   |
 		+| 6 | keyup       | KEY{Shift}           |                    |                            |                                   |
 		++---+-------------+----------------------+--------------------+----------------------------+-----------------------------------+
+		<div class="note custom-note">
+		这个例子的结论是，被阻止的 KEY{Shift} 不会阻止 EVENT{beforeinput} 和 
+		EVENT{input} 事件的触发，并且修饰符的状态对其它字符按键仍然有影响
+		</div>
+		
 		</div>
 
 		If the key is part of a sequence of several keystrokes, whether it is a
@@ -778,9 +814,9 @@
 		=| # | 事件类型    |{{KeyboardEvent}}<br/>|{{InputEvent}}<br/> | 注释                              |
 		 |   |             |{{KeyboardEvent/key}} |{{InputEvent/data}} |                                   |
 		 +---+-------------+----------o-----------+---------o----------+-----------------------------------+
-		+| 1 | keydown     | KEY{Dead}            |                    | The <a>default action</a> is      |
-		 |   |             |                      |                    | prevented, e.g., by invoking      |
-		 |   |             |                      |                    | {{Event/preventDefault()}}.       |
+		+| 1 | keydown     | KEY{Dead}            |                    | <a href="#default-action">默认行为|
+		 |   |             |                      |                    | </a>被阻止，即通过调用            |
+		 |   |             |                      |                    | {{Event/preventDefault()}} 。     |
 		+| 2 | keyup       | KEY{Dead}            |                    |                                   |
 		+| 3 | keydown     | KEY_NOLINK{e}        |                    |                                   |
 		+| 4 | beforeinput |                      | GLYPH{e}           |                                   |
