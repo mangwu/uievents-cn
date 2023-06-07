@@ -799,15 +799,15 @@
 		
 		</div>
 
-		If the key is part of a sequence of several keystrokes, whether it is a
-		<a>dead key</a> or it is contributing to an Input Method Editor
-		sequence, the keystroke MUST be ignored (not taken into account) only if
-		the <a>default action</a> is canceled on the EVENT{keydown} event.
-		Canceling a <a>dead key</a> on a EVENT{keyup} event has no effect on
-		EVENT{beforeinput} or EVENT{input} events. The following example uses
-		the dead key KEY{Dead} (UNI{U+0302} Combining Circumflex Accent key) and
-		KEY_NOLINK{e} (UNI{U+0065}, Latin Small Letter E key) on a French
-		keyboard using a French mapping and without any modifier activated:
+		如果该键是多个击键(keystrokes)的序列的一部分，无论它是 
+		<a href="#dead-key">死键</a> ，还是促成了输入法编辑器的序列，只有在 
+		EVENT{keydown} 事件的 <a href="#default-action">默认行为</a> 被取消时，
+		该击键才 <span class="zh-upper">必须</span> 被忽略(即不将其纳入考虑)。
+		取消 <a href="#dead-key">死键</a> 的 EVENT{keyup} 事件，对 
+		EVENT{beforeinput} 或 EVENT{input} 事件没有影响。
+		以下示例使用法语键盘上的死键 KEY{Dead} (UNI{U+0302} 组合扬抑音符键)和 
+		KEY_NOLINK{e} (UNI{U+0302}，小写拉丁字母 E 键)，该法语键盘使用法语映射，
+		且未激活任何修饰键: 
 
 		<div class="example">
 		++---+-------------+----------------------+--------------------+-----------------------------------+

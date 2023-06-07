@@ -1,37 +1,38 @@
 <section>
-<h2 id="legacy-event-initializers">Legacy Event Initializers</h2>
+<h2 id="legacy-event-initializers">遗留事件初始化器</h2>
 
-<em>This section is normative.
-The following features are obsolete and should only be implemented by
-<a>user agents</a> that require compatibility with legacy software.</em>
+<em>本节是规范的。以下事件类型已过时淘汰(obsolete)，只能由需要与旧版软件兼容的
+<a href="#user-agent">用户代理</a> 实现。</em>
 
-Early versions of this specification included an initialization method on
-the interface (for example <code>initMouseEvent</code>) that required a long
-list of parameters that, in most cases, did not fully initialize all
-attributes of the event object. Because of this, event interfaces which were
-derived from the basic {{Event}} interface required that the initializer of
-<em>each</em> of the derived interfaces be called explicitly in order to
-fully initialize an event.
+本规范的早期版本接口上包括初始化方法(例如 <code>initMouseEvent</code> )，
+该方法需要一长串参数，在大多数情况下，这些参数并不能完全初始化事件对象的所有属性
+。因此，从基本 {{Event}} 接口派生的事件接口要求显式调用 <em>每个</em> 
+派生接口的初始化器(initializer)，以便完全初始化事件。
 
 <div class="example">
-Initializing all the attributes of a MutationEvent requires calls to two
-initializer methods: <code>initEvent</code> and
-<code>initMutationEvent</code>.
+初始化 MutationEvent 的所有属性需要调用两个初始化器方法: <code>initEvent</code>
+和 <code>initMutationEvent</code> 。
 </div>
 
-Due in part to the length of time in the development of this standard, some
-implementations MAY have taken a dependency on these (now deprecated)
-initializer methods. For completeness, these legacy event initializers are
-described in this Appendix.
+在某种程度上，因为制定本标准的时间过长，一些实现 
+<span class="zh-upper">可以</span> 依赖于这些(现在已弃用)初始化器方法。
+为了保持规范的完整性，这些遗留事件初始化器在本附录(Appendix)中进行描述说明。
 
-<h3 id="legacy-event-initializer-interfaces">Legacy Event Initializer Interfaces</h3>
+<div class="note custom-note">
+<q>用这种方式初始化事件必须是由 {{Document/createEvent()}} 方法创建的实例。
+初始化器方法必须在事件被触发之前调用(用 {{EventTarget/dispatchEvent()}} 派发)。
+一旦被派发，事件便不再做其他任何事。</q> —— 
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent">
+MDN-initEvent</a> 
+</div>
 
-	<em>This section is informative</em>
+<h3 id="legacy-event-initializer-interfaces">遗留事件初始化器接口</h3>
 
-	This section documents legacy initializer methods that were introduced
-	in earlier versions of this specification.
+	<em>本节是信息性的(informative)</em>
 
-	<h4 id="idl-interface-UIEvent-initializers">Initializers for interface UIEvent</h4>
+	本节介绍了本规范早期版本中引入的遗留初始化器方法(initializer methods)。
+
+	<h4 id="idl-interface-UIEvent-initializers">UIEvent 接口的初始化器</h4>
 
 		<pre class="idl">
 		partial interface UIEvent {
@@ -43,45 +44,44 @@ described in this Appendix.
 		<dl dfn-for="UIEvent">
 			<dt><dfn method>initUIEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of an {{UIEvent}} object.
-				This method has the same behavior as {{Event/initEvent()}}.
+				初始化一个 {{UIEvent}} 对象的属性。此方法具有与 {{Event/initEvent()}} 
+				相同的行为。
 
 				<p class="warning">
-				The <code>initUIEvent</code> method is deprecated, but
-				supported for backwards-compatibility with widely-deployed
-				implementations.
+				<code>initUIEvent</code>方法已被弃用(deprecated)，
+				但它被广泛推行的向后兼容的实现支持。
 				</p>
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Window? viewArg</dt>
 					<dd>
-						Specifies {{UIEvent/view}}. This value MAY be <code>null</code>.
+						指定 {{UIEvent/view}} 。此值可能为 <code>null</code> 。
 					</dd>
 
 					<dt>long detailArg</dt>
 					<dd>
-						Specifies {{UIEvent/detail}}.
+						指定 {{UIEvent/detail}} 。
 					</dd>
 				</dl>
 			</dd>
 		</dl>
 
-	<h4 id="idl-interface-MouseEvent-initializers">Initializers for interface MouseEvent</h4>
+	<h4 id="idl-interface-MouseEvent-initializers">MouseEvent 接口的初始化器</h4>
 
 		<pre class="idl">
 		partial interface MouseEvent {
@@ -93,96 +93,95 @@ described in this Appendix.
 		<dl dfn-for="MouseEvent">
 			<dt><dfn method>initMouseEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of a {{MouseEvent}} object. This
-				method has the same behavior as <code>UIEvent.initUIEvent()</code>.
+				初始化一个 {{MouseEvent}} 对象的属性。此方法具有与 
+				<code>UIEvent.initUIEvent</code> 相同的行为。
 
 				<p class="warning">
-				The <code>initMouseEvent</code> method is deprecated, but
-				supported for backwards-compatibility with widely-deployed
-				implementations.
+				<code>initMouseEvent</code>方法已被弃用(deprecated)，
+				但它被广泛推行的向后兼容的实现支持。
 				</p>
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Window? viewArg</dt>
 					<dd>
-						Specifies {{UIEvent/view}}. This value MAY be <code>null</code>.
+						指定 {{UIEvent/view}} 。此值可能为 <code>null</code> 。
 					</dd>
 
 					<dt>long detailArg</dt>
 					<dd>
-						Specifies {{UIEvent/detail}}.
+						指定 {{UIEvent/detail}} 。
 					</dd>
 
 					<dt>long screenXArg</dt>
 					<dd>
-						Specifies {{MouseEvent/screenX}}.
+						指定 {{MouseEvent/screenX}} 。
 					</dd>
 
 					<dt>long screenYArg</dt>
 					<dd>
-						Specifies {{MouseEvent/screenY}}.
+						指定 {{MouseEvent/screenY}} 。
 					</dd>
 
 					<dt>long clientXArg</dt>
 					<dd>
-						Specifies {{MouseEvent/clientX}}.
+						指定 {{MouseEvent/clientX}} 。
 					</dd>
 
 					<dt>long clientYArg</dt>
 					<dd>
-						Specifies {{MouseEvent/clientY}}.
+						指定 {{MouseEvent/clientY}} 。
 					</dd>
 
 					<dt>boolean ctrlKeyArg</dt>
 					<dd>
-						Specifies {{MouseEvent/ctrlKey}}.
+						指定 {{MouseEvent/ctrlKey}} 。
 					</dd>
 
 					<dt>boolean altKeyArg</dt>
 					<dd>
-						Specifies {{MouseEvent/altKey}}.
+						指定 {{MouseEvent/altKey}} 。
 					</dd>
 
 					<dt>boolean shiftKeyArg</dt>
 					<dd>
-						Specifies {{MouseEvent/shiftKey}}.
+						指定 {{MouseEvent/shiftKey}} 。
 					</dd>
 
 					<dt>boolean metaKeyArg</dt>
 					<dd>
-						Specifies {{MouseEvent/metaKey}}.
+						指定 {{MouseEvent/metaKey}} 。
 					</dd>
 
 					<dt>short buttonArg</dt>
 					<dd>
-						Specifies {{MouseEvent/button}}.
+						指定 {{MouseEvent/button}} 。
 					</dd>
 
 					<dt>EventTarget? relatedTargetArg</dt>
 					<dd>
-						Specifies {{MouseEvent/relatedTarget}}. This value MAY
-						be <code>null</code>.
+						指定 {{MouseEvent/relatedTarget}} 。此值 
+						<span class="zh-upper">可以</span> 为 <code>null</code> 。
 					</dd>
 				</dl>
 			</dd>
 		</dl>
 
-	<h4 id="idl-interface-WheelEvent-initializers">Initializers for interface WheelEvent</h4>
+	<h4 id="idl-interface-WheelEvent-initializers">WheelEvent 接口的初始化器</h4>
 
 		<pre class="idl">
 		partial interface WheelEvent {
@@ -194,114 +193,110 @@ described in this Appendix.
 		<dl dfn-for="WheelEvent">
 			<dt><dfn method>initWheelEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of a <code>WheelEvent</code> object. This
-				method has the same behavior as <code>MouseEvent.initMouseEvent()</code>.
+				初始化一个 <code>WheelEvent</code> 对象的属性。 此方法有与
+				<code>MouseEvent.initMouseEvent()</code> 相同的行为。
 
 				<p class="warning">
-				The <code>initWheelEvent</code> method is deprecated.
+				<code>initWheelEvent</code> 方法已被弃用(deprecated)。
 				</p>
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Window? viewArg</dt>
 					<dd>
-						Specifies {{UIEvent/view}}. This value MAY be <code>null</code>.
+						指定 {{UIEvent/view}} 。此值可能为 <code>null</code> 。
 					</dd>
 
 					<dt>long detailArg</dt>
 					<dd>
-						Specifies {{UIEvent/detail}}.
+						指定 {{UIEvent/detail}} 。
 					</dd>
 
 					<dt>long screenXArg</dt>
 					<dd>
-						Specifies {{MouseEvent/screenX}}.
+						指定 {{MouseEvent/screenX}} 。
 					</dd>
 
 					<dt>long screenYArg</dt>
 					<dd>
-						Specifies {{MouseEvent/screenY}}.
+						指定 {{MouseEvent/screenY}} 。
 					</dd>
 
 					<dt>long clientXArg</dt>
 					<dd>
-						Specifies {{MouseEvent/clientX}}.
+						指定 {{MouseEvent/clientX}} 。
 					</dd>
 
 					<dt>long clientYArg</dt>
 					<dd>
-						Specifies {{MouseEvent/clientY}}.
+						指定 {{MouseEvent/clientY}} 。
 					</dd>
 
 					<dt>short buttonArg</dt>
 					<dd>
-						Specifies {{MouseEvent/button}}.
+						指定 {{MouseEvent/button}} 。
 					</dd>
 
 					<dt>EventTarget? relatedTargetArg</dt>
 					<dd>
-						Specifies {{MouseEvent/relatedTarget}}. This value MAY
+						指定 {{MouseEvent/relatedTarget}} 。 This value MAY
 						be <code>null</code>.
 					</dd>
 
 					<dt>DOMString modifiersListArg</dt>
 					<dd>
-						A <a class="normative"
+						要在此事件对象上激活的修饰符键值的 <a class="normative"
 						href="http://www.w3.org/TR/2004/REC-xml-20040204/#NT-S">
-						<em>white space</em></a> separated list of modifier key
-						values to be activated on this object. As an example,
-						<code>"Control Shift"</code> marks the control and shift
-						modifiers as activated (the {{MouseEvent/ctrlKey}} and
-						{{MouseEvent/shiftKey}} inherited attributes will be
-						<code>true</code> on the initialized
-						{{WheelEvent}} object).
+						<em>空白(white space)</em></a> 分隔列表。
+						例如， <code>"Control Shift"</code> 将控制和换挡修饰符标记为已激活
+						( 继承自 {{MouseEvent/ctrlKey}} 和 {{MouseEvent/shiftKey}} 
+						的属性在初始化的 {{WheelEvent}} 对象上将为 <code>true</code> )。
 					</dd>
 
 					<dt>double deltaXArg</dt>
 					<dd>
-						Specifies {{WheelEvent/deltaX}}.
+						指定 {{WheelEvent/deltaX}} 。
 					</dd>
 
 					<dt>double deltaYArg</dt>
 					<dd>
-						Specifies {{WheelEvent/deltaY}}.
+						指定 {{WheelEvent/deltaY}} 。
 					</dd>
 
 					<dt>double deltaZArg</dt>
 					<dd>
-						Specifies {{WheelEvent/deltaZ}}.
+						指定 {{WheelEvent/deltaZ}} 。
 					</dd>
 
 					<dt>unsigned long deltaMode</dt>
 					<dd>
-						Specifies {{WheelEvent/deltaMode}}.
+						指定 {{WheelEvent/deltaMode}} 。
 					</dd>
 				</dl>
 			</dd>
 		</dl>
 
-	<h4 id="idl-interface-KeyboardEvent-initializers">Initializers for interface KeyboardEvent</h4>
+	<h4 id="idl-interface-KeyboardEvent-initializers">KeyboardEvent 接口的初始化器</h4>
 
 		<p class="note">
-		The argument list to this legacy KeyboardEvent initializer does not
-		include the <code>detailArg</code> (present in other initializers) and
-		adds the <code>locale</code> argument (see [[#changes-drafts]]); it is
-		necessary to preserve this inconsistency for compatibility with existing
-		implementations.
+		遗留的 KeyboardEvent 初始化器的参数列表不包括 <code>detailArg</code> 
+		(存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 
+		[[#changes-drafts]] ); 为了与现有实现的兼容，有必要保留这种不一致性
+		(inconsistency)。
 		</p>
 
 		<pre class="idl">
@@ -323,76 +318,76 @@ described in this Appendix.
 		<dl dfn-for="KeyboardEveng">
 			<dt><dfn method>initKeyboardEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of a {{KeyboardEvent}} object. This
-				method has the same behavior as <code>UIEvent.initUIEvent()</code>.
+				初始化一个 {{KeyboardEvent}} 对象的属性。此方法具有与 <code>UIEvent.initUIEvent</code>
+				相同的行为。
 				The value of {{UIEvent/detail}} remains undefined.
 
 				<p class="warning">
-				The <code>initKeyboardEvent</code> method is deprecated.
+				<code>initKeyboardEvent</code> 方法已被弃用(deprecated)。
 				</p>
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Window? viewArg</dt>
 					<dd>
-						Specifies {{UIEvent/view}}. This value MAY be <code>null</code>.
+						指定 {{UIEvent/view}} 。此值可能为 <code>null</code> 。
 					</dd>
 
 					<dt>DOMString keyArg</dt>
 					<dd>
-						Specifies {{KeyboardEvent/key}}.
+						指定 {{KeyboardEvent/key}} 。
 					</dd>
 
 					<dt>unsigned long locationArg</dt>
 					<dd>
-						Specifies {{KeyboardEvent/location}}.
+						指定 {{KeyboardEvent/location}} 。
 					</dd>
 
 					<dt>boolean ctrlKey</dt>
 					<dd>
-						Specifies whether the Control key modifier is active.
+						指定 Control 修饰键是否处于活动状态。
 					</dd>
 
 					<dt>boolean altKey</dt>
 					<dd>
-						Specifies whether the Alt key modifier is active.
+						指定 Alt 修饰键是否处于活动状态。
 					</dd>
 
 					<dt>boolean shiftKey</dt>
 					<dd>
-						Specifies whether the Shift key modifier is active.
+						指定 Shift 修饰键是否处于活动状态。
 					</dd>
 
 					<dt>boolean metaKey</dt>
 					<dd>
-						Specifies whether the Meta key modifier is active.
+						指定 Meta 修饰键是否处于活动状态。
 					</dd>
 				</dl>
 			</dd>
 		</dl>
 
-	<h4 id="idl-interface-CompositionEvent-initializers">Initializers for interface CompositionEvent</h4>
+	<h4 id="idl-interface-CompositionEvent-initializers">CompositionEvent 
+	接口初始化器</h4>
 
 		<p class="note">
-		The argument list to this legacy CompositionEvent initializer does not
-		include the <code>detailArg</code> (present in other initializers) and
-		adds the <code>locale</code> argument (see [[#changes-drafts]]); it is
-		necessary to preserve this inconsistency for compatibility with existing
-		implementations.
+		遗留的 CompositionEvent 初始化器的参数列表不包括 <code>detailArg</code> 
+		(存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 
+		[[#changes-drafts]] ); 为了与现有实现的兼容，有必要保留这种不一致性
+		(inconsistency)。
 		</p>
 
 		<pre class="idl">
@@ -405,44 +400,43 @@ described in this Appendix.
 		<dl dfn-for="CompositionEvent">
 			<dt><dfn method>initCompositionEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of a <code>CompositionEvent</code>
-				object. This method has the same behavior as
-				<code>UIEvent.initUIEvent()</code>. The value of {{UIEvent/detail}}
-				remains undefined.
+				初始化一个 <code>CompositionEvent</code>
+				对象的属性。此方法与 <code>UIEvent.initUIEvent()</code> 具有相同的行为。
+				{{UIEvent/detail}} 的值保持为 <code>undefined</code> 。
 
 				<p class="warning">
-				The <code>initCompositionEvent</code> method is deprecated.
+				<code>initCompositionEvent</code> 方法已被弃用(deprecated)。
 				</p>
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Window? viewArg</dt>
 					<dd>
-						Specifies {{UIEvent/view}}. This value MAY be <code>null</code>.
+						指定 {{UIEvent/view}} 。此值可能为 <code>null</code> 。
 					</dd>
 
 					<dt>DOMString dataArg</dt>
 					<dd>
-						Specifies {{CompositionEvent/data}}.
+						指定 {{CompositionEvent/data}} 。
 					</dd>
 
 					<dt>DOMString locale</dt>
 					<dd>
-						Specifies the <code>locale</code> attribute of the CompositionEvent.
+						指定 CompositionEvent 的 <code>locale</code> 属性。
 					</dd>
 				</dl>
 			</dd>
