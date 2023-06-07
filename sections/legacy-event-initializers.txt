@@ -1,5 +1,5 @@
 <section>
-<h2 id="legacy-event-initializers">遗留事件初始化器</h2>
+<h2 id="legacy-event-initializers">遗留事件的初始化器</h2>
 
 <em>本节是规范的。以下事件类型已过时淘汰(obsolete)，只能由需要与旧版软件兼容的
 <a href="#user-agent">用户代理</a> 实现。</em>
@@ -381,7 +381,7 @@ MDN-initEvent</a>
 		</dl>
 
 	<h4 id="idl-interface-CompositionEvent-initializers">CompositionEvent 
-	接口初始化器</h4>
+	接口的初始化器</h4>
 
 		<p class="note">
 		遗留的 CompositionEvent 初始化器的参数列表不包括 <code>detailArg</code> 

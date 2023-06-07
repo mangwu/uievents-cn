@@ -1,49 +1,45 @@
 <section>
-<h2 id="legacy-key-attributes">Legacy Key &amp; Mouse Event Attributes</h2>
+<h2 id="legacy-key-attributes">遗留的按键事件 &amp; 鼠标事件的属性</h2>
 
 
-<em>This section is non-normative. The following attributes are obsolete and should
-only be implemented by <a>user agents</a> that require compatibility with legacy
-software that requires these keyboard events.</em>
+<em>本节是不规范的。 以下属性已过时淘汰(obsolete)，
+只能由需要与支持这些键盘事件的旧版软件兼容的 <a href="#user-agent">用户代理</a>
+实现。</em>
 
-These features were never formally specified and the current browser
-implementations vary in significant ways. The large amount of legacy content,
-including script libraries, that relies upon detecting the <a>user agent</a> and
-acting accordingly means that any attempt to formalize these legacy attributes
-and events would risk breaking as much content as it would fix or enable.
-Additionally, these attributes are not suitable for international usage, nor do
-they address accessibility concerns.
+这些功能从未被正式定义，当前的浏览器实现也有很大的不同。
+包括脚本库的大量的遗留内容，依赖于对 <a href="#user-agent">用户代理</a> 
+进行功能检查后采取相应动作，这意味着任何将这些遗留属性和事件进行形式化
+(formalize)的尝试，都存在和修复之或使之有效一样多的破坏风险。
+此外，这些属性不适合国际化使用，也不涉及无障碍问题。
 
-Therefore, this specification does not normatively define the events and
-attributes commonly employed for handling keyboard input, though they MAY be
-present in <a>user agents</a> for compatibility with legacy content. Authors
-SHOULD use the {{KeyboardEvent/key}} attribute instead of the
-{{KeyboardEvent/charCode}} and {{KeyboardEvent/keyCode}} attributes.
+因此，本规范没有规范性地定义那些通常已经用于处理键盘输入的事件和属性，
+尽管为了与遗留内容兼容，它们 <span class="zh-upper">可以</span> 存在于
+<a href="#user-agent">用户代理</a> 中。作者 <span class="zh-upper">应当</span> 
+使用 {{KeyboardEvent/key}} 属性，而不是 {{KeyboardEvent/charCode}} 和 
+{{KeyboardEvent/keyCode}} 属性。
 
-However, for the purpose of documenting the current state of these features and
-their relation to normative events and attributes, this section provides an
-informative description. For implementations which do support these attributes
-and events, it is suggested that the definitions provided in this section be
-used.
+不管怎样，为了记录这些特性的现状及其与规范的事件和属性的关系，
+本节提供了有用的信息性(informative)描述。对于支持这些属性和事件的实现，
+建议使用本节中提供的定义。
 
+<h3 id="legacy-UIEvent">遗留的 {{UIEvent}} 补充接口</h3>
 
-<h3 id="legacy-UIEvent">Legacy {{UIEvent}} supplemental interface</h3>
+	<em>本节不是规范的</em>
 
-	<em>This section is non-normative</em>
-
-	[=User agents=] have traditionally included a {{UIEvent/which}} attribute so that
-	{{KeyboardEvent}}s and {{MouseEvent}}s could record supplemental event info.
+	<a href="#user-agent">用户代理</a> 传统上包括 {{UIEvent/which}} 属性，以便 
+	{{KeyboardEvent}} 和 {{MouseEvent}} 事件们可以记录补充的(supplemental)
+	事件信息。
 
 	<p class="note">
-	Previous versions of this specification defined separate {{UIEvent/which}} attributes
-	directly on {{KeyboardEvent}} and {{MouseEvent}} rather than having a shared
-	{{UIEvent/which}} attribute defined on {{UIEvent}}.
+	本规范的早期版本直接在 {{KeyboardEvent}} 和 {{MouseEvent}} 上定义了单独的 
+	{{UIEvent/which}} 属性，而不是在 {{UIEvent}} 上定义共享 {{UIEvent/which}} 
+	属性。
 	</p>
 
-	<h4 id="legacy-interface-UIEvent">Interface UIEvent (supplemental)</h4>
+	<h4 id="legacy-interface-UIEvent">UIEvent 接口(补充)</h4>
 
-		The partial {{UIEvent}} interface is an informative extension of the {{UIEvent}}
-		interface, which adds the {{UIEvent/which}} attribute.
+		部分(partial) {{UIEvent}} 接口是 {{UIEvent}} 接口的信息性扩展，它添加了
+		{{UIEvent/which}} 属性。
 
 		<pre class="idl">
 		partial interface UIEvent {
@@ -53,27 +49,28 @@ used.
 		</pre>
 
 		<dl dfn-for="UIEvent">
-			<dt><dfn attribute>which</dfn></dt>
+			<dt class="origin-dfn"><dfn attribute>which</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">which</code></i>，
+				<code>unsigned long</code>
+				<span class="replacement"> 类型(32位无符号整型)，只读</span>
+			</dt>
+			
 			<dd>
-				For {{MouseEvent}}s, this contains a value equal to the value stored in
-				{{MouseEvent/button}}+1.
-				For {{KeyboardEvent}}s, this holds a system- and implementation-dependent
-				numerical code signifying the unmodified identifier associated
-				with the key pressed. In most cases, the value is identical to
-				{{KeyboardEvent/keyCode}}.
+				对于 {{MouseEvent}} 事件对象，它包含的值等于存储在 {{MouseEvent/button}} 
+				中的值 +1 。<br/> 对于 {{KeyboardEvent}} 事件对象，
+				它包含一个与系统和实现相关的数字码(numerical code)，
+				表示与按下的键相关的未修饰(unmodified)时的标识符。在大多数情况下，该值与
+				{{KeyboardEvent/keyCode}} 相同。
 			</dd>
 		</dl>
 
-	<h4 id="legacy-dictionary-UIEventInit">Interface UIEventInit (supplemental)</h4>
+	<h4 id="legacy-dictionary-UIEventInit">UIEventInit 接口(补充)</h4>
 
-		Browsers that include support for {{UIEvent/which}} in
-		{{UIEvent}} should also add the following members to the
-		{{UIEventInit}} dictionary.
+		包含对{{UIEvent}} 中的 {{UIEvent/which}} 支持的浏览器也应将以下成员添加到 
+		{{UIEventInit}} 字典中。
 
-		The partial {{UIEventInit}} dictionary is an informative extension
-		of the {{UIEventInit}} dictionary, which adds the
-		{{UIEvent/which}} member to initialize the corresponding
-		{{UIEvent}} attributes.
+		部分(partial) {{UIEventInit}} 字典是 {{UIEventInit}} 字典的信息性扩展，
+		它添加了 {{UIEvent/which}} 以初始化对应的 {{UIEvent}} 属性成员。
 
 		<pre class="idl">
 		partial dictionary UIEventInit {
@@ -82,30 +79,49 @@ used.
 		</pre>
 
 		<dl dfn-for="UIEventInit" data-noexport>
-			<dt><dfn dict-member>which</dfn></dt>
+			<dt class="origin-dfn"><dfn dict-member>which</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">which</code></i>，
+				<code>unsigned long</code>
+				<span class="replacement"> 类型(32位无符号整型)，默认值为 
+				<code>0</code> </span>
+			</dt>
+			
 			<dd>
-				Initializes the {{UIEvent/which}} attribute of the
-				{{UIEvent}}.
+				初始化{{UIEvent}} 的 {{UIEvent/which}} 属性。
 			</dd>
 		</dl>
 
 
-<h3 id="legacy-KeyboardEvent">Legacy {{KeyboardEvent}} supplemental interface</h3>
+<h3 id="legacy-KeyboardEvent">遗留的 {{KeyboardEvent}} 补充接口</h3>
 
-	<em>This section is non-normative</em>
+	<em>本节不是规范的</em>
 
-	Browser support for keyboards has traditionally relied on three ad-hoc
-	attributes, {{KeyboardEvent/keyCode}}, {{KeyboardEvent/charCode}}, and
-	{{UIEvent}}'s {{UIEvent/which}}.
+	浏览器对键盘的支持在传统依赖于三个特殊(ad-hoc)属性: {{KeyboardEvent/keyCode}} 
+	， {{KeyboardEvent/charCode}} ， 和 {{UIEvent}} 的 {{UIEvent/which}} 。
 
-	All three of these attributes return a numerical code that represents some
-	aspect of the key pressed: {{KeyboardEvent/keyCode}} is an index of the key
-	itself. {{KeyboardEvent/charCode}} is the ASCII value of the character keys.
-	{{UIEvent/which}} is the character value where available and otherwise
-	the key index. The values for these attributes, and the availability of the
-	attribute, is inconsistent across platforms, keyboard languages and layouts,
-	<a>user agents</a>, versions, and even event types.
+	这三个属性都返回一个数字码，表示按下的键的某一方面(some aspect): 
+	{{KeyboardEvent/keyCode}} 是键本身的索引。 {{KeyboardEvent/charCode}} 
+	是字符键的 ASCII 值。 {{UIEvent/which}} 是可用的字符值(同)，否则是键索引
+	(通常和 {{KeyboardEvent/keyCode}} 相同)。这些属性的值以及属性的可用性在平台、
+	键盘语言和布局、 <a href="#user-agent">用户代理</a>  、
+	版本甚至事件类型之间都不一致。
 
+	<div class="note custom-note">
+	<q>事件类型之间都不一致</q> 指 {{KeyboardEvent/charCode}} 只在遗留的 
+	EVENT{keypress} 事件中有值，其它键盘事件类型中默认为 <code>0</code> ，因为 
+	EVENT{keypress} 只会在 DOM 发生更新时触发(即击键确定是一个字符按键，
+	而不是功能，修饰，菜单或其它按键)，这能确保按键有对应的字符值，即 
+	{{KeyboardEvent/charCode}} 才有效。<br/>此外，现代浏览器的 EVENT{keydown} 和 
+	EVENTE{keyup} 的 {{KeyboardEvent/keyCode}} 和 {{UIEvent/which}} 
+	属性的值总是相同(即等于键本身的索引)，而在同一次击键中可能触发的 
+	EVENT{keypress} 事件的 {{KeyboardEvent/keyCode}} ， {{UIEvent/which}} 总是和 
+	{{KeyboardEvent/charCode}} 属性值相同(即等于字符键的 ASCII 值)，
+	这就导致了一次击键中 <q>这些属性的值</q> 甚至在 <q>事件类型之间都不一致</q> 
+	的情况。可以访问 
+	<a href="https://domeventviewer.com/key-event-viewer.html">
+	https://domeventviewer.com/key-event-viewer.html</a> 自己测试。
+	</div>
+	
 	<h4 id="legacy-interface-KeyboardEvent">Interface KeyboardEvent (supplemental)</h4>
 
 		The partial {{KeyboardEvent}} interface is an informative extension of
@@ -125,7 +141,7 @@ used.
 		</pre>
 
 		<dl dfn-for="KeyboardEvent">
-			<dt><dfn attribute>charCode</dfn></dt>
+			<dt class="origin-dfn"><dfn attribute>charCode</dfn></dt>
 			<dd>
 				{{KeyboardEvent/charCode}} holds a character value, for
 				EVENT{keypress} events which generate character input. The value
@@ -136,7 +152,7 @@ used.
 				<code>0</code>.
 			</dd>
 
-			<dt><dfn attribute>keyCode</dfn></dt>
+			<dt class="origin-dfn"><dfn attribute>keyCode</dfn></dt>
 			<dd>
 				{{KeyboardEvent/keyCode}} holds a system- and
 				implementation-dependent numerical code signifying the
@@ -176,14 +192,14 @@ used.
 		</pre>
 
 		<dl dfn-for="KeyboardEventInit" data-noexport>
-			<dt><dfn dict-member>charCode</dfn></dt>
+			<dt class="origin-dfn"><dfn dict-member>charCode</dfn></dt>
 			<dd>
 				Initializes the {{KeyboardEvent/charCode}} attribute of the
 				{{KeyboardEvent}} to the Unicode code point for the event's
 				character.
 			</dd>
 
-			<dt><dfn dict-member>keyCode</dfn></dt>
+			<dt class="origin-dfn"><dfn dict-member>keyCode</dfn></dt>
 			<dd>
 				Initializes the {{KeyboardEvent/keyCode}} attribute of the
 				{{KeyboardEvent}} to the system- and implementation-dependent
