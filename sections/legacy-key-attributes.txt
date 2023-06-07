@@ -66,7 +66,7 @@
 
 	<h4 id="legacy-dictionary-UIEventInit">UIEventInit 接口(补充)</h4>
 
-		包含对{{UIEvent}} 中的 {{UIEvent/which}} 支持的浏览器也应将以下成员添加到 
+		包含对 {{UIEvent}} 中的 {{UIEvent/which}} 支持的浏览器也应将以下成员添加到 
 		{{UIEventInit}} 字典中。
 
 		部分(partial) {{UIEventInit}} 字典是 {{UIEventInit}} 字典的信息性扩展，
@@ -122,15 +122,14 @@
 	https://domeventviewer.com/key-event-viewer.html</a> 自己测试。
 	</div>
 	
-	<h4 id="legacy-interface-KeyboardEvent">Interface KeyboardEvent (supplemental)</h4>
+	<h4 id="legacy-interface-KeyboardEvent">KeyboardEvent 接口(补充)</h4>
 
-		The partial {{KeyboardEvent}} interface is an informative extension of
-		the {{KeyboardEvent}} interface, which adds the
-		{{KeyboardEvent/charCode}} and {{KeyboardEvent/keyCode}} attributes.
+		部分(partial) {{KeyboardEvent}} 接口是 {{KeyboardEvent}} 接口的信息性
+		(informative)扩展，它添加了 {{KeyboardEvent/charCode}} 和 
+		{{KeyboardEvent/keyCode}} 属性。
 
-		The partial {{KeyboardEvent}} interface can be obtained by using the
-		{{Document/createEvent()}} method call in
-		implementations that support this extension.
+		部分(partial) {{KeyboardEvent}} 接口可以通过在支持此扩展的实现中调用
+		{{Document/createEvent()}} 方法调获得(obtained)。
 
 		<pre class="idl">
 		partial interface KeyboardEvent {
@@ -142,46 +141,44 @@
 
 		<dl dfn-for="KeyboardEvent">
 			<dt class="origin-dfn"><dfn attribute>charCode</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">charCode</code></i>，
+				<code>unsigned long</code>
+				<span class="replacement"> 类型(32位无符号整型)，只读</span>
+			</dt>
+			
 			<dd>
-				{{KeyboardEvent/charCode}} holds a character value, for
-				EVENT{keypress} events which generate character input. The value
-				is the Unicode reference number (code point) of that character
-				(e.g. <code>event.charCode = event.key.charCodeAt(0)</code> for
-				printable characters). For EVENT{keydown} or EVENT{keyup}
-				events, the value of {{KeyboardEvent/charCode}} is
-				<code>0</code>.
+				{{KeyboardEvent/charCode}} 保存一个字符值，在字符输入触发的 
+				EVENT{keypress} 事件中有效。该值是该字符的 Unicode 参考数字
+				(code point，码点)(即对于可打印(printable)字符，<code>event.charCode = 
+				event.key.charCodeAt(0)</code> )。对于 EVENT{keydown} 或 EVENT{keyup}
+				事件， {{KeyboardEvent/charCode}} 的值为 <code>0</code> 。
 			</dd>
 
 			<dt class="origin-dfn"><dfn attribute>keyCode</dfn></dt>
 			<dd>
-				{{KeyboardEvent/keyCode}} holds a system- and
-				implementation-dependent numerical code signifying the
-				unmodified identifier associated with the key pressed. Unlike
-				the {{KeyboardEvent/key}} attribute, the set of possible values
-				are not normatively defined in this specification. Typically,
-				these value of the {{KeyboardEvent/keyCode}} SHOULD represent
-				the decimal codepoint in ASCII [[RFC20]][[US-ASCII]] or Windows
-				1252 [[WIN1252]], but MAY be drawn from a different appropriate
-				character set. Implementations that are unable to identify a key
-				use the key value KEYCAP{0}.
+				{{KeyboardEvent/keyCode}} 保存一个与系统和实现相关的数字码(numerical 
+				code)，表示与按下的键相关的未修饰(unmodified)时的标识符。与 
+				{{KeyboardEvent/key}} 属性不同，该属性值的集合在本规范中没有规范化的定义
+				。通常， {{KeyboardEvent/keyCode}} 的这些值 
+				<span class="zh-upper">应当</span> 代表 ASCII [[RFC20]] [[US-ASCII]] 或
+				Windows 1252 [[WIN1252]] 中的十进制码点(codepoint)，但 
+				<span class="zh-upper">可以</span> 从不同的合适字符集中提取。
+				如果实现无法识别键(的 {{KeyboardEvent/keyCode}} )，则使用值 KEYCAP{0} 。
 
-				See [[#legacy-key-models]] for more details on how to determine
-				the values for {{KeyboardEvent/keyCode}}.
+				参见 [[#legacy-key-models]] 获取更多详细信息，以了解如何确定 
+				{{KeyboardEvent/keyCode}} 的值。
 			</dd>
 		</dl>
 
-	<h4 id="legacy-dictionary-KeyboardEventInit">Interface KeyboardEventInit (supplemental)</h4>
+	<h4 id="legacy-dictionary-KeyboardEventInit">KeyboardEventInit 接口(补充)</h4>
 
-		Browsers that include support for {{KeyboardEvent/keyCode}}
-		and {{KeyboardEvent/charCode}} in
-		{{KeyboardEvent}} should also add the following members to the
-		{{KeyboardEventInit}} dictionary.
+		包含对 {{KeyboardEvent}} 中的 {{KeyboardEvent/keyCode}} 和 
+		{{KeyboardEvent/charCode}} 支持的浏览器也应将以下成员添加到 
+		{{KeyboardEventInit}} 字典中。
 
-		The partial {{KeyboardEventInit}} dictionary is an informative extension
-		of the {{KeyboardEventInit}} dictionary, which adds
-		{{KeyboardEvent/charCode}} and {{KeyboardEvent/keyCode}}
-		members to initialize the corresponding
-		{{KeyboardEvent}} attributes.
+		部分(partial) {{KeyboardEventInit}} 字典是 {{KeyboardEventInit}} 
+		字典的信息性扩展，它添加了 {{KeyboardEvent/charCode}} 和 
+		{{KeyboardEvent/keyCode}} 以初始化对应的 {{KeyboardEvent}} 属性成员。
 
 		<pre class="idl">
 		partial dictionary KeyboardEventInit {
@@ -193,74 +190,84 @@
 
 		<dl dfn-for="KeyboardEventInit" data-noexport>
 			<dt class="origin-dfn"><dfn dict-member>charCode</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">charCode</code></i>，
+				<code>unsigned long</code>
+				<span class="replacement"> 类型(32位无符号整型)，默认值为 
+				<code>0</code> </span>
+			</dt>
+			
 			<dd>
-				Initializes the {{KeyboardEvent/charCode}} attribute of the
-				{{KeyboardEvent}} to the Unicode code point for the event's
+				将 {{KeyboardEvent}} 的 {{KeyboardEvent/charCode}} 
+				属性初始化为事件字符的 Unicode 码点(code point)。
 				character.
 			</dd>
 
 			<dt class="origin-dfn"><dfn dict-member>keyCode</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">keyCode</code></i>，
+				<code>unsigned long</code>
+				<span class="replacement"> 类型(32位无符号整型)，默认值为 
+				<code>0</code> </span>
+			</dt>
 			<dd>
-				Initializes the {{KeyboardEvent/keyCode}} attribute of the
-				{{KeyboardEvent}} to the system- and implementation-dependent
-				numerical code signifying the unmodified identifier associated
-				with the key pressed.
+				将 {{KeyboardEvent}} 的 {{KeyboardEvent/keyCode}} 
+				属性初始化为与系统和实现相关的数字码(numerical code)，
+				它表示与按下的键相关的未修饰(unmodified)时的标识符。
 			</dd>
 		</dl>
 
-<h3 id="legacy-key-models">Legacy key models</h3>
+<h3 id="legacy-key-models">遗留按键模型</h3>
 
-	<em>This section is non-normative</em>
+	<em>本节内容不是规范的</em>
 
-	Implementations differ on which values are exposed on these attributes for
-	different event types. An implementation MAY choose to expose both virtual
-	key codes and character codes in the {{KeyboardEvent/keyCode}} property
-	(<em>conflated model</em>), or report separate {{KeyboardEvent/keyCode}} and
-	{{KeyboardEvent/charCode}} properties (<em>split model</em>).
+	对于不同的事件类型，不同实现选择暴露(exposed)出的事件属性的值会有区别。
+	实现 <span class="zh-upper">可以</span> 选择在 {{KeyboardEvent/keyCode}} 
+	属性中公开虚拟键码(key codes)和字符码(character codes)(即 <em>合并模型
+	(conflated model)</em> )，或者报告单独的 {{KeyboardEvent/keyCode}} 和 
+	{{KeyboardEvent/charCode}} 属性(即 <em>拆分模型(split model)</em> )。
 
-	<h4 id="determine-keydown-keyup-keyCode">How to determine {{KeyboardEvent/keyCode}} for EVENT{keydown} and EVENT{keyup} events</h4>
+	<h4 id="determine-keydown-keyup-keyCode">如何确定 EVENT{keydown} 和 
+	EVENT{keyup} 事件的 {{KeyboardEvent/keyCode}} </h4>
 
-		The {{KeyboardEvent/keyCode}} for EVENT{keydown} or EVENT{keyup} events
-		is calculated as follows:
+		EVENT{keydown} 或 EVENT{keyup} 事件的 {{KeyboardEvent/keyCode}} 
+		计算方式如下:
 
-		*	Read the virtual key code from the operating system's event
-			information, if such information is available.
+		*	从操作系统的事件信息中读取虚拟键码(key codes)(如果这些信息可用的话)。
 
-		*	If an Input Method Editor is processing key input and the event is
-			EVENT{keydown}, return 229.
+		*	如果输入法编辑器正在处理按键输入，并且事件是 EVENT{keydown} ，则返回229。
 
-		*	If input key when pressed without modifiers would insert a numerical
-			character (0-9), return the ASCII code of that numerical character.
+		*	如果在没有修饰键的情况下按下输入键会插入数字字符(0-9)，
+			则返回该数字字符的 ASCII 码。
 
-		*	If input key when pressed without modifiers would insert a lower
-			case character in the a-z alphabetical range, return the ASCII code
-			of the upper case equivalent.
+		*	如果在没有修饰键的情况下按下输入键会从 a-z 
+			字母表范围中选择一个小写字符插入，则返回对应大写字符的 ASCII 码。
 
-		*	If the implementation supports a key code conversion table for the
-			operating system and platform, look up the value. If the conversion
-			table specifies an alternate virtual key value for the given input,
-			return the specified value.
+		*	如果实现支持操作系统和平台规定的键码转换表，请查找该值。
+			如果转换表为给定的输入指定了供选择的(alternate)虚拟键值，则返回指定的值。
 
-		*	If the key's function, as determined in an implementation-specific
-			way, corresponds to one of the keys in the
-			[[#fixed-virtual-key-codes]] table, return the corresponding key
-			code.
+		*	如果按键的功能(由实现指定的方式确定)对应于 [[#fixed-virtual-key-codes]] 
+			表中一个按键，则返回相应的键码(key code)。
 
-		*	Return the virtual key code from the operating system.
+		*	返回从操作系统中获取的虚拟键码(key code)。
 
-		*	If no key code was found, return 0.
+		*	如果未找到键码(key code)，则返回0。
 
-	<h4 id="determine-keypress-keyCode">How to determine {{KeyboardEvent/keyCode}} for EVENT{keypress} events</h4>
+	<h4 id="determine-keypress-keyCode">如何确定 EVENT{keypress} 事件的 
+	{{KeyboardEvent/keyCode}}</h4>
 
-		The {{KeyboardEvent/keyCode}} for EVENT{keypress} events is calculated
-		as follows:
+		EVENT{keypress} 事件的 {{KeyboardEvent/keyCode}} 计算方式如下:
 
-		*	If the implementation supports a <em>conflated model</em>, set
-			{{KeyboardEvent/keyCode}} to the Unicode code point of the character
-			being entered.
+		*	如果实现支持 <em>合并模型(conflated model)</em> ，请将 
+			{{KeyboardEvent/keyCode}} 设置为所输入字符的 Unicode 码点(code point)。
 
-		*	If the implementation supports a <em>split model</em>, set
-			{{KeyboardEvent/keyCode}} to 0.
+		*	如果实现支持 <em>拆分模型(split model)</em> ，设置
+			{{KeyboardEvent/keyCode}} 为 0 。
+		
+		<div class="note custom-note">
+		现代浏览器大多是第一种情况，即 EVENT{keypress} 事件的 
+		{{KeyboardEvent/keyCode}} 值和 {{KeyboardEvent/charCode}} 一致，
+		为输入字符的 Unicode 码点。
+		</div>
+		
 
 	<h4 id="fixed-virtual-key-codes">Fixed virtual key codes</h4>
 

@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="54ea29929c89475eb2a15c9ff1b9c54ed872634f" name="document-revision">
+  <meta content="23892383d4ab89f12aaf8b466c554088fd5503f7" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1109,14 +1109,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>
        <a href="#legacy-KeyboardEvent"><span class="secno">8.2</span> <span class="content">遗留的 <code class="idl"><span>KeyboardEvent</span></code> 补充接口</span></a>
        <ol class="toc">
-        <li><a href="#legacy-interface-KeyboardEvent"><span class="secno">8.2.1</span> <span class="content">Interface KeyboardEvent (supplemental)</span></a>
-        <li><a href="#legacy-dictionary-KeyboardEventInit"><span class="secno">8.2.2</span> <span class="content">Interface KeyboardEventInit (supplemental)</span></a>
+        <li><a href="#legacy-interface-KeyboardEvent"><span class="secno">8.2.1</span> <span class="content">KeyboardEvent 接口(补充)</span></a>
+        <li><a href="#legacy-dictionary-KeyboardEventInit"><span class="secno">8.2.2</span> <span class="content">KeyboardEventInit 接口(补充)</span></a>
        </ol>
       <li>
-       <a href="#legacy-key-models"><span class="secno">8.3</span> <span class="content">Legacy key models</span></a>
+       <a href="#legacy-key-models"><span class="secno">8.3</span> <span class="content">遗留按键模型</span></a>
        <ol class="toc">
-        <li><a href="#determine-keydown-keyup-keyCode"><span class="secno">8.3.1</span> <span class="content">How to determine <code class="idl"><span>keyCode</span></code> for <span><code>keydown</code></span> and <span><code>keyup</code></span> events</span></a>
-        <li><a href="#determine-keypress-keyCode"><span class="secno">8.3.2</span> <span class="content">How to determine <code class="idl"><span>keyCode</span></code> for <span><code>keypress</code></span> events</span></a>
+        <li><a href="#determine-keydown-keyup-keyCode"><span class="secno">8.3.1</span> <span class="content">如何确定 <span><code>keydown</code></span> 和 <span><code>keyup</code></span> 事件的 <code class="idl"><span>keyCode</span></code> </span></a>
+        <li><a href="#determine-keypress-keyCode"><span class="secno">8.3.2</span> <span class="content">如何确定 <span><code>keypress</code></span> 事件的 <code class="idl"><span>keyCode</span></code></span></a>
         <li><a href="#fixed-virtual-key-codes"><span class="secno">8.3.3</span> <span class="content">Fixed virtual key codes</span></a>
         <li><a href="#optionally-fixed-virtual-key-codes"><span class="secno">8.3.4</span> <span class="content">Optionally fixed virtual key codes</span></a>
        </ol>
@@ -6545,7 +6545,7 @@ myDiv.addEventListener("auxclick", function(e) {
 				表示与按下的键相关的未修饰(unmodified)时的标识符。在大多数情况下，该值与 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①">keyCode</a></code> 相同。 
     </dl>
     <h4 class="heading settled" data-level="8.1.2" id="legacy-dictionary-UIEventInit"><span class="secno">8.1.2. </span><span class="content">UIEventInit 接口(补充)</span><a class="self-link" href="#legacy-dictionary-UIEventInit"></a></h4>
-    <p>包含对<code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⓪">UIEvent</a></code> 中的 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which⑤">which</a></code> 支持的浏览器也应将以下成员添加到 <code class="idl"><a data-link-type="idl" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit⑨">UIEventInit</a></code> 字典中。</p>
+    <p>包含对 <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⓪">UIEvent</a></code> 中的 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which⑤">which</a></code> 支持的浏览器也应将以下成员添加到 <code class="idl"><a data-link-type="idl" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit⑨">UIEventInit</a></code> 字典中。</p>
     <p>部分(partial) <code class="idl"><a data-link-type="idl" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit①⓪">UIEventInit</a></code> 字典是 <code class="idl"><a data-link-type="idl" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit①①">UIEventInit</a></code> 字典的信息性扩展，
 		它添加了 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which⑥">which</a></code> 以初始化对应的 <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧①">UIEvent</a></code> 属性成员。</p>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>dictionary</c-> <a class="idl-code" data-link-type="dictionary" href="#dictdef-uieventinit" id="ref-for-dictdef-uieventinit①②"><c- g>UIEventInit</c-></a> {
@@ -6568,11 +6568,10 @@ myDiv.addEventListener("auxclick", function(e) {
 	而不是功能，修饰，菜单或其它按键)，这能确保按键有对应的字符值，即 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode④">charCode</a></code> 才有效。<br>此外，现代浏览器的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑤"><code>keydown</code></a> 和
 	EVENTE{keyup} 的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑤">keyCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which①⓪">which</a></code> 属性的值总是相同(即等于键本身的索引)，而在同一次击键中可能触发的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress⑧"><code>keypress</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑥">keyCode</a></code> ， <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which①①">which</a></code> 总是和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑤">charCode</a></code> 属性值相同(即等于字符键的 ASCII 值)，
 	这就导致了一次击键中 <q>这些属性的值</q> 甚至在 <q>事件类型之间都不一致</q> 的情况。可以访问 <a href="https://domeventviewer.com/key-event-viewer.html"> https://domeventviewer.com/key-event-viewer.html</a> 自己测试。 </div>
-    <h4 class="heading settled" data-level="8.2.1" id="legacy-interface-KeyboardEvent"><span class="secno">8.2.1. </span><span class="content">Interface KeyboardEvent (supplemental)</span><a class="self-link" href="#legacy-interface-KeyboardEvent"></a></h4>
-    <p>The partial <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧③">KeyboardEvent</a></code> interface is an informative extension of
-		the <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧④">KeyboardEvent</a></code> interface, which adds the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑥">charCode</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑦">keyCode</a></code> attributes.</p>
-    <p>The partial <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑤">KeyboardEvent</a></code> interface can be obtained by using the <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-document-createevent" id="ref-for-dom-document-createevent③">createEvent()</a></code> method call in
-		implementations that support this extension.</p>
+    <h4 class="heading settled" data-level="8.2.1" id="legacy-interface-KeyboardEvent"><span class="secno">8.2.1. </span><span class="content">KeyboardEvent 接口(补充)</span><a class="self-link" href="#legacy-interface-KeyboardEvent"></a></h4>
+    <p>部分(partial) <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧③">KeyboardEvent</a></code> 接口是 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧④">KeyboardEvent</a></code> 接口的信息性
+		(informative)扩展，它添加了 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑥">charCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑦">keyCode</a></code> 属性。</p>
+    <p>部分(partial) <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑤">KeyboardEvent</a></code> 接口可以通过在支持此扩展的实现中调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-document-createevent" id="ref-for-dom-document-createevent③">createEvent()</a></code> 方法调获得(obtained)。</p>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="#keyboardevent" id="ref-for-keyboardevent⑧⑥"><c- g>KeyboardEvent</c-></a> {
   // The following support legacy user agents
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⓪"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑦"><c- g>charCode</c-></a>;
@@ -6581,29 +6580,22 @@ myDiv.addEventListener("auxclick", function(e) {
 </pre>
     <dl>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEvent" data-dfn-type="attribute" data-export id="dom-keyboardevent-charcode"><code>charCode</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②②">unsigned long</a>, readonly</span>
-     <dd> <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑧">charCode</a></code> holds a character value, for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress⑨"><code>keypress</code></a> events which generate character input. The value
-				is the Unicode reference number (code point) of that character
-				(e.g. <code>event.charCode = event.key.charCodeAt(0)</code> for
-				printable characters). For <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑥"><code>keydown</code></a> or <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑨"><code>keyup</code></a> events, the value of <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑨">charCode</a></code> is <code>0</code>. 
+     <dt class="custom-dfn"><i><code class="idl">charCode</code></i>， <code>unsigned long</code> <span class="replacement"> 类型(32位无符号整型)，只读</span> 
+     <dd> <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑧">charCode</a></code> 保存一个字符值，在字符输入触发的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress⑨"><code>keypress</code></a> 事件中有效。该值是该字符的 Unicode 参考数字
+				(code point，码点)(即对于可打印(printable)字符，<code>event.charCode =
+				event.key.charCodeAt(0)</code> )。对于 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑥"><code>keydown</code></a> 或 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑤⑨"><code>keyup</code></a> 事件， <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode⑨">charCode</a></code> 的值为 <code>0</code> 。 
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEvent" data-dfn-type="attribute" data-export id="dom-keyboardevent-keycode"><code>keyCode</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②③">unsigned long</a>, readonly</span>
      <dd>
-       <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑨">keyCode</a></code> holds a system- and
-				implementation-dependent numerical code signifying the
-				unmodified identifier associated with the key pressed. Unlike
-				the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key④⑧">key</a></code> attribute, the set of possible values
-				are not normatively defined in this specification. Typically,
-				these value of the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⓪">keyCode</a></code> SHOULD represent
-				the decimal codepoint in ASCII <a data-link-type="biblio" href="#biblio-rfc20" title="ASCII format for network interchange">[RFC20]</a><a data-link-type="biblio" href="#biblio-us-ascii" title="Coded Character Set - 7-Bit American Standard Code for Information Interchange">[US-ASCII]</a> or Windows
-				1252 <a data-link-type="biblio" href="#biblio-win1252" title="Windows 1252 a Coded Character Set - 8-Bit">[WIN1252]</a>, but MAY be drawn from a different appropriate
-				character set. Implementations that are unable to identify a key
-				use the key value <code class="keycap">0</code>. 
-      <p>See <a href="#legacy-key-models">§ 8.3 Legacy key models</a> for more details on how to determine
-				the values for <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①①">keyCode</a></code>.</p>
+       <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode⑨">keyCode</a></code> 保存一个与系统和实现相关的数字码(numerical
+				code)，表示与按下的键相关的未修饰(unmodified)时的标识符。与 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key④⑧">key</a></code> 属性不同，该属性值的集合在本规范中没有规范化的定义
+				。通常， <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⓪">keyCode</a></code> 的这些值 <span class="zh-upper">应当</span> 代表 ASCII <a data-link-type="biblio" href="#biblio-rfc20" title="ASCII format for network interchange">[RFC20]</a> <a data-link-type="biblio" href="#biblio-us-ascii" title="Coded Character Set - 7-Bit American Standard Code for Information Interchange">[US-ASCII]</a> 或
+				Windows 1252 <a data-link-type="biblio" href="#biblio-win1252" title="Windows 1252 a Coded Character Set - 8-Bit">[WIN1252]</a> 中的十进制码点(codepoint)，但 <span class="zh-upper">可以</span> 从不同的合适字符集中提取。
+				如果实现无法识别键(的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①①">keyCode</a></code> )，则使用值 <code class="keycap">0</code> 。 
+      <p>参见 <a href="#legacy-key-models">§ 8.3 遗留按键模型</a> 获取更多详细信息，以了解如何确定 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①②">keyCode</a></code> 的值。</p>
     </dl>
-    <h4 class="heading settled" data-level="8.2.2" id="legacy-dictionary-KeyboardEventInit"><span class="secno">8.2.2. </span><span class="content">Interface KeyboardEventInit (supplemental)</span><a class="self-link" href="#legacy-dictionary-KeyboardEventInit"></a></h4>
-    <p>Browsers that include support for <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①②">keyCode</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①⓪">charCode</a></code> in <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑦">KeyboardEvent</a></code> should also add the following members to the <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit③">KeyboardEventInit</a></code> dictionary.</p>
-    <p>The partial <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit④">KeyboardEventInit</a></code> dictionary is an informative extension
-		of the <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit⑤">KeyboardEventInit</a></code> dictionary, which adds <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①①">charCode</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①③">keyCode</a></code> members to initialize the corresponding <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑧">KeyboardEvent</a></code> attributes.</p>
+    <h4 class="heading settled" data-level="8.2.2" id="legacy-dictionary-KeyboardEventInit"><span class="secno">8.2.2. </span><span class="content">KeyboardEventInit 接口(补充)</span><a class="self-link" href="#legacy-dictionary-KeyboardEventInit"></a></h4>
+    <p>包含对 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑦">KeyboardEvent</a></code> 中的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①③">keyCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①⓪">charCode</a></code> 支持的浏览器也应将以下成员添加到 <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit③">KeyboardEventInit</a></code> 字典中。</p>
+    <p>部分(partial) <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit④">KeyboardEventInit</a></code> 字典是 <code class="idl"><a data-link-type="idl" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit⑤">KeyboardEventInit</a></code> 字典的信息性扩展，它添加了 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①①">charCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①④">keyCode</a></code> 以初始化对应的 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑧">KeyboardEvent</a></code> 属性成员。</p>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>dictionary</c-> <a class="idl-code" data-link-type="dictionary" href="#dictdef-keyboardeventinit" id="ref-for-dictdef-keyboardeventinit⑥"><c- g>KeyboardEventInit</c-></a> {
   // The following support legacy user agents
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②④"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-default="0" data-link-type="dict-member" data-type="unsigned long " href="#dom-keyboardeventinit-charcode" id="ref-for-dom-keyboardeventinit-charcode"><c- g>charCode</c-></a> = 0;
@@ -6612,59 +6604,52 @@ myDiv.addEventListener("auxclick", function(e) {
 </pre>
     <dl>
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEventInit" data-dfn-type="dict-member" data-noexport id="dom-keyboardeventinit-charcode"><code>charCode</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⑥">unsigned long</a>, defaulting to <code>0</code></span>
-     <dd> Initializes the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①②">charCode</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑨">KeyboardEvent</a></code> to the Unicode code point for the event’s
+     <dt class="custom-dfn"><i><code class="idl">charCode</code></i>， <code>unsigned long</code> <span class="replacement"> 类型(32位无符号整型)，默认值为 <code>0</code> </span> 
+     <dd> 将 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑧⑨">KeyboardEvent</a></code> 的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①②">charCode</a></code> 属性初始化为事件字符的 Unicode 码点(code point)。
 				character. 
      <dt class="origin-dfn"><dfn class="dfn-paneled idl-code" data-dfn-for="KeyboardEventInit" data-dfn-type="dict-member" data-noexport id="dom-keyboardeventinit-keycode"><code>keyCode</code></dfn>, <span> of type <a data-link-type="idl-name" href="https://webidl.spec.whatwg.org/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⑦">unsigned long</a>, defaulting to <code>0</code></span>
-     <dd> Initializes the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①④">keyCode</a></code> attribute of the <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⓪">KeyboardEvent</a></code> to the system- and implementation-dependent
-				numerical code signifying the unmodified identifier associated
-				with the key pressed. 
+     <dt class="custom-dfn"><i><code class="idl">keyCode</code></i>， <code>unsigned long</code> <span class="replacement"> 类型(32位无符号整型)，默认值为 <code>0</code> </span> 
+     <dd> 将 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⓪">KeyboardEvent</a></code> 的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑤">keyCode</a></code> 属性初始化为与系统和实现相关的数字码(numerical code)，
+				它表示与按下的键相关的未修饰(unmodified)时的标识符。 
     </dl>
-    <h3 class="heading settled" data-level="8.3" id="legacy-key-models"><span class="secno">8.3. </span><span class="content">Legacy key models</span><a class="self-link" href="#legacy-key-models"></a></h3>
-    <p><em>This section is non-normative</em></p>
-    <p>Implementations differ on which values are exposed on these attributes for
-	different event types. An implementation MAY choose to expose both virtual
-	key codes and character codes in the <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑤">keyCode</a></code> property
-	(<em>conflated model</em>), or report separate <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑥">keyCode</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①③">charCode</a></code> properties (<em>split model</em>).</p>
-    <h4 class="heading settled" data-level="8.3.1" id="determine-keydown-keyup-keyCode"><span class="secno">8.3.1. </span><span class="content">How to determine <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑦">keyCode</a></code> for <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑦"><code>keydown</code></a> and <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥⓪"><code>keyup</code></a> events</span><a class="self-link" href="#determine-keydown-keyup-keyCode"></a></h4>
-    <p>The <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑧">keyCode</a></code> for <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑧"><code>keydown</code></a> or <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥①"><code>keyup</code></a> events
-		is calculated as follows:</p>
+    <h3 class="heading settled" data-level="8.3" id="legacy-key-models"><span class="secno">8.3. </span><span class="content">遗留按键模型</span><a class="self-link" href="#legacy-key-models"></a></h3>
+    <p><em>本节内容不是规范的</em></p>
+    <p>对于不同的事件类型，不同实现选择暴露(exposed)出的事件属性的值会有区别。
+	实现 <span class="zh-upper">可以</span> 选择在 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑥">keyCode</a></code> 属性中公开虚拟键码(key codes)和字符码(character codes)(即 <em>合并模型
+	(conflated model)</em> )，或者报告单独的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑦">keyCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①③">charCode</a></code> 属性(即 <em>拆分模型(split model)</em> )。</p>
+    <h4 class="heading settled" data-level="8.3.1" id="determine-keydown-keyup-keyCode"><span class="secno">8.3.1. </span><span class="content">如何确定 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑦"><code>keydown</code></a> 和 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥⓪"><code>keyup</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑧">keyCode</a></code> </span><a class="self-link" href="#determine-keydown-keyup-keyCode"></a></h4>
+    <p><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑧"><code>keydown</code></a> 或 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥①"><code>keyup</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑨">keyCode</a></code> 计算方式如下:</p>
     <ul>
      <li data-md>
-      <p>Read the virtual key code from the operating system’s event
-information, if such information is available.</p>
+      <p>从操作系统的事件信息中读取虚拟键码(key codes)(如果这些信息可用的话)。</p>
      <li data-md>
-      <p>If an Input Method Editor is processing key input and the event is <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑨"><code>keydown</code></a>, return 229.</p>
+      <p>如果输入法编辑器正在处理按键输入，并且事件是 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥⑨"><code>keydown</code></a> ，则返回229。</p>
      <li data-md>
-      <p>If input key when pressed without modifiers would insert a numerical
-character (0-9), return the ASCII code of that numerical character.</p>
+      <p>如果在没有修饰键的情况下按下输入键会插入数字字符(0-9)，
+则返回该数字字符的 ASCII 码。</p>
      <li data-md>
-      <p>If input key when pressed without modifiers would insert a lower
-case character in the a-z alphabetical range, return the ASCII code
-of the upper case equivalent.</p>
+      <p>如果在没有修饰键的情况下按下输入键会从 a-z
+字母表范围中选择一个小写字符插入，则返回对应大写字符的 ASCII 码。</p>
      <li data-md>
-      <p>If the implementation supports a key code conversion table for the
-operating system and platform, look up the value. If the conversion
-table specifies an alternate virtual key value for the given input,
-return the specified value.</p>
+      <p>如果实现支持操作系统和平台规定的键码转换表，请查找该值。
+如果转换表为给定的输入指定了供选择的(alternate)虚拟键值，则返回指定的值。</p>
      <li data-md>
-      <p>If the key’s function, as determined in an implementation-specific
-way, corresponds to one of the keys in the <a href="#fixed-virtual-key-codes">§ 8.3.3 Fixed virtual key codes</a> table, return the corresponding key
-code.</p>
+      <p>如果按键的功能(由实现指定的方式确定)对应于 <a href="#fixed-virtual-key-codes">§ 8.3.3 Fixed virtual key codes</a> 表中一个按键，则返回相应的键码(key code)。</p>
      <li data-md>
-      <p>Return the virtual key code from the operating system.</p>
+      <p>返回从操作系统中获取的虚拟键码(key code)。</p>
      <li data-md>
-      <p>If no key code was found, return 0.</p>
+      <p>如果未找到键码(key code)，则返回0。</p>
     </ul>
-    <h4 class="heading settled" data-level="8.3.2" id="determine-keypress-keyCode"><span class="secno">8.3.2. </span><span class="content">How to determine <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode①⑨">keyCode</a></code> for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⓪"><code>keypress</code></a> events</span><a class="self-link" href="#determine-keypress-keyCode"></a></h4>
-    <p>The <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②⓪">keyCode</a></code> for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①①"><code>keypress</code></a> events is calculated
-		as follows:</p>
+    <h4 class="heading settled" data-level="8.3.2" id="determine-keypress-keyCode"><span class="secno">8.3.2. </span><span class="content">如何确定 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⓪"><code>keypress</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②⓪">keyCode</a></code></span><a class="self-link" href="#determine-keypress-keyCode"></a></h4>
+    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress①①"><code>keypress</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②①">keyCode</a></code> 计算方式如下:</p>
     <ul>
      <li data-md>
-      <p>If the implementation supports a <em>conflated model</em>, set <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②①">keyCode</a></code> to the Unicode code point of the character
-being entered.</p>
+      <p>如果实现支持 <em>合并模型(conflated model)</em> ，请将 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②②">keyCode</a></code> 设置为所输入字符的 Unicode 码点(code point)。</p>
      <li data-md>
-      <p>If the implementation supports a <em>split model</em>, set <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②②">keyCode</a></code> to 0.</p>
+      <p>如果实现支持 <em>拆分模型(split model)</em> ，设置 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②③">keyCode</a></code> 为 0 。</p>
     </ul>
+    <div class="note custom-note" role="note"> 现代浏览器大多是第一种情况，即 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①②"><code>keypress</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②④">keyCode</a></code> 值和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①④">charCode</a></code> 一致，
+		为输入字符的 Unicode 码点。 </div>
     <h4 class="heading settled" data-level="8.3.3" id="fixed-virtual-key-codes"><span class="secno">8.3.3. </span><span class="content">Fixed virtual key codes</span><a class="self-link" href="#fixed-virtual-key-codes"></a></h4>
     <p>The virtual key codes for the following keys do not usually change with
 		keyboard layouts on desktop systems:</p>
@@ -6956,7 +6941,7 @@ being entered.</p>
        <td style="text-align:center">不能
        <td>没有
       <tr>
-       <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress①②"><code>keypress</code></a>
+       <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress①③"><code>keypress</code></a>
        <td style="text-align:center">同步
        <td style="text-align:center">冒泡
        <td style="text-align:center"><code>Element</code>
@@ -7234,10 +7219,10 @@ being entered.</p>
        <td>If supported
     </table>
     <h3 class="heading settled" data-level="9.3" id="legacy-keyboardevent-events"><span class="secno">9.3. </span><span class="content">遗留 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨②">KeyboardEvent</a></code> 事件</span><a class="self-link" href="#legacy-keyboardevent-events"></a></h3>
-    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress①③"><code>keypress</code></a> 事件是一种，用于捕获按键事件并在按键按下导致的 DOM
-	更新效果作用之前对其进行处理的，传统方式。使用 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①④"><code>keypress</code></a> 事件的代码通常依赖于遗留的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①④">charCode</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②③">keyCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which①②">which</a></code> 属性。</p>
-    <p>请注意， <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑤"><code>keypress</code></a> 事件是特定于按键事件的，并且已被 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⓪"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input④②"><code>input</code></a> 事件的更通用的事件序列所取代(见 <a href="#events-keyboard-event-order">§ 5.6.3 键盘事件顺序</a> )。这些新的 <code>input</code> 事件不是特定于键盘操作的，并且可以用于捕获用户输入，而不管原始(触发)源是什么。</p>
-    <div class="note custom-note" role="note"> 个人理解，使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④①"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input④③"><code>input</code></a> 代替键盘事件顺序中的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑥"><code>keypress</code></a> 相当于一种脱离硬件的抽象，它能更好的对虚拟键盘进行处理。 </div>
+    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress①④"><code>keypress</code></a> 事件是一种，用于捕获按键事件并在按键按下导致的 DOM
+	更新效果作用之前对其进行处理的，传统方式。使用 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑤"><code>keypress</code></a> 事件的代码通常依赖于遗留的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①⑤">charCode</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②⑤">keyCode</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which①②">which</a></code> 属性。</p>
+    <p>请注意， <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑥"><code>keypress</code></a> 事件是特定于按键事件的，并且已被 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⓪"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input④②"><code>input</code></a> 事件的更通用的事件序列所取代(见 <a href="#events-keyboard-event-order">§ 5.6.3 键盘事件顺序</a> )。这些新的 <code>input</code> 事件不是特定于键盘操作的，并且可以用于捕获用户输入，而不管原始(触发)源是什么。</p>
+    <div class="note custom-note" role="note"> 个人理解，使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④①"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input④③"><code>input</code></a> 代替键盘事件顺序中的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑦"><code>keypress</code></a> 相当于一种脱离硬件的抽象，它能更好的对虚拟键盘进行处理。 </div>
     <h4 class="heading settled" data-level="9.3.1" id="legacy-keyboardevent-event-types"><span class="secno">9.3.1. </span><span class="content">遗留 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨③">KeyboardEvent</a></code> 事件类型</span><a class="self-link" href="#legacy-keyboardevent-event-types"></a></h4>
     <h5 class="heading settled" data-level="9.3.1.1" id="event-type-keypress"><span class="secno">9.3.1.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="keypress">keypress</dfn></span><a class="self-link" href="#event-type-keypress"></a></h5>
     <table class="event-definition">
@@ -7280,9 +7265,9 @@ being entered.</p>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⑤">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail③⑧">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑤">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-which" id="ref-for-dom-uievent-which①③">which</a></code> :
 								按键的遗留数字码
-         <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑥">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①⑤">charCode</a></code> :
+         <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑥">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①⑥">charCode</a></code> :
 								事件的遗留字符值
-         <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑦">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②④">keyCode</a></code> :
+         <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑦">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②⑥">keyCode</a></code> :
 								按键的遗留数字码
          <li><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨⑧">KeyboardEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key④⑨">key</a></code> :
 								按下的键的键值。
@@ -7307,21 +7292,21 @@ being entered.</p>
 								如果键事件作为合成会话(composition session)的一部分发生，则为 <code>true</code> ，否则为 <code>false</code> 
         </ul>
     </table>
-    <p>如果 <a href="#user-agent" id="ref-for-user-agent⑦⓪">用户代理</a> 支持，并且当且仅当该键能正常产生 <a href="#character-value" id="ref-for-character-value⑦">字符值</a> 时，则 <span class="zh-upper">必须</span> 在按下这个键时派发此事件。 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑦"><code>keypress</code></a> 事件类型是依赖设备的，
+    <p>如果 <a href="#user-agent" id="ref-for-user-agent⑦⓪">用户代理</a> 支持，并且当且仅当该键能正常产生 <a href="#character-value" id="ref-for-character-value⑦">字符值</a> 时，则 <span class="zh-upper">必须</span> 在按下这个键时派发此事件。 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑧"><code>keypress</code></a> 事件类型是依赖设备的，
 			取决于输入设备的功能以及它们在操作系统中的映射方式。</p>
     <p>此事件类型 <span class="zh-upper">必须</span> 在 <a href="#key-mapping" id="ref-for-key-mapping③">键映射</a> 之后生成。使用 <a href="#ime" id="ref-for-ime②③">输入法编辑器</a> 时， <span class="zh-upper">不得</span> 派发它。</p>
     <p>如果取消此事件，除了取消 <a href="#default-action" id="ref-for-default-action④⓪">默认行为</a> 外，
 			还应阻止 <a data-link-type="dfn" href="#input" id="ref-for-input④④"><code>input</code></a> 事件的触发。</p>
-    <p>作者 <span class="zh-upper">应当</span> 使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④②"><code>beforeinput</code></a> 事件而不是遗留的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑧"><code>keypress</code></a> 事件。</p>
-    <p class="note" role="note"> 传统上， <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑨"><code>keypress</code></a> 事件与能检测到 <a href="#character-value" id="ref-for-character-value⑧">字符值</a> 的按键而非一个物理键相关联，
+    <p>作者 <span class="zh-upper">应当</span> 使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④②"><code>beforeinput</code></a> 事件而不是遗留的 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①⑨"><code>keypress</code></a> 事件。</p>
+    <p class="note" role="note"> 传统上， <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⓪"><code>keypress</code></a> 事件与能检测到 <a href="#character-value" id="ref-for-character-value⑧">字符值</a> 的按键而非一个物理键相关联，
 			并且在某些配置中可能不适用于所有键。 </p>
-    <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⓪"><code>keypress</code></a> 事件类型，
+    <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②①"><code>keypress</code></a> 事件类型，
 			但本规范 <a href="#deprecates" id="ref-for-deprecates①⑥">反对(deprecates)</a> 使用此事件类型。
-			在编辑上下文时，作者可以转而使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④③"><code>beforeinput</code></a> 事件替代( <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②①"><code>keypress</code></a> )。 </p>
-    <h4 class="heading settled" data-level="9.3.2" id="keypress-event-order"><span class="secno">9.3.2. </span><span class="content"><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②②"><code>keypress</code></a> 事件顺序</span><a class="self-link" href="#keypress-event-order"></a></h4>
-    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②③"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦⓪"><code>keydown</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥②"><code>keyup</code></a> 事件之前被派发。</p>
-    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②④"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④④"><code>beforeinput</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#input" id="ref-for-input④⑤"><code>input</code></a> 事件之前被派发。</p>
-    <p>以下示例演示了支持 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑤"><code>keypress</code></a> 事件的用户代理们的按键事件序列:</p>
+			在编辑上下文时，作者可以转而使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④③"><code>beforeinput</code></a> 事件替代( <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②②"><code>keypress</code></a> )。 </p>
+    <h4 class="heading settled" data-level="9.3.2" id="keypress-event-order"><span class="secno">9.3.2. </span><span class="content"><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②③"><code>keypress</code></a> 事件顺序</span><a class="self-link" href="#keypress-event-order"></a></h4>
+    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②④"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦⓪"><code>keydown</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥②"><code>keyup</code></a> 事件之前被派发。</p>
+    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑤"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④④"><code>beforeinput</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#input" id="ref-for-input④⑤"><code>input</code></a> 事件之前被派发。</p>
+    <p>以下示例演示了支持 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑥"><code>keypress</code></a> 事件的用户代理们的按键事件序列:</p>
     <div class="example" id="example-901a3821">
      <a class="self-link" href="#example-901a3821"></a> 
      <table class="event-sequence-table">
@@ -7346,7 +7331,7 @@ being entered.</p>
         <td>
        <tr>
         <td class="cell-number">3
-        <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑥"><code>keypress</code></a>
+        <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑦"><code>keypress</code></a>
         <td style="text-align:center"><code class="key">"a"</code>
         <td style="text-align:center">
         <td>
@@ -8075,14 +8060,14 @@ moved into a technical note until it can be specified adequately.
 Refer to this <a href="https://www.w3.org/TR/2014/WD-uievents-20140612/">old version of UI Events</a> (before the DOM3Events spec was renamed "UI Events") for details.</p>
      <li data-md>
       <p>The <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①①①">KeyboardEvent</a></code> also had a <code>char</code> attribute that
-was only used by the <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑦"><code>keypress</code></a> event. Since the keypress event has
+was only used by the <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑧"><code>keypress</code></a> event. Since the keypress event has
 been deprecated, this attribute was no longer useful and was removed.</p>
      <li data-md>
       <p>The <code>change</code>, <code>submit</code>, and <code>reset</code> events were removed, since they were specific to HTML forms, and are
 specified in <a data-link-type="biblio" href="#biblio-html5" title="HTML5">[HTML5]</a>.</p>
      <li data-md>
       <p>The <code>textInput</code> event, originally proposed as a replacement
-for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑧"><code>keypress</code></a>, was removed in favor of the current <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⑥"><code>beforeinput</code></a> and <a data-link-type="dfn" href="#input" id="ref-for-input④⑦"><code>input</code></a> events.</p>
+for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑨"><code>keypress</code></a>, was removed in favor of the current <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⑥"><code>beforeinput</code></a> and <a data-link-type="dfn" href="#input" id="ref-for-input④⑦"><code>input</code></a> events.</p>
      <li data-md>
       <p>Namespaced events have been removed.</p>
      <li data-md>
@@ -9085,7 +9070,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-document-createevent">3.4. 可信事件</a>
     <li><a href="#ref-for-dom-document-createevent①">4. 基本事件接口</a>
     <li><a href="#ref-for-dom-document-createevent②">7. 遗留事件的初始化器</a>
-    <li><a href="#ref-for-dom-document-createevent③">8.2.1. Interface KeyboardEvent (supplemental)</a>
+    <li><a href="#ref-for-dom-document-createevent③">8.2.1. KeyboardEvent 接口(补充)</a>
     <li><a href="#ref-for-dom-document-createevent④">9.4.1. Interface MutationEvent</a>
     <li><a href="#ref-for-dom-document-createevent⑤">14. 术语表</a>
    </ul>
@@ -9426,8 +9411,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-idl-unsigned-long①⑤">7.1.4. KeyboardEvent 接口的初始化器</a>
     <li><a href="#ref-for-idl-unsigned-long①⑥">8.1.1. UIEvent 接口(补充)</a> <a href="#ref-for-idl-unsigned-long①⑦">(2)</a>
     <li><a href="#ref-for-idl-unsigned-long①⑧">8.1.2. UIEventInit 接口(补充)</a> <a href="#ref-for-idl-unsigned-long①⑨">(2)</a>
-    <li><a href="#ref-for-idl-unsigned-long②⓪">8.2.1. Interface KeyboardEvent (supplemental)</a> <a href="#ref-for-idl-unsigned-long②①">(2)</a> <a href="#ref-for-idl-unsigned-long②②">(3)</a> <a href="#ref-for-idl-unsigned-long②③">(4)</a>
-    <li><a href="#ref-for-idl-unsigned-long②④">8.2.2. Interface KeyboardEventInit (supplemental)</a> <a href="#ref-for-idl-unsigned-long②⑤">(2)</a> <a href="#ref-for-idl-unsigned-long②⑥">(3)</a> <a href="#ref-for-idl-unsigned-long②⑦">(4)</a>
+    <li><a href="#ref-for-idl-unsigned-long②⓪">8.2.1. KeyboardEvent 接口(补充)</a> <a href="#ref-for-idl-unsigned-long②①">(2)</a> <a href="#ref-for-idl-unsigned-long②②">(3)</a> <a href="#ref-for-idl-unsigned-long②③">(4)</a>
+    <li><a href="#ref-for-idl-unsigned-long②④">8.2.2. KeyboardEventInit 接口(补充)</a> <a href="#ref-for-idl-unsigned-long②⑤">(2)</a> <a href="#ref-for-idl-unsigned-long②⑥">(3)</a> <a href="#ref-for-idl-unsigned-long②⑦">(4)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-85ad66f191d72a7d6508e0bab70044dc" class="dfn-panel" data-for="85ad66f191d72a7d6508e0bab70044dc" id="infopanel-for-85ad66f191d72a7d6508e0bab70044dc">
@@ -10846,8 +10831,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyboardevent⑦⑨">8.1. 遗留的 UIEvent 补充接口</a> <a href="#ref-for-keyboardevent⑧⓪">(2)</a>
     <li><a href="#ref-for-keyboardevent⑧①">8.1.1. UIEvent 接口(补充)</a>
     <li><a href="#ref-for-keyboardevent⑧②">8.2. 遗留的 KeyboardEvent 补充接口</a>
-    <li><a href="#ref-for-keyboardevent⑧③">8.2.1. Interface KeyboardEvent (supplemental)</a> <a href="#ref-for-keyboardevent⑧④">(2)</a> <a href="#ref-for-keyboardevent⑧⑤">(3)</a> <a href="#ref-for-keyboardevent⑧⑥">(4)</a>
-    <li><a href="#ref-for-keyboardevent⑧⑦">8.2.2. Interface KeyboardEventInit (supplemental)</a> <a href="#ref-for-keyboardevent⑧⑧">(2)</a> <a href="#ref-for-keyboardevent⑧⑨">(3)</a> <a href="#ref-for-keyboardevent⑨⓪">(4)</a>
+    <li><a href="#ref-for-keyboardevent⑧③">8.2.1. KeyboardEvent 接口(补充)</a> <a href="#ref-for-keyboardevent⑧④">(2)</a> <a href="#ref-for-keyboardevent⑧⑤">(3)</a> <a href="#ref-for-keyboardevent⑧⑥">(4)</a>
+    <li><a href="#ref-for-keyboardevent⑧⑦">8.2.2. KeyboardEventInit 接口(补充)</a> <a href="#ref-for-keyboardevent⑧⑧">(2)</a> <a href="#ref-for-keyboardevent⑧⑨">(3)</a> <a href="#ref-for-keyboardevent⑨⓪">(4)</a>
     <li><a href="#ref-for-keyboardevent⑨①">9. 遗留事件类型</a>
     <li><a href="#ref-for-keyboardevent⑨②">9.3. 遗留 KeyboardEvent 事件</a>
     <li><a href="#ref-for-keyboardevent⑨③">9.3.1. 遗留 KeyboardEvent 事件类型</a>
@@ -10917,7 +10902,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-key④③">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-dom-keyboardevent-key④④">(2)</a> <a href="#ref-for-dom-keyboardevent-key④⑤">(3)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑥">7.1.4. KeyboardEvent 接口的初始化器</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑦">8. 遗留的按键事件 &amp; 鼠标事件的属性</a>
-    <li><a href="#ref-for-dom-keyboardevent-key④⑧">8.2.1. Interface KeyboardEvent (supplemental)</a>
+    <li><a href="#ref-for-dom-keyboardevent-key④⑧">8.2.1. KeyboardEvent 接口(补充)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑨">9.3.1.1. keypress</a>
     <li><a href="#ref-for-dom-keyboardevent-key⑤⓪">9.3.2. keypress 事件顺序</a>
     <li><a href="#ref-for-dom-keyboardevent-key⑤①">12.2. Changes between different drafts of UI Events</a>
@@ -11045,7 +11030,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dictdef-keyboardeventinit">3.6. 构造鼠标和键盘事件</a>
     <li><a href="#ref-for-dictdef-keyboardeventinit①">5.6.1. KeyboardEvent 接口</a>
     <li><a href="#ref-for-dictdef-keyboardeventinit②">5.6.1.1. KeyboardEvent</a>
-    <li><a href="#ref-for-dictdef-keyboardeventinit③">8.2.2. Interface KeyboardEventInit (supplemental)</a> <a href="#ref-for-dictdef-keyboardeventinit④">(2)</a> <a href="#ref-for-dictdef-keyboardeventinit⑤">(3)</a> <a href="#ref-for-dictdef-keyboardeventinit⑥">(4)</a>
+    <li><a href="#ref-for-dictdef-keyboardeventinit③">8.2.2. KeyboardEventInit 接口(补充)</a> <a href="#ref-for-dictdef-keyboardeventinit④">(2)</a> <a href="#ref-for-dictdef-keyboardeventinit⑤">(3)</a> <a href="#ref-for-dictdef-keyboardeventinit⑥">(4)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardeventinit-key" class="dfn-panel" data-for="dom-keyboardeventinit-key" id="infopanel-for-dom-keyboardeventinit-key">
@@ -11098,8 +11083,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keydown④⑥">6.3.3. 输入法编辑器</a> <a href="#ref-for-keydown④⑦">(2)</a> <a href="#ref-for-keydown④⑧">(3)</a> <a href="#ref-for-keydown④⑨">(4)</a> <a href="#ref-for-keydown⑤⓪">(5)</a> <a href="#ref-for-keydown⑤①">(6)</a> <a href="#ref-for-keydown⑤②">(7)</a> <a href="#ref-for-keydown⑤③">(8)</a> <a href="#ref-for-keydown⑤④">(9)</a> <a href="#ref-for-keydown⑤⑤">(10)</a> <a href="#ref-for-keydown⑤⑥">(11)</a>
     <li><a href="#ref-for-keydown⑤⑦">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keydown⑤⑧">(2)</a> <a href="#ref-for-keydown⑤⑨">(3)</a> <a href="#ref-for-keydown⑥⓪">(4)</a> <a href="#ref-for-keydown⑥①">(5)</a> <a href="#ref-for-keydown⑥②">(6)</a> <a href="#ref-for-keydown⑥③">(7)</a> <a href="#ref-for-keydown⑥④">(8)</a>
     <li><a href="#ref-for-keydown⑥⑤">8.2. 遗留的 KeyboardEvent 补充接口</a>
-    <li><a href="#ref-for-keydown⑥⑥">8.2.1. Interface KeyboardEvent (supplemental)</a>
-    <li><a href="#ref-for-keydown⑥⑦">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keydown⑥⑧">(2)</a> <a href="#ref-for-keydown⑥⑨">(3)</a>
+    <li><a href="#ref-for-keydown⑥⑥">8.2.1. KeyboardEvent 接口(补充)</a>
+    <li><a href="#ref-for-keydown⑥⑦">8.3.1. 如何确定 keydown 和
+	keyup 事件的 keyCode </a> <a href="#ref-for-keydown⑥⑧">(2)</a> <a href="#ref-for-keydown⑥⑨">(3)</a>
     <li><a href="#ref-for-keydown⑦⓪">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keydown⑦①">(2)</a>
     <li><a href="#ref-for-keydown⑦②">14. 术语表</a>
    </ul>
@@ -11119,8 +11105,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyup③⑦">6.3.2. 死键</a> <a href="#ref-for-keyup③⑧">(2)</a> <a href="#ref-for-keyup③⑨">(3)</a> <a href="#ref-for-keyup④⓪">(4)</a>
     <li><a href="#ref-for-keyup④①">6.3.3. 输入法编辑器</a> <a href="#ref-for-keyup④②">(2)</a> <a href="#ref-for-keyup④③">(3)</a> <a href="#ref-for-keyup④④">(4)</a> <a href="#ref-for-keyup④⑤">(5)</a> <a href="#ref-for-keyup④⑥">(6)</a> <a href="#ref-for-keyup④⑦">(7)</a> <a href="#ref-for-keyup④⑧">(8)</a> <a href="#ref-for-keyup④⑨">(9)</a> <a href="#ref-for-keyup⑤⓪">(10)</a>
     <li><a href="#ref-for-keyup⑤①">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keyup⑤②">(2)</a> <a href="#ref-for-keyup⑤③">(3)</a> <a href="#ref-for-keyup⑤④">(4)</a> <a href="#ref-for-keyup⑤⑤">(5)</a> <a href="#ref-for-keyup⑤⑥">(6)</a> <a href="#ref-for-keyup⑤⑦">(7)</a> <a href="#ref-for-keyup⑤⑧">(8)</a>
-    <li><a href="#ref-for-keyup⑤⑨">8.2.1. Interface KeyboardEvent (supplemental)</a>
-    <li><a href="#ref-for-keyup⑥⓪">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-keyup⑥①">(2)</a>
+    <li><a href="#ref-for-keyup⑤⑨">8.2.1. KeyboardEvent 接口(补充)</a>
+    <li><a href="#ref-for-keyup⑥⓪">8.3.1. 如何确定 keydown 和
+	keyup 事件的 keyCode </a> <a href="#ref-for-keyup⑥①">(2)</a>
     <li><a href="#ref-for-keyup⑥②">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keyup⑥③">(2)</a>
    </ul>
   </aside>
@@ -11266,11 +11253,13 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-dom-keyboardevent-charcode">8. 遗留的按键事件 &amp; 鼠标事件的属性</a>
     <li><a href="#ref-for-dom-keyboardevent-charcode①">8.2. 遗留的 KeyboardEvent 补充接口</a> <a href="#ref-for-dom-keyboardevent-charcode②">(2)</a> <a href="#ref-for-dom-keyboardevent-charcode③">(3)</a> <a href="#ref-for-dom-keyboardevent-charcode④">(4)</a> <a href="#ref-for-dom-keyboardevent-charcode⑤">(5)</a>
-    <li><a href="#ref-for-dom-keyboardevent-charcode⑥">8.2.1. Interface KeyboardEvent (supplemental)</a> <a href="#ref-for-dom-keyboardevent-charcode⑦">(2)</a> <a href="#ref-for-dom-keyboardevent-charcode⑧">(3)</a> <a href="#ref-for-dom-keyboardevent-charcode⑨">(4)</a>
-    <li><a href="#ref-for-dom-keyboardevent-charcode①⓪">8.2.2. Interface KeyboardEventInit (supplemental)</a> <a href="#ref-for-dom-keyboardevent-charcode①①">(2)</a> <a href="#ref-for-dom-keyboardevent-charcode①②">(3)</a>
-    <li><a href="#ref-for-dom-keyboardevent-charcode①③">8.3. Legacy key models</a>
-    <li><a href="#ref-for-dom-keyboardevent-charcode①④">9.3. 遗留 KeyboardEvent 事件</a>
-    <li><a href="#ref-for-dom-keyboardevent-charcode①⑤">9.3.1.1. keypress</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode⑥">8.2.1. KeyboardEvent 接口(补充)</a> <a href="#ref-for-dom-keyboardevent-charcode⑦">(2)</a> <a href="#ref-for-dom-keyboardevent-charcode⑧">(3)</a> <a href="#ref-for-dom-keyboardevent-charcode⑨">(4)</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode①⓪">8.2.2. KeyboardEventInit 接口(补充)</a> <a href="#ref-for-dom-keyboardevent-charcode①①">(2)</a> <a href="#ref-for-dom-keyboardevent-charcode①②">(3)</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode①③">8.3. 遗留按键模型</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode①④">8.3.2. 如何确定 keypress 事件的
+	keyCode</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode①⑤">9.3. 遗留 KeyboardEvent 事件</a>
+    <li><a href="#ref-for-dom-keyboardevent-charcode①⑥">9.3.1.1. keypress</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardevent-keycode" class="dfn-panel" data-for="dom-keyboardevent-keycode" id="infopanel-for-dom-keyboardevent-keycode">
@@ -11279,25 +11268,27 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-keycode">8. 遗留的按键事件 &amp; 鼠标事件的属性</a>
     <li><a href="#ref-for-dom-keyboardevent-keycode①">8.1.1. UIEvent 接口(补充)</a>
     <li><a href="#ref-for-dom-keyboardevent-keycode②">8.2. 遗留的 KeyboardEvent 补充接口</a> <a href="#ref-for-dom-keyboardevent-keycode③">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode④">(3)</a> <a href="#ref-for-dom-keyboardevent-keycode⑤">(4)</a> <a href="#ref-for-dom-keyboardevent-keycode⑥">(5)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode⑦">8.2.1. Interface KeyboardEvent (supplemental)</a> <a href="#ref-for-dom-keyboardevent-keycode⑧">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode⑨">(3)</a> <a href="#ref-for-dom-keyboardevent-keycode①⓪">(4)</a> <a href="#ref-for-dom-keyboardevent-keycode①①">(5)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode①②">8.2.2. Interface KeyboardEventInit (supplemental)</a> <a href="#ref-for-dom-keyboardevent-keycode①③">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode①④">(3)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode①⑤">8.3. Legacy key models</a> <a href="#ref-for-dom-keyboardevent-keycode①⑥">(2)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode①⑦">8.3.1. How to determine keyCode for keydown and keyup events</a> <a href="#ref-for-dom-keyboardevent-keycode①⑧">(2)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode①⑨">8.3.2. How to determine keyCode for keypress events</a> <a href="#ref-for-dom-keyboardevent-keycode②⓪">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode②①">(3)</a> <a href="#ref-for-dom-keyboardevent-keycode②②">(4)</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode②③">9.3. 遗留 KeyboardEvent 事件</a>
-    <li><a href="#ref-for-dom-keyboardevent-keycode②④">9.3.1.1. keypress</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode⑦">8.2.1. KeyboardEvent 接口(补充)</a> <a href="#ref-for-dom-keyboardevent-keycode⑧">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode⑨">(3)</a> <a href="#ref-for-dom-keyboardevent-keycode①⓪">(4)</a> <a href="#ref-for-dom-keyboardevent-keycode①①">(5)</a> <a href="#ref-for-dom-keyboardevent-keycode①②">(6)</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode①③">8.2.2. KeyboardEventInit 接口(补充)</a> <a href="#ref-for-dom-keyboardevent-keycode①④">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode①⑤">(3)</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode①⑥">8.3. 遗留按键模型</a> <a href="#ref-for-dom-keyboardevent-keycode①⑦">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode①⑧">8.3.1. 如何确定 keydown 和
+	keyup 事件的 keyCode </a> <a href="#ref-for-dom-keyboardevent-keycode①⑨">(2)</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode②⓪">8.3.2. 如何确定 keypress 事件的
+	keyCode</a> <a href="#ref-for-dom-keyboardevent-keycode②①">(2)</a> <a href="#ref-for-dom-keyboardevent-keycode②②">(3)</a> <a href="#ref-for-dom-keyboardevent-keycode②③">(4)</a> <a href="#ref-for-dom-keyboardevent-keycode②④">(5)</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode②⑤">9.3. 遗留 KeyboardEvent 事件</a>
+    <li><a href="#ref-for-dom-keyboardevent-keycode②⑥">9.3.1.1. keypress</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardeventinit-charcode" class="dfn-panel" data-for="dom-keyboardeventinit-charcode" id="infopanel-for-dom-keyboardeventinit-charcode">
    <span id="infopaneltitle-for-dom-keyboardeventinit-charcode" style="display:none">Info about the 'charCode' definition.</span><b><a href="#dom-keyboardeventinit-charcode">#dom-keyboardeventinit-charcode</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-keyboardeventinit-charcode">8.2.2. Interface KeyboardEventInit (supplemental)</a>
+    <li><a href="#ref-for-dom-keyboardeventinit-charcode">8.2.2. KeyboardEventInit 接口(补充)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardeventinit-keycode" class="dfn-panel" data-for="dom-keyboardeventinit-keycode" id="infopanel-for-dom-keyboardeventinit-keycode">
    <span id="infopaneltitle-for-dom-keyboardeventinit-keycode" style="display:none">Info about the 'keyCode' definition.</span><b><a href="#dom-keyboardeventinit-keycode">#dom-keyboardeventinit-keycode</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-keyboardeventinit-keycode">8.2.2. Interface KeyboardEventInit (supplemental)</a>
+    <li><a href="#ref-for-dom-keyboardeventinit-keycode">8.2.2. KeyboardEventInit 接口(补充)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-domactivate" class="dfn-panel" data-for="domactivate" id="infopanel-for-domactivate">
@@ -11333,13 +11324,14 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keypress②">6.2.3. code 例子</a> <a href="#ref-for-keypress③">(2)</a>
     <li><a href="#ref-for-keypress④">6.3.4. 默认行为和可取消的键盘事件</a> <a href="#ref-for-keypress⑤">(2)</a>
     <li><a href="#ref-for-keypress⑥">8.2. 遗留的 KeyboardEvent 补充接口</a> <a href="#ref-for-keypress⑦">(2)</a> <a href="#ref-for-keypress⑧">(3)</a>
-    <li><a href="#ref-for-keypress⑨">8.2.1. Interface KeyboardEvent (supplemental)</a>
-    <li><a href="#ref-for-keypress①⓪">8.3.2. How to determine keyCode for keypress events</a> <a href="#ref-for-keypress①①">(2)</a>
-    <li><a href="#ref-for-keypress①②">9. 遗留事件类型</a>
-    <li><a href="#ref-for-keypress①③">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-keypress①④">(2)</a> <a href="#ref-for-keypress①⑤">(3)</a> <a href="#ref-for-keypress①⑥">(4)</a>
-    <li><a href="#ref-for-keypress①⑦">9.3.1.1. keypress</a> <a href="#ref-for-keypress①⑧">(2)</a> <a href="#ref-for-keypress①⑨">(3)</a> <a href="#ref-for-keypress②⓪">(4)</a> <a href="#ref-for-keypress②①">(5)</a>
-    <li><a href="#ref-for-keypress②②">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keypress②③">(2)</a> <a href="#ref-for-keypress②④">(3)</a> <a href="#ref-for-keypress②⑤">(4)</a> <a href="#ref-for-keypress②⑥">(5)</a>
-    <li><a href="#ref-for-keypress②⑦">12.2. Changes between different drafts of UI Events</a> <a href="#ref-for-keypress②⑧">(2)</a>
+    <li><a href="#ref-for-keypress⑨">8.2.1. KeyboardEvent 接口(补充)</a>
+    <li><a href="#ref-for-keypress①⓪">8.3.2. 如何确定 keypress 事件的
+	keyCode</a> <a href="#ref-for-keypress①①">(2)</a> <a href="#ref-for-keypress①②">(3)</a>
+    <li><a href="#ref-for-keypress①③">9. 遗留事件类型</a>
+    <li><a href="#ref-for-keypress①④">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-keypress①⑤">(2)</a> <a href="#ref-for-keypress①⑥">(3)</a> <a href="#ref-for-keypress①⑦">(4)</a>
+    <li><a href="#ref-for-keypress①⑧">9.3.1.1. keypress</a> <a href="#ref-for-keypress①⑨">(2)</a> <a href="#ref-for-keypress②⓪">(3)</a> <a href="#ref-for-keypress②①">(4)</a> <a href="#ref-for-keypress②②">(5)</a>
+    <li><a href="#ref-for-keypress②③">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keypress②④">(2)</a> <a href="#ref-for-keypress②⑤">(3)</a> <a href="#ref-for-keypress②⑥">(4)</a> <a href="#ref-for-keypress②⑦">(5)</a>
+    <li><a href="#ref-for-keypress②⑧">12.2. Changes between different drafts of UI Events</a> <a href="#ref-for-keypress②⑨">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-mutationevent" class="dfn-panel" data-for="mutationevent" id="infopanel-for-mutationevent">
