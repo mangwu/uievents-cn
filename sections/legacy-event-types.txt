@@ -51,19 +51,19 @@
 ++-----------------------------+--------+----------+------------------------------------------+------------------+------------+--------------+------------------------------------------------+
 
 
-<h3 id="legacy-uievent-events">Legacy {{UIEvent}} events</h3>
+<h3 id="legacy-uievent-events">遗留 {{UIEvent}} 事件</h3>
 
-	<h4 id="legacy-uievent-event-types">Legacy {{UIEvent}} event types</h4>
+	<h4 id="legacy-uievent-event-types">遗留 {{UIEvent}} 事件类型</h4>
 
 		<h5 id="event-type-DOMActivate"><dfn>DOMActivate</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMActivate</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{UIEvent}}</td>
 				</tr>
 				<tr>
@@ -71,31 +71,31 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element being activated</li>
+								正在被激活的元素</li>
 							<li>{{UIEvent}}.{{UIEvent/view}} :
 								<a><code>Window</code></a></li>
 							<li>{{UIEvent}}.{{UIEvent/detail}} :
@@ -105,29 +105,35 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when a button, link, or
-			other state-changing element is activated.  Refer to
-			[[#event-flow-activation]] for more details.
+			当按钮、链接或其他状态可更改的元素被激活时，
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。查阅 [[#event-flow-activation]] 以获取更多详细信息。
 
 			<p class="warning" id="DOMActivate-deprecated">
-			The EVENT{DOMActivate} <a>event type</a> is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type in favor of the related
-			<a>event type</a> EVENT{click}.  Other specifications MAY define and
-			maintain their own EVENT{DOMActivate} <a>event type</a> for backwards
-			compatibility.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMActivate} 
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型，
+			而赞成使用相关的 EVENT{click} 事件类型。为了向后兼容，其他规范
+			<span class="zh-upper">可以</span> 定义并维护自己的EVENT{DOMActivate} 
+			<a href="#event-type">事件类型</a> 。
 			</p>
 
 			<p class="note" id="DOMActivate-click">
-			While EVENT{DOMActivate} and EVENT{click} are not completely equivalent,
-			implemented behavior for the EVENT{click} <a>event type</a> has
-			developed to encompass the most critical accessibility aspects for which
-			the EVENT{DOMActivate} <a>event type</a> was designed, and is more
-			widely implemented.  Content authors are encouraged to use the
-			EVENT{click} <a>event type</a> rather than the related EVENT{mousedown}
-			or EVENT{mouseup} <a>event type</a> to ensure maximum accessibility.
+			虽然 EVENT{DOMActivate} 和 EVENT{click} 并不完全等同，但 
+			EVENT{click} 事件类型的实现行为已经发展到包括 EVENT{DOMActivate} 
+			<href="#event-type">事件类型</a> 设计时考虑的最关键的无障碍(accessibility)
+			方面，并得到了更广泛的实现。鼓励内容作者使用 EVENT{click} 
+			<href="#event-type">事件类型</a>，而不是相关的 EVENT{mousedown} 或 
+			EVENT{mouseup} <href="#event-type">事件类型</a>，以确保最大程度的可访问性
+			(accessibility)。
 			</p>
 
+		支持 EVENT{DOMActivate} <href="#event-type">事件类型</a> 的实现还 
+		<span class="zh-upper">应当</span> 将 EVENT{DOMActivate} 作为与 
+		<a href="#activation-trigger">激活触发器</a> 关联的 EVENT{click} 事件的 
+		<a href="#default-action">默认行为</a> 进行派发。然而，对于 
+		<a href="#activation-trigger">激活触发器</a> 的任何给定事件，
+		这样的实现应该只启动一次相关的 <a href="#"></a>  激活行为。
 		Implementations which support the EVENT{DOMActivate} <a>event type</a>
 		SHOULD also dispatch a EVENT{DOMActivate} event as a <a>default
 		action</a> of a EVENT{click} event which is associated with an
@@ -177,21 +183,21 @@
 		each other: (with only pertinent events listed):
 
         ++---+-------------+---------------------------------------------------+
-        =| # | Event Type  | Notes                                             |
+        =| # | 事件类型    | Notes                                             |
          +---+-------------+---------------------------------------------------+
         +| 1 | click       |                                                   |
         +| 2 | DOMActivate | <a>default action</a>, if supported by the        |
          |   |             | <a>user agent</a>; synthesized;                   |
          |   |             | <code>isTrusted="true"</code>                     |
         +| 3 |             | <em>All other <a>default actions</a>,             |
-		 |   |             | including the <a>activation behavior</a></em>     |
+				 |   |             | including the <a>activation behavior</a></em>     |
         ++---+-------------+---------------------------------------------------+
 
 		If the focused element is activated by a key event, then the following
 		shows the typical sequence of events (with only pertinent events listed):
 
         ++---+-------------+---------------------------------------------------+
-        =| # | Event Type  | Notes                                             |
+        =| # | 事件类型    | Notes                                             |
          +---+-------------+---------------------------------------------------+
         +| 1 | keydown     | MUST be a key which can activate the element,     |
          |   |             | such as the KEYCAP{Enter} or KEYCAP{&nbsp;&nbsp;} |
@@ -213,11 +219,11 @@
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMFocusIn</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{FocusEvent}}</td>
 				</tr>
 				<tr>
@@ -225,27 +231,27 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><a><code>Window</code></a>, <code>Element</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -261,27 +267,28 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when an <a>event
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。when an <a>event
 			target</a> receives focus. The focus MUST be given to the
 			element before the dispatch of this event type. This event type
 			MUST be dispatched after the event type EVENT{focus}.
 
 			<p class="warning">
-			The EVENT{DOMFocusIn} event type is defined in this
-			specification for reference and completeness, but this
-			specification <a>deprecates</a> the use of this event type in
-			favor of the related event types EVENT{focus} and EVENT{focusin}.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMFocusIn}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型，
+			而赞成使用相关的 EVENT{focus} 和 EVENT{focusin} 事件类型。
 			</p>
 
 		<h5 id="event-type-DOMFocusOut"><dfn>DOMFocusOut</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMFocusOut</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{FocusEvent}}</td>
 				</tr>
 				<tr>
@@ -289,27 +296,27 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><a><code>Window</code></a>, <code>Element</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -325,16 +332,17 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when an <a>event
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。when an <a>event
 			target</a> loses focus. The focus MUST be taken from the element
 			before the dispatch of this event type. This event type MUST be
 			dispatched after the event type EVENT{blur}.
 
 			<p class="warning">
-			The EVENT{DOMFocusOut} event type is defined in this
-			specification for reference and completeness, but this
-			specification <a>deprecates</a> the use of this event type in
-			favor of the related event types EVENT{blur} and EVENT{focusout}.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMFocusOut}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型，
+			而赞成使用相关的 EVENT{blur} 和 EVENT{focusout} 事件类型。
 			</p>
 
 	<h4 id="legacy-focusevent-event-order">Legacy FocusEvent event order</h4>
@@ -345,7 +353,7 @@
 		initially focused.
 
         ++---+-------------+---------------------------------------------------+
-        =| # | Event Type  | Notes                                             |
+        =| # | 事件类型    | Notes                                             |
          +---+-------------+---------------------------------------------------+
         +|   |             | <em>User shifts focus</em>                        |
         +| 1 | focusin     | Sent before first target element receives focus   |
@@ -399,7 +407,7 @@
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>可信<br/>目标对象</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code></td>
 				</tr>
 				<tr>
@@ -407,7 +415,7 @@
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>能否从Shadow DOM冒泡传递</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>能 </td>
 				</tr>
 				<tr>
@@ -727,11 +735,11 @@
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMAttrModified</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -739,27 +747,27 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -779,7 +787,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event after an
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。after an
 			<code>Attr.value</code> has been modified and after an
 			<code>Attr</code> node has been added to or removed from an
 			<code>Element</code>. The <a>event target</a> of this event MUST be
@@ -789,20 +798,20 @@
 			not affect the value of <code>Attr.value</code>.
 
 			<p class="warning">
-			The EVENT{DOMAttrModified} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMAttrModified}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMCharacterDataModified"><dfn>DOMCharacterDataModified</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMCharacterDataModified</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -810,27 +819,27 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Text</code>, <code>Comment</code>, <code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -850,7 +859,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event after
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。after
 			<code>CharacterData.data</code> or
 			<code>ProcessingInstruction.data</code> have been modified, but the
 			node itself has not been inserted or deleted. The <a>event
@@ -858,20 +868,20 @@
 			or the <code>ProcessingInstruction</code> node.
 
 			<p class="warning">
-			The EVENT{DOMCharacterDataModified} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMCharacterDataModified}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMNodeInserted"><dfn>DOMNodeInserted</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMNodeInserted</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -879,28 +889,28 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -920,7 +930,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event type when a node other
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。type when a node other
 			than an <code>Attr</code> node has been added as a child of another
 			node. A <a>user agent</a> MAY dispatch this event when an
 			<code>Attr</code> node has been added to an <code>Element</code>
@@ -934,20 +945,20 @@
 			</p>
 
 			<p class="warning">
-			The EVENT{DOMNodeInserted} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeInserted}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMNodeInsertedIntoDocument"><dfn>DOMNodeInsertedIntoDocument</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMNodeInsertedIntoDocument</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -955,28 +966,28 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -996,7 +1007,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when a node has been
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。when a node has been
 			inserted into a document, either through direct insertion of the
 			node or insertion of a subtree in which it is contained. A <a>user
 			agent</a> MAY  treat an <code>Attr</code> node as part of an
@@ -1007,20 +1019,20 @@
 			this event type.
 
 			<p class="warning">
-			The EVENT{DOMNodeInsertedIntoDocument} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeInsertedIntoDocument}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMNodeRemoved"><dfn>DOMNodeRemoved</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMNodeRemoved</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -1028,28 +1040,28 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -1069,7 +1081,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when a node other than
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。when a node other than
 			an <code>Attr</code> node is being removed from its parent node. A
 			<a>user agent</a> MAY dispatch this event when an <code>Attr</code>
 			node is being removed from its <code>ownerElement</code> (see <a
@@ -1083,20 +1096,20 @@
 			</p>
 
 			<p class="warning">
-			The EVENT{DOMNodeRemoved} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeRemoved}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMNodeRemovedFromDocument"><dfn>DOMNodeRemovedFromDocument</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMNodeRemovedFromDocument</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -1104,28 +1117,28 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -1145,7 +1158,8 @@
 				</tr>
 			</table>
 
-			A <a>user agent</a> MUST dispatch this event when a node is being
+			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。when a node is being
 			removed from a document, either through direct removal of the node
 			or removal of a subtree in which it is contained. A <a>user
 			agent</a> MAY treat an <code>Attr</code> node as part of an
@@ -1161,20 +1175,20 @@
 			</p>
 
 			<p class="warning">
-			The EVENT{DOMNodeRemovedFromDocument} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeRemovedFromDocument}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMSubtreeModified"><dfn>DOMSubtreeModified</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
-					<th>Type</th>
+					<th>类型</th>
 					<td><strong><code>DOMSubtreeModified</code></strong></td>
 				</tr>
 				<tr>
-					<th>Interface</th>
+					<th>接口</th>
 					<td>{{MutationEvent}}</td>
 				</tr>
 				<tr>
@@ -1182,28 +1196,28 @@
 					<td>同步</td>
 				</tr>
 				<tr>
-					<th>Bubbles</th>
+					<th>冒泡</th>
 					<td>能 </td>
 				</tr>
 				<tr>
-					<th>Trusted Targets</th>
+					<th>可信目标对象</th>
 					<td><a><code>Window</code></a>, <code>Document</code>, <code>DocumentFragment</code>, <code>Element</code>, <code>Attr</code>
 					</td>
 				</tr>
 				<tr>
-					<th>Cancelable</th>
+					<th>可取消<br/>默认行为</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Composed</th>
+					<th>能否从Shadow<br/>DOM冒泡传递</th>
 					<td>No</td>
 				</tr>
 				<tr>
-					<th>Default action</th>
+					<th>默认行为</th>
 					<td>None</td>
 				</tr>
 				<tr>
-					<th>Context<br/>(trusted events)</th>
+					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
@@ -1235,9 +1249,9 @@
 			mutation(s) have occurred.
 
 			<p class="warning">
-			The EVENT{DOMSubtreeModified} event type is defined in this
-			specification for reference and completeness, but this specification
-			<a>deprecates</a> the use of this event type.
+			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMSubtreeModified}
+			<a href="#event-type">事件类型</a> ，但本规范 
+			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 </section>

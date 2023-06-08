@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="23892383d4ab89f12aaf8b466c554088fd5503f7" name="document-revision">
+  <meta content="7012fc375ea78f46aea2550a4972edf475d279aa" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1117,18 +1117,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <ol class="toc">
         <li><a href="#determine-keydown-keyup-keyCode"><span class="secno">8.3.1</span> <span class="content">如何确定 <span><code>keydown</code></span> 和 <span><code>keyup</code></span> 事件的 <code class="idl"><span>keyCode</span></code> </span></a>
         <li><a href="#determine-keypress-keyCode"><span class="secno">8.3.2</span> <span class="content">如何确定 <span><code>keypress</code></span> 事件的 <code class="idl"><span>keyCode</span></code></span></a>
-        <li><a href="#fixed-virtual-key-codes"><span class="secno">8.3.3</span> <span class="content">Fixed virtual key codes</span></a>
-        <li><a href="#optionally-fixed-virtual-key-codes"><span class="secno">8.3.4</span> <span class="content">Optionally fixed virtual key codes</span></a>
+        <li><a href="#fixed-virtual-key-codes"><span class="secno">8.3.3</span> <span class="content">固定虚拟键码</span></a>
+        <li><a href="#optionally-fixed-virtual-key-codes"><span class="secno">8.3.4</span> <span class="content">可选的固定虚拟键码</span></a>
        </ol>
      </ol>
     <li>
      <a href="#legacy-event-types"><span class="secno">9</span> <span class="content">遗留事件类型</span></a>
      <ol class="toc">
       <li>
-       <a href="#legacy-uievent-events"><span class="secno">9.1</span> <span class="content">Legacy <code class="idl"><span>UIEvent</span></code> events</span></a>
+       <a href="#legacy-uievent-events"><span class="secno">9.1</span> <span class="content">遗留 <code class="idl"><span>UIEvent</span></code> 事件</span></a>
        <ol class="toc">
         <li>
-         <a href="#legacy-uievent-event-types"><span class="secno">9.1.1</span> <span class="content">Legacy <code class="idl"><span>UIEvent</span></code> event types</span></a>
+         <a href="#legacy-uievent-event-types"><span class="secno">9.1.1</span> <span class="content">遗留 <code class="idl"><span>UIEvent</span></code> 事件类型</span></a>
          <ol class="toc">
           <li><a href="#event-type-DOMActivate"><span class="secno">9.1.1.1</span> <span class="content"><span>DOMActivate</span></span></a>
          </ol>
@@ -2247,7 +2247,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
     </table>
     <p class="note" role="note"> 该规范没有定义焦点事件在与 <code>focus()</code> 或 <code>blur()</code> 等方法交互时的行为。请参阅相关规范，其中为此类行为定义了这些方法。 </p>
     <h4 class="heading settled" data-level="5.2.3" id="events-focusevent-doc-focus"><span class="secno">5.2.3. </span><span class="content">文档焦点和焦点上下文</span><a class="self-link" href="#events-focusevent-doc-focus"></a></h4>
-    <p>此事件模块包括用于通知文档 <a href="#focus" id="ref-for-focus①③">焦点</a> 发生变更的事件类型。
+    <p>此事件模块包括用于通知文档 <a href="#focus" id="ref-for-focus①⑤">焦点</a> 发生变更的事件类型。
 		有三个不同的焦点上下文与这个讨论相关:</p>
     <ul>
      <li data-md>
@@ -6634,7 +6634,7 @@ myDiv.addEventListener("auxclick", function(e) {
       <p>如果实现支持操作系统和平台规定的键码转换表，请查找该值。
 如果转换表为给定的输入指定了供选择的(alternate)虚拟键值，则返回指定的值。</p>
      <li data-md>
-      <p>如果按键的功能(由实现指定的方式确定)对应于 <a href="#fixed-virtual-key-codes">§ 8.3.3 Fixed virtual key codes</a> 表中一个按键，则返回相应的键码(key code)。</p>
+      <p>如果按键的功能(由实现指定的方式确定)对应于 <a href="#fixed-virtual-key-codes">§ 8.3.3 固定虚拟键码</a> 表中一个按键，则返回相应的键码(key code)。</p>
      <li data-md>
       <p>返回从操作系统中获取的虚拟键码(key code)。</p>
      <li data-md>
@@ -6650,15 +6650,14 @@ myDiv.addEventListener("auxclick", function(e) {
     </ul>
     <div class="note custom-note" role="note"> 现代浏览器大多是第一种情况，即 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress①②"><code>keypress</code></a> 事件的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-keycode" id="ref-for-dom-keyboardevent-keycode②④">keyCode</a></code> 值和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-charcode" id="ref-for-dom-keyboardevent-charcode①④">charCode</a></code> 一致，
 		为输入字符的 Unicode 码点。 </div>
-    <h4 class="heading settled" data-level="8.3.3" id="fixed-virtual-key-codes"><span class="secno">8.3.3. </span><span class="content">Fixed virtual key codes</span><a class="self-link" href="#fixed-virtual-key-codes"></a></h4>
-    <p>The virtual key codes for the following keys do not usually change with
-		keyboard layouts on desktop systems:</p>
+    <h4 class="heading settled" data-level="8.3.3" id="fixed-virtual-key-codes"><span class="secno">8.3.3. </span><span class="content">固定虚拟键码</span><a class="self-link" href="#fixed-virtual-key-codes"></a></h4>
+    <p>以下键的虚拟键码通常不会随桌面系统上的键盘布局而更改:</p>
     <table class="event-sequence-table">
      <tbody>
       <tr>
-       <th>Key
-       <th style="text-align:center">Virtual Key <br>Code
-       <th style="text-align:center">Notes
+       <th>键
+       <th style="text-align:center">虚拟键码
+       <th style="text-align:center">注释
       <tr>
        <td>Backspace
        <td style="text-align:center">8
@@ -6732,16 +6731,15 @@ myDiv.addEventListener("auxclick", function(e) {
        <td style="text-align:center">46
        <td style="text-align:center">Del
     </table>
-    <h4 class="heading settled" data-level="8.3.4" id="optionally-fixed-virtual-key-codes"><span class="secno">8.3.4. </span><span class="content">Optionally fixed virtual key codes</span><a class="self-link" href="#optionally-fixed-virtual-key-codes"></a></h4>
-    <p>The following punctuation characters MAY change virtual codes between
-		keyboard layouts, but reporting these values will likely be more
-		compatible with legacy content expecting US-English keyboard layout:</p>
+    <h4 class="heading settled" data-level="8.3.4" id="optionally-fixed-virtual-key-codes"><span class="secno">8.3.4. </span><span class="content">可选的固定虚拟键码</span><a class="self-link" href="#optionally-fixed-virtual-key-codes"></a></h4>
+    <p>以下标点符号的虚拟键码 <span class="zh-upper">可以</span> 在不同键盘布局之间不同，但报告的这些值很可能会更兼容于某些遗留内容，
+		这些遗留内容预期使用美式英语键盘布局:</p>
     <table class="event-sequence-table">
      <tbody>
       <tr>
-       <th>Key
-       <th style="text-align:center">Character
-       <th style="text-align:center">Virtual Key <br>Code
+       <th>键
+       <th style="text-align:center">字符
+       <th style="text-align:center">虚拟键码
       <tr>
        <td>Semicolon
        <td style="text-align:center"><code class="glyph">";"</code>
@@ -6950,37 +6948,37 @@ myDiv.addEventListener("auxclick", function(e) {
        <td style="text-align:center">能
        <td>多种: 启动 <a href="#text-composition-system" id="ref-for-text-composition-system①⑥"> 文本合成系统</a>; (触发) <a data-link-type="dfn" href="#blur" id="ref-for-blur⑦"><code>blur</code></a> 和 <a data-link-type="dfn" href="#focus" id="ref-for-focus⑧"><code>focus</code></a> 事件; (触发) <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate③"><code>DOMActivate</code></a> 事件; (触发)其它事件
     </table>
-    <h3 class="heading settled" data-level="9.1" id="legacy-uievent-events"><span class="secno">9.1. </span><span class="content">Legacy <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⑤">UIEvent</a></code> events</span><a class="self-link" href="#legacy-uievent-events"></a></h3>
-    <h4 class="heading settled" data-level="9.1.1" id="legacy-uievent-event-types"><span class="secno">9.1.1. </span><span class="content">Legacy <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⑥">UIEvent</a></code> event types</span><a class="self-link" href="#legacy-uievent-event-types"></a></h4>
+    <h3 class="heading settled" data-level="9.1" id="legacy-uievent-events"><span class="secno">9.1. </span><span class="content">遗留 <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⑤">UIEvent</a></code> 事件</span><a class="self-link" href="#legacy-uievent-events"></a></h3>
+    <h4 class="heading settled" data-level="9.1.1" id="legacy-uievent-event-types"><span class="secno">9.1.1. </span><span class="content">遗留 <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⑥">UIEvent</a></code> 事件类型</span><a class="self-link" href="#legacy-uievent-event-types"></a></h4>
     <h5 class="heading settled" data-level="9.1.1.1" id="event-type-DOMActivate"><span class="secno">9.1.1.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domactivate">DOMActivate</dfn></span><a class="self-link" href="#event-type-DOMActivate"></a></h5>
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMActivate</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑧⑦">UIEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>能 
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>能 
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤①">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②⑨">target</a></code> :
@@ -7031,15 +7029,15 @@ myDiv.addEventListener("auxclick", function(e) {
      <tbody>
       <tr>
        <td class="cell-number">
-       <th>Event Type
+       <th>事件类型
        <th>Notes
       <tr>
        <td class="cell-number">1
-       <td>click
+       <td><a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a>
        <td>
       <tr>
        <td class="cell-number">2
-       <td>DOMActivate
+       <td><a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑦"><code>DOMActivate</code></a>
        <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action②">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent⑥">user agent</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">3
@@ -7052,19 +7050,19 @@ myDiv.addEventListener("auxclick", function(e) {
      <tbody>
       <tr>
        <td class="cell-number">
-       <th>Event Type
+       <th>事件类型
        <th>Notes
       <tr>
        <td class="cell-number">1
-       <td>keydown
+       <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦⓪"><code>keydown</code></a>
        <td>MUST be a key which can activate the element, such as the <code class="keycap">Enter</code> or <code class="keycap">  </code> (spacebar) key, or the element is not activated
       <tr>
        <td class="cell-number">2
-       <td>click
+       <td><a data-link-type="dfn" href="#click" id="ref-for-click④④"><code>click</code></a>
        <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action④">default action</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">3
-       <td>DOMActivate
+       <td><a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑧"><code>DOMActivate</code></a>
        <td><a data-link-type="dfn" href="#default-action" id="ref-for-default-action⑤">default action</a>, if supported by the <a data-link-type="dfn" href="#user-agent" id="ref-for-user-agent⑦">user agent</a>; synthesized; <code>isTrusted="true"</code>
       <tr>
        <td class="cell-number">4
@@ -7077,31 +7075,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMFocusIn</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①⑧">FocusEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><a data-link-type="dfn" href="#window" id="ref-for-window⑤⑤"><code>Window</code></a>, <code>Element</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>能 
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤②">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⓪">target</a></code> : <a data-link-type="dfn" href="#event-target" id="ref-for-event-target①">event target</a> receiving focus
@@ -7122,31 +7120,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMFocusOut</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent②⓪">FocusEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><a data-link-type="dfn" href="#window" id="ref-for-window⑤⑦"><code>Window</code></a>, <code>Element</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>能 
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤③">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③①">target</a></code> : <a data-link-type="dfn" href="#event-target" id="ref-for-event-target③">event target</a> losing focus
@@ -7171,7 +7169,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <tbody>
       <tr>
        <td class="cell-number">
-       <th>Event Type
+       <th>事件类型
        <th>Notes
       <tr>
        <td class="cell-number">
@@ -7179,15 +7177,15 @@ myDiv.addEventListener("auxclick", function(e) {
        <td><em>User shifts focus</em>
       <tr>
        <td class="cell-number">1
-       <td>focusin
+       <td><a data-link-type="dfn" href="#focusin" id="ref-for-focusin⑥"><code>focusin</code></a>
        <td>Sent before first target element receives focus
       <tr>
        <td class="cell-number">2
-       <td>focus
+       <td><a data-link-type="dfn" href="#focus" id="ref-for-focus①①"><code>focus</code></a>
        <td>Sent after first target element receives focus
       <tr>
        <td class="cell-number">3
-       <td>DOMFocusIn
+       <td><a data-link-type="dfn" href="#domfocusin" id="ref-for-domfocusin③"><code>DOMFocusIn</code></a>
        <td>If supported
       <tr>
        <td class="cell-number">
@@ -7195,27 +7193,27 @@ myDiv.addEventListener("auxclick", function(e) {
        <td><em>User shifts focus</em>
       <tr>
        <td class="cell-number">4
-       <td>focusout
+       <td><a data-link-type="dfn" href="#focusout" id="ref-for-focusout⑤"><code>focusout</code></a>
        <td>Sent before first target element loses focus
       <tr>
        <td class="cell-number">5
-       <td>focusin
+       <td><a data-link-type="dfn" href="#focusin" id="ref-for-focusin⑦"><code>focusin</code></a>
        <td>Sent before second target element receives focus
       <tr>
        <td class="cell-number">6
-       <td>blur
+       <td><a data-link-type="dfn" href="#blur" id="ref-for-blur①⓪"><code>blur</code></a>
        <td>Sent after first target element loses focus
       <tr>
        <td class="cell-number">7
-       <td>DOMFocusOut
+       <td><a data-link-type="dfn" href="#domfocusout" id="ref-for-domfocusout③"><code>DOMFocusOut</code></a>
        <td>If supported
       <tr>
        <td class="cell-number">8
-       <td>focus
+       <td><a data-link-type="dfn" href="#focus" id="ref-for-focus①②"><code>focus</code></a>
        <td>Sent after second target element receives focus
       <tr>
        <td class="cell-number">9
-       <td>DOMFocusIn
+       <td><a data-link-type="dfn" href="#domfocusin" id="ref-for-domfocusin④"><code>DOMFocusIn</code></a>
        <td>If supported
     </table>
     <h3 class="heading settled" data-level="9.3" id="legacy-keyboardevent-events"><span class="secno">9.3. </span><span class="content">遗留 <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑨②">KeyboardEvent</a></code> 事件</span><a class="self-link" href="#legacy-keyboardevent-events"></a></h3>
@@ -7240,20 +7238,20 @@ myDiv.addEventListener("auxclick", function(e) {
        <th>冒泡
        <td>能 
       <tr>
-       <th>可信<br>目标对象
+       <th>可信目标对象
        <td><code>Element</code>
       <tr>
        <th>可取消<br>默认行为
        <td>能 
       <tr>
-       <th>能否从Shadow DOM冒泡传递
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>能 
       <tr>
        <th>默认行为
        <td>多种:
 						启动 <a href="#text-composition-system" id="ref-for-text-composition-system①⑦">文本合成系统</a>;
-						(触发) <a data-link-type="dfn" href="#blur" id="ref-for-blur①⓪"><code>blur</code></a> 和 <a data-link-type="dfn" href="#focus" id="ref-for-focus①①"><code>focus</code></a> 事件;
-						(触发) <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑦"><code>DOMActivate</code></a> 事件;
+						(触发) <a data-link-type="dfn" href="#blur" id="ref-for-blur①①"><code>blur</code></a> 和 <a data-link-type="dfn" href="#focus" id="ref-for-focus①③"><code>focus</code></a> 事件;
+						(触发) <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑨"><code>DOMActivate</code></a> 事件;
 						(触发)其它事件
       <tr>
        <th>上下文<br>(可信事件)
@@ -7304,7 +7302,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			但本规范 <a href="#deprecates" id="ref-for-deprecates①⑥">反对(deprecates)</a> 使用此事件类型。
 			在编辑上下文时，作者可以转而使用 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④③"><code>beforeinput</code></a> 事件替代( <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②②"><code>keypress</code></a> )。 </p>
     <h4 class="heading settled" data-level="9.3.2" id="keypress-event-order"><span class="secno">9.3.2. </span><span class="content"><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②③"><code>keypress</code></a> 事件顺序</span><a class="self-link" href="#keypress-event-order"></a></h4>
-    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②④"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦⓪"><code>keydown</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥②"><code>keyup</code></a> 事件之前被派发。</p>
+    <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②④"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦①"><code>keydown</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup⑥②"><code>keyup</code></a> 事件之前被派发。</p>
     <p><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑤"><code>keypress</code></a> 事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④④"><code>beforeinput</code></a> 事件之后并且与同一个按键关联的 <a data-link-type="dfn" href="#input" id="ref-for-input④⑤"><code>input</code></a> 事件之前被派发。</p>
     <p>以下示例演示了支持 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑥"><code>keypress</code></a> 事件的用户代理们的按键事件序列:</p>
     <div class="example" id="example-901a3821">
@@ -7319,7 +7317,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <th>注释
        <tr>
         <td class="cell-number">1
-        <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦①"><code>keydown</code></a>
+        <td><a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦②"><code>keydown</code></a>
         <td style="text-align:center"><code class="key">"a"</code>
         <td style="text-align:center">
         <td>
@@ -7472,31 +7470,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMAttrModified</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent①⑦">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑥">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③③">target</a></code> :
@@ -7524,31 +7522,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMCharacterDataModified</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②③">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Text</code>, <code>Comment</code>, <code>ProcessingInstruction</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③④">target</a></code> :
@@ -7574,31 +7572,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMNodeInserted</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent②⑨">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>, <code>ProcessingInstruction</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑤">target</a></code> :
@@ -7625,31 +7623,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMNodeInsertedIntoDocument</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent③⑤">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>No
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>, <code>ProcessingInstruction</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑥">target</a></code> :
@@ -7679,31 +7677,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMNodeRemoved</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④①">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>, <code>ProcessingInstruction</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥⓪">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑦">target</a></code> :
@@ -7729,31 +7727,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMNodeRemovedFromDocument</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent④⑦">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>No
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>, <code>ProcessingInstruction</code>
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥①">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑧">target</a></code> :
@@ -7784,31 +7782,31 @@ myDiv.addEventListener("auxclick", function(e) {
     <table class="event-definition">
      <tbody>
       <tr>
-       <th>Type
+       <th>类型
        <td><strong><code>DOMSubtreeModified</code></strong>
       <tr>
-       <th>Interface
+       <th>接口
        <td><code class="idl"><a data-link-type="idl" href="#mutationevent" id="ref-for-mutationevent⑤③">MutationEvent</a></code>
       <tr>
        <th>同步 / 异步
        <td>同步
       <tr>
-       <th>Bubbles
+       <th>冒泡
        <td>能 
       <tr>
-       <th>Trusted Targets
+       <th>可信目标对象
        <td><a data-link-type="dfn" href="#window" id="ref-for-window⑥⓪"><code>Window</code></a>, <code>Document</code>, <code>DocumentFragment</code>, <code>Element</code>, <code>Attr</code> 
       <tr>
-       <th>Cancelable
+       <th>可取消<br>默认行为
        <td>No
       <tr>
-       <th>Composed
+       <th>能否从Shadow<br>DOM冒泡传递
        <td>No
       <tr>
-       <th>Default action
+       <th>默认行为
        <td>None
       <tr>
-       <th>Context<br>(trusted events)
+       <th>上下文<br>(可信事件)
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥②">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⑨">target</a></code> :
@@ -7969,7 +7967,7 @@ attempt to embed resources on the local network.</p>
     <h3 class="heading settled" data-level="12.1" id="changes-DOMEvents2to3Changes"><span class="secno">12.1. </span><span class="content">Changes between DOM Level 2 Events and UI Events</span><a class="self-link" href="#changes-DOMEvents2to3Changes"></a></h3>
     <p>Numerous clarifications to the interfaces and event types have been made.
     The <code>HTMLEvents</code> module is no longer defined in this document.
-    The <a data-link-type="dfn" href="#focus" id="ref-for-focus①②"><code>focus</code></a> and <a data-link-type="dfn" href="#blur" id="ref-for-blur①①"><code>blur</code></a> events have been added to the <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⑥">UIEvent</a></code> module, and the <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⑤"><code>dblclick</code></a> event has been added to the <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑦">MouseEvent</a></code> module. This new specification provides a better separation between the DOM
+    The <a data-link-type="dfn" href="#focus" id="ref-for-focus①④"><code>focus</code></a> and <a data-link-type="dfn" href="#blur" id="ref-for-blur①②"><code>blur</code></a> events have been added to the <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⑥">UIEvent</a></code> module, and the <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⑤"><code>dblclick</code></a> event has been added to the <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑦">MouseEvent</a></code> module. This new specification provides a better separation between the DOM
     event flow, the event types, and the DOM interfaces.</p>
     <h4 class="heading settled" data-level="12.1.1" id="changes-DOMEvents2to3Changes-flow"><span class="secno">12.1.1. </span><span class="content">Changes to DOM Level 2 event flow</span><a class="self-link" href="#changes-DOMEvents2to3Changes-flow"></a></h4>
     <p>This new specification introduced the following new concepts in the
@@ -8309,7 +8307,7 @@ use. </p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="dispatch">dispatch</dfn>
      <dd data-md>
       <p>创建一个事件，事件对象的属性和方法适宜于事件的事件类型和上下文，
-并以规定的方式在 DOM 树中传播它。可与术语 <q><a data-link-type="dfn" href="#fire" id="ref-for-fire">fire</a></q> 互换，例如， <q>触发一个 <a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a> 事件</q> 或<q>派发一个<a data-link-type="dfn" href="#load" id="ref-for-load⑨"><code>load</code></a>事件</q>。</p>
+并以规定的方式在 DOM 树中传播它。可与术语 <q><a data-link-type="dfn" href="#fire" id="ref-for-fire">fire</a></q> 互换，例如， <q>触发一个 <a data-link-type="dfn" href="#click" id="ref-for-click④⑤"><code>click</code></a> 事件</q> 或<q>派发一个<a data-link-type="dfn" href="#load" id="ref-for-load⑨"><code>load</code></a>事件</q>。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="document">document</dfn>
      <dd data-md>
       <p>实例化 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document①">Document</a></code> 接口 <a data-link-type="biblio" href="#biblio-dom-level-3-core" title="Document Object Model (DOM) Level 3 Core Specification">[DOM-Level-3-Core]</a> 的对象，表示整个HTML或XML文本文档。
@@ -8364,10 +8362,10 @@ Level 0</q>.</p>
 例如，在一个有鼠标、轨迹板和键盘的环境中，
 这些输入设备中的每一个都将构成一个单独的事件源，并且每个都将遵循自己的事件顺序。
 紧随轨迹板上的一个 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown②③"><code>mousedown</code></a> 事件触发的鼠标上的一个 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup②②"><code>mouseup</code></a> 事件
-不会导致 <a data-link-type="dfn" href="#click" id="ref-for-click④④"><code>click</code></a> 事件。</p>
+不会导致 <a data-link-type="dfn" href="#click" id="ref-for-click④⑥"><code>click</code></a> 事件。</p>
       <p class="note" role="note"> 不同的事件顺序之间可能存在交互。例如，
-一个点击事件可能会被一个并发的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦②"><code>keydown</code></a> 事件修改
-(例如，通过 <code class="keycap">Shift</code> <code>+</code> <a data-link-type="dfn" href="#click" id="ref-for-click④⑤"><code>click</code></a> )。
+一个点击事件可能会被一个并发的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑦③"><code>keydown</code></a> 事件修改
+(例如，通过 <code class="keycap">Shift</code> <code>+</code> <a data-link-type="dfn" href="#click" id="ref-for-click④⑦"><code>click</code></a> )。
 然而，这些不同事件源的事件顺序是不同的。 </p>
       <p>某些接口的事件顺序与设备无关。例如，用户可以使用 <code class="keycap">Tab</code> 键或用鼠标单击新的聚焦元素来更改焦点。在这种情况下，
 事件顺序取决于进程的状态，而不是能发起状态改变的设备的状态。</p>
@@ -8379,9 +8377,9 @@ Level 0</q>.</p>
       <p>一个应用 <a href="#event-flow">§ 3.1 事件派发和 DOM 事件流</a>> 的 <a href="#event" id="ref-for-event⑦①">事件</a> 的事件目标对象。事件目标对象是事件的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target④⓪">target</a></code> 属性的值。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="event-type">event type</dfn>
      <dd data-md>
-      <p><em>事件类型</em>是一个具有特定名称的 <a href="#event" id="ref-for-event⑦②">事件对象</a> ，它定义了特定的触发条件、属性和区别于其他事件类型的其它特征。例如， <a data-link-type="dfn" href="#click" id="ref-for-click④⑥"><code>click</code></a> 事件类型与 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover①①"><code>mouseover</code></a> 或 <a data-link-type="dfn" href="#load" id="ref-for-load①⓪"><code>load</code></a> 类型具有不同的特性。
+      <p><em>事件类型</em>是一个具有特定名称的 <a href="#event" id="ref-for-event⑦②">事件对象</a> ，它定义了特定的触发条件、属性和区别于其他事件类型的其它特征。例如， <a data-link-type="dfn" href="#click" id="ref-for-click④⑧"><code>click</code></a> 事件类型与 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover①①"><code>mouseover</code></a> 或 <a data-link-type="dfn" href="#load" id="ref-for-load①⓪"><code>load</code></a> 类型具有不同的特性。
 事件类型作为事件对象上的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type④">type</a></code> 属性公开。参见 <a href="#event-types">§ 5 事件类型</a> 了解更多详细信息。这个术语也常常引申为具体"事件"，
-例如 <em><a data-link-type="dfn" href="#click" id="ref-for-click④⑦"><code>click</code></a></em> 事件。</p>
+例如 <em><a data-link-type="dfn" href="#click" id="ref-for-click④⑨"><code>click</code></a></em> 事件。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fire">fire</dfn>
      <dd data-md>
       <p><a data-link-type="dfn" href="#dispatch" id="ref-for-dispatch②">dispatch</a>的同义词。</p>
@@ -9838,8 +9836,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-uievent⑧⓪">8.1.2. UIEventInit 接口(补充)</a> <a href="#ref-for-uievent⑧①">(2)</a> <a href="#ref-for-uievent⑧②">(3)</a>
     <li><a href="#ref-for-uievent⑧③">8.2. 遗留的 KeyboardEvent 补充接口</a>
     <li><a href="#ref-for-uievent⑧④">9. 遗留事件类型</a>
-    <li><a href="#ref-for-uievent⑧⑤">9.1. Legacy UIEvent events</a>
-    <li><a href="#ref-for-uievent⑧⑥">9.1.1. Legacy UIEvent event types</a>
+    <li><a href="#ref-for-uievent⑧⑤">9.1. 遗留 UIEvent 事件</a>
+    <li><a href="#ref-for-uievent⑧⑥">9.1.1. 遗留 UIEvent 事件类型</a>
     <li><a href="#ref-for-uievent⑧⑦">9.1.1.1. DOMActivate</a> <a href="#ref-for-uievent⑧⑧">(2)</a> <a href="#ref-for-uievent⑧⑨">(3)</a>
     <li><a href="#ref-for-uievent⑨⓪">9.2.1.1. DOMFocusIn</a> <a href="#ref-for-uievent⑨①">(2)</a>
     <li><a href="#ref-for-uievent⑨②">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-uievent⑨③">(2)</a>
@@ -10034,8 +10032,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-blur⑥">5.6.4.1. keydown</a>
     <li><a href="#ref-for-blur⑦">9. 遗留事件类型</a>
     <li><a href="#ref-for-blur⑧">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-blur⑨">(2)</a>
-    <li><a href="#ref-for-blur①⓪">9.3.1.1. keypress</a>
-    <li><a href="#ref-for-blur①①">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-blur①⓪">9.2.2. Legacy FocusEvent event order</a>
+    <li><a href="#ref-for-blur①①">9.3.1.1. keypress</a>
+    <li><a href="#ref-for-blur①②">12.1. Changes between DOM Level 2 Events and UI Events</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-focus" class="dfn-panel" data-for="focus" id="infopanel-for-focus">
@@ -10049,8 +10048,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-focus⑦">5.6.4.1. keydown</a>
     <li><a href="#ref-for-focus⑧">9. 遗留事件类型</a>
     <li><a href="#ref-for-focus⑨">9.2.1.1. DOMFocusIn</a> <a href="#ref-for-focus①⓪">(2)</a>
-    <li><a href="#ref-for-focus①①">9.3.1.1. keypress</a>
-    <li><a href="#ref-for-focus①②">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-focus①①">9.2.2. Legacy FocusEvent event order</a> <a href="#ref-for-focus①②">(2)</a>
+    <li><a href="#ref-for-focus①③">9.3.1.1. keypress</a>
+    <li><a href="#ref-for-focus①④">12.1. Changes between DOM Level 2 Events and UI Events</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-focusin" class="dfn-panel" data-for="focusin" id="infopanel-for-focusin">
@@ -10061,6 +10061,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-focusin②">5.2.2. 焦点事件顺序</a> <a href="#ref-for-focusin③">(2)</a>
     <li><a href="#ref-for-focusin④">5.2.4.2. focus</a>
     <li><a href="#ref-for-focusin⑤">9.2.1.1. DOMFocusIn</a>
+    <li><a href="#ref-for-focusin⑥">9.2.2. Legacy FocusEvent event order</a> <a href="#ref-for-focusin⑦">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-focusout" class="dfn-panel" data-for="focusout" id="infopanel-for-focusout">
@@ -10071,6 +10072,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-focusout②">5.2.2. 焦点事件顺序</a>
     <li><a href="#ref-for-focusout③">5.2.4.1. blur</a>
     <li><a href="#ref-for-focusout④">9.2.1.2. DOMFocusOut</a>
+    <li><a href="#ref-for-focusout⑤">9.2.2. Legacy FocusEvent event order</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-mouseevent" class="dfn-panel" data-for="mouseevent" id="infopanel-for-mouseevent">
@@ -10490,7 +10492,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-click②⑧">5.3.4.4. dblclick</a> <a href="#ref-for-click②⑨">(2)</a> <a href="#ref-for-click③⓪">(3)</a> <a href="#ref-for-click③①">(4)</a> <a href="#ref-for-click③②">(5)</a>
     <li><a href="#ref-for-click③③">5.6.4.1. keydown</a>
     <li><a href="#ref-for-click③④">9.1.1.1. DOMActivate</a> <a href="#ref-for-click③⑤">(2)</a> <a href="#ref-for-click③⑥">(3)</a> <a href="#ref-for-click③⑦">(4)</a> <a href="#ref-for-click③⑧">(5)</a> <a href="#ref-for-click③⑨">(6)</a> <a href="#ref-for-click④⓪">(7)</a> <a href="#ref-for-click④①">(8)</a> <a href="#ref-for-click④②">(9)</a>
-    <li><a href="#ref-for-click④③">14. 术语表</a> <a href="#ref-for-click④④">(2)</a> <a href="#ref-for-click④⑤">(3)</a> <a href="#ref-for-click④⑥">(4)</a> <a href="#ref-for-click④⑦">(5)</a>
+    <li><a href="#ref-for-click④③">9.1.2. Activation event order</a> <a href="#ref-for-click④④">(2)</a>
+    <li><a href="#ref-for-click④⑤">14. 术语表</a> <a href="#ref-for-click④⑥">(2)</a> <a href="#ref-for-click④⑦">(3)</a> <a href="#ref-for-click④⑧">(4)</a> <a href="#ref-for-click④⑨">(5)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-contextmenu" class="dfn-panel" data-for="contextmenu" id="infopanel-for-contextmenu">
@@ -11086,8 +11089,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keydown⑥⑥">8.2.1. KeyboardEvent 接口(补充)</a>
     <li><a href="#ref-for-keydown⑥⑦">8.3.1. 如何确定 keydown 和
 	keyup 事件的 keyCode </a> <a href="#ref-for-keydown⑥⑧">(2)</a> <a href="#ref-for-keydown⑥⑨">(3)</a>
-    <li><a href="#ref-for-keydown⑦⓪">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keydown⑦①">(2)</a>
-    <li><a href="#ref-for-keydown⑦②">14. 术语表</a>
+    <li><a href="#ref-for-keydown⑦⓪">9.1.2. Activation event order</a>
+    <li><a href="#ref-for-keydown⑦①">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keydown⑦②">(2)</a>
+    <li><a href="#ref-for-keydown⑦③">14. 术语表</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-keyup" class="dfn-panel" data-for="keyup" id="infopanel-for-keyup">
@@ -11297,7 +11301,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-domactivate">5.6.4.1. keydown</a> <a href="#ref-for-domactivate①">(2)</a>
     <li><a href="#ref-for-domactivate②">9. 遗留事件类型</a> <a href="#ref-for-domactivate③">(2)</a>
     <li><a href="#ref-for-domactivate④">9.1.1.1. DOMActivate</a> <a href="#ref-for-domactivate⑤">(2)</a> <a href="#ref-for-domactivate⑥">(3)</a> <a href="#ref-for-domactivate⑦">(4)</a> <a href="#ref-for-domactivate⑧">(5)</a> <a href="#ref-for-domactivate⑨">(6)</a> <a href="#ref-for-domactivate①⓪">(7)</a> <a href="#ref-for-domactivate①①">(8)</a> <a href="#ref-for-domactivate①②">(9)</a> <a href="#ref-for-domactivate①③">(10)</a> <a href="#ref-for-domactivate①④">(11)</a> <a href="#ref-for-domactivate①⑤">(12)</a> <a href="#ref-for-domactivate①⑥">(13)</a>
-    <li><a href="#ref-for-domactivate①⑦">9.3.1.1. keypress</a>
+    <li><a href="#ref-for-domactivate①⑦">9.1.2. Activation event order</a> <a href="#ref-for-domactivate①⑧">(2)</a>
+    <li><a href="#ref-for-domactivate①⑨">9.3.1.1. keypress</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-domfocusin" class="dfn-panel" data-for="domfocusin" id="infopanel-for-domfocusin">
@@ -11305,7 +11310,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-domfocusin">9. 遗留事件类型</a>
     <li><a href="#ref-for-domfocusin①">9.2.1.1. DOMFocusIn</a>
-    <li><a href="#ref-for-domfocusin②">9.2.2. Legacy FocusEvent event order</a>
+    <li><a href="#ref-for-domfocusin②">9.2.2. Legacy FocusEvent event order</a> <a href="#ref-for-domfocusin③">(2)</a> <a href="#ref-for-domfocusin④">(3)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-domfocusout" class="dfn-panel" data-for="domfocusout" id="infopanel-for-domfocusout">
@@ -11313,7 +11318,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-domfocusout">9. 遗留事件类型</a>
     <li><a href="#ref-for-domfocusout①">9.2.1.2. DOMFocusOut</a>
-    <li><a href="#ref-for-domfocusout②">9.2.2. Legacy FocusEvent event order</a>
+    <li><a href="#ref-for-domfocusout②">9.2.2. Legacy FocusEvent event order</a> <a href="#ref-for-domfocusout③">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-keypress" class="dfn-panel" data-for="keypress" id="infopanel-for-keypress">

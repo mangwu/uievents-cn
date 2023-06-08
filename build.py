@@ -74,10 +74,12 @@ class Parser():
                     data = ''
             if not self.is_header_row and data != '':
                 if colname == '事件类型':
-                    # print(data)
                     data = self.event_type(data)
                 if colname == 'DOM 接口':
                     data = '{{' + data + '}}'
+                # 自定义根据列表名称添加引用
+                # if colname == '键':
+                    # data = 'CODE{' + data + "}"
             row += pre + self.process_text(data) + post
         row += '</tr>\n'
         return row

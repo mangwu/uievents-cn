@@ -269,14 +269,12 @@
 		</div>
 		
 
-	<h4 id="fixed-virtual-key-codes">Fixed virtual key codes</h4>
+	<h4 id="fixed-virtual-key-codes">固定虚拟键码</h4>
 
-		The virtual key codes for the following keys do not usually change with
-		keyboard layouts on desktop systems:
+		以下键的虚拟键码通常不会随桌面系统上的键盘布局而更改:
 
 		++------------+-------------+-------+
-		=| Key        | Virtual Key | Notes |
-		 |            | <br/>Code   |       |
+		=| 键         | 虚拟键码    | 注释  |
 		 +------------+------o------+---o---+
 		+| Backspace  | 8           |       |
 		+| Tab        | 9           |       |
@@ -298,15 +296,14 @@
 		+| Delete     | 46          | Del   |
 		++------------+-------------+-------+
 
-	<h4 id="optionally-fixed-virtual-key-codes">Optionally fixed virtual key codes</h4>
+	<h4 id="optionally-fixed-virtual-key-codes">可选的固定虚拟键码</h4>
 
-		The following punctuation characters MAY change virtual codes between
-		keyboard layouts, but reporting these values will likely be more
-		compatible with legacy content expecting US-English keyboard layout:
+		以下标点符号的虚拟键码 <span class="zh-upper">可以</span> 
+		在不同键盘布局之间不同，但报告的这些值很可能会更兼容于某些遗留内容，
+		这些遗留内容预期使用美式英语键盘布局:
 
 		++------------------------+-----------------+-------------+
-		=| Key                    | Character       | Virtual Key |
-		 |                        |                 | <br/>Code   |
+		=| 键                     | 字符            | 虚拟键码    |
 		 +------------------------+--------o--------+------o------+
 		+| Semicolon              | GLYPH{;}        | 186         |
 		+| Colon                  | GLYPH{:}        | 186         |
