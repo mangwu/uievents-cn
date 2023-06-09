@@ -403,12 +403,12 @@
 		
 		<div class="note custom-note">
 		为了帮助理解增加遗留焦点事件后，焦点事件触发的顺序，
-		下面自定义了一个实际实现上焦点事件触发顺序表，测试网站为
+		下面自定义了一个在实际实现上的焦点事件触发顺序表，测试网站为
 		<a href="https://domeventviewer.com/focus-event-viewer.html">
 		https://domeventviewer.com/focus-event-viewer.html</a> 。其中，
-		经过测试可以知晓的是火狐浏览器(113.0.2 64位)在用户转转移焦点时已经不会触发 
-		EVENT{DOMFocusIn} 和 EVENT{DOMFocusOut} 事件了，而(114.0.5735.91(正式版本) 
-		(64 位))可以正常触发。
+		经过测试可以知晓的是火狐浏览器(113.0.2 64位)在用户转移焦点时已经不会触发 
+		EVENT{DOMFocusIn} 和 EVENT{DOMFocusOut} 事件了，而谷歌浏览器(114.0.5735.91
+		(正式版本) (64 位))可以正常触发。
 		</div>
         
 				++--------------+-------------+---------------------------------------------------+ custom-real-legacy-focusevent-event-order-list_event-sequence-table
