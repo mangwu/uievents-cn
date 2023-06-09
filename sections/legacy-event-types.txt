@@ -88,7 +88,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -121,99 +121,120 @@
 			<p class="note" id="DOMActivate-click">
 			虽然 EVENT{DOMActivate} 和 EVENT{click} 并不完全等同，但 
 			EVENT{click} 事件类型的实现行为已经发展到包括 EVENT{DOMActivate} 
-			<href="#event-type">事件类型</a> 设计时考虑的最关键的无障碍(accessibility)
-			方面，并得到了更广泛的实现。鼓励内容作者使用 EVENT{click} 
-			<href="#event-type">事件类型</a>，而不是相关的 EVENT{mousedown} 或 
-			EVENT{mouseup} <href="#event-type">事件类型</a>，以确保最大程度的可访问性
-			(accessibility)。
+			<a href="#event-type">事件类型</a> 设计时考虑的最关键的无障碍
+			(accessibility)方面，并得到了更广泛的实现。鼓励内容作者使用 EVENT{click} 
+			<a href="#event-type">事件类型</a>，而不是相关的 EVENT{mousedown} 或 
+			EVENT{mouseup} <a href="#event-type">事件类型</a>，
+			以确保最大程度的可访问性(accessibility)。
 			</p>
 
-		支持 EVENT{DOMActivate} <href="#event-type">事件类型</a> 的实现还 
+		支持 EVENT{DOMActivate} <a href="#event-type">事件类型</a> 的实现还 
 		<span class="zh-upper">应当</span> 将 EVENT{DOMActivate} 作为与 
 		<a href="#activation-trigger">激活触发器</a> 关联的 EVENT{click} 事件的 
 		<a href="#default-action">默认行为</a> 进行派发。然而，对于 
-		<a href="#activation-trigger">激活触发器</a> 的任何给定事件，
-		这样的实现应该只启动一次相关的 <a href="#"></a>  激活行为。
-		Implementations which support the EVENT{DOMActivate} <a>event type</a>
-		SHOULD also dispatch a EVENT{DOMActivate} event as a <a>default
-		action</a> of a EVENT{click} event which is associated with an
-		<a>activation trigger</a>. However, such implementations SHOULD only
-		initiate the associated <a>activation behavior</a> once for any given
-		occurrence of an <a>activation trigger</a>.
+		<a href="#activation-trigger">激活触发器</a> 的关联的任何事件，
+		这样的实现 <span class="zh-upper">应当</span> 只启动一次相关的 
+		<a href="#activation-behavior">激活行为</a> 。
+
+		<div class="note custom-note" id="DOMActivate-and-Click-custom-note">
+		经过测试，不同浏览器对于触发 EVENT{DOMActivate} 遗留事件的行为不一样，
+		例如在点击a标签链接时，会在a元素上派发 EVENT{click} 事件，连带其默认行为执行
+		，火狐浏览器(113.0.2 64位)中连带的默认行为包括触发 EVENT{DOMActivate} 事件，
+		而谷歌浏览器(114.0.5735.91(正式版本) (64 位))并不包含。测试例子见 
+		<a target="_blank"
+		href="https://mangwu.github.io/javascript/ProfessionalJavaScriptForWebDeveloper4/ch17 - 事件（Events）/17.4 事件类型（Event Type）/17.4.1 用户界面事件（UI Events）/17.4.1.3 UIEvent Types/DOMActivate事件（supplement）/DOMActivate and Click.html">
+		DOMActivate and Click
+		</a> 。
+		</div>
+		
 
 		<div class="example">
 		<p>
-		The EVENT{DOMActivate} <a>event type</a> is REQUIRED to be supported for
-		XForms [[XFORMS11]], which is intended for implementation within a <a>host
-		language</a>. In a scenario where a plugin or script-based
-		implementation of XForms is intended for installation in a native
-		implementation of this specification which does not support the
-		EVENT{DOMActivate} <a>event type</a>, the XForms <a>user agent</a> has
-		to synthesize and dispatch its own EVENT{DOMActivate} events based on
-		the appropriate <a>activation triggers</a>.
+		XForms [[XFORMS11]] <span class="zh-upper">必须</span>  支持 
+		EVENT{DOMActivate} <a href="#event-type">事件类型</a> ，它预定用 
+		<a href="#host-language">宿主语言</a> 实现。
+		如果用插件或基于脚本的 XForms 实现要安装在符合本规范的不支持 
+		EVENT{DOMActivate} <a href="#event-type">事件类型</a> 规定的原生实现中，
+		XForms <a href="#user-agent">用户代理</a> 必须根据合适的 
+		<a href="#activation-trigger">激活触发器</a> 合成(synthesize)并派发自己的
+		EVENT{DOMActivate} 事件。
 		</p>
 
 		<p>
-		Thus, when a EVENT{click} event is dispatched by a <a>user agent</a>
-		conforming to UI Events, the XForms <a>user agent</a> has to determine
-		whether to synthesize a EVENT{DOMActivate} event with the same relevant
-		properties as a <a>default action</a> of that EVENT{click} event.
-		Appropriate cues might be whether the EVENT{click} event is <a
-		href="#trusted-events">trusted</a>, or whether its <a>event target</a>
-		has a EVENT{DOMActivate} <a>event listener</a> registered.
+		因此，当 EVENT{click} 事件由符合用户界面事件规范的 
+		<a href="#user-agent">用户代理</a> 派发时， XForms 
+		<a href="#user-agent">用户代理</a> 必须确定是否合成具有与该 EVENT{click}
+		事件的 <a href="#default-action">默认行为</a> 的相关属性相同的
+		EVENT{DOMActivate} 事件。适当的提示(Appropriate cues，指 EVENT{click}
+		事件的属性)可能有 EVENT{click} 事件是否 <a href="#trusted-events">可信</a>
+		，或者其 <a href="#event-target">事件目标</a> 是否注册了 EVENT{DOMActivate}
+		的 <a href="#event-listener">事件侦听器</a> 。
 		</p>
 		</div>
 
 		<p class="note">
-		Don't rely upon the interoperable support of EVENT{DOMActivate} in many
-		<a>user agents</a>. Instead, the EVENT{click} <a>event type</a> should
-		be used since it will provide more accessible behavior due to broader
-		implementation support.
+		不要在许多 <a href="#user-agent">用户代理</a> 中依赖 EVENT{DOMActivate} 
+		的协作(interoperable)支持。相反，应该使用 EVENT{click} 
+		<a href="#event-type">事件类型</a> ，因为它被广泛的实现支持，
+		并提供更容易访问的(accessible)行为。
 		</p>
 
 		<p class="warning">
-		The EVENT{DOMActivate} <a>event type</a> is deprecated in this
-		specification.
+		此规范中反对(deprecated)使用 EVENT{DOMActivate} 
+		<a href="#event-type">事件类型</a> 。
 		</p>
 
-	<h4 id="legacy-uievent-event-order">Activation event order</h4>
+	<h4 id="legacy-uievent-event-order">激活(Activation)事件顺序</h4>
 
-		If the <code>DOMActivate</code> event is supported by the <a>user
-		agent</a>, then the events MUST be dispatched in a set order relative to
-		each other: (with only pertinent events listed):
-
+		如果 <a href="#user-agent">用户代理</a> 支持 <code>DOMActivate</code> 
+		事件，则 <span class="zh-upper">必须</span> 
+		按以下相对于彼此的固定顺序被派发: (仅列出有关(pertinent)事件): 
+		<a href="#default-action">默认行为</a>
+		
         ++---+-------------+---------------------------------------------------+
-        =| # | 事件类型    | Notes                                             |
+        =| # | 事件类型    | 注释                                              |
          +---+-------------+---------------------------------------------------+
         +| 1 | click       |                                                   |
-        +| 2 | DOMActivate | <a>default action</a>, if supported by the        |
-         |   |             | <a>user agent</a>; synthesized;                   |
-         |   |             | <code>isTrusted="true"</code>                     |
-        +| 3 |             | <em>All other <a>default actions</a>,             |
-				 |   |             | including the <a>activation behavior</a></em>     |
+        +| 2 | DOMActivate | 如果 <a href="#user-agent">用户代理</a> 支持      |
+         |   |             | (此事件)，(则作为 EVENT{click} 事件的)            |
+         |   |             | <a href="#default-action">默认行为</a> (被派发);  |
+         |   |             | 合成的; <code>isTrusted="true"</code>             |
+        +| 3 |             | <em>所有其它( EVENT{click} 事件的)                |
+				 |   |             | <a href="#default-action">默认行为</a> ，包括     |
+				 |   |             | <a href="#activation-behavior">激活行为</a></em>  |
         ++---+-------------+---------------------------------------------------+
 
-		If the focused element is activated by a key event, then the following
-		shows the typical sequence of events (with only pertinent events listed):
+		如果焦点元素是被按键事件激活的，则以下显示了典型的事件序列
+		(仅列出有关(pertinent)事件):
 
         ++---+-------------+---------------------------------------------------+
-        =| # | 事件类型    | Notes                                             |
+        =| # | 事件类型    | 注释                                              |
          +---+-------------+---------------------------------------------------+
-        +| 1 | keydown     | MUST be a key which can activate the element,     |
-         |   |             | such as the KEYCAP{Enter} or KEYCAP{&nbsp;&nbsp;} |
-         |   |             | (spacebar) key, or the element is not activated   |
-        +| 2 | click       | <a>default action</a>; synthesized;               |
-         |   |             | <code>isTrusted="true"</code>                     |
-        +| 3 | DOMActivate | <a>default action</a>, if supported by the        |
-         |   |             | <a>user agent</a>; synthesized;                   |
-         |   |             | <code>isTrusted="true"</code>                     |
-        +| 4 |             | <em>All other <a>default actions</a>,             |
-		 |   |             | including the <a>activation behavior</a></em>     |
+        +| 1 | keydown     | <span class="zh-upper">必须</span>                |
+         |   |             | 是可以激活元素的键，例如 KEYCAP{Enter} 或         |
+         |   |             | KEYCAP{&nbsp;&nbsp;} (空格)键，或者元素未被激活   |
+        +| 2 | click       | (作为 EVENT{keydown} 事件的)                      |
+         |   |             | <a href="#default-action">默认行为</a> (被派发);  |
+         |   |             | 合成的; <code>isTrusted="true"</code>             |
+        +| 3 | DOMActivate | 如果 <a href="#user-agent">用户代理</a> 支持      |
+         |   |             | (此事件)，(则作为 EVENT{click} 事件的)            |
+         |   |             | <a href="#default-action">默认行为</a> (被派发);  |
+         |   |             | 合成的; <code>isTrusted="true"</code>             |
+        +| 4 |             | <em>所有其它( EVENT{click} 事件的)                |
+				 |   |             | <a href="#default-action">默认行为</a> ，包括     |
+				 |   |             | <a href="#activation-behavior">激活行为</a></em>  |
         ++---+-------------+---------------------------------------------------+
+		
+		<div class="note custom-note">
+		关于 EVENT{DOMActivate} 在现代浏览器中的支持行为，可以查阅 
+		EVENT{DOMActivate} 事件介绍中的  
+		<a href="#DOMActivate-and-Click-custom-note">非规范注释</a> ，
+		其中包含一个测试地址可以验证本节事件序列的正确性。
+		</div>
 
-<h3 id="legacy-focusevent-events">Legacy {{FocusEvent}} events</h3>
+<h3 id="legacy-focusevent-events">遗留 {{FocusEvent}} 事件</h3>
 
-	<h4 id="legacy-focusevent-event-types">Legacy {{FocusEvent}} event types</h4>
+	<h4 id="legacy-focusevent-event-types">遗留 {{FocusEvent}} 事件类型</h4>
 
 		<h5 id="event-type-DOMFocusIn"><dfn>DOMFocusIn</dfn></h5>
 
@@ -248,14 +269,14 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								<a>event target</a> receiving focus</li>
+								正在接收焦点的 <a href="#event-target">事件对象</a> </li>
 							<li>{{UIEvent}}.{{UIEvent/view}} :
 								<a><code>Window</code></a></li>
 							<li>{{UIEvent}}.{{UIEvent/detail}} :
@@ -267,11 +288,12 @@
 				</tr>
 			</table>
 
+			当 <a href="#event-target">事件对象</a> 接收焦点时 
 			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。when an <a>event
-			target</a> receives focus. The focus MUST be given to the
-			element before the dispatch of this event type. This event type
-			MUST be dispatched after the event type EVENT{focus}.
+			派发此事件。 <a href="#event-target">事件对象</a> 
+			<span class="zh-upper">必须</span> 在此事件类型被派发前接收焦点
+			此事件类型 <span class="zh-upper">必须</span> 在 EVENT{focus}
+			事件类型之后被派发。
 
 			<p class="warning">
 			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMFocusIn}
@@ -313,14 +335,14 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								<a>event target</a> losing focus</li>
+								正在失去焦点的 <a href="#event-target">事件对象</a> </li>
 							<li>{{UIEvent}}.{{UIEvent/view}} :
 								<a><code>Window</code></a></li>
 							<li>{{UIEvent}}.{{UIEvent/detail}} :
@@ -332,11 +354,11 @@
 				</tr>
 			</table>
 
+			当 <a href="#event-target">事件对象</a> 失去焦点时，
 			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。when an <a>event
-			target</a> loses focus. The focus MUST be taken from the element
-			before the dispatch of this event type. This event type MUST be
-			dispatched after the event type EVENT{blur}.
+			派发此事件。焦点 <span class="zh-upper">必须</span> 在派发此事件之前从 
+			<a href="#event-target">事件对象</a> 上丢失(taken)。此事件类型 
+			<span class="zh-upper">必须</span> 在 EVENT{blur} 事件类型之后被派发。
 
 			<p class="warning">
 			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMFocusOut}
@@ -345,28 +367,65 @@
 			而赞成使用相关的 EVENT{blur} 和 EVENT{focusout} 事件类型。
 			</p>
 
-	<h4 id="legacy-focusevent-event-order">Legacy FocusEvent event order</h4>
+	<h4 id="legacy-focusevent-event-order">遗留焦点事件(FocusEvent)事件顺序</h4>
 
-		The following is the typical sequence of events when a focus is shifted
-		between elements, including the deprecated EVENT{DOMFocusIn} and
-		EVENT{DOMFocusOut} events. The order shown assumes that no element is
-		initially focused.
+		以下是焦点在元素之间转移时的典型事件序列，包括不推荐使用的 EVENT{DOMFocusIn}
+		和 EVENT{DOMFocusOut} 事件。所示的顺序假定最初没有元素被聚焦。
 
-        ++---+-------------+---------------------------------------------------+
-        =| # | 事件类型    | Notes                                             |
+		<div class="note custom-note">
+		这里的顺序是 EVENT{focusin} => EVENT{focus} => EVENT{DOMFocusIn} ，
+		这种顺序在现代浏览器测试中是 <strong>错误的</strong> ，并且不符合正式规范的
+		[[#events-focusevent-event-order]] 中的描述。<br/>实际上 
+		<a href="https://github.com/w3c/uievents">源项目</a> 在 2023 年 3 月 10 
+		号在 main 和 gh-pages 分支上合入了一个名称为 
+		<a href="https://github.com/w3c/uievents/commit/c1d10be0a64f765f5721efd00be3adcf2105e291">
+		Reflect the reality for the focus event order</a> 的合入请求，
+		该分支请求指出了 <code>event-types</code> 文件(事件类型区域内容)
+		中有关焦点事件顺序的错误，并将其更正为正确形式，只不过在本(遗留事件类型)
+		区域没有进行更改。
+		</div>
+
+        ++---+-------------+---------------------------------------------------+ custom-legacy-focusevent-event-order-list_event-sequence-table
+        =|❌| 事件类型    | 注释                                              |
          +---+-------------+---------------------------------------------------+
-        +|   |             | <em>User shifts focus</em>                        |
-        +| 1 | focusin     | Sent before first target element receives focus   |
-        +| 2 | focus       | Sent after first target element receives focus    |
-        +| 3 | DOMFocusIn  | If supported                                      |
-        +|   |             | <em>User shifts focus</em>                        |
-        +| 4 | focusout    | Sent before first target element loses focus      |
-        +| 5 | focusin     | Sent before second target element receives focus  |
-        +| 6 | blur        | Sent after first target element loses focus       |
-        +| 7 | DOMFocusOut | If supported                                      |
-        +| 8 | focus       | Sent after second target element receives focus   |
-        +| 9 | DOMFocusIn  | If supported                                      |
+        +|   |             | <em>用户转移焦点</em>                             |
+        +| 1 | focusin     | 在第一个目标元素接收焦点之前发送                  |
+        +| 2 | focus       | 在第一个目标元素收到焦点后发送                    |
+        +| 3 | DOMFocusIn  | 如果支持(才派发此事件)                            |
+        +|   |             | <em>用户转移焦点</em>                             |
+        +| 4 | focusout    | 在第一个目标元素失去焦点之前发送                  |
+        +| 5 | focusin     | 在第二个目标元素接收焦点之前发送                  |
+        +| 6 | blur        | 在第一个目标元素失去焦点后发送                    |
+        +| 7 | DOMFocusOut | 如果支持(才派发此事件)                            |
+        +| 8 | focus       | 在第二个目标元素接收焦点后发送                    |
+        +| 9 | DOMFocusIn  | 如果支持(才派发此事件)                            |
         ++---+-------------+---------------------------------------------------+
+		
+		<div class="note custom-note">
+		为了帮助理解增加遗留焦点事件后，焦点事件触发的顺序，
+		下面自定义了一个实际实现上焦点事件触发顺序表，测试网站为
+		<a href="https://domeventviewer.com/focus-event-viewer.html">
+		https://domeventviewer.com/focus-event-viewer.html</a> 。其中，
+		经过测试可以知晓的是火狐浏览器(113.0.2 64位)在用户转转移焦点时已经不会触发 
+		EVENT{DOMFocusIn} 和 EVENT{DOMFocusOut} 事件了，而(114.0.5735.91(正式版本) 
+		(64 位))可以正常触发。
+		</div>
+        
+				++--------------+-------------+---------------------------------------------------+ custom-real-legacy-focusevent-event-order-list_event-sequence-table
+        =|✅非规范表格 | 事件类型    | 注释                                              |
+         +-------o------+-------------+---------------------------------------------------+
+        +|              |             | <em>用户转移焦点</em>                             |
+        +| 1            | focus       | 在第一个目标元素接收焦点之后发送                  |
+        +| 2            | focusin     | 紧随 EVENT{focus} 事件发送                        |
+        +| 3            | DOMFocusIn  | 如果支持(才派发此事件)                            |
+        +|              |             | <em>用户转移焦点</em>                             |
+        +| 4            | blur        | 在第一个目标元素失去焦点之后发送                  |
+        +| 5            | focusout    | 紧随 EVENT{blur} 事件发送                         |
+        +| 6            | DOMFocusOut | 如果支持(才派发此事件)                            |
+        +| 7            | focus       | 在第二个目标元素接收焦点后发送                    |
+        +| 8            | focusin     | 紧随 EVENT{focus} 事件发送                        |
+        +| 9            | DOMFocusIn  | 如果支持(才派发此事件)                            |
+        ++--------------+-------------+---------------------------------------------------+
 
 <h3 id="legacy-keyboardevent-events">遗留 {{KeyboardEvent}} 事件</h3>
 
@@ -614,17 +673,17 @@
 
 			<dt><dfn attribute>relatedNode</dfn></dt>
 			<dd>
-				<code>relatedNode</code> MUST be used to identify a secondary
+				<code>relatedNode</code> <span class="zh-upper">必须</span> be used to identify a secondary
 				node related to a mutation event. For example, if a mutation
 				event is dispatched to a node indicating that its parent has
 				changed, the <code>relatedNode</code> will be the changed
 				parent. If an event is instead dispatched to a subtree
 				indicating a node was changed within it, the
-				<code>relatedNode</code> MUST be the changed node. In the case
+				<code>relatedNode</code> <span class="zh-upper">必须</span> be the changed node. In the case
 				of the EVENT{DOMAttrModified} event, it indicates the
 				<code>Attr</code> node which was modified, added, or removed.
 
-				The <a>un-initialized value</a> of this attribute MUST be
+				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
 				<code>null</code>.
 			</dd>
 
@@ -635,7 +694,7 @@
 				the <code>CharacterData</code> node in
 				EVENT{DOMCharacterDataModified} events.
 
-				The <a>un-initialized value</a> of this attribute MUST be
+				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
 				<code>""</code> (the empty string).
 			</dd>
 
@@ -646,7 +705,7 @@
 				the <code>CharacterData</code> node in
 				EVENT{DOMCharacterDataModified} events.
 
-				The <a>un-initialized value</a> of this attribute MUST be
+				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
 				<code>""</code> (the empty string).
 			</dd>
 
@@ -655,7 +714,7 @@
 				<code>attrName</code> indicates the name of the changed
 				<code>Attr</code> node in a EVENT{DOMAttrModified} event.
 
-				The <a>un-initialized value</a> of this attribute MUST be
+				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
 				<code>""</code> (the empty string).
 			</dd>
 
@@ -666,7 +725,7 @@
 				<code>MODIFICATION</code>, <code>ADDITION</code>, or
 				<code>REMOVAL</code>.
 
-				The <a>un-initialized value</a> of this attribute MUST be
+				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
 				<code>0</code>.
 
 				<p class="note">
@@ -764,7 +823,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -791,7 +850,7 @@
 			派发此事件。after an
 			<code>Attr.value</code> has been modified and after an
 			<code>Attr</code> node has been added to or removed from an
-			<code>Element</code>. The <a>event target</a> of this event MUST be
+			<code>Element</code>. The <a href="#event-target">事件对象</a>  of this event <span class="zh-upper">必须</span> be
 			the <code>Element</code> node where the change occurred. It is
 			implementation dependent whether this event type occurs when the
 			children of the <code>Attr</code> node are changed in ways that do
@@ -836,7 +895,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -864,7 +923,7 @@
 			<code>CharacterData.data</code> or
 			<code>ProcessingInstruction.data</code> have been modified, but the
 			node itself has not been inserted or deleted. The <a>event
-			target</a> of this event MUST be the <code>CharacterData</code> node
+			target</a> of this event <span class="zh-upper">必须</span> be the <code>CharacterData</code> node
 			or the <code>ProcessingInstruction</code> node.
 
 			<p class="warning">
@@ -907,7 +966,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -936,8 +995,8 @@
 			node. A <a>user agent</a> MAY dispatch this event when an
 			<code>Attr</code> node has been added to an <code>Element</code>
 			node (see <a href="#DOMNodeInserted-attr">note</a> below). This
-			event MUST be dispatched after the insertion has taken place. The
-			<a>event target</a> of this event MUST be the node being inserted.
+			event <span class="zh-upper">必须</span> be dispatched after the insertion has taken place. The
+			<a href="#event-target">事件对象</a>  of this event <span class="zh-upper">必须</span> be the node being inserted.
 
 			<p class="note" id="DOMNodeInserted-attr">
 			For detecting attribute insertion, use the EVENT{DOMAttrModified}
@@ -984,7 +1043,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -1012,10 +1071,10 @@
 			inserted into a document, either through direct insertion of the
 			node or insertion of a subtree in which it is contained. A <a>user
 			agent</a> MAY  treat an <code>Attr</code> node as part of an
-			<code>Element</code>'s subtree. This event MUST be dispatched after
-			the insertion has taken place. The <a>event target</a> of this event
-			MUST be the node being inserted. If the node is being directly
-			inserted, the event type EVENT{DOMNodeInserted} MUST occur before
+			<code>Element</code>'s subtree. This event <span class="zh-upper">必须</span> be dispatched after
+			the insertion has taken place. The <a href="#event-target">事件对象</a>  of this event
+			<span class="zh-upper">必须</span> be the node being inserted. If the node is being directly
+			inserted, the event type EVENT{DOMNodeInserted} <span class="zh-upper">必须</span> occur before
 			this event type.
 
 			<p class="warning">
@@ -1058,7 +1117,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -1086,9 +1145,9 @@
 			an <code>Attr</code> node is being removed from its parent node. A
 			<a>user agent</a> MAY dispatch this event when an <code>Attr</code>
 			node is being removed from its <code>ownerElement</code> (see <a
-			href="#DOMNodeRemoved-attr">note</a> below). This event MUST be
-			dispatched before the removal takes place. The <a>event target</a>
-			of this event MUST be the node being removed.
+			href="#DOMNodeRemoved-attr">note</a> below). This event <span class="zh-upper">必须</span> be
+			dispatched before the removal takes place. The <a href="#event-target">事件对象</a> 
+			of this event <span class="zh-upper">必须</span> be the node being removed.
 
 			<p class="note" id="DOMNodeRemoved-attr">
 			For reliably detecting attribute removal, use the
@@ -1135,7 +1194,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -1163,10 +1222,10 @@
 			removed from a document, either through direct removal of the node
 			or removal of a subtree in which it is contained. A <a>user
 			agent</a> MAY treat an <code>Attr</code> node as part of an
-			<code>Element</code>'s subtree. This event MUST be dispatched before
-			the removal takes place. The <a>event target</a> of this event type
-			MUST be the node being removed. If the node is being directly
-			removed, the event type EVENT{DOMNodeRemoved} MUST occur before this
+			<code>Element</code>'s subtree. This event <span class="zh-upper">必须</span> be dispatched before
+			the removal takes place. The <a href="#event-target">事件对象</a>  of this event type
+			<span class="zh-upper">必须</span> be the node being removed. If the node is being directly
+			removed, the event type EVENT{DOMNodeRemoved} <span class="zh-upper">必须</span> occur before this
 			event type.
 
 			<p class="note">
@@ -1214,7 +1273,7 @@
 				</tr>
 				<tr>
 					<th>默认行为</th>
-					<td>None</td>
+					<td>没有</td>
 				</tr>
 				<tr>
 					<th>上下文<br/>(可信事件)</th>
@@ -1243,9 +1302,9 @@
 			modification to the document or, at the implementation's discretion,
 			after multiple changes have occurred. The latter case SHOULD
 			generally be used to accommodate multiple changes which occur either
-			simultaneously or in rapid succession. The target of this event MUST
+			simultaneously or in rapid succession. The target of this event <span class="zh-upper">必须</span>
 			be the lowest common parent of the changes which have taken place.
-			This event MUST be dispatched after any other events caused by the
+			This event <span class="zh-upper">必须</span> be dispatched after any other events caused by the
 			mutation(s) have occurred.
 
 			<p class="warning">

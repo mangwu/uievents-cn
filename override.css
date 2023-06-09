@@ -458,6 +458,40 @@ figcaption:not(.no-marker)::before {
 .custom-rfc2119-list > tbody > tr > th:nth-child(2) {
   width: 176px;
 }
+/* 给遗留焦点事件错误表格添加提示 */
+.custom-legacy-focusevent-event-order-list > tbody > tr {
+  position: relative;
+}
+.custom-legacy-focusevent-event-order-list > tbody > tr > th:nth-child(1) {
+  cursor: pointer;
+}
+.custom-legacy-focusevent-event-order-list
+  > tbody
+  > tr
+  > th:nth-child(1):hover::before {
+  content: "非正确顺序";
+  color: rgb(225, 65, 65);
+  position: absolute;
+  display: inline-block;
+  left: -88px;
+}
+/* 自定义的遗留焦点事件正确表格 */
+.custom-real-legacy-focusevent-event-order-list > tbody > tr {
+  position: relative;
+}
+.custom-real-legacy-focusevent-event-order-list > tbody > tr > th:nth-child(1) {
+  cursor: pointer;
+}
+.custom-real-legacy-focusevent-event-order-list
+  > tbody
+  > tr
+  > th:nth-child(1):hover::before {
+  content: "正确顺序";
+  color: rgb(15, 212, 15);
+  position: absolute;
+  display: inline-block;
+  left: -72px;
+}
 /* 遗留事件类型列表 */
 .legacy-event-types-list {
   width: 127%;
