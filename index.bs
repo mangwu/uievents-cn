@@ -137,6 +137,8 @@ url: https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts; type: d
 	text: 标准键盘布局
 url: https://mangwu.github.io/uievents-key-cn/#combining-character; type: dfn; spec: uievents-key;
 	text: 组合字符
+url: https://dom.spec.whatwg.org/#interface-mutationobserver; type: interface; spec: dom;
+	text: MutationObserver
 </pre>
 
 <pre class="link-defaults">

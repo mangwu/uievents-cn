@@ -261,7 +261,7 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
@@ -327,7 +327,7 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
@@ -386,7 +386,7 @@
 		</div>
 
         ++---+-------------+---------------------------------------------------+ custom-legacy-focusevent-event-order-list_event-sequence-table
-        =|❌| 事件类型    | 注释                                              |
+        =|🚫| 事件类型    | 注释                                              |
          +---+-------------+---------------------------------------------------+
         +|   |             | <em>用户转移焦点</em>                             |
         +| 1 | focusin     | 在第一个目标元素接收焦点之前发送                  |
@@ -589,58 +589,59 @@
 		++---+-------------+------------------------+---------------------+--------------------------------+
 		</div>
 
-<h3 id="legacy-mutationevent-events">Legacy {{MutationEvent}} events</h3>
+<h3 id="legacy-mutationevent-events">遗留 {{MutationEvent}} 事件</h3>
 
-	The mutation and mutation name event modules are designed to allow
-	notification of any changes to the structure of a document, including
-	attribute, text, or name modifications.
+	<div class="note custom-note">
+	<q>Mutation</q> 在英语中意为突变，在前端领域，它常被指为 DOM 
+	元素所经历的变化或渲染的 DOM 元素的状态的变化，{{MutationObserver}}
+	的出现取代了废弃的 {{MutationEvent}} 事件。
+	</div>
+	
+	突变和名为突变的事件模块旨在允许文档结构的任何更改进行通知，包括属性、
+	文本或名称的修改(modifications)。
 
 	<p class="note">
-	None of the event types associated with the {{MutationEvent}} interface are
-	designated as cancelable. This stems from the fact that it is very difficult
-	to make use of existing DOM interfaces which cause document modifications if
-	any change to the document might or might not take place due to cancelation
-	of the resulting event. Although this is still a desired capability, it was
-	decided that it would be better left until the addition of transactions into
-	the DOM.
+	与 {{MutationEvent}} 接口关联的任何事件类型都指定为不可取消。
+	这源于这样一个事实，即如果因(突变)而发生的事件(resulting event)的取消性
+	(cancelation)决定文档变化的可能的发生或不发生，
+	那么很难使用现有的会导致文档变动(modifications)的 DOM 接口。
+	尽管这仍然是一种希望实现的(desired)功能，但决定将其剩余(left)会更好，
+	除非将事务添加到 DOM 中(until the addition of transactions into the DOM)。
 	</p>
 
-	Many single modifications of the tree can cause multiple mutation events to
-	be dispatched. Rather than attempt to specify the ordering of mutation
-	events due to every possible modification of the tree, the ordering of these
-	events is left to the implementation.
+	DOM 树的许多单个修改(modifications)可以导致多个突变事件被派发。 
+	与其努力去指定由于树的每一次可能的修改而导致的一系列突变事件的顺序，
+	不如将这些事件的顺序留给实现(去自己决定)。
 
 	<div class="warning">
 	<p>
-	The {{MutationEvent}} interface was introduced in DOM Level 2 Events, but
-	has not yet been completely and interoperably implemented across <a>user
-	agents</a>. In addition, there have been critiques that the interface, as
-	designed, introduces a performance and implementation challenge.
+	{{MutationEvent}} 接口是在 DOM Level 2 Events 中引入的，
+	但尚未在所有 <a href="#user-agent">用户代理</a> 上被完全且可互用地
+	(interoperably)被实现。此外，也有人批评接口的设计带来了性能和实现方面的挑战
+	(非规范补充: 这也是后来遗弃 {{MutationEvent}} 而引入 {{MutationObserver}} 
+	的原因之一)。
 	</p>
 	<p>
-	DOM4 [[!DOM]] provides a new mechanism using a
-	<code>MutationObserver</code> interface which addresses the use cases that
-	mutation events solve, but in a more performant manner. Thus, this
-	specification describes mutation events for reference and completeness of
-	legacy behavior, but <a>deprecates</a> the use of the {{MutationEvent}}
-	interface.
+	DOM4 [[!DOM]] 提供了一种使用 {{MutationObserver}} 接口的新机制，
+	该接口以更高性能的方式解决了突变事件处理(solve)的用例。因此，
+	本规范描述了突变事件是为了保证遗留行为的参考引用和完整性，
+	但 <a href="#deprecates">反对(deprecates)</a> 使用 {{MutationEvent}} 接口。
 	</p>
 	</div>
 
-	<h4 id="interface-mutationevent">Interface MutationEvent</h4>
+	<h4 id="interface-mutationevent">MutationEvent 接口</h4>
 
-		<p class="intro-dom">Introduced in DOM Level 2, deprecated in this
-		specification</p>
+		<p class="intro-dom">在 DOM Level 2中引入介绍，但在本规范中已被弃用</p>
 
-		The <code>MutationEvent</code> interface provides specific contextual
-		information associated with Mutation events.
+		<code>MutationEvent</code> 接口提供与突变事件(Mutation events)
+		相关的特定上下文信息。
 
-		To create an instance of the <code>MutationEvent</code> interface, use
-		the {{Document/createEvent()}} method call.
+		要创建 <code>MutationEvent</code> 接口的实例，调用 
+		{{Document/createEvent()}} 方法。
 
 		<pre class="idl">
 		interface MutationEvent : Event {
-		  // attrChangeType
+		  // 属性更改类型(attrChangeType)
 		  const unsigned short MODIFICATION = 1;
 		  const unsigned short ADDITION = 2;
 		  const unsigned short REMOVAL = 3;
@@ -658,137 +659,147 @@
 		<dl dfn-for="MutationEvent" data-noexport>
 			<dt><dfn const>MODIFICATION</dfn></dt>
 			<dd>
-				The <code>Attr</code> was modified in place.
+				<code>Attr</code> 已修改到位(in place)。
 			</dd>
 
 			<dt><dfn const>ADDITION</dfn></dt>
 			<dd>
-				The <code>Attr</code> was just added.
+				<code>Attr</code> 刚刚被添加。
 			</dd>
 
 			<dt><dfn const>REMOVAL</dfn></dt>
 			<dd>
-				The <code>Attr</code> was just removed.
+				<code>Attr</code> 刚刚被移除。
 			</dd>
 
-			<dt><dfn attribute>relatedNode</dfn></dt>
+			<dt><dfn attribute class="origin-dfn">relatedNode</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">relatedNode</code></i>，
+				<code>Node</code>
+				<span class="replacement">类型，只读，可为空</span>
+			</dt>
+			
 			<dd>
-				<code>relatedNode</code> <span class="zh-upper">必须</span> be used to identify a secondary
-				node related to a mutation event. For example, if a mutation
-				event is dispatched to a node indicating that its parent has
-				changed, the <code>relatedNode</code> will be the changed
-				parent. If an event is instead dispatched to a subtree
-				indicating a node was changed within it, the
-				<code>relatedNode</code> <span class="zh-upper">必须</span> be the changed node. In the case
-				of the EVENT{DOMAttrModified} event, it indicates the
-				<code>Attr</code> node which was modified, added, or removed.
-
-				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
-				<code>null</code>.
+				<code>relatedNode</code> <span class="zh-upper">必须</span> 
+				用于标识与突变事件相关的次级(secondary)节点。例如，
+				如果一个突变事件被派发到一个节点，指示其父节点已经更改了，那么 
+				<code>relatedNode</code> 将是更改了的父节点。
+				如果一个事件被派发到了一个子树，指示其中的一个节点发生了更改，那么
+				<code>relatedNode</code> <span class="zh-upper">必须</span> 
+				是那个更改了的节点。在派发的事件是 EVENT{DOMAttrModified} 的情况下，
+				它指示被修改、添加或删除的 <code>Attr</code> 节点。
+				该属性的  <a href="#un-initialized-value">未初始化值</a>  
+				该属性的  <a href="#un-initialized-value">未初始化值</a> 
+				<span class="zh-upper">必须</span> 是 <code>null</code> 。
 			</dd>
 
-			<dt><dfn attribute>prevValue</dfn></dt>
+			<dt><dfn attribute class="origin-dfn">prevValue</dfn></dt>
+			<dt class="custom-dfn"><i><code class="idl">prevValue</code></i>，
+				<code>DOMString</code>
+				<span class="replacement"> 类型，只读</span>
+			</dt>
+			
 			<dd>
-				<code>prevValue</code> indicates the previous value of the
-				<code>Attr</code> node in EVENT{DOMAttrModified} events, and of
-				the <code>CharacterData</code> node in
-				EVENT{DOMCharacterDataModified} events.
+				<code>prevValue</code> 表示 EVENT{DOMAttrModified} 事件中的
+				<code>Attr</code> 节点的上一个值和 EVENT{DOMCharacterDataModified} 
+				事件中的 <code>CharacterData</code> 节点的上一个值。
 
-				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
-				<code>""</code> (the empty string).
+				该属性的  <a href="#un-initialized-value">未初始化值</a> 
+				<span class="zh-upper">必须</span> 是 <code>""</code> (空字符串)。
 			</dd>
 
-			<dt><dfn attribute>newValue</dfn></dt>
+			<dt><dfn attribute class="origin-dfn">newValue</dfn></dt>
 			<dd>
-				<code>newValue</code> indicates the new value of the
-				<code>Attr</code> node in EVENT{DOMAttrModified} events, and of
-				the <code>CharacterData</code> node in
-				EVENT{DOMCharacterDataModified} events.
+				<code>newValue</code> 表示 EVENT{DOMAttrModified} 事件中的 
+				code>Attr</code> 节点的新值，以及 EVENT{DOMCharacterDataModified} 
+				事件中的 <code>CharacterData</code> 节点的新值。
 
-				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
-				<code>""</code> (the empty string).
+				该属性的  <a href="#un-initialized-value">未初始化值</a> 
+				<span class="zh-upper">必须</span> 是 <code>""</code> (空字符串)。
 			</dd>
 
-			<dt><dfn attribute>attrName</dfn></dt>
+			<dt><dfn attribute class="origin-dfn">attrName</dfn></dt>
 			<dd>
-				<code>attrName</code> indicates the name of the changed
-				<code>Attr</code> node in a EVENT{DOMAttrModified} event.
+				<code>attrName</code> 表示 EVENT{DOMAttrModified} 事件中更改了的 
+				<code>Attr</code> 节点的名称。
 
-				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
-				<code>""</code> (the empty string).
+				该属性的  <a href="#un-initialized-value">未初始化值</a> 
+				<span class="zh-upper">必须</span> 是 <code>""</code> (空字符串)。
 			</dd>
 
-			<dt><dfn attribute>attrChange</dfn></dt>
+			<dt><dfn attribute class="origin-dfn">attrChange</dfn></dt>
 			<dd>
-				<code>attrChange</code> indicates the type of change which
-				triggered the EVENT{DOMAttrModified} event. The values can be
-				<code>MODIFICATION</code>, <code>ADDITION</code>, or
-				<code>REMOVAL</code>.
+				<code>attrChange</code> 表示触发的(triggered) EVENT{DOMAttrModified} 
+				事件的更改类型。这些值可以是 <code>MODIFICATION</code> 、 
+				<code>ADDITION</code> 或 <code>REMOVAL</code> 。
 
-				The <a>un-initialized value</a> of this attribute <span class="zh-upper">必须</span> be
-				<code>0</code>.
+				该属性的  <a href="#un-initialized-value">未初始化值</a> 
+				<span class="zh-upper">必须</span> 是 <code>0</code> 。
 
 				<p class="note">
-				There is no defined constant for the attrChange value of 0 (the
-				un-initialized value).
+				没有为 attrChange (未初始化值)定义常量值 0 。
 				</p>
 			</dd>
 
 			<dt><dfn method>initMutationEvent()</dfn></dt>
 			<dd>
-				Initializes attributes of a <code>MutationEvent</code> object.
-				This method has the same behavior as {{Event/initEvent()}}.
+				初始化 <code>MutationEvent</code> 对象的属性。此方法具有与 
+				{{Event/initEvent()}} 相同的行为。
 
 				<dl class="parameters">
 					<dt>DOMString typeArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean bubblesArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>boolean cancelableArg</dt>
 					<dd>
-						Refer to the {{Event/initEvent()}} method for a description of this parameter.
+						有关此参数的描述，请参阅 {{Event/initEvent()}} 方法。
 					</dd>
 
 					<dt>Node? relatedNodeArg</dt>
 					<dd>
-						Specifies {{MutationEvent}}.<code>relatedNode</code>.
+						指定 {{MutationEvent}}.<code>relatedNode</code> 。
 					</dd>
 
 					<dt>DOMString prevValueArg</dt>
 					<dd>
-						Specifies {{MutationEvent}}.<code>prevValue</code>. This value MAY be the <a>empty string</a>.
+					
+						指定 {{MutationEvent}}.<code>prevValue</code> 。此值 
+						<span class="zh-upper">可以</span> 是 
+						<a href="#empty-string">空字符串</a> 。
 					</dd>
 
 					<dt>DOMString newValueArg</dt>
 					<dd>
-						Specifies {{MutationEvent}}.<code>newValue</code>.
-						This value MAY be the <a>empty string</a>.
+						指定 {{MutationEvent}}.<code>newValue</code> 。
+						此值 <span class="zh-upper">可以</span> 是 
+						<a href="#empty-string">空字符串</a> 。
 					</dd>
 
 					<dt>DOMString attrNameArg</dt>
 					<dd>
-						Specifies {{MutationEvent}}.<code>attrName</code>.
-						This value MAY be the <a>empty string</a>.
+						指定 {{MutationEvent}}.<code>attrName</code> 。
+						此值 <span class="zh-upper">可以</span> 是 
+						<a href="#empty-string">空字符串</a> 。
 					</dd>
 
 					<dt>unsigned short attrChangeArg</dt>
 					<dd>
-						Specifies {{MutationEvent}}.<code>attrChange</code>.
-						This value MAY be <code>0</code>.
+						指定 {{MutationEvent}}.<code>attrChange</code>.
+						此值 <span class="zh-upper">可以</span> 是 <code>0</code> 。
 					</dd>
 				</dl>
 			</dd>
 		</dl>
 
-	<h4 id="legacy-mutationevent-event-types">Legacy {{MutationEvent}} event types</h4>
+	<h4 id="legacy-mutationevent-event-types">遗留 {{MutationEvent}} 事件类型</h4>
 
-		The mutation event types are listed below.
+		突变事件类型如下所示。
 
 		<h5 id="event-type-DOMAttrModified"><dfn>DOMAttrModified</dfn></h5>
 
@@ -815,11 +826,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -830,31 +841,32 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element whose attribute is being modified</li>
+								属性正在被修改的元素</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the name of the changed <code>Attr</code> node</li>
+								更改了的 <code>Attr</code> 节点的名称</li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
-								the numerical code corresponding to the most applicable <code>attrChangeType</code></li>
+								最匹配的 <code>attrChangeType</code> 对应的数字码</li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								the <code>Attr</code> node that has been modified, added, or removed.</li>
+								被修改、添加或删除的 <code>Attr</code> 节点。</li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								new value of the attribute, if the <code>Attr</code> node has been added or modified</li>
+								如果 <code>Attr</code> 节点已被添加或修改，则表示属性的新值。
+								</li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								previous value of the attribute, if the <code>Attr</code> node has been removed or modified</li>
+								如果 <code>Attr</code> 节点已被删除或修改，则表示属性的上一个值。
+								</li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。after an
-			<code>Attr.value</code> has been modified and after an
-			<code>Attr</code> node has been added to or removed from an
-			<code>Element</code>. The <a href="#event-target">事件对象</a>  of this event <span class="zh-upper">必须</span> be
-			the <code>Element</code> node where the change occurred. It is
-			implementation dependent whether this event type occurs when the
-			children of the <code>Attr</code> node are changed in ways that do
-			not affect the value of <code>Attr.value</code>.
+			在修改了一个 <code>Element</code> 的 <code>Attr.value</code> 
+			之后以及在一个 <code>Element</code> 上添加或删除一个 <code>Attr</code> 
+			节点之后 <a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">必须</span> 派发此事件。
+			事件的 <a href="#event-target">事件对象</a>
+			<span class="zh-upper">必须</span> 是发生了改变的 <code>Element</code> 
+			节点。当 <code>Attr</code> 节点的子节点以不影响 <code>Attr.value</code> 
+			值的方式更改时，是否会发生此事件类型取决于实现。
 
 			<p class="warning">
 			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMAttrModified}
@@ -887,11 +899,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -958,11 +970,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -1026,7 +1038,7 @@
 				</tr>
 				<tr>
 					<th>冒泡</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
@@ -1035,11 +1047,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -1109,11 +1121,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -1177,7 +1189,7 @@
 				</tr>
 				<tr>
 					<th>冒泡</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
@@ -1186,11 +1198,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
@@ -1265,11 +1277,11 @@
 				</tr>
 				<tr>
 					<th>可取消<br/>默认行为</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>能否从Shadow<br/>DOM冒泡传递</th>
-					<td>No</td>
+					<td>否</td>
 				</tr>
 				<tr>
 					<th>默认行为</th>
