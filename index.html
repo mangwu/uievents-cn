@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="9639aa2a32611cb12a341bee665770c52348c737" name="document-revision">
+  <meta content="22ca82735b8f7f8211ea13713c1cfb4d670a6a52" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1184,7 +1184,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li><a href="#extending-events-prefixes"><span class="secno">10.3.1</span> <span class="content">已知的实现特定的前缀</span></a>
        </ol>
      </ol>
-    <li><a href="#security-considerations"><span class="secno">11</span> <span class="content">Security Considerations</span></a>
+    <li><a href="#security-considerations"><span class="secno">11</span> <span class="content">安全注意事项</span></a>
     <li>
      <a href="#changes-from-earlier-versions"><span class="secno">12</span> <span class="content">Changes</span></a>
      <ol class="toc">
@@ -1528,7 +1528,7 @@ Web 应用程序的人。</p>
     <p>当一个事件被取消时，与该事件相关联的有条件的(conditional) <a href="#default-action" id="ref-for-default-action⑤">默认行为</a> 将被跳过(或者如上所述，
     如果 <a href="#default-action" id="ref-for-default-action⑥">默认行为</a> 在派发之前执行，
     则其作用将被撤消)。一个事件对象是否可取消由 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable">cancelable</a></code> 属性指示。调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault①">preventDefault()</a></code> 方法将取消事件对象相关的所有 <a href="#default-action" id="ref-for-default-action⑦">默认行为</a> 。 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-defaultprevented" id="ref-for-dom-event-defaultprevented">defaultPrevented</a></code> 属性表示事件是否已经被取消(例如，由先前的事件侦听器取消)。如果 <a href="#dom-application" id="ref-for-dom-application">DOM 应用程序</a> 本身发起了派发操作，那么 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent①">dispatchEvent()</a></code> 方法的返回值能表示事件对象是否被成功取消。</p>
-    <p class="note" role="note"> 许多实现还将 <a href="#event-listener" id="ref-for-event-listener③">事件监听器</a> 的返回值(如值 <code>false</code> )解释为可取消事件的 <a href="#default-action" id="ref-for-default-action⑧">默认行为</a> 将被被取消
+    <p class="note" role="note"> 许多实现还将 <a href="#event-listener" id="ref-for-event-listener①">事件监听器</a> 的返回值(如值 <code>false</code> )解释为可取消事件的 <a href="#default-action" id="ref-for-default-action⑧">默认行为</a> 将被被取消
     (尽管 <code>window.onerror</code> 的处理程序通过返回 <code>true</code> 来取消)。 </p>
     <h3 class="heading settled" data-level="3.3" id="sync-async"><span class="secno">3.3. </span><span class="content">同步和异步事件</span><a class="self-link" href="#sync-async"></a></h3>
     <p>事件可以被同步派发，也可以被异步派发。</p>
@@ -1921,8 +1921,8 @@ Web 应用程序的人。</p>
        <td>滚动(或缩放)文档
     </table>
     <p>有关本规范中不推荐使用的事件的列表，请参阅本文档末尾的 <a href="#legacy-event-types">遗留事件类型</a> 附录。</p>
-    <p class="example" id="example-55e7ad5d"><a class="self-link" href="#example-55e7ad5d"></a> 以下是对上表进行解释的一种方式: <a data-link-type="dfn" href="#load" id="ref-for-load③"><code>load</code></a> 事件将在该事件的捕获和目标阶段上触发(trigger)附加于 <code>Element</code> 节点的 <a href="#event-listener" id="ref-for-event-listener④">事件监听器</a> 。此事件不可取消。
-    如果 <a data-link-type="dfn" href="#load" id="ref-for-load④"><code>load</code></a> 事件的 <a href="#event-listener" id="ref-for-event-listener⑤">事件监听器</a> 附加到除了 <a data-link-type="dfn" href="#window" id="ref-for-window①⓪">Window</a> ， <code>Document</code> ， 或 <code>Element</code> 以外的节点，或者仅附加到冒泡阶段，则不会(在被监听事件目标上)触发此 <a href="#event-listener" id="ref-for-event-listener⑥">事件监听器</a> 。 </p>
+    <p class="example" id="example-55e7ad5d"><a class="self-link" href="#example-55e7ad5d"></a> 以下是对上表进行解释的一种方式: <a data-link-type="dfn" href="#load" id="ref-for-load③"><code>load</code></a> 事件将在该事件的捕获和目标阶段上触发(trigger)附加于 <code>Element</code> 节点的 <a href="#event-listener" id="ref-for-event-listener②">事件监听器</a> 。此事件不可取消。
+    如果 <a data-link-type="dfn" href="#load" id="ref-for-load④"><code>load</code></a> 事件的 <a href="#event-listener" id="ref-for-event-listener③">事件监听器</a> 附加到除了 <a data-link-type="dfn" href="#window" id="ref-for-window①⓪">Window</a> ， <code>Document</code> ， 或 <code>Element</code> 以外的节点，或者仅附加到冒泡阶段，则不会(在被监听事件目标上)触发此 <a href="#event-listener" id="ref-for-event-listener④">事件监听器</a> 。 </p>
     <p class="note" role="note"> 不要将上表解释为最权威的(definitive)事件类型列表。
     例如， <a data-link-type="dfn" href="#load" id="ref-for-load⑤"><code>load</code></a> 事件也用于其他规范中，例如 XMLHttpRequest 中。类似地，
     对于 <strong>任何</strong> 实现了 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget③">EventTarget</a></code> 接口的对象，
@@ -3634,7 +3634,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>当定位设备移出元素的边界时，或者当元素移动到不再位于主定位设备下方时， <a href="#user-agent" id="ref-for-user-agent②⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。此事件类型类似于 <a data-link-type="dfn" href="#mouseenter" id="ref-for-mouseenter⑨"><code>mouseenter</code></a> ，但不同之处在于它可以冒泡，
-			并且当指针设备移动到具有同一 <a href="#event-listener" id="ref-for-event-listener⑦">事件监听器</a> 实例的事件目标的祖先元素的边界上时， <span class="zh-upper">必须</span> 派发它。</p>
+			并且当指针设备移动到具有同一 <a href="#event-listener" id="ref-for-event-listener⑤">事件监听器</a> 实例的事件目标的祖先元素的边界上时， <span class="zh-upper">必须</span> 派发它。</p>
     <p class="note" role="note"> 另请参阅 <a data-link-type="dfn" href="#mouseout" id="ref-for-mouseout①①"><code>mouseout</code></a> 事件类型。 </p>
     <h5 class="heading settled" data-level="5.3.4.11" id="event-type-mouseup"><span class="secno">5.3.4.11. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="mouseup">mouseup</dfn></span><a class="self-link" href="#event-type-mouseup"></a></h5>
     <table class="event-definition">
@@ -3880,7 +3880,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			表明 <code>preventDefault</code> 不能用于阻止或中断滚动。否则 <code>cancelable</code> 属性将为 <code>true</code> 。 </p>
     <p> 特别是，当用户代理发现事件 <a href="https://dom.spec.whatwg.org/#observing-event-listeners"> 没有非被动监听器(non-passive listeners)</a> 时，它应该只生成不可取消(uncancelable)的 <code>wheel</code> 事件。 </p>
     <p class="note custom-note" role="note"> 在 <a data-link-type="biblio" href="#biblio-dom" title="DOM Standard">[DOM]</a> 中的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget①③">EventTarget</a></code> 接口中介绍了 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-addeventlistener" id="ref-for-dom-eventtarget-addeventlistener①">addEventListener()</a></code> 方法的第三个参数，
-			它的字典定义有一个 <code>passive</code> 属性，表示 <a href="#event-listener" id="ref-for-event-listener⑧">事件监听器</a> 是否永远不会调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑤">preventDefault()</a></code> ，非被动监听器(non-passive listeners)就是 <code>passive</code> 设置为 <code>false</code> (默认值)的 <a href="#event-listener" id="ref-for-event-listener⑨">事件监听器</a> ，它表示事件可被取消;
+			它的字典定义有一个 <code>passive</code> 属性，表示 <a href="#event-listener" id="ref-for-event-listener⑥">事件监听器</a> 是否永远不会调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault⑤">preventDefault()</a></code> ，非被动监听器(non-passive listeners)就是 <code>passive</code> 设置为 <code>false</code> (默认值)的 <a href="#event-listener" id="ref-for-event-listener⑦">事件监听器</a> ，它表示事件可被取消;
 			再理解上面的话，特意设置 <code>passive</code> 属性为 <code>true</code> ，那么实现只会生成不可取消的 <code>wheel</code> 事件。
 			总结一下就是: <br> ① <code>wheel</code> 的默认监听器就是非被动监听器( <code>passive</code> 默认为 <code>false</code>)，所以一般的用户代理默认情况下允许在 <code>wheel</code> 的事件处理程序中调用 <code>preventDefault()</code> ，
 			并且可以生效，生成的事件对象的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable②">cancelable</a></code> 属性值为 <code>true</code>;<br> ② 如果在使用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-addeventlistener" id="ref-for-dom-eventtarget-addeventlistener②">addEventListener()</a></code> 给元素节点添加 <code>wheel</code> 的事件处理程序时，特意传入第三个参数且设置其 <code>passive</code> 属性为 <code>true</code>，
@@ -7005,7 +7005,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <p> XForms <a data-link-type="biblio" href="#biblio-xforms11" title="XForms 1.1">[XFORMS11]</a> <span class="zh-upper">必须</span> 支持 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①②"><code>DOMActivate</code></a> <a href="#event-type" id="ref-for-event-type①⑧">事件类型</a> ，它预定用 <a href="#host-language" id="ref-for-host-language①⓪">宿主语言</a> 实现。
 		如果用插件或基于脚本的 XForms 实现要安装在符合本规范的不支持 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①③"><code>DOMActivate</code></a> <a href="#event-type" id="ref-for-event-type①⑨">事件类型</a> 规定的原生实现中，
 		XForms <a href="#user-agent" id="ref-for-user-agent⑤⓪">用户代理</a> 必须根据合适的 <a href="#activation-trigger" id="ref-for-activation-trigger⑧">激活触发器</a> 合成(synthesize)并派发自己的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①④"><code>DOMActivate</code></a> 事件。 </p>
-     <p> 因此，当 <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> 事件由符合用户界面事件规范的 <a href="#user-agent" id="ref-for-user-agent⑤①">用户代理</a> 派发时， XForms <a href="#user-agent" id="ref-for-user-agent⑤②">用户代理</a> 必须确定是否合成具有与该 <a data-link-type="dfn" href="#click" id="ref-for-click④①"><code>click</code></a> 事件的 <a href="#default-action" id="ref-for-default-action③④">默认行为</a> 的相关属性相同的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑤"><code>DOMActivate</code></a> 事件。适当的提示(Appropriate cues，指 <a data-link-type="dfn" href="#click" id="ref-for-click④②"><code>click</code></a> 事件的属性)可能有 <a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a> 事件是否 <a href="#trusted-events">可信</a> ，或者其 <a href="#event-target" id="ref-for-event-target③⑨">事件目标</a> 是否注册了 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑥"><code>DOMActivate</code></a> 的 <a href="#event-listener" id="ref-for-event-listener①⓪">事件侦听器</a> 。 </p>
+     <p> 因此，当 <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> 事件由符合用户界面事件规范的 <a href="#user-agent" id="ref-for-user-agent⑤①">用户代理</a> 派发时， XForms <a href="#user-agent" id="ref-for-user-agent⑤②">用户代理</a> 必须确定是否合成具有与该 <a data-link-type="dfn" href="#click" id="ref-for-click④①"><code>click</code></a> 事件的 <a href="#default-action" id="ref-for-default-action③④">默认行为</a> 的相关属性相同的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑤"><code>DOMActivate</code></a> 事件。适当的提示(Appropriate cues，指 <a data-link-type="dfn" href="#click" id="ref-for-click④②"><code>click</code></a> 事件的属性)可能有 <a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a> 事件是否 <a href="#trusted-events">可信</a> ，或者其 <a href="#event-target" id="ref-for-event-target③⑨">事件目标</a> 是否注册了 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑥"><code>DOMActivate</code></a> 的 <a href="#event-listener" id="ref-for-event-listener⑧">事件侦听器</a> 。 </p>
     </div>
     <p class="note" role="note"> 不要在许多 <a href="#user-agent" id="ref-for-user-agent⑤③">用户代理</a> 中依赖 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑦"><code>DOMActivate</code></a> 的协作(interoperable)支持。相反，应该使用 <a data-link-type="dfn" href="#click" id="ref-for-click④④"><code>click</code></a> <a href="#event-type" id="ref-for-event-type②⓪">事件类型</a> ，因为它被广泛的实现支持，
 		并提供更容易访问的(accessible)行为。 </p>
@@ -7909,24 +7909,19 @@ document.documentElement.dispatchEvent(evt);
 		属性前缀的使用理解有帮助。 </div>
    </section>
    <section>
-    <h2 class="heading settled" data-level="11" id="security-considerations"><span class="secno">11. </span><span class="content">Security Considerations</span><a class="self-link" href="#security-considerations"></a></h2>
-    <p>This appendix discusses security considerations for UI Events implementations.
-The discussion is limited to security issues that arise directly from
-implementation of the event model, APIs and events defined in this
-specification. Implementations typically support other features like scripting
-languages, other APIs and additional events not defined in this document. These
-features constitute an unknown factor and are out of scope of this document.
-Implementers SHOULD consult the specifications of such features for their
-respective security considerations.</p>
-    <p>Many of the event types defined in this specification are dispatched in response
-to user actions. This allows malicious <a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener①①">event listeners</a> to gain access to
-information users would typically consider confidential, e.g., typos they might
-have made when filling out a form, if they reconsider their answer to a multiple
-choice question shortly before submitting a form, their typing rate or primary
-input mechanism. In the worst case, malicious <a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener①">event listeners</a> could capture all
-user interactions and submit them to a third party through means (not defined in
-this specification) that are generally available in DOM implementations, such as
-the XMLHttpRequest interface.</p>
+    <h2 class="heading settled" data-level="11" id="security-considerations"><span class="secno">11. </span><span class="content">安全注意事项</span><a class="self-link" href="#security-considerations"></a></h2>
+    <p>本附录讨论了用户界面事件实现的安全注意事项。
+讨论仅限于由本规范中定义的概念可能直接引起的安全问题，这些概念包括事件模型的实现
+、APIs 和事件。实现(Implementations)通常支持其他功能，如脚本语言、其他 APIs
+和本文档中未定义的其他事件。这些功能构成不可预知的要素，超出了本规范的范围。
+实现人员 <span class="zh-upper">应当</span> 查阅上述种种功能的规范，
+以了解其各自的安全注意事项。</p>
+    <p>本规范中定义的许多事件类型都是响应用户操作而被派发的。
+这使得恶意 <a href="#event-listener" id="ref-for-event-listener⑨">事件监听器</a> 能够访问用户通常认为是隐私
+(confidential)的信息，例如，用户在填写表单时可能犯的拼写错误，
+如果用户在提交表单前不久重新考虑对多选问题的回答，用户的打字率或主要输入机制。
+在最坏的情况下，恶意 <a href="#event-listener" id="ref-for-event-listener①⓪">事件监听器</a> 可以捕获所有用户交互，并通过 DOM 实现中通常可用的方法(如 XMLHttpRequest 接口，
+本规范未定义这些方法)将其提交给第三方。</p>
     <p>In DOM implementations that support facilities to load external data, events
 like the <a data-link-type="dfn" href="#error" id="ref-for-error①"><code>error</code></a> event can provide access to sensitive information about
 the environment of the computer system or network. An example would be a
@@ -7955,7 +7950,7 @@ attempt to embed resources on the local network.</p>
         event flow:</p>
     <ul>
      <li data-md>
-      <p><a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener②">Event listeners</a> are now ordered. In DOM Level 2, the event ordering
+      <p><a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener①①">Event listeners</a> are now ordered. In DOM Level 2, the event ordering
 was unspecified.</p>
      <li data-md>
       <p>The event flow now includes the <a data-link-type="dfn" href="#window" id="ref-for-window⑥①"><code>Window</code></a>, to
@@ -9943,7 +9938,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-load">3.3. 同步和异步事件</a> <a href="#ref-for-load①">(2)</a>
     <li><a href="#ref-for-load②">4.1. 事件类型列表</a> <a href="#ref-for-load③">(2)</a> <a href="#ref-for-load④">(3)</a> <a href="#ref-for-load⑤">(4)</a>
     <li><a href="#ref-for-load⑥">5.1.2.1. load</a>
-    <li><a href="#ref-for-load⑦">11. Security Considerations</a> <a href="#ref-for-load⑧">(2)</a>
+    <li><a href="#ref-for-load⑦">11. 安全注意事项</a> <a href="#ref-for-load⑧">(2)</a>
     <li><a href="#ref-for-load⑨">14. 术语表</a> <a href="#ref-for-load①⓪">(2)</a>
    </ul>
   </aside>
@@ -9963,7 +9958,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-error" style="display:none">Info about the 'error' definition.</span><b><a href="#error">#error</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-error">4.1. 事件类型列表</a>
-    <li><a href="#ref-for-error①">11. Security Considerations</a> <a href="#ref-for-error②">(2)</a>
+    <li><a href="#ref-for-error①">11. 安全注意事项</a> <a href="#ref-for-error②">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-select" class="dfn-panel" data-for="select" id="infopanel-for-select">
@@ -11621,7 +11616,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-dom-application" style="display:none">Info about the 'DOM application' definition.</span><b><a href="#dom-application">#dom-application</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-application">3.2. 默认行为和可取消事件</a>
-    <li><a href="#ref-for-dom-application">11. Security Considerations</a> <a href="#ref-for-dom-application①">(2)</a>
+    <li><a href="#ref-for-dom-application">11. 安全注意事项</a> <a href="#ref-for-dom-application①">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-level-0" class="dfn-panel" data-for="dom-level-0" id="infopanel-for-dom-level-0">
@@ -11686,8 +11681,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-event-listener">5.3.4.10. mouseover</a>
     <li><a href="#ref-for-event-listener">5.4.2.2. 滚轮事件的可取消性</a> <a href="#ref-for-event-listener">(2)</a>
     <li><a href="#ref-for-event-listener">9.1.1.1. DOMActivate</a>
-    <li><a href="#ref-for-event-listener">11. Security Considerations</a> <a href="#ref-for-event-listener①">(2)</a>
-    <li><a href="#ref-for-event-listener②">12.1.1. Changes to DOM Level 2 event flow</a>
+    <li><a href="#ref-for-event-listener">11. 安全注意事项</a> <a href="#ref-for-event-listener">(2)</a>
+    <li><a href="#ref-for-event-listener">12.1.1. Changes to DOM Level 2 event flow</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event-order" class="dfn-panel" data-for="event-order" id="infopanel-for-event-order">
