@@ -2,7 +2,7 @@
 <h2 id="legacy-key-attributes">遗留的按键事件 &amp; 鼠标事件的属性</h2>
 
 
-<em>本节是不规范的。 以下属性已过时淘汰(obsolete)，
+<em>本节内容不是规范的。 以下属性已过时淘汰(obsolete)，
 只能由需要与支持这些键盘事件的旧版软件兼容的 <a href="#user-agent">用户代理</a>
 实现。</em>
 
@@ -24,7 +24,7 @@
 
 <h3 id="legacy-UIEvent">遗留的 {{UIEvent}} 补充接口</h3>
 
-	<em>本节不是规范的</em>
+	<em>本节内容不是规范的</em>
 
 	<a href="#user-agent">用户代理</a> 传统上包括 {{UIEvent/which}} 属性，以便 
 	{{KeyboardEvent}} 和 {{MouseEvent}} 事件们可以记录补充的(supplemental)
@@ -94,7 +94,7 @@
 
 <h3 id="legacy-KeyboardEvent">遗留的 {{KeyboardEvent}} 补充接口</h3>
 
-	<em>本节不是规范的</em>
+	<em>本节内容不是规范的</em>
 
 	浏览器对键盘的支持在传统依赖于三个特殊(ad-hoc)属性: {{KeyboardEvent/keyCode}} 
 	， {{KeyboardEvent/charCode}} ， 和 {{UIEvent}} 的 {{UIEvent/which}} 。

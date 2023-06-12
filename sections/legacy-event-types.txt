@@ -914,34 +914,34 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								object whose content is being modified</li>
+								内容正在被修改的对象</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								parent node of the object whose content is being modified</li>
+								内容正在被修改的对象的父节点</li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								new value of the object</li>
+								对象的新值</li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								previous value of the object</li>
+								对象的上一个值</li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。after
-			<code>CharacterData.data</code> or
-			<code>ProcessingInstruction.data</code> have been modified, but the
-			node itself has not been inserted or deleted. The <a>event
-			target</a> of this event <span class="zh-upper">必须</span> be the <code>CharacterData</code> node
-			or the <code>ProcessingInstruction</code> node.
+			修改 <code>CharacterData.data</code> 或 
+			<code>ProcessingInstruction.data</code> 之后，
+			但节点本身尚未被插入或删除之前 <a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">必须</span> 派发此事件。这个事件的 
+			<a href="#event-target">事件对象</a> <span class="zh-upper">必须</span> 是
+			<code>CharacterData</code> 节点或者 <code>ProcessingInstruction</code> 
+			节点。
 
 			<p class="warning">
-			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMCharacterDataModified}
-			<a href="#event-type">事件类型</a> ，但本规范 
-			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
+			为了(规范的)参考引用和完整性，本规范中定义了 
+			EVENT{DOMCharacterDataModified} <a href="#event-type">事件类型</a> ，
+			但本规范 <a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMNodeInserted"><dfn>DOMNodeInserted</dfn></h5>
@@ -965,7 +965,8 @@
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
-					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
+					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, 
+						<code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
@@ -985,34 +986,35 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element which is being inserted</li>
+								正在被插入的元素</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes</li>
+								已插入节点的父节点，或者在 <code>Attr</code> 节点的情况下为 
+								<code>ownerElement</code></li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
+			当除了 <code>Attr</code> 节点之外的节点被添加为另一个节点的子节点时。
 			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。type when a node other
-			than an <code>Attr</code> node has been added as a child of another
-			node. A <a>user agent</a> MAY dispatch this event when an
-			<code>Attr</code> node has been added to an <code>Element</code>
-			node (see <a href="#DOMNodeInserted-attr">note</a> below). This
-			event <span class="zh-upper">必须</span> be dispatched after the insertion has taken place. The
-			<a href="#event-target">事件对象</a>  of this event <span class="zh-upper">必须</span> be the node being inserted.
+			派发此事件类型。当 <code>Attr</code> 节点已添加到一个 
+			<code>Element</code> 节点时，<a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">可以</span> 派发此事件(请参阅下面的 
+			<a href="#DOMNodeInserted-attr">注释</a> )。
+			此事件 <span class="zh-upper">必须</span> 在插入发生后被派发。
+			事件的<a href="#event-target">事件对象</a>
+			<span class="zh-upper">必须</span> 是要被插入的节点。
 
 			<p class="note" id="DOMNodeInserted-attr">
-			For detecting attribute insertion, use the EVENT{DOMAttrModified}
-			event type instead.
+			要检测属性插入，请改用 EVENT{DOMAttrModified} 事件类型。
 			</p>
 
 			<p class="warning">
@@ -1021,7 +1023,8 @@
 			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
-		<h5 id="event-type-DOMNodeInsertedIntoDocument"><dfn>DOMNodeInsertedIntoDocument</dfn></h5>
+		<h5 id="event-type-DOMNodeInsertedIntoDocument">
+		<dfn>DOMNodeInsertedIntoDocument</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
@@ -1042,7 +1045,8 @@
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
-					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
+					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, 
+						<code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
@@ -1062,32 +1066,32 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element which is being inserted</li>
+								正在被插入的元素</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								parent node of the node that has been inserted, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes</li>
+								已插入节点的父节点，或者在 <code>Attr</code> 节点的情况下为 
+								<code>ownerElement</code></li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。when a node has been
-			inserted into a document, either through direct insertion of the
-			node or insertion of a subtree in which it is contained. A <a>user
-			agent</a> MAY  treat an <code>Attr</code> node as part of an
-			<code>Element</code>'s subtree. This event <span class="zh-upper">必须</span> be dispatched after
-			the insertion has taken place. The <a href="#event-target">事件对象</a>  of this event
-			<span class="zh-upper">必须</span> be the node being inserted. If the node is being directly
-			inserted, the event type EVENT{DOMNodeInserted} <span class="zh-upper">必须</span> occur before
-			this event type.
+			当一个节点被插入到文档中时(可以直接插入该节点，也可以插入包含该节点的子树)
+			， <a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。 <a href="#user-agent">用户代理</a> 可以将 <code>Attr</code> 
+			节点视为一个 <code>Element</code> 子树的一部分。此事件 
+			<span class="zh-upper">必须</span> 在插入发生后被派发。事件的 
+			<a href="#event-target">事件对象</a> <span class="zh-upper">必须</span> 
+			在插入发生后被派发。 如果节点被直接插入， EVENT{DOMNodeInserted} 事件类型 
+			<span class="zh-upper">必须</span> 在此( 
+			EVENT{DOMNodeInsertedIntoDocument} )事件类型发生之前被派发。
 
 			<p class="warning">
 			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeInsertedIntoDocument}
@@ -1116,7 +1120,8 @@
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
-					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
+					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, 
+						<code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
@@ -1136,34 +1141,35 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element which is being removed</li>
+								正被删除的元素</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes</li>
+								被删除的节点的父节点，或者在 <code>Attr</code> 节点的情况下为 
+								<code>ownerElement</code></li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
+			当从其父节点删除一个除了 <code>Attr</code> 节点以外的节点时， 
 			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。when a node other than
-			an <code>Attr</code> node is being removed from its parent node. A
-			<a>user agent</a> MAY dispatch this event when an <code>Attr</code>
-			node is being removed from its <code>ownerElement</code> (see <a
-			href="#DOMNodeRemoved-attr">note</a> below). This event <span class="zh-upper">必须</span> be
-			dispatched before the removal takes place. The <a href="#event-target">事件对象</a> 
-			of this event <span class="zh-upper">必须</span> be the node being removed.
+			派发此事件。当 <code>Attr</code> 节点被它自己的 <code>ownerElement</code> 
+			节点删除时，<a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">可以</span> 派发此事件(请参阅下面的 
+			<a href="#DOMNodeRemoved-attr">注释</a> )。
+			此事件 <span class="zh-upper">必须</span> 在移除(removal)发生之前被派发。
+			事件的 <a href="#event-target">事件对象</a> 
+			<span class="zh-upper">必须</span> 是要被删除的节点。
 
 			<p class="note" id="DOMNodeRemoved-attr">
-			For reliably detecting attribute removal, use the
-			EVENT{DOMAttrModified} event type instead.
+			要可靠地检测属性的移除(removal)，请改用 EVENT{DOMAttrModified} 事件类型。
 			</p>
 
 			<p class="warning">
@@ -1172,7 +1178,8 @@
 			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
-		<h5 id="event-type-DOMNodeRemovedFromDocument"><dfn>DOMNodeRemovedFromDocument</dfn></h5>
+		<h5 id="event-type-DOMNodeRemovedFromDocument">
+		<dfn>DOMNodeRemovedFromDocument</dfn></h5>
 
 			<table class="event-definition">
 				<tr>
@@ -1193,7 +1200,8 @@
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
-					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, <code>Comment</code>, <code>DocumentType</code>,
+					<td><code>Element</code>, <code>Attr</code>, <code>Text</code>, 
+						<code>Comment</code>, <code>DocumentType</code>,
 						<code>ProcessingInstruction</code></td>
 				</tr>
 				<tr>
@@ -1213,42 +1221,42 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								element which is being removed</li>
+								正被删除的元素</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
-								the parent node of the node being removed, or the <code>ownerElement</code> in the case of <code>Attr</code> nodes</li>
+								被删除的节点的父节点，或者在 <code>Attr</code> 节点的情况下为 
+								<code>ownerElement</code></li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			<a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
-			派发此事件。when a node is being
-			removed from a document, either through direct removal of the node
-			or removal of a subtree in which it is contained. A <a>user
-			agent</a> MAY treat an <code>Attr</code> node as part of an
-			<code>Element</code>'s subtree. This event <span class="zh-upper">必须</span> be dispatched before
-			the removal takes place. The <a href="#event-target">事件对象</a>  of this event type
-			<span class="zh-upper">必须</span> be the node being removed. If the node is being directly
-			removed, the event type EVENT{DOMNodeRemoved} <span class="zh-upper">必须</span> occur before this
-			event type.
+			从一个节点在文档中被删除时(可以直接删除该节点，也可以删除包含该节点的子树)
+			， <a href="#user-agent">用户代理</a> <span class="zh-upper">必须</span> 
+			派发此事件。 <a href="#user-agent">用户代理</a> 
+			<span class="zh-upper">可以</span> 将 <code>Attr</code> 节点视为一个
+			<code>Element</code> 子树的一部分。此事件 
+			<span class="zh-upper">必须</span> 在移除(removal)发生之前被派发。事件的 
+			<a href="#event-target">事件对象</a> <span class="zh-upper">必须</span> 
+			是要被删除的节点。如果节点被直接删除， EVENT{DOMNodeRemoved} 事件类型 
+			<span class="zh-upper">必须</span> 在此( EVENT{DOMNodeRemovedFromDocument}
+			)事件类型之前被派发。
 
 			<p class="note">
-			For reliably detecting attribute removal, use the
-			EVENT{DOMAttrModified} event type instead.
+			要可靠地检测属性的移除(removal)，请改用 EVENT{DOMAttrModified} 事件类型。
 			</p>
 
 			<p class="warning">
-			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMNodeRemovedFromDocument}
-			<a href="#event-type">事件类型</a> ，但本规范 
-			<a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
+			为了(规范的)参考引用和完整性，本规范中定义了 
+			EVENT{DOMNodeRemovedFromDocument} <a href="#event-type">事件类型</a> ，
+			但本规范 <a href="#deprecates">反对(deprecates)</a> 使用此事件类型。
 			</p>
 
 		<h5 id="event-type-DOMSubtreeModified"><dfn>DOMSubtreeModified</dfn></h5>
@@ -1272,7 +1280,9 @@
 				</tr>
 				<tr>
 					<th>可信目标对象</th>
-					<td><a><code>Window</code></a>, <code>Document</code>, <code>DocumentFragment</code>, <code>Element</code>, <code>Attr</code>
+					<td><a><code>Window</code></a>, <code>Document</code>, 
+						<code>DocumentFragment</code>, <code>Element</code>, 
+						<code>Attr</code>
 					</td>
 				</tr>
 				<tr>
@@ -1292,32 +1302,31 @@
 					<td>
 						<ul>
 							<li>{{Event}}.{{Event/target}} :
-								parent node of subtree being modified</li>
+								正在被修改的子树的父节点</li>
 							<li>{{MutationEvent}}.<code>attrName</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>attrChange</code> :
 								<code>0</code></li>
 							<li>{{MutationEvent}}.<code>relatedNode</code> :
 								<code>null</code></li>
 							<li>{{MutationEvent}}.<code>newValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 							<li>{{MutationEvent}}.<code>prevValue</code> :
-								the <a>empty string</a></li>
+								<a href="#empty-string">空字符串</a></li>
 						</ul>
 					</td>
 				</tr>
 			</table>
 
-			This is a general event for notification of all changes to the
-			document. It can be used instead of the more specific mutation and
-			mutation name events. It MAY be dispatched after a single
-			modification to the document or, at the implementation's discretion,
-			after multiple changes have occurred. The latter case SHOULD
-			generally be used to accommodate multiple changes which occur either
-			simultaneously or in rapid succession. The target of this event <span class="zh-upper">必须</span>
-			be the lowest common parent of the changes which have taken place.
-			This event <span class="zh-upper">必须</span> be dispatched after any other events caused by the
-			mutation(s) have occurred.
+			这是一个用于通知文档的所有更改的常规事件。
+			它可以用来代替更具体的突变(mutation)和名为突变的事件。
+			它 <span class="zh-upper">可以</span> 在对文件进行一次修改(modification)
+			后被派发，也可以在发生多次更改后由实现自行决定派发。后一种情况通常
+			<span class="zh-upper">应当</span> 应用于适应(accommodate)
+			同时或快速连续发生多个变化的情况。此事件的目标 
+			<span class="zh-upper">必须</span> 是已发生的更改的最底层公共父级。
+			此事件 <span class="zh-upper">必须</span> 在突变(mutation(s))
+			引起的任何其他(突变)事件发生后被派发。
 
 			<p class="warning">
 			为了(规范的)参考引用和完整性，本规范中定义了 EVENT{DOMSubtreeModified}

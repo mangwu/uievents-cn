@@ -1,38 +1,33 @@
 <section>
-<h2 id="extending-events">Extending Events</h2>
+<h2 id="extending-events">扩展事件</h2>
 
 
-<em>This section is non-normative</em>
+<em>本节内容不是规范的</em>
 
-<h3 id="extending-events-intro">Introduction</h3>
+<h3 id="extending-events-intro">简介</h3>
 
-	This specification defines several interfaces and many events, however, this
-	is not an exhaustive set of events for all purposes. To allow content
-	authors and implementers to add desired functionality, this specification
-	provides two mechanisms for extend this set of interfaces and events without
-	creating conflicts: <a href="#extending-events-Custom_Events">custom
-	events</a> and <a
-	href="#extending-events-Impl_Extensions">implementation-specific
-	extensions</a>.
+	本规范定义了数个接口和许多事件，但是，这并不是一组适用所有功能(purposes)
+	而面面俱到的(exhaustive)事件集合。为了允许内容作者和实现者添加期望的功能
+	(desired functionality)，本规范提供了两种机制来扩展这组接口和事件，
+	并且不会产生冲突: <a href="#extending-events-Custom_Events">自定义事件/a> 
+	和 <a href="#extending-events-Impl_Extensions">实现特定
+	(implementation-specific)的扩展</a> 。
 
-<h3 id="extending-events-Custom_Events">Custom Events</h3>
+<h3 id="extending-events-Custom_Events">自定义事件</h3>
 
-	A script author MAY wish to define an application in terms of functional
-	components, with event types that are meaningful to the application
-	architecture. The content author can use the {{CustomEvent}} interface to
-	create their own events appropriate to the level of abstraction they are
-	using.
+	脚本作者 <span class="zh-upper">可以</span> 用对应用程序结构(architecture)
+	有意义的事件类型来定义功能组件(functional components)方面的应用程序。
+	内容作者可以使用 {{CustomEvent}} 接口创建自己的事件，
+	这些事件适用于(appropriate to)他们正在使用的抽象(abstraction)层次。
 
 	<div class="example">
-		A content author might have created an application which features a
-		dynamically generated bar chart. This bar chart is meant to be updated every
-		5 minutes, or when a feed shows new information, or when the user refreshes
-		it manually by clicking a button. There are several handlers that have to be
-		called when the chart needs to be updated: the application has to fetch the
-		most recent data, show an icon to the user that the event is being updated,
-		and rebuild the chart. To manage this, the content author can choose to
-		create a custom <q>updateChart</q> event, which is fired whenever one of the
-		trigger conditions is met:
+		内容作者可能创建了一个应用程序，该应用程序具有动态生成的条形图(bar chart)。
+		此条形图应每 5 分钟更新一次，或者当订阅源(feed)显示新信息时，
+		或者当用户单击按钮手动刷新时(会额外更新)。当需要更新图表时，
+		必须调用数个处理程序(handlers): 应用程序必须获取最新数据，
+		向用户显示事件正在更新的图标，并重建图表。要对此进行控制，
+		内容作者可以选择创建一个自定义的 <q>updateChart</q> 事件，
+		只要满足以上触发(trigger)条件之一，就会触发该事件: 
 
 		<pre><code>
 		var chartData = ...;
@@ -42,8 +37,10 @@
 		</code></pre>
 	</div>
 
-<h3 id="extending-events-Impl_Extensions">Implementation-Specific Extensions</h3>
+<h3 id="extending-events-Impl_Extensions">实现特定(implementation-specific)
+的扩展</h3>
 
+	当一个新事件正在设计和原型化时，或者当一个事件旨在实现特定的功能时，最好将其与标准化事件区分开来。实现者应该用一个短字符串作为特定于其实现的事件类型的前缀，以将其与其他实现中的同一事件以及标准化事件区分开来。这类似于CSS中供应商特定的关键字前缀，尽管在CSS中没有使用破折号（“-”），因为在Javascript中用作属性名称时可能会导致问题。
 	While a new event is being designed and prototyped, or when an event is
 	intended for implementation-specific functionality, it is desirable to
 	distinguish it from standardized events. Implementors SHOULD prefix event
