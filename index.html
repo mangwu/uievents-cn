@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="4299dfe787e583c8fd1f09cba260792b0a792cd1" name="document-revision">
+  <meta content="aa56102ee27999f3a96474dba532b53747bbfcb2" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1186,17 +1186,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </ol>
     <li><a href="#security-considerations"><span class="secno">11</span> <span class="content">安全注意事项</span></a>
     <li>
-     <a href="#changes-from-earlier-versions"><span class="secno">12</span> <span class="content">Changes</span></a>
+     <a href="#changes-from-earlier-versions"><span class="secno">12</span> <span class="content">变化</span></a>
      <ol class="toc">
       <li>
-       <a href="#changes-DOMEvents2to3Changes"><span class="secno">12.1</span> <span class="content">Changes between DOM Level 2 Events and UI Events</span></a>
+       <a href="#changes-DOMEvents2to3Changes"><span class="secno">12.1</span> <span class="content">从 DOM Level 2 Events 到 UI Events
+的更改</span></a>
        <ol class="toc">
-        <li><a href="#changes-DOMEvents2to3Changes-flow"><span class="secno">12.1.1</span> <span class="content">Changes to DOM Level 2 event flow</span></a>
-        <li><a href="#changes-DOMEvents2to3Changes-event-types"><span class="secno">12.1.2</span> <span class="content">Changes to DOM Level 2 event types</span></a>
-        <li><a href="#changes-DOMLevel2to3Changes"><span class="secno">12.1.3</span> <span class="content">Changes to DOM Level 2 Events interfaces</span></a>
-        <li><a href="#changes-DOMLevel3Addons"><span class="secno">12.1.4</span> <span class="content">New Interfaces</span></a>
+        <li><a href="#changes-DOMEvents2to3Changes-flow"><span class="secno">12.1.1</span> <span class="content">对 DOM Level 2 事件流的更改</span></a>
+        <li><a href="#changes-DOMEvents2to3Changes-event-types"><span class="secno">12.1.2</span> <span class="content">对 DOM Level 2
+	事件类型的更改</span></a>
+        <li><a href="#changes-DOMLevel2to3Changes"><span class="secno">12.1.3</span> <span class="content">对 DOM Level 2 接口的更改</span></a>
+        <li><a href="#changes-DOMLevel3Addons"><span class="secno">12.1.4</span> <span class="content">新接口</span></a>
        </ol>
-      <li><a href="#changes-drafts"><span class="secno">12.2</span> <span class="content">Changes between different drafts of UI Events</span></a>
+      <li><a href="#changes-drafts"><span class="secno">12.2</span> <span class="content">用户界面事件的不同草稿(drafts)之间的更改</span></a>
      </ol>
     <li><a href="#acknowledgements-contributors"><span class="secno">13</span> <span class="content">鸣谢</span></a>
     <li><a href="#glossary"><span class="secno">14</span> <span class="content">术语表</span></a>
@@ -6438,7 +6440,7 @@ myDiv.addEventListener("auxclick", function(e) {
       </dl>
     </dl>
     <h4 class="heading settled" data-level="7.1.4" id="idl-interface-KeyboardEvent-initializers"><span class="secno">7.1.4. </span><span class="content">KeyboardEvent 接口的初始化器</span><a class="self-link" href="#idl-interface-KeyboardEvent-initializers"></a></h4>
-    <p class="note" role="note"> 遗留的 KeyboardEvent 初始化器的参数列表不包括 <code>detailArg</code> (存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 <a href="#changes-drafts">§ 12.2 Changes between different drafts of UI Events</a> ); 为了与现有实现的兼容，有必要保留这种不一致性
+    <p class="note" role="note"> 遗留的 KeyboardEvent 初始化器的参数列表不包括 <code>detailArg</code> (存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 <a href="#changes-drafts">§ 12.2 用户界面事件的不同草稿(drafts)之间的更改</a> ); 为了与现有实现的兼容，有必要保留这种不一致性
 		(inconsistency)。 </p>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="#keyboardevent" id="ref-for-keyboardevent⑦⑦"><c- g>KeyboardEvent</c-></a> {
   // Originally introduced (and deprecated) in this specification
@@ -6485,7 +6487,7 @@ myDiv.addEventListener("auxclick", function(e) {
     </dl>
     <h4 class="heading settled" data-level="7.1.5" id="idl-interface-CompositionEvent-initializers"><span class="secno">7.1.5. </span><span class="content">CompositionEvent
 	接口的初始化器</span><a class="self-link" href="#idl-interface-CompositionEvent-initializers"></a></h4>
-    <p class="note" role="note"> 遗留的 CompositionEvent 初始化器的参数列表不包括 <code>detailArg</code> (存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 <a href="#changes-drafts">§ 12.2 Changes between different drafts of UI Events</a> ); 为了与现有实现的兼容，有必要保留这种不一致性
+    <p class="note" role="note"> 遗留的 CompositionEvent 初始化器的参数列表不包括 <code>detailArg</code> (存在于其他初始化器中)，并添加了 <code>locale</code> 参数(请参见 <a href="#changes-drafts">§ 12.2 用户界面事件的不同草稿(drafts)之间的更改</a> ); 为了与现有实现的兼容，有必要保留这种不一致性
 		(inconsistency)。 </p>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="#compositionevent" id="ref-for-compositionevent①⑨"><c- g>CompositionEvent</c-></a> {
   // Originally introduced (and deprecated) in this specification
@@ -7933,115 +7935,103 @@ DOM 实现 <span class="zh-upper">可以</span> 采取合理的步骤来确保 <
 它们可能会选择不将 <a data-link-type="dfn" href="#load" id="ref-for-load⑧"><code>load</code></a> 事件分派发给企图在本地网络上嵌入资源的节点。</p>
    </section>
    <section>
-    <h2 class="heading settled" data-level="12" id="changes-from-earlier-versions"><span class="secno">12. </span><span class="content">Changes</span><a class="self-link" href="#changes-from-earlier-versions"></a></h2>
-    <h3 class="heading settled" data-level="12.1" id="changes-DOMEvents2to3Changes"><span class="secno">12.1. </span><span class="content">Changes between DOM Level 2 Events and UI Events</span><a class="self-link" href="#changes-DOMEvents2to3Changes"></a></h3>
-    <p>Numerous clarifications to the interfaces and event types have been made.
-    The <code>HTMLEvents</code> module is no longer defined in this document.
-    The <a data-link-type="dfn" href="#focus" id="ref-for-focus①⑨"><code>focus</code></a> and <a data-link-type="dfn" href="#blur" id="ref-for-blur①④"><code>blur</code></a> events have been added to the <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⑥">UIEvent</a></code> module, and the <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⑤"><code>dblclick</code></a> event has been added to the <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑦">MouseEvent</a></code> module. This new specification provides a better separation between the DOM
-    event flow, the event types, and the DOM interfaces.</p>
-    <h4 class="heading settled" data-level="12.1.1" id="changes-DOMEvents2to3Changes-flow"><span class="secno">12.1.1. </span><span class="content">Changes to DOM Level 2 event flow</span><a class="self-link" href="#changes-DOMEvents2to3Changes-flow"></a></h4>
-    <p>This new specification introduced the following new concepts in the
-        event flow:</p>
+    <h2 class="heading settled" data-level="12" id="changes-from-earlier-versions"><span class="secno">12. </span><span class="content">变化</span><a class="self-link" href="#changes-from-earlier-versions"></a></h2>
+    <h3 class="heading settled" data-level="12.1" id="changes-DOMEvents2to3Changes"><span class="secno">12.1. </span><span class="content">从 DOM Level 2 Events 到 UI Events
+的更改</span><a class="self-link" href="#changes-DOMEvents2to3Changes"></a></h3>
+    <p>(本规范)已经对接口和事件类型进行了大量分类(clarifications)。
+		本规范文档中不再定义 <code>HTMLEvents</code> 模块。 <a data-link-type="dfn" href="#focus" id="ref-for-focus①⑨"><code>focus</code></a> 和 <a data-link-type="dfn" href="#blur" id="ref-for-blur①④"><code>blur</code></a> 事件已添加到 <code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⑥">UIEvent</a></code> 模块， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⑤"><code>dblclick</code></a> 事件已添加至 <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑦">MouseEvent</a></code> 模块。本新规范在 DOM 事件流、事件类型和 DOM
+		接口之间提供了更好的分隔(separation)。</p>
+    <h4 class="heading settled" data-level="12.1.1" id="changes-DOMEvents2to3Changes-flow"><span class="secno">12.1.1. </span><span class="content">对 DOM Level 2 事件流的更改</span><a class="self-link" href="#changes-DOMEvents2to3Changes-flow"></a></h4>
+    <p>本新规范在事件流中引入了以下新概念:</p>
     <ul>
      <li data-md>
-      <p><a data-link-type="dfn" href="#event-listener" id="ref-for-event-listener①①">Event listeners</a> are now ordered. In DOM Level 2, the event ordering
-was unspecified.</p>
+      <p><a href="#event-listener" id="ref-for-event-listener①①">事件监听器</a> 有序执行。在 DOM Level 2中
+		，不能指定事件顺序。</p>
      <li data-md>
-      <p>The event flow now includes the <a data-link-type="dfn" href="#window" id="ref-for-window⑥①"><code>Window</code></a>, to
-reflect existing implementations.</p>
+      <p>事件流现在包括 <a data-link-type="dfn" href="#window" id="ref-for-window⑥①"><code>Window</code></a> ，以反映(reflect)现有的实现。</p>
     </ul>
-    <h4 class="heading settled" data-level="12.1.2" id="changes-DOMEvents2to3Changes-event-types"><span class="secno">12.1.2. </span><span class="content">Changes to DOM Level 2 event types</span><a class="self-link" href="#changes-DOMEvents2to3Changes-event-types"></a></h4>
-    <p>Many clarifications have been made on the event types. The conformance
-		is now explicitly defined against the event types, and not only in terms
-		of interfaces used by the event types.</p>
-    <p><code>"MutationEvents"</code> have been deprecated. Support for
-		namespaced events, present in early drafts of this specification, has
-		also been removed.</p>
-    <p>For user agents which support the <a data-link-type="dfn" href="#domnodeinserted" id="ref-for-domnodeinserted③"><code>DOMNodeInserted</code></a> and <a data-link-type="dfn" href="#domnoderemoved" id="ref-for-domnoderemoved③"><code>DOMNodeRemoved</code></a> event types, this specification no longer requires
-		that the event type be fired for <code>Attr</code> nodes.</p>
-    <p>The <code>resize</code> event type no longer bubbles and the <a data-link-type="dfn" href="#mousemove" id="ref-for-mousemove②②"><code>mousemove</code></a> event is now cancelable, reflecting existing implementations.</p>
-    <h4 class="heading settled" data-level="12.1.3" id="changes-DOMLevel2to3Changes"><span class="secno">12.1.3. </span><span class="content">Changes to DOM Level 2 Events interfaces</span><a class="self-link" href="#changes-DOMLevel2to3Changes"></a></h4>
+    <h4 class="heading settled" data-level="12.1.2" id="changes-DOMEvents2to3Changes-event-types"><span class="secno">12.1.2. </span><span class="content">对 DOM Level 2
+	事件类型的更改</span><a class="self-link" href="#changes-DOMEvents2to3Changes-event-types"></a></h4>
+    <p>(本规范)已经对事件类型进行了大量分类(clarifications)。一致性(conformance)
+		现在是针对事件类型明确定义的，而不仅仅是根据事件类型使用的接口。</p>
+    <p><code>"MutationEvents"</code> 已被遗弃。在本规范的早期草案中，
+		对命名空间事件(namespaced events)的支持也被删除了。</p>
+    <p>对于支持 <a data-link-type="dfn" href="#domnodeinserted" id="ref-for-domnodeinserted③"><code>DOMNodeInserted</code></a> 和 <a data-link-type="dfn" href="#domnoderemoved" id="ref-for-domnoderemoved③"><code>DOMNodeRemoved</code></a> 事件类型的用户代理
+		，此规范不再要求为 <code>Attr</code> 节点触发此事件类型。</p>
+    <p><code>resize</code> 事件类型不再冒泡， <a data-link-type="dfn" href="#mousemove" id="ref-for-mousemove②②"><code>mousemove</code></a> 事件现在是可取消
+		(默认行为)的，以反映(reflect)现有的实现。</p>
+    <h4 class="heading settled" data-level="12.1.3" id="changes-DOMLevel2to3Changes"><span class="secno">12.1.3. </span><span class="content">对 DOM Level 2 接口的更改</span><a class="self-link" href="#changes-DOMLevel2to3Changes"></a></h4>
     <dl>
-     <dt>Interface <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥③">Event</a></code>
+     <dt><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥③">Event</a></code> 接口
      <dd>
       <ul>
        <li data-md>
-        <p>The <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥④">Event</a></code> interface has one new attribute, <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-defaultprevented" id="ref-for-dom-event-defaultprevented②">defaultPrevented</a></code>, and one new method, <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation" id="ref-for-dom-event-stopimmediatepropagation①">stopImmediatePropagation()</a></code>.</p>
+        <p><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥④">Event</a></code> 接口有一个新属性 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-defaultprevented" id="ref-for-dom-event-defaultprevented②">defaultPrevented</a></code> 和一个新方法 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation" id="ref-for-dom-event-stopimmediatepropagation①">stopImmediatePropagation()</a></code> 。</p>
        <li data-md>
-        <p><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-timestamp" id="ref-for-dom-event-timestamp①">timeStamp</a></code> is now a <code>Number</code> in the
-ECMAScript binding. A proposed correction to make the same
-change in <a data-link-type="biblio" href="#biblio-dom-level-3-core" title="Document Object Model (DOM) Level 3 Core Specification">[DOM-Level-3-Core]</a> is forthcoming.</p>
+        <p><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-timestamp" id="ref-for-dom-event-timestamp①">timeStamp</a></code> 现在是 ECMAScript 绑定中的一个数字( <code>Number</code> )。即将提出一项修正建议，对 <a data-link-type="biblio" href="#biblio-dom-level-3-core" title="Document Object Model (DOM) Level 3 Core Specification">[DOM-Level-3-Core]</a> 进行同样的更改。</p>
        <li data-md>
-        <p>This specification considers the <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type②">type</a></code> attribute
-to be case-sensitive, while DOM Level 2 Events considers <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type③">type</a></code> to be case-insensitive.</p>
+        <p>此规范认为 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type②">type</a></code> 属性区分大小写，而 DOM Level 2 Events
+则认为 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type③">type</a></code> 不区分大小写。</p>
       </ul>
-     <dt>Interface <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget①④">EventTarget</a></code>
+     <dt><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget①④">EventTarget</a></code> 接口
      <dd>
       <ul>
        <li data-md>
-        <p>The method <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent⑥">dispatchEvent()</a></code> was modified.</p>
+        <p><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-eventtarget-dispatchevent" id="ref-for-dom-eventtarget-dispatchevent⑥">dispatchEvent()</a></code> 方法已被修改。</p>
       </ul>
-     <dt>Interface <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑧">MouseEvent</a></code>
+     <dt><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑧">MouseEvent</a></code> 接口
      <dd>
       <ul>
        <li data-md>
-        <p>The <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑨">MouseEvent</a></code> interface has one new method <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-getmodifierstate" id="ref-for-dom-mouseevent-getmodifierstate①⑥">getModifierState()</a></code>.</p>
+        <p><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⑨">MouseEvent</a></code> 接口有一个新方法 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-getmodifierstate" id="ref-for-dom-mouseevent-getmodifierstate①⑥">getModifierState()</a></code> 。</p>
       </ul>
-     <dt>Exception <code>EventException</code>
+     <dt><code>EventException</code> 异常
      <dd>
       <ul>
        <li data-md>
-        <p>The exception <code>EventException</code> is removed in this
-specification. The prior <code>DISPATCH_REQUEST_ERR</code> code is re-mapped to a <code>DOMException</code> of type <code>InvalidStateError</code>.</p>
+        <p>本规范中删除了异常 <code>EventException</code> 。先前的 <code>DISPATCH_REQUEST_ERR</code> 代码被重新映射到 <code>InvalidStateError</code> 类型的 <code>DOMException</code> 。</p>
       </ul>
     </dl>
-    <h4 class="heading settled" data-level="12.1.4" id="changes-DOMLevel3Addons"><span class="secno">12.1.4. </span><span class="content">New Interfaces</span><a class="self-link" href="#changes-DOMLevel3Addons"></a></h4>
-    <p>The interfaces <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#customevent" id="ref-for-customevent③">CustomEvent</a></code>, <code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent②②">FocusEvent</a></code>, <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①⓪⑧">KeyboardEvent</a></code>, <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent②⓪">CompositionEvent</a></code>, and <code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent①⑤">WheelEvent</a></code> were added to the Events module.</p>
-    <h3 class="heading settled" data-level="12.2" id="changes-drafts"><span class="secno">12.2. </span><span class="content">Changes between different drafts of UI Events</span><a class="self-link" href="#changes-drafts"></a></h3>
-    <p>The DOM Level 3 Events document was originally developed between 2000 and
-	2003, and published as a W3C Note, pending further feedback and interest
-	from implementers. In 2006, it was picked up for revision and progress on
-	the Recommendation Track, and was then revised to reflect the current state
-	of implementation and the needs of script authors.</p>
-    <p>Despite its status only as a W3C Note, rather than an official
-	Recommendation, DOM 3 Events saw some implementation, and was also
-	referenced by other specifications, so care is being taken to cause minimal
-	disruption, while still adapting the specification to the current
-	environment.</p>
-    <p>The current specification has been reordered significantly from the earlier
-	W3C Note form, and also from the structure of DOM2 Events, in order to
-	clarify the material. New diagrams have been put in place to represent
-	hierarchies and events flows more clearly. Here are some of the more
-	important changes between drafts:</p>
+    <h4 class="heading settled" data-level="12.1.4" id="changes-DOMLevel3Addons"><span class="secno">12.1.4. </span><span class="content">新接口</span><a class="self-link" href="#changes-DOMLevel3Addons"></a></h4>
+    <p>接口 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#customevent" id="ref-for-customevent③">CustomEvent</a></code> ， <code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent②②">FocusEvent</a></code> ， <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①⓪⑧">KeyboardEvent</a></code> ， <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent②⓪">CompositionEvent</a></code> 和 <code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent①⑤">WheelEvent</a></code> 已添加到事件(Events)模块中。</p>
+    <h3 class="heading settled" data-level="12.2" id="changes-drafts"><span class="secno">12.2. </span><span class="content">用户界面事件的不同草稿(drafts)之间的更改</span><a class="self-link" href="#changes-drafts"></a></h3>
+    <p>DOM Level3 Events 文档最初是在 2000 年到 2003 年间开发的，并作为 W3C 注释(W3C
+	Note)发布，等待实现者的进一步反馈和参与(interest)。2006 年，它被选中在
+	Recommendation Track 上进行修订(revision)和推进(progress)，
+	并取得进展，随后经过订正(revised)，以反映当前实现的状态和脚本作者的需求。</p>
+    <p>尽管 DOM 3 Events 的地位仅为 W3C 注释(W3C Note)，而非官方 Recommendation ，
+	但它在一些实现上呈现，也被其他规范引用，因此在使规范适应当前环境的同时，
+	也将(提案的)区别(disruption)降至最低。</p>
+    <p>为了弄清原始资料(clarify the material)，当前规范已从早期的 W3C 注释(W3C Note)
+	形式以及 DOM2 Events 的构造中进行了显著的重新排序。新的图表已经(阐述)到位，
+	可以更清晰地表示层次结构和事件流。以下是一些草案之间的更重要的变化:</p>
     <ul>
      <li data-md>
-      <p>The <q>key identifier</q> feature has been renamed <q>key value</q> to
-disambiguate them from unique identifiers for keys.</p>
+      <p><q>键标识符(key identifier)<q> 功能已被重命名为<q>键值(key value)</q>，
+以消除它们与键的唯一标识符之间的歧义。</q></q></p>
+      <div class="note custom-note" role="note"> 键的唯一标识符是 <q>码值(code value)</q> 。 </div>
      <li data-md>
-      <p>The <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①⓪⑨">KeyboardEvent</a></code> interface was briefly (from 2003-2010) defined to
-have <code>keyIdentifier</code> and <code>keyLocation</code> attributes,
-but these were removed in favor of the current <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key⑤①">key</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-location" id="ref-for-dom-keyboardevent-location②④">location</a></code> attributes. These attributes were not widely
-implemented.</p>
+      <p><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①⓪⑨">KeyboardEvent</a></code> 接口(从 2003-2010 年开始)被短暂地定义具有 <code>keyIdentifier</code> 和 <code>keyLocation</code> 属性过，
+但为了支持当前的 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key⑤①">key</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-location" id="ref-for-dom-keyboardevent-location②④">location</a></code> 属性，
+这些属性被删除了。并且这些属性没有得到广泛的实现。</p>
      <li data-md>
-      <p>The <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①①⓪">KeyboardEvent</a></code> and <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent②①">CompositionEvent</a></code> interfaces defined a <code>locale</code> attribute. This attribute was underspecified and
-moved into a technical note until it can be specified adequately.
-Refer to this <a href="https://www.w3.org/TR/2014/WD-uievents-20140612/">old version of UI Events</a> (before the DOM3Events spec was renamed "UI Events") for details.</p>
+      <p><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①①⓪">KeyboardEvent</a></code> 和 <code class="idl"><a data-link-type="idl" href="#compositionevent" id="ref-for-compositionevent②①">CompositionEvent</a></code> 接口定义了一个 <code>locale</code> 属性。该属性未被充分指定，并被移到技术说明中，直到可以充分指定为止。
+有关详细信息，请参阅此 <a href="https://www.w3.org/TR/2014/WD-uievents-20140612/"> 旧版本的用户界面事件</a>（在 DOM3Events 规范被重命名为"UI Events"之前）。</p>
      <li data-md>
-      <p>The <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①①①">KeyboardEvent</a></code> also had a <code>char</code> attribute that
-was only used by the <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑧"><code>keypress</code></a> event. Since the keypress event has
-been deprecated, this attribute was no longer useful and was removed.</p>
+      <p><code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent①①①">KeyboardEvent</a></code> 还有一个仅由 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑧"><code>keypress</code></a> 事件使用的 <code>char</code> 属性。由于 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑨"><code>keypress</code></a> 事件已被弃用，因此该属性不再有用，已被删除。</p>
      <li data-md>
-      <p>The <code>change</code>, <code>submit</code>, and <code>reset</code> events were removed, since they were specific to HTML forms, and are
-specified in <a data-link-type="biblio" href="#biblio-html5" title="HTML5">[HTML5]</a>.</p>
+      <p><code>change</code> 、 <code>submit</code> 和 <code>reset</code> 事件被删除
+，因为它们是特定于 HTML 表单的，并且在 <a data-link-type="biblio" href="#biblio-html5" title="HTML5">[HTML5]</a> 中规定。</p>
      <li data-md>
-      <p>The <code>textInput</code> event, originally proposed as a replacement
-for <a data-link-type="dfn" href="#keypress" id="ref-for-keypress②⑨"><code>keypress</code></a>, was removed in favor of the current <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⑥"><code>beforeinput</code></a> and <a data-link-type="dfn" href="#input" id="ref-for-input④⑦"><code>input</code></a> events.</p>
+      <p>最初被提议作为 <a data-link-type="dfn" href="#keypress" id="ref-for-keypress③⓪"><code>keypress</code></a> 替代的 <code>textInput</code> 事件被删除，
+取而代之的是当前的 <a data-link-type="dfn" href="#beforeinput" id="ref-for-beforeinput④⑥"><code>beforeinput</code></a> 和 <a data-link-type="dfn" href="#input" id="ref-for-input④⑦"><code>input</code></a> 事件。</p>
      <li data-md>
-      <p>Namespaced events have been removed.</p>
+      <p>已删除命名空间(Namespaced)事件。</p>
      <li data-md>
-      <p>Updated to use <a data-link-type="biblio" href="#biblio-webidl" title="Web IDL Standard">[WebIDL]</a>.</p>
+      <p>已更新为使用 <a data-link-type="biblio" href="#biblio-webidl" title="Web IDL Standard">[WebIDL]</a> 。</p>
+      <div class="note custom-note" role="note"> 这里指接口的定义方式遵循 <a data-link-type="biblio" href="#biblio-webidl" title="Web IDL Standard">[WebIDL]</a> 规范 。 </div>
      <li data-md>
-      <p>EventException has been removed.</p>
+      <p>EventException 已被删除。</p>
     </ul>
    </section>
    <section>
@@ -8898,7 +8888,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-customevent">4. 基本事件接口</a> <a href="#ref-for-customevent①">(2)</a>
     <li><a href="#ref-for-customevent②">10.2. 自定义事件</a>
-    <li><a href="#ref-for-customevent③">12.1.4. New Interfaces</a>
+    <li><a href="#ref-for-customevent③">12.1.4. 新接口</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-07886e33695d0e7b473ef18f656ad7ac" class="dfn-panel" data-for="07886e33695d0e7b473ef18f656ad7ac" id="infopanel-for-07886e33695d0e7b473ef18f656ad7ac">
@@ -8960,7 +8950,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-event⑥①">9.4.2.6. 
 		DOMNodeRemovedFromDocument</a>
     <li><a href="#ref-for-event⑥②">9.4.2.7. DOMSubtreeModified</a>
-    <li><a href="#ref-for-event⑥③">12.1.3. Changes to DOM Level 2 Events interfaces</a> <a href="#ref-for-event⑥④">(2)</a>
+    <li><a href="#ref-for-event⑥③">12.1.3. 对 DOM Level 2 接口的更改</a> <a href="#ref-for-event⑥④">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-a41247dbf908b8c39ef1dea1be6618d3" class="dfn-panel" data-for="a41247dbf908b8c39ef1dea1be6618d3" id="infopanel-for-a41247dbf908b8c39ef1dea1be6618d3">
@@ -8988,7 +8978,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-eventtarget⑧">5.3.1.1. MouseEvent</a> <a href="#ref-for-eventtarget⑨">(2)</a> <a href="#ref-for-eventtarget①⓪">(3)</a>
     <li><a href="#ref-for-eventtarget①①">5.3.1.2. MouseEventInit</a> <a href="#ref-for-eventtarget①②">(2)</a>
     <li><a href="#ref-for-eventtarget①③">5.4.2.2. 滚轮事件的可取消性</a>
-    <li><a href="#ref-for-eventtarget①④">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-eventtarget①④">12.1.3. 对 DOM Level 2 接口的更改</a>
     <li><a href="#ref-for-eventtarget①⑤">14. 术语表</a>
    </ul>
   </aside>
@@ -9063,7 +9053,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-dom-event-defaultprevented">3.2. 默认行为和可取消事件</a>
     <li><a href="#ref-for-dom-event-defaultprevented①">4. 基本事件接口</a>
-    <li><a href="#ref-for-dom-event-defaultprevented②">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-dom-event-defaultprevented②">12.1.3. 对 DOM Level 2 接口的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-22ab0db31703013ae4ce87326375fda1" class="dfn-panel" data-for="22ab0db31703013ae4ce87326375fda1" id="infopanel-for-22ab0db31703013ae4ce87326375fda1">
@@ -9081,7 +9071,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-eventtarget-dispatchevent③">4. 基本事件接口</a>
     <li><a href="#ref-for-dom-eventtarget-dispatchevent④">4.1. 事件类型列表</a>
     <li><a href="#ref-for-dom-eventtarget-dispatchevent⑤">7. 遗留事件的初始化器</a>
-    <li><a href="#ref-for-dom-eventtarget-dispatchevent⑥">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-dom-eventtarget-dispatchevent⑥">12.1.3. 对 DOM Level 2 接口的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-b824548830500bcff6c3ae25438c82da" class="dfn-panel" data-for="b824548830500bcff6c3ae25438c82da" id="infopanel-for-b824548830500bcff6c3ae25438c82da">
@@ -9149,7 +9139,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-c8800c5f44ba6137e6ed59214d52469a" style="display:none">Info about the 'stopImmediatePropagation()' external reference.</span><a href="https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation">https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-event-stopimmediatepropagation">4. 基本事件接口</a>
-    <li><a href="#ref-for-dom-event-stopimmediatepropagation①">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-dom-event-stopimmediatepropagation①">12.1.3. 对 DOM Level 2 接口的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-995516eba5cc5577e4785ee506e08683" class="dfn-panel" data-for="995516eba5cc5577e4785ee506e08683" id="infopanel-for-995516eba5cc5577e4785ee506e08683">
@@ -9212,7 +9202,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-a65f5aab02d999723972784a48e0826e" style="display:none">Info about the 'timeStamp' external reference.</span><a href="https://dom.spec.whatwg.org/#dom-event-timestamp">https://dom.spec.whatwg.org/#dom-event-timestamp</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-event-timestamp">4. 基本事件接口</a>
-    <li><a href="#ref-for-dom-event-timestamp①">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-dom-event-timestamp①">12.1.3. 对 DOM Level 2 接口的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-2c99fec23d0f906dbfe8224dc1915325" class="dfn-panel" data-for="2c99fec23d0f906dbfe8224dc1915325" id="infopanel-for-2c99fec23d0f906dbfe8224dc1915325">
@@ -9220,7 +9210,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <ul>
     <li><a href="#ref-for-dom-event-type">4. 基本事件接口</a>
     <li><a href="#ref-for-dom-event-type①">4.1. 事件类型列表</a>
-    <li><a href="#ref-for-dom-event-type②">12.1.3. Changes to DOM Level 2 Events interfaces</a> <a href="#ref-for-dom-event-type③">(2)</a>
+    <li><a href="#ref-for-dom-event-type②">12.1.3. 对 DOM Level 2 接口的更改</a> <a href="#ref-for-dom-event-type③">(2)</a>
     <li><a href="#ref-for-dom-event-type④">14. 术语表</a>
    </ul>
   </aside>
@@ -9823,7 +9813,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-uievent⑨⓪">9.2.1.1. DOMFocusIn</a> <a href="#ref-for-uievent⑨①">(2)</a>
     <li><a href="#ref-for-uievent⑨②">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-uievent⑨③">(2)</a>
     <li><a href="#ref-for-uievent⑨④">9.3.1.1. keypress</a> <a href="#ref-for-uievent⑨⑤">(2)</a>
-    <li><a href="#ref-for-uievent⑨⑥">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-uievent⑨⑥">12.1. 从 DOM Level 2 Events 到 UI Events
+的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-uievent-view" class="dfn-panel" data-for="dom-uievent-view" id="infopanel-for-dom-uievent-view">
@@ -9976,7 +9967,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-focusevent①⑦">9.2.1. 遗留 FocusEvent 事件类型</a>
     <li><a href="#ref-for-focusevent①⑧">9.2.1.1. DOMFocusIn</a> <a href="#ref-for-focusevent①⑨">(2)</a>
     <li><a href="#ref-for-focusevent②⓪">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-focusevent②①">(2)</a>
-    <li><a href="#ref-for-focusevent②②">12.1.4. New Interfaces</a>
+    <li><a href="#ref-for-focusevent②②">12.1.4. 新接口</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-focusevent-relatedtarget" class="dfn-panel" data-for="dom-focusevent-relatedtarget" id="infopanel-for-dom-focusevent-relatedtarget">
@@ -10015,7 +10006,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-blur⑧">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-blur⑨">(2)</a>
     <li><a href="#ref-for-blur①⓪">9.2.2. 遗留焦点事件(FocusEvent)事件顺序</a> <a href="#ref-for-blur①①">(2)</a> <a href="#ref-for-blur①②">(3)</a>
     <li><a href="#ref-for-blur①③">9.3.1.1. keypress</a>
-    <li><a href="#ref-for-blur①④">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-blur①④">12.1. 从 DOM Level 2 Events 到 UI Events
+的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-focus" class="dfn-panel" data-for="focus" id="infopanel-for-focus">
@@ -10031,7 +10023,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-focus⑨">9.2.1.1. DOMFocusIn</a> <a href="#ref-for-focus①⓪">(2)</a>
     <li><a href="#ref-for-focus①①">9.2.2. 遗留焦点事件(FocusEvent)事件顺序</a> <a href="#ref-for-focus①②">(2)</a> <a href="#ref-for-focus①③">(3)</a> <a href="#ref-for-focus①④">(4)</a> <a href="#ref-for-focus①⑤">(5)</a> <a href="#ref-for-focus①⑥">(6)</a> <a href="#ref-for-focus①⑦">(7)</a>
     <li><a href="#ref-for-focus①⑧">9.3.1.1. keypress</a>
-    <li><a href="#ref-for-focus①⑨">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-focus①⑨">12.1. 从 DOM Level 2 Events 到 UI Events
+的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-focusin" class="dfn-panel" data-for="focusin" id="infopanel-for-focusin">
@@ -10082,8 +10075,9 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-mouseevent①⑦②">7.1.2. MouseEvent 接口的初始化器</a> <a href="#ref-for-mouseevent①⑦③">(2)</a>
     <li><a href="#ref-for-mouseevent①⑦④">8.1. 遗留的 UIEvent 补充接口</a> <a href="#ref-for-mouseevent①⑦⑤">(2)</a>
     <li><a href="#ref-for-mouseevent①⑦⑥">8.1.1. UIEvent 接口(补充)</a>
-    <li><a href="#ref-for-mouseevent①⑦⑦">12.1. Changes between DOM Level 2 Events and UI Events</a>
-    <li><a href="#ref-for-mouseevent①⑦⑧">12.1.3. Changes to DOM Level 2 Events interfaces</a> <a href="#ref-for-mouseevent①⑦⑨">(2)</a>
+    <li><a href="#ref-for-mouseevent①⑦⑦">12.1. 从 DOM Level 2 Events 到 UI Events
+的更改</a>
+    <li><a href="#ref-for-mouseevent①⑦⑧">12.1.3. 对 DOM Level 2 接口的更改</a> <a href="#ref-for-mouseevent①⑦⑨">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-mouseevent-screenx" class="dfn-panel" data-for="dom-mouseevent-screenx" id="infopanel-for-dom-mouseevent-screenx">
@@ -10306,7 +10300,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-mouseevent-getmodifierstate">3.6. 构造鼠标和键盘事件</a>
     <li><a href="#ref-for-dom-mouseevent-getmodifierstate①">5.3.1.1. MouseEvent</a>
     <li><a href="#ref-for-dom-mouseevent-getmodifierstate②">5.3.2. 事件修饰符初始化器</a> <a href="#ref-for-dom-mouseevent-getmodifierstate③">(2)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate④">(3)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate⑤">(4)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate⑥">(5)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate⑦">(6)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate⑧">(7)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate⑨">(8)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①⓪">(9)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①①">(10)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①②">(11)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①③">(12)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①④">(13)</a> <a href="#ref-for-dom-mouseevent-getmodifierstate①⑤">(14)</a>
-    <li><a href="#ref-for-dom-mouseevent-getmodifierstate①⑥">12.1.3. Changes to DOM Level 2 Events interfaces</a>
+    <li><a href="#ref-for-dom-mouseevent-getmodifierstate①⑥">12.1.3. 对 DOM Level 2 接口的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dictdef-mouseeventinit" class="dfn-panel" data-for="dictdef-mouseeventinit" id="infopanel-for-dictdef-mouseeventinit">
@@ -10492,7 +10486,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dblclick①">5.3.3. 鼠标事件顺序</a> <a href="#ref-for-dblclick②">(2)</a> <a href="#ref-for-dblclick③">(3)</a> <a href="#ref-for-dblclick④">(4)</a> <a href="#ref-for-dblclick⑤">(5)</a>
     <li><a href="#ref-for-dblclick⑥">5.3.4.2. click</a>
     <li><a href="#ref-for-dblclick⑦">5.3.4.4. dblclick</a> <a href="#ref-for-dblclick⑧">(2)</a> <a href="#ref-for-dblclick⑨">(3)</a> <a href="#ref-for-dblclick①⓪">(4)</a> <a href="#ref-for-dblclick①①">(5)</a> <a href="#ref-for-dblclick①②">(6)</a> <a href="#ref-for-dblclick①③">(7)</a> <a href="#ref-for-dblclick①④">(8)</a>
-    <li><a href="#ref-for-dblclick①⑤">12.1. Changes between DOM Level 2 Events and UI Events</a>
+    <li><a href="#ref-for-dblclick①⑤">12.1. 从 DOM Level 2 Events 到 UI Events
+的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-mousedown" class="dfn-panel" data-for="mousedown" id="infopanel-for-mousedown">
@@ -10537,7 +10532,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-mousemove①⑧">5.3.4.1. auxclick</a>
     <li><a href="#ref-for-mousemove①⑨">5.3.4.2. click</a>
     <li><a href="#ref-for-mousemove②⓪">5.3.4.8. mousemove</a> <a href="#ref-for-mousemove②①">(2)</a>
-    <li><a href="#ref-for-mousemove②②">12.1.2. Changes to DOM Level 2 event types</a>
+    <li><a href="#ref-for-mousemove②②">12.1.2. 对 DOM Level 2
+	事件类型的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-mouseout" class="dfn-panel" data-for="mouseout" id="infopanel-for-mouseout">
@@ -10587,7 +10583,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-wheelevent⑤">5.4.1.2. WheelEventInit</a> <a href="#ref-for-wheelevent⑥">(2)</a> <a href="#ref-for-wheelevent⑦">(3)</a>
     <li><a href="#ref-for-wheelevent⑧">5.4.2.1. wheel</a> <a href="#ref-for-wheelevent⑨">(2)</a> <a href="#ref-for-wheelevent①⓪">(3)</a> <a href="#ref-for-wheelevent①①">(4)</a> <a href="#ref-for-wheelevent①②">(5)</a>
     <li><a href="#ref-for-wheelevent①③">7.1.3. WheelEvent 接口的初始化器</a> <a href="#ref-for-wheelevent①④">(2)</a>
-    <li><a href="#ref-for-wheelevent①⑤">12.1.4. New Interfaces</a>
+    <li><a href="#ref-for-wheelevent①⑤">12.1.4. 新接口</a>
     <li><a href="#ref-for-wheelevent①⑥">14. 术语表</a> <a href="#ref-for-wheelevent①⑦">(2)</a>
    </ul>
   </aside>
@@ -10770,7 +10766,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-beforeinput④⓪">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-beforeinput④①">(2)</a>
     <li><a href="#ref-for-beforeinput④②">9.3.1.1. keypress</a> <a href="#ref-for-beforeinput④③">(2)</a>
     <li><a href="#ref-for-beforeinput④④">9.3.2. keypress 事件顺序</a> <a href="#ref-for-beforeinput④⑤">(2)</a>
-    <li><a href="#ref-for-beforeinput④⑥">12.2. Changes between different drafts of UI Events</a>
+    <li><a href="#ref-for-beforeinput④⑥">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-input" class="dfn-panel" data-for="input" id="infopanel-for-input">
@@ -10789,7 +10785,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-input④②">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-input④③">(2)</a>
     <li><a href="#ref-for-input④④">9.3.1.1. keypress</a>
     <li><a href="#ref-for-input④⑤">9.3.2. keypress 事件顺序</a> <a href="#ref-for-input④⑥">(2)</a>
-    <li><a href="#ref-for-input④⑦">12.2. Changes between different drafts of UI Events</a>
+    <li><a href="#ref-for-input④⑦">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-keyboardevent" class="dfn-panel" data-for="keyboardevent" id="infopanel-for-keyboardevent">
@@ -10822,8 +10818,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keyboardevent⑨③">9.3.1. 遗留 KeyboardEvent 事件类型</a>
     <li><a href="#ref-for-keyboardevent⑨④">9.3.1.1. keypress</a> <a href="#ref-for-keyboardevent⑨⑤">(2)</a> <a href="#ref-for-keyboardevent⑨⑥">(3)</a> <a href="#ref-for-keyboardevent⑨⑦">(4)</a> <a href="#ref-for-keyboardevent⑨⑧">(5)</a> <a href="#ref-for-keyboardevent⑨⑨">(6)</a> <a href="#ref-for-keyboardevent①⓪⓪">(7)</a> <a href="#ref-for-keyboardevent①⓪①">(8)</a> <a href="#ref-for-keyboardevent①⓪②">(9)</a> <a href="#ref-for-keyboardevent①⓪③">(10)</a> <a href="#ref-for-keyboardevent①⓪④">(11)</a> <a href="#ref-for-keyboardevent①⓪⑤">(12)</a> <a href="#ref-for-keyboardevent①⓪⑥">(13)</a>
     <li><a href="#ref-for-keyboardevent①⓪⑦">9.3.2. keypress 事件顺序</a>
-    <li><a href="#ref-for-keyboardevent①⓪⑧">12.1.4. New Interfaces</a>
-    <li><a href="#ref-for-keyboardevent①⓪⑨">12.2. Changes between different drafts of UI Events</a> <a href="#ref-for-keyboardevent①①⓪">(2)</a> <a href="#ref-for-keyboardevent①①①">(3)</a>
+    <li><a href="#ref-for-keyboardevent①⓪⑧">12.1.4. 新接口</a>
+    <li><a href="#ref-for-keyboardevent①⓪⑨">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a> <a href="#ref-for-keyboardevent①①⓪">(2)</a> <a href="#ref-for-keyboardevent①①①">(3)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardevent-dom_key_location_standard" class="dfn-panel" data-for="dom-keyboardevent-dom_key_location_standard" id="infopanel-for-dom-keyboardevent-dom_key_location_standard">
@@ -10889,7 +10885,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-key④⑧">8.2.1. KeyboardEvent 接口(补充)</a>
     <li><a href="#ref-for-dom-keyboardevent-key④⑨">9.3.1.1. keypress</a>
     <li><a href="#ref-for-dom-keyboardevent-key⑤⓪">9.3.2. keypress 事件顺序</a>
-    <li><a href="#ref-for-dom-keyboardevent-key⑤①">12.2. Changes between different drafts of UI Events</a>
+    <li><a href="#ref-for-dom-keyboardevent-key⑤①">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardevent-code" class="dfn-panel" data-for="dom-keyboardevent-code" id="infopanel-for-dom-keyboardevent-code">
@@ -10921,7 +10917,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-dom-keyboardevent-location①⑨">6.3. 键盘事件 key 属性值</a> <a href="#ref-for-dom-keyboardevent-location②⓪">(2)</a> <a href="#ref-for-dom-keyboardevent-location②①">(3)</a>
     <li><a href="#ref-for-dom-keyboardevent-location②②">7.1.4. KeyboardEvent 接口的初始化器</a>
     <li><a href="#ref-for-dom-keyboardevent-location②③">9.3.1.1. keypress</a>
-    <li><a href="#ref-for-dom-keyboardevent-location②④">12.2. Changes between different drafts of UI Events</a>
+    <li><a href="#ref-for-dom-keyboardevent-location②④">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-keyboardevent-ctrlkey" class="dfn-panel" data-for="dom-keyboardevent-ctrlkey" id="infopanel-for-dom-keyboardevent-ctrlkey">
@@ -11109,8 +11105,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-compositionevent①⑤">6.3.3. 输入法编辑器</a> <a href="#ref-for-compositionevent①⑥">(2)</a> <a href="#ref-for-compositionevent①⑦">(3)</a> <a href="#ref-for-compositionevent①⑧">(4)</a>
     <li><a href="#ref-for-compositionevent①⑨">7.1.5. CompositionEvent
 	接口的初始化器</a>
-    <li><a href="#ref-for-compositionevent②⓪">12.1.4. New Interfaces</a>
-    <li><a href="#ref-for-compositionevent②①">12.2. Changes between different drafts of UI Events</a>
+    <li><a href="#ref-for-compositionevent②⓪">12.1.4. 新接口</a>
+    <li><a href="#ref-for-compositionevent②①">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-compositionevent-data" class="dfn-panel" data-for="dom-compositionevent-data" id="infopanel-for-dom-compositionevent-data">
@@ -11317,7 +11313,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-keypress①④">9.3. 遗留 KeyboardEvent 事件</a> <a href="#ref-for-keypress①⑤">(2)</a> <a href="#ref-for-keypress①⑥">(3)</a> <a href="#ref-for-keypress①⑦">(4)</a>
     <li><a href="#ref-for-keypress①⑧">9.3.1.1. keypress</a> <a href="#ref-for-keypress①⑨">(2)</a> <a href="#ref-for-keypress②⓪">(3)</a> <a href="#ref-for-keypress②①">(4)</a> <a href="#ref-for-keypress②②">(5)</a>
     <li><a href="#ref-for-keypress②③">9.3.2. keypress 事件顺序</a> <a href="#ref-for-keypress②④">(2)</a> <a href="#ref-for-keypress②⑤">(3)</a> <a href="#ref-for-keypress②⑥">(4)</a> <a href="#ref-for-keypress②⑦">(5)</a>
-    <li><a href="#ref-for-keypress②⑧">12.2. Changes between different drafts of UI Events</a> <a href="#ref-for-keypress②⑨">(2)</a>
+    <li><a href="#ref-for-keypress②⑧">12.2. 用户界面事件的不同草稿(drafts)之间的更改</a> <a href="#ref-for-keypress②⑨">(2)</a> <a href="#ref-for-keypress③⓪">(3)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-mutationevent" class="dfn-panel" data-for="mutationevent" id="infopanel-for-mutationevent">
@@ -11419,7 +11415,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-domnodeinserted①">9.4.2.3. DOMNodeInserted</a>
     <li><a href="#ref-for-domnodeinserted②">9.4.2.4. 
 		DOMNodeInsertedIntoDocument</a>
-    <li><a href="#ref-for-domnodeinserted③">12.1.2. Changes to DOM Level 2 event types</a>
+    <li><a href="#ref-for-domnodeinserted③">12.1.2. 对 DOM Level 2
+	事件类型的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-domnodeinsertedintodocument" class="dfn-panel" data-for="domnodeinsertedintodocument" id="infopanel-for-domnodeinsertedintodocument">
@@ -11437,7 +11434,8 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-domnoderemoved①">9.4.2.5. DOMNodeRemoved</a>
     <li><a href="#ref-for-domnoderemoved②">9.4.2.6. 
 		DOMNodeRemovedFromDocument</a>
-    <li><a href="#ref-for-domnoderemoved③">12.1.2. Changes to DOM Level 2 event types</a>
+    <li><a href="#ref-for-domnoderemoved③">12.1.2. 对 DOM Level 2
+	事件类型的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-domnoderemovedfromdocument" class="dfn-panel" data-for="domnoderemovedfromdocument" id="infopanel-for-domnoderemovedfromdocument">
@@ -11676,7 +11674,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-event-listener">5.4.2.2. 滚轮事件的可取消性</a> <a href="#ref-for-event-listener">(2)</a>
     <li><a href="#ref-for-event-listener">9.1.1.1. DOMActivate</a>
     <li><a href="#ref-for-event-listener">11. 安全注意事项</a> <a href="#ref-for-event-listener">(2)</a>
-    <li><a href="#ref-for-event-listener">12.1.1. Changes to DOM Level 2 event flow</a>
+    <li><a href="#ref-for-event-listener">12.1.1. 对 DOM Level 2 事件流的更改</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event-order" class="dfn-panel" data-for="event-order" id="infopanel-for-event-order">
@@ -12024,7 +12022,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-window⑤⑦">9.2.1.2. DOMFocusOut</a> <a href="#ref-for-window⑤⑧">(2)</a>
     <li><a href="#ref-for-window⑤⑨">9.3.1.1. keypress</a>
     <li><a href="#ref-for-window⑥⓪">9.4.2.7. DOMSubtreeModified</a>
-    <li><a href="#ref-for-window⑥①">12.1.1. Changes to DOM Level 2 event flow</a>
+    <li><a href="#ref-for-window⑥①">12.1.1. 对 DOM Level 2 事件流的更改</a>
     <li><a href="#ref-for-window⑥②">14. 术语表</a>
    </ul>
   </aside>
