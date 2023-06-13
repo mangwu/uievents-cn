@@ -17,21 +17,18 @@
 可以捕获所有用户交互，并通过 DOM 实现中通常可用的方法(如 XMLHttpRequest 接口，
 本规范未定义这些方法)将其提交给第三方。
 
-In DOM implementations that support facilities to load external data, events
-like the EVENT{error} event can provide access to sensitive information about
-the environment of the computer system or network. An example would be a
-malicious HTML document that attempts to embed a resource on the local network
-or the localhost on different ports. An embedded <a>DOM application</a> could
-then listen for EVENT{error} and EVENT{load} events to determine which other
-computers in a network are accessible from the local system or which ports are
-open on the system to prepare further attacks.
+在支持加载外部数据的设备(facilities)的 DOM 实现中，像 EVENT{error} 
+这样的事件可以提供对关于计算机系统或网络的环境相关的敏感信息的访问。
+例如，一个恶意 HTML 文档试企图将资源嵌入本地网络或本地主机的不同端口。
+然后，嵌入式 <a href="#dom-application">DOM 应用程序</a> 
+可以监听 EVENT{error} 和 EVENT{load} 事件，
+以确定网络中的哪些其他计算机可以从本地系统访问，或者系统上的哪些端口是打开的，
+从而为进一步的攻击做好准备。
 
-An implementation of UI Events alone is generally insufficient to perform
-attacks of this kind and the security considerations of the facilities that
-possibly support such attacks apply. For conformance with this specification,
-DOM implementations MAY take reasonable steps to ensure that <a>DOM
-applications</a> do not get access to confidential or sensitive information. For
-example, they might choose not to dispatch EVENT{load} events to nodes that
-attempt to embed resources on the local network.
+仅支持用户界面事件的实现通常不足以执行此类攻击，
+并且可能支持此类攻击的设备的安全注意事项也适用。为了符合本规范，
+DOM 实现 <span class="zh-upper">可以</span> 采取合理的步骤来确保
+<a href="#dom-application">DOM 应用程序</a> 不会访问隐私或敏感信息。例如，
+它们可能会选择不将 EVENT{load} 事件分派发给企图在本地网络上嵌入资源的节点。
 
 </section>
