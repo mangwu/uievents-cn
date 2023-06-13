@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="aa56102ee27999f3a96474dba532b53747bbfcb2" name="document-revision">
+  <meta content="d9be341aa537d85ca74975bf53f4fa26d50277e0" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -1488,10 +1488,10 @@ Web 应用程序的人。</p>
       <figcaption> 依据DOM 事件流机制，在 DOM 树中进行一次事件派发的图形化表示 </figcaption>
      </figure>
     </div>
-    <p>事件对象被分派到 <a href="#event-target" id="ref-for-event-target②">事件目标</a> 。
+    <p>事件对象被分派到 <a href="#event-target" id="ref-for-event-target①">事件目标</a> 。
     但在开始派发之前，事件对象的 <a href="#propagation-path" id="ref-for-propagation-path">传播路径</a> 必须被首先确定。</p>
     <p><a href="#propagation-path" id="ref-for-propagation-path①">传播路径</a> 是事件经过的 <a href="#current-event-target" id="ref-for-current-event-target">当前事件目标</a> 的有序列表。
-    此传播路径反映了文档树的层次结构。这个有序列表的最后一项是 <a href="#event-target" id="ref-for-event-target③">事件目标</a> ，紧挨着事件目标的前面的一项是 <em>目标的父亲节点(target’s parent)</em> ，而(不包括事件目标的)
+    此传播路径反映了文档树的层次结构。这个有序列表的最后一项是 <a href="#event-target" id="ref-for-event-target②">事件目标</a> ，紧挨着事件目标的前面的一项是 <em>目标的父亲节点(target’s parent)</em> ，而(不包括事件目标的)
     前面的所有项被称为 <em>目标的祖先节点(target’s ancestors)</em> 。</p>
     <p>一旦确定了 <a href="#propagation-path" id="ref-for-propagation-path②">传播路径</a> ，
     事件对象就会经过一个或多个 <a href="#event-phase" id="ref-for-event-phase">事件阶段</a> 。
@@ -1503,7 +1503,7 @@ Web 应用程序的人。</p>
      <li data-md>
       <p><strong>捕获阶段(capture phase)</strong> : 事件对象通过目标的祖先节点从 <a data-link-type="dfn" href="#window" id="ref-for-window">Window</a> 传播到目标的父节点。这个阶段也被称为 <em>捕获阶段(capturing phase)</em> 。</p>
      <li data-md>
-      <p><strong>目标阶段(target phase)</strong> : 事件对象到达事件对象的 <a href="#event-target" id="ref-for-event-target④">事件目标</a> 。这个阶段也被称为 <em>目标阶段(at-target phase)</em> 。如果 <a href="#event-type" id="ref-for-event-type①①">事件类型</a> 指示事件不会冒泡，
+      <p><strong>目标阶段(target phase)</strong> : 事件对象到达事件对象的 <a href="#event-target" id="ref-for-event-target③">事件目标</a> 。这个阶段也被称为 <em>目标阶段(at-target phase)</em> 。如果 <a href="#event-type" id="ref-for-event-type①①">事件类型</a> 指示事件不会冒泡，
 那么事件对象将在该阶段完成后停止(传播)。</p>
       <p class="note custom-note" role="note"> 所谓"到达事件对象的事件目标"指的就是事件传播到触发事件的元素节点；
     事件类型决定了事件本身(在传播时)会不会冒泡，
@@ -1554,7 +1554,7 @@ Web 应用程序的人。</p>
     <p>除 <a data-link-type="dfn" href="#click" id="ref-for-click②"><code>click</code></a> 事件外，大多数不受信任的事件不会触发 <a href="#default-action" id="ref-for-default-action⑨">默认行为</a> 。 <a data-link-type="dfn" href="#click" id="ref-for-click③"><code>click</code></a> 事件始终触发 <a href="#default-action" id="ref-for-default-action①⓪">默认行为</a> ，即使它的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-istrusted" id="ref-for-dom-event-istrusted②">isTrusted</a></code> 属性为 <code>false</code> (为了向后兼容，保留此行为)。
     所有其他不受信任的事件表现地就好像在该事件上调用了 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault②">preventDefault()</a></code> 方法一样。</p>
     <h3 class="heading settled" data-level="3.5" id="event-flow-activation"><span class="secno">3.5. </span><span class="content">激活触发器和行为</span><a class="self-link" href="#event-flow-activation"></a></h3>
-    <p>某些 <a href="#event-target" id="ref-for-event-target⑤">事件目标</a> (例如链接或按钮元素)
+    <p>某些 <a href="#event-target" id="ref-for-event-target④">事件目标</a> (例如链接或按钮元素)
     可能具有相关联的 <a href="#activation-behavior" id="ref-for-activation-behavior">激活行为</a> (例如跟随链接)，这些行为是实现为了响应 <em><a href="#activation-trigger" id="ref-for-activation-trigger">激活触发器</a></em> (例如点击链接)而执行的。</p>
     <p class="example" id="example-activation"><a class="self-link" href="#example-activation"></a> HTML 和 SVG 都有一个 <code>&lt;a></code> 元素，它表示一个链接。 <code>&lt;a></code> 元素的相关 <a href="#activation-trigger" id="ref-for-activation-trigger①">激活触发器</a> 是 <code>&lt;a></code> 元素的文本或图像内容上的 <a data-link-type="dfn" href="#click" id="ref-for-click④"><code>click</code></a> 事件，或者当 <code>&lt;a></code> 元素聚焦时，<a href="#activation-trigger" id="ref-for-activation-trigger②">激活触发器</a> 也可以是 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key②">key</a></code> 属性值为 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Enter">Enter</a>"</code> 键的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown①"><code>keydown</code></a> 事件。 <code>&lt;a></code> 元素的激活行为通常是: 在链接是外部链接的情况下，
     将窗口的内容更改为链接的新文档的内容，或者在链接是内部链接的情况下，
@@ -1566,7 +1566,7 @@ Web 应用程序的人。</p>
     基于定时器的，在特定时钟时间或在经过特定时间段之后激活元素的事件、
     在完成特定动作之后的进度事件、或许多基于条件或基于状态的其他事件。</p>
     <h3 class="heading settled" data-level="3.6" id="event-constructors"><span class="secno">3.6. </span><span class="content">构造鼠标和键盘事件</span><a class="self-link" href="#event-constructors"></a></h3>
-    <p>通常，当调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥⑥">Event</a></code> 接口或从 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event①">Event</a></code> 接口继承的接口的构造函数时，
+    <p>通常，当调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑥⑤">Event</a></code> 接口或从 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event①">Event</a></code> 接口继承的接口的构造函数时，
     应遵循 <a data-link-type="biblio" href="#biblio-dom" title="DOM Standard">[DOM]</a> 中描述的步骤。然而， <code class="idl"><a data-link-type="idl" href="#keyboardevent" id="ref-for-keyboardevent⑤">KeyboardEvent</a></code> 和 <code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①">MouseEvent</a></code> 接口提供了额外的字典成员，用于初始化 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②">Event</a></code> 对象的键修饰符的内部状态:
     特别地，这些键修饰符可以使用 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-getmodifierstate" id="ref-for-dom-keyboardevent-getmodifierstate①">getModifierState()</a></code> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-getmodifierstate" id="ref-for-dom-mouseevent-getmodifierstate">getModifierState()</a></code> 方法查询内部状态。
     本节补充了使用这些可选的修饰符状态初始化一个新的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event③">Event</a></code> 对象的
@@ -1683,7 +1683,7 @@ Web 应用程序的人。</p>
     <p>依据 DOM 支持的级别，或依据用于显示(例如，屏幕)或交互
     (例如，鼠标、键盘、触摸屏或语音)的设备，这些事件类型可以由实现决定和生成。
     当在 <a data-link-type="biblio" href="#biblio-xml" title="Extensible Markup Language (XML) 1.0 (Fifth Edition)">[XML]</a> 或 <a data-link-type="biblio" href="#biblio-html5" title="HTML5">[HTML5]</a> 应用程序使用(事件类型)时，这些语言的规范 <span class="zh-upper">可以</span> 限制与事件类型相关的语义和范围
-    (特别是在适合的 <a href="#event-target" id="ref-for-event-target⑥">事件目标</a> 上)。
+    (特别是在适合的 <a href="#event-target" id="ref-for-event-target⑤">事件目标</a> 上)。
     请参阅有关定义所用语言的规范文档，
     以查找这些限制或查找本文档中未定义的事件类型。</p>
     <p>下表提供了本规范中描述的事件类型的信息摘要。</p>
@@ -2264,7 +2264,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
       <p>当文档本身具有焦点时，可以将 <em>文档焦点上下文</em> 设置为文档中任何可聚焦的元素。</p>
     </ul>
     <p>本规范中定义的事件类型专门处理文档焦点(而不是操作系统焦点和应用程序焦点)，
-		在事件详细信息中标识的 <a href="#event-target" id="ref-for-event-target⑦">事件目标</a> <span class="zh-upper">必须</span> 只能是文档或窗口中的文档的一部分，
+		在事件详细信息中标识的 <a href="#event-target" id="ref-for-event-target⑥">事件目标</a> <span class="zh-upper">必须</span> 只能是文档或窗口中的文档的一部分，
 		而不能是浏览器或操作系统的一部分，
 		即使是从一个焦点上下文切换到另一个焦点上下文时也是如此。</p>
     <p>通常，文档总是有一个焦点元素(即使它本身就是文档元素)和一个持久的 <a href="#focus-ring" id="ref-for-focus-ring">焦点环</a> 。在焦点上下文之间切换时，
@@ -2311,13 +2311,13 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑥">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑥">target</a></code> : 失去焦点的 <a href="#event-target" id="ref-for-event-target⑧">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑥">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑥">target</a></code> : 失去焦点的 <a href="#event-target" id="ref-for-event-target⑦">事件目标</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②②">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view⑤">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window②③"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②③">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail⑤">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent⑦">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget">relatedTarget</a></code> : 接收焦点的 <a href="#event-target" id="ref-for-event-target⑨">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent⑦">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget">relatedTarget</a></code> : 接收焦点的 <a href="#event-target" id="ref-for-event-target⑧">事件目标</a> 
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target①⓪">事件目标</a> 失去焦点后， <a href="#user-agent" id="ref-for-user-agent①⑥">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。在派发此事件之前，元素(失去焦点的事件目标) <span class="zh-upper">必须</span> 被取下焦点。此类型类似于 <a data-link-type="dfn" href="#focusout" id="ref-for-focusout③"><code>focusout</code></a> ，并且会发生冒泡。</p>
+    <p>当 <a href="#event-target" id="ref-for-event-target⑨">事件目标</a> 失去焦点后， <a href="#user-agent" id="ref-for-user-agent①⑥">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。在派发此事件之前，元素(失去焦点的事件目标) <span class="zh-upper">必须</span> 被取下焦点。此类型类似于 <a data-link-type="dfn" href="#focusout" id="ref-for-focusout③"><code>focusout</code></a> ，并且会发生冒泡。</p>
     <h5 class="heading settled" data-level="5.2.4.2" id="event-type-focus"><span class="secno">5.2.4.2. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="focus">focus</dfn></span><a class="self-link" href="#event-type-focus"></a></h5>
     <table class="event-definition">
      <tbody>
@@ -2349,13 +2349,13 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑦">target</a></code> : 接收焦点的 <a href="#event-target" id="ref-for-event-target①①">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑦">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑦">target</a></code> : 接收焦点的 <a href="#event-target" id="ref-for-event-target①⓪">事件目标</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②④">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view⑥">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window②⑤"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②⑤">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail⑥">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent⑨">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget①">relatedTarget</a></code> : 失去焦点的 <a href="#event-target" id="ref-for-event-target①②">事件目标</a> (如果有的话)。
+         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent⑨">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget①">relatedTarget</a></code> : 失去焦点的 <a href="#event-target" id="ref-for-event-target①①">事件目标</a> (如果有的话)。
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target①③">事件目标</a> 接收焦点后， <a href="#user-agent" id="ref-for-user-agent①⑦">用户代理</a>， <span class="zh-upper">必须</span> 派发此事件。在派发此事件之前， <span class="zh-upper">必须</span> 将焦点放在元素(接收焦点的事件目标)上。此事件类型类似于 <a data-link-type="dfn" href="#focusin" id="ref-for-focusin④"><code>focusin</code></a> ，并且不会发生冒泡。</p>
+    <p>当 <a href="#event-target" id="ref-for-event-target①②">事件目标</a> 接收焦点后， <a href="#user-agent" id="ref-for-user-agent①⑦">用户代理</a>， <span class="zh-upper">必须</span> 派发此事件。在派发此事件之前， <span class="zh-upper">必须</span> 将焦点放在元素(接收焦点的事件目标)上。此事件类型类似于 <a data-link-type="dfn" href="#focusin" id="ref-for-focusin④"><code>focusin</code></a> ，并且不会发生冒泡。</p>
     <h5 class="heading settled" data-level="5.2.4.3" id="event-type-focusin"><span class="secno">5.2.4.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="focusin">focusin</dfn></span><a class="self-link" href="#event-type-focusin"></a></h5>
     <table class="event-definition">
      <tbody>
@@ -2387,13 +2387,13 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑧">target</a></code> : 即将接收焦点的 <a href="#event-target" id="ref-for-event-target①④">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑧">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑧">target</a></code> : 即将接收焦点的 <a href="#event-target" id="ref-for-event-target①③">事件目标</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②⑥">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view⑦">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window②⑦"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②⑦">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail⑦">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①①">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget②">relatedTarget</a></code> : 即将失去焦点的 <a href="#event-target" id="ref-for-event-target①⑤">事件目标</a> (如果有的话)。
+         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①①">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget②">relatedTarget</a></code> : 即将失去焦点的 <a href="#event-target" id="ref-for-event-target①④">事件目标</a> (如果有的话)。
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target①⑥">事件目标</a> 接收焦点后， <a href="#user-agent" id="ref-for-user-agent①⑧">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。<a href="#event-target" id="ref-for-event-target①⑦">事件目标</a> <span class="zh-upper">必须</span> 是即将接收焦点的元素。<a data-link-type="dfn" href="#focus" id="ref-for-focus⑤"><code>focus</code></a> 事件 <span class="zh-upper">必须</span> 在此事件类型派发前发送。
+    <p>当 <a href="#event-target" id="ref-for-event-target①⑤">事件目标</a> 接收焦点后， <a href="#user-agent" id="ref-for-user-agent①⑧">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。<a href="#event-target" id="ref-for-event-target①⑥">事件目标</a> <span class="zh-upper">必须</span> 是即将接收焦点的元素。<a data-link-type="dfn" href="#focus" id="ref-for-focus⑤"><code>focus</code></a> 事件 <span class="zh-upper">必须</span> 在此事件类型派发前发送。
 			此事件类型类似于 <a data-link-type="dfn" href="#focus" id="ref-for-focus⑥"><code>focus</code></a> ，并且发生冒泡。</p>
     <h5 class="heading settled" data-level="5.2.4.4" id="event-type-focusout"><span class="secno">5.2.4.4. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="focusout">focusout</dfn></span><a class="self-link" href="#event-type-focusout"></a></h5>
     <table class="event-definition">
@@ -2426,13 +2426,13 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑨">target</a></code> : 即将失去焦点的 <a href="#event-target" id="ref-for-event-target①⑧">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event②⑨">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target⑨">target</a></code> : 即将失去焦点的 <a href="#event-target" id="ref-for-event-target①⑦">事件目标</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②⑧">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view⑧">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window②⑨"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent②⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail⑧">detail</a></code> : <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①③">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget③">relatedTarget</a></code> : 即将接收焦点的 <a href="#event-target" id="ref-for-event-target①⑨">事件目标</a> 
+         <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①③">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget③">relatedTarget</a></code> : 即将接收焦点的 <a href="#event-target" id="ref-for-event-target①⑧">事件目标</a> 
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target②⓪">事件目标</a> 失去焦点后， <a href="#user-agent" id="ref-for-user-agent①⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。<a href="#event-target" id="ref-for-event-target②①">事件目标</a> <span class="zh-upper">必须</span> 是即将失去焦点的元素。 <a data-link-type="dfn" href="#blur" id="ref-for-blur④"><code>blur</code></a> 事件 <span class="zh-upper">必须</span> 在此事件类型派发前发送。
+    <p>当 <a href="#event-target" id="ref-for-event-target①⑨">事件目标</a> 失去焦点后， <a href="#user-agent" id="ref-for-user-agent①⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。<a href="#event-target" id="ref-for-event-target②⓪">事件目标</a> <span class="zh-upper">必须</span> 是即将失去焦点的元素。 <a data-link-type="dfn" href="#blur" id="ref-for-blur④"><code>blur</code></a> 事件 <span class="zh-upper">必须</span> 在此事件类型派发前发送。
 			此事件类型类似于 <a data-link-type="dfn" href="#blur" id="ref-for-blur⑤"><code>blur</code></a> ，并且发生冒泡。</p>
     <h3 class="heading settled" data-level="5.3" id="events-mouseevents"><span class="secno">5.3. </span><span class="content">鼠标事件</span><a class="self-link" href="#events-mouseevents"></a></h3>
      鼠标事件模块来源于 <a data-link-type="biblio" href="#biblio-html401" title="HTML 4.01 Specification">[HTML401]</a> 定义的<code>onclick</code>, <code>ondblclick</code>, <code>onmousedown</code>, <code>onmouseup</code>, <code>onmouseover</code>, <code>onmousemove</code>, 和 <code>onmouseout</code> 属性。鼠标事件模块专门为指向输入设备
@@ -3052,7 +3052,7 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 		当关联的 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①①"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup⑨"><code>mouseup</code></a> 事件目标不同时，
 		应该在二者 (两个不同事件目标元素) 最近公共祖先上触发 <a data-link-type="dfn" href="#click" id="ref-for-click①⓪"><code>click</code></a> 和 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick④"><code>dblclick</code></a> 事件。 
     <p class="example" id="example-6e62da9d"><a class="self-link" href="#example-6e62da9d"></a> 如果 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①②"><code>mousedown</code></a> 事件的事件目标是 HTML 文档的 <a href="#body-element" id="ref-for-body-element">body</a> 元素，而相应的 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①⓪"><code>mouseup</code></a> 事件的事件目标是 <a href="#root-element" id="ref-for-root-element">根元素</a> ，那么 <a data-link-type="dfn" href="#click" id="ref-for-click①①"><code>click</code></a> 事件将在 <a href="#root-element" id="ref-for-root-element①">根元素</a> 上触发，因为它是最近的公共祖先节点。 </p>
-    <p>如果在鼠标事件序列期间从 DOM 中删除了 <a href="#event-target" id="ref-for-event-target②②">事件目标</a> (例如，目标元素)，则该序列中的其余事件 <span class="zh-upper">不得</span> 在该元素上触发。</p>
+    <p>如果在鼠标事件序列期间从 DOM 中删除了 <a href="#event-target" id="ref-for-event-target②①">事件目标</a> (例如，目标元素)，则该序列中的其余事件 <span class="zh-upper">不得</span> 在该元素上触发。</p>
     <p class="example" id="example-77064c3d"><a class="self-link" href="#example-77064c3d"></a> 如果在 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①③"><code>mousedown</code></a> 事件触发的(事件处理程序中)从 DOM 中删除了目标元素，
 		则不会在该元素上派发 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①①"><code>mouseup</code></a> 、 <a data-link-type="dfn" href="#click" id="ref-for-click①②"><code>click</code></a> 或 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick⑤"><code>dblclick</code></a> 事件，也不会派发任何默认激活事件。但是，在移除初始目标元素之后， <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①②"><code>mouseup</code></a> 事件仍将在暴露给鼠标的元素上被派发。类似地，如果在 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①③"><code>mouseup</code></a> 事件的派发过程中从 DOM 中删除了目标元素，也不会派发 <a data-link-type="dfn" href="#click" id="ref-for-click①③"><code>click</code></a> 和后续事件。 </p>
     <h4 class="heading settled" data-level="5.3.4" id="events-mouse-types"><span class="secno">5.3.4. </span><span class="content">鼠标事件类型</span><a class="self-link" href="#events-mouse-types"></a></h4>
@@ -3114,10 +3114,10 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
     <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick④"><code>auxclick</code></a> 事件触发之前 <span class="zh-upper">可以</span> 是同一元素上触发的 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①④"><code>mousedown</code></a> 和 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①④"><code>mouseup</code></a> 事件，而不考虑其他节点类型 (例如文本节点) 之间的更改。
 			根据环境配置，如果在按下和释放指针设备按键之间发生一个或多个 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover⑦"><code>mouseover</code></a> 、 <a data-link-type="dfn" href="#mousemove" id="ref-for-mousemove①⑧"><code>mousemove</code></a> 和 <a data-link-type="dfn" href="#mouseout" id="ref-for-mouseout⑧"><code>mouseout</code></a> 事件，
 			则 <span class="zh-upper">可以</span> 会派发 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑤"><code>auxclick</code></a> 事件。</p>
-    <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑥"><code>auxclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①③">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②③">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button⑨">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①②">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑦"><code>auxclick</code></a> 事件类型的典型默认操作如下:</p>
+    <p><a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑥"><code>auxclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①③">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②②">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button⑨">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①②">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑦"><code>auxclick</code></a> 事件类型的典型默认操作如下:</p>
     <ul>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target②④">事件目标</a> 具有相关的 <a href="#activation-behavior" id="ref-for-activation-behavior④">激活行为</a> ，则 <a href="#default-action" id="ref-for-default-action①④">默认操作</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target②③">事件目标</a> 具有相关的 <a href="#activation-behavior" id="ref-for-activation-behavior④">激活行为</a> ，则 <a href="#default-action" id="ref-for-default-action①④">默认操作</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
     </ul>
     <p class="example" id="example-f22d02c8"><a class="self-link" href="#example-f22d02c8"></a> 接收和处理点击中间按键触发的 <a data-link-type="dfn" href="#auxclick" id="ref-for-auxclick⑧"><code>auxclick</code></a> 事件。<br> <code class="pre custom-code">myLink.addEventListener("auxclick", function(e) {
   if (e.button === 1) {
@@ -3206,12 +3206,12 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>除了与指针设备关联外， <a data-link-type="dfn" href="#click" id="ref-for-click②③"><code>click</code></a> 事件类型<span class="zh-upper">必须</span> 作为元素激活的一部分进行调度，如 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> 所述。</p>
     <p class="note" role="note"> 为了最大限度地提高可访问性，鼓励开发者在定义自定义控件的激活行为时使用 <a data-link-type="dfn" href="#click" id="ref-for-click②④"><code>click</code></a> 事件类型，而不是其他更特定于设备的定位设备事件类型，如 <a data-link-type="dfn" href="#mousedown" id="ref-for-mousedown①⑥"><code>mousedown</code></a> 或 <a data-link-type="dfn" href="#mouseup" id="ref-for-mouseup①⑥"><code>mouseup</code></a> 。尽管 <a data-link-type="dfn" href="#click" id="ref-for-click②⑤"><code>click</code></a> 事件类型起源于指针设备(例如鼠标)，但随后的实现增强将其扩展到了该关联之外，
 			并且可以将其视为用于元素激活的设备独立的事件类型。 </p>
-    <p><a data-link-type="dfn" href="#click" id="ref-for-click②⑥"><code>click</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①⑤">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②⑤">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①②">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑤">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#click" id="ref-for-click②⑦"><code>click</code></a> 事件类型的典型默认操作如下:</p>
+    <p><a data-link-type="dfn" href="#click" id="ref-for-click②⑥"><code>click</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①⑤">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②④">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①②">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑤">buttons</a></code> 属性的值而有所不同。 <a data-link-type="dfn" href="#click" id="ref-for-click②⑦"><code>click</code></a> 事件类型的典型默认操作如下:</p>
     <ul>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target②⑥">事件目标</a> 具有相关的激活行为，则 <a href="#default-action" id="ref-for-default-action①⑥">默认行为</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target②⑤">事件目标</a> 具有相关的激活行为，则 <a href="#default-action" id="ref-for-default-action①⑥">默认行为</a> <span class="zh-upper">必须</span> 是执行该激活行为 (参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为</a> ) 。</p>
      <li data-md>
-      <p>如果 <a href="#event-target" id="ref-for-event-target②⑦">事件目标</a> 是可聚焦的，则 <a href="#default-action" id="ref-for-default-action①⑦">默认行为</a> <span class="zh-upper">必须</span> 是给予该元素文档焦点。</p>
+      <p>如果 <a href="#event-target" id="ref-for-event-target②⑥">事件目标</a> 是可聚焦的，则 <a href="#default-action" id="ref-for-default-action①⑦">默认行为</a> <span class="zh-upper">必须</span> 是给予该元素文档焦点。</p>
     </ul>
     <h5 class="heading settled" data-level="5.3.4.3" id="event-type-contextmenu"><span class="secno">5.3.4.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="contextmenu">contextmenu</dfn></span><a class="self-link" href="#event-type-contextmenu"></a></h5>
     <table class="event-definition">
@@ -3317,7 +3317,7 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click②⑨"><code>click</code></a> 事件一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick⑨"><code>dblclick</code></a> 事件应该仅针对主要指针按键触发。
 			次要按键 <span class="zh-upper">必须</span> 触发 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①⓪"><code>dblclick</code></a> 事件。</p>
     <p class="note" role="note"> 取消(调用 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-preventdefault" id="ref-for-dom-event-preventdefault④">preventDefault()</a></code> 方法) <a data-link-type="dfn" href="#click" id="ref-for-click③⓪"><code>click</code></a> 事件不会影响触发 <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①①"><code>dblclick</code></a> 事件。 </p>
-    <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click③①"><code>click</code></a> 事件类型一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①②"><code>dblclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①⑧">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②⑧">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑤">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑧">buttons</a></code> 属性的值而变化。通常， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①③"><code>dblclick</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action①⑨">默认行为</a> 与对应的 <a data-link-type="dfn" href="#click" id="ref-for-click③②"><code>click</code></a> 事件类型的行为相匹配。</p>
+    <p>与 <a data-link-type="dfn" href="#click" id="ref-for-click③①"><code>click</code></a> 事件类型一样， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①②"><code>dblclick</code></a> 事件类型的 <a href="#default-action" id="ref-for-default-action①⑧">默认行为</a> 根据事件的 <a href="#event-target" id="ref-for-event-target②⑦">事件目标</a> 和 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑤">button</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons①⑧">buttons</a></code> 属性的值而变化。通常， <a data-link-type="dfn" href="#dblclick" id="ref-for-dblclick①③"><code>dblclick</code></a> 事件类型的典型 <a href="#default-action" id="ref-for-default-action①⑨">默认行为</a> 与对应的 <a data-link-type="dfn" href="#click" id="ref-for-click③②"><code>click</code></a> 事件类型的行为相匹配。</p>
     <figure id="dbclick-default-action">
       <img alt="译者添加的 <strong>非标准</strong> 图示: 在一个具有文本内容的
 				<p> 元素中进行双击操作，双击后触发的 <a><code>dblclick</code></a>
@@ -3423,7 +3423,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent⑨⑥">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-metakey" id="ref-for-dom-mouseevent-metakey⑥">metaKey</a></code> : 如果 <code class="keycap">Meta</code> 修饰符处于活动状态， 则为 <code>true</code> ，否则为 <code>false</code> 
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent⑨⑦">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑦">button</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent⑨⑧">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons②⓪">buttons</a></code> : 值基于当前按下的所有(鼠标)按键表示的值， 如果未按下任何按键，则为 <code>0</code> 
-         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent⑨⑨">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑥">relatedTarget</a></code> : 指示指针设备正在退出 (exiting) 的<a href="#event-target" id="ref-for-event-target②⑨">事件目标</a> (如果有) 
+         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent⑨⑨">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑥">relatedTarget</a></code> : 指示指针设备正在退出 (exiting) 的<a href="#event-target" id="ref-for-event-target②⑧">事件目标</a> (如果有) 
         </ul>
     </table>
     <p>当定位设备移动到元素或其派生元素的边界上时， <a href="#user-agent" id="ref-for-user-agent②③">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。当元素或其后代元素之一移动到主要定位设备下方时， <a href="#user-agent" id="ref-for-user-agent②④">用户代理</a> 也 <span class="zh-upper">必须</span> 派发此事件。此事件类型类似于 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover⑨"><code>mouseover</code></a> ，但不同之处在于它不冒泡，
@@ -3473,7 +3473,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⓪⑧">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-metakey" id="ref-for-dom-mouseevent-metakey⑦">metaKey</a></code> : 如果 <code class="keycap">Meta</code> 修饰符处于活动状态， 则为 <code>true</code> ，否则为 <code>false</code> 
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⓪⑨">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button①⑧">button</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①①⓪">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons②①">buttons</a></code> : 值基于当前按下的所有(鼠标)按键表示的值， 如果未按下任何按键，则为 <code>0</code> 
-         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①①①">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑦">relatedTarget</a></code> : 指示指针设备正在进入 的 <a href="#event-target" id="ref-for-event-target③⓪">事件目标</a> (如果有) 
+         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①①①">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑦">relatedTarget</a></code> : 指示指针设备正在进入 的 <a href="#event-target" id="ref-for-event-target②⑨">事件目标</a> (如果有) 
         </ul>
     </table>
     <p>当定位设备移出元素及其所有后代元素的边界时， <a href="#user-agent" id="ref-for-user-agent②⑤">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。
@@ -3582,7 +3582,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①③②">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-metakey" id="ref-for-dom-mouseevent-metakey⑨">metaKey</a></code> : 如果 <code class="keycap">Meta</code> 修饰符处于活动状态， 则为 <code>true</code> ，否则为 <code>false</code> 
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①③③">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button②⓪">button</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①③④">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons②③">buttons</a></code> : 值基于当前按下的所有(鼠标)按键表示的值， 如果未按下任何按键，则为 <code>0</code> 
-         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①③⑤">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑨">relatedTarget</a></code> : 指示定位设备正在进入的 <a href="#event-target" id="ref-for-event-target③①">事件目标</a> (如果有的话) 
+         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①③⑤">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget⑨">relatedTarget</a></code> : 指示定位设备正在进入的 <a href="#event-target" id="ref-for-event-target③⓪">事件目标</a> (如果有的话) 
         </ul>
     </table>
     <p>当定位设备移出元素的边界时，或者当元素移动到不再位于主定位设备下方时， <a href="#user-agent" id="ref-for-user-agent②⑧">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。此事件类型类似于 <a data-link-type="dfn" href="#mouseleave" id="ref-for-mouseleave①⓪"><code>mouseleave</code></a> ，但不同之处在于它可以冒泡，
@@ -3632,7 +3632,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①④④">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-metakey" id="ref-for-dom-mouseevent-metakey①⓪">metaKey</a></code> : 如果 <code class="keycap">Meta</code> 修饰符处于活动状态， 则为 <code>true</code> ，否则为 <code>false</code> 
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①④⑤">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button②①">button</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①④⑥">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons②④">buttons</a></code> : 值基于当前按下的所有(鼠标)按键表示的值， 如果未按下任何按键，则为 <code>0</code> 
-         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①④⑦">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget①⓪">relatedTarget</a></code> : 指示定位设备正在离开的 <a href="#event-target" id="ref-for-event-target③②">事件目标</a> (如果有的话) 
+         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①④⑦">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget①⓪">relatedTarget</a></code> : 指示定位设备正在离开的 <a href="#event-target" id="ref-for-event-target③①">事件目标</a> (如果有的话) 
         </ul>
     </table>
     <p>当定位设备移出元素的边界时，或者当元素移动到不再位于主定位设备下方时， <a href="#user-agent" id="ref-for-user-agent②⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。此事件类型类似于 <a data-link-type="dfn" href="#mouseenter" id="ref-for-mouseenter⑨"><code>mouseenter</code></a> ，但不同之处在于它可以冒泡，
@@ -3856,7 +3856,7 @@ myDiv.addEventListener("auxclick", function(e) {
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑥⑧">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-metakey" id="ref-for-dom-mouseevent-metakey①②">metaKey</a></code> : 如果 <code class="keycap">Meta</code> 修饰符处于活动状态， 则为 <code>true</code> ，否则为 <code>false</code> 
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑥⑨">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-button" id="ref-for-dom-mouseevent-button②③">button</a></code> : 如果滚轮与定位设备相关联， 则值基于当前设备按下的按键, 否则为 <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦⓪">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-buttons" id="ref-for-dom-mouseevent-buttons②⑥">buttons</a></code> : 如果滚轮与定位设备相关联， 则值基于当前设备按下的所有按键, 如果没有按键按下，则为 <code>0</code>
-         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦①">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget①②">relatedTarget</a></code> : 指示定位设备所指向的 <a href="#event-target" id="ref-for-event-target③③">事件目标</a> (如果有)
+         <li><code class="idl"><a data-link-type="idl" href="#mouseevent" id="ref-for-mouseevent①⑦①">MouseEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-mouseevent-relatedtarget" id="ref-for-dom-mouseevent-relatedtarget①②">relatedTarget</a></code> : 指示定位设备所指向的 <a href="#event-target" id="ref-for-event-target③②">事件目标</a> (如果有)
          <li><code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent⑨">WheelEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltax" id="ref-for-dom-wheelevent-deltax①">deltaX</a></code> : 页面根据 deltaMode 表示的单位沿 x 轴滚动的预期量; 或滚轮绕 x 轴运动的实现决定的值
          <li><code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent①⓪">WheelEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltay" id="ref-for-dom-wheelevent-deltay①">deltaY</a></code> : 页面根据 deltaMode 表示的单位沿 y 轴滚动的预期量; 或滚轮绕 y 轴运动的实现决定的值
          <li><code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent①①">WheelEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltaz" id="ref-for-dom-wheelevent-deltaz③">deltaZ</a></code> : 页面根据 deltaMode 表示的单位沿 z 轴滚动的预期量; 或滚轮绕 z 轴运动的实现决定的值
@@ -3890,7 +3890,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			此时用户代理不允许在 <code>wheel</code> 的事件处理程序中调用 <code>preventDefault()</code>，如果调用也不会生效，生成的事件对象的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable③">cancelable</a></code> 属性值为 <code>false</code>; </p>
     <p class="note custom-note" data-content="非规范注释: 关于scroll事件" role="note"> <code>scroll</code> 事件类型的事件对象在 DOM2 中原本属于 <a href="#events-uievent-types">§ 5.1.2 用户界面事件类型</a> 中定义的事件，为了保持事件类型定义的一致性，
 				它被移出了 <a href="#events-uievent-types">§ 5.1.2 用户界面事件类型</a> 规范的事件类型中，
-				而是在 <a data-link-type="biblio" href="#biblio-cssom-view" title="CSSOM View Module">[CSSOM-View]</a> 的 <a href="https://www.w3.org/TR/cssom-view-1/#scrolling-events"> scrolling-events</a> 进行了明确说明，现在属于 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④②">Event</a></code> 接口定义的事件。 <code>scroll</code> 事件在以前的混杂模式下，通常是监听 <a data-link-type="dfn" href="#window" id="ref-for-window④②">window</a> 对象以发现页面中相应元素变化，但是目前在标准模式下，对 <a href="#document" id="ref-for-document④">document</a> 对象以及元素添加 <code>scroll</code> 事件类型的事件监听器是正确的做法，可以通过这些被监听元素的 <code>scrollLeft</code> 和 <code>scrollTop</code> 属性获取垂直与水平滚动的距离。需要注意，<code>scroll</code> 事件是不冒泡，不可取消，同步触发的事件类型，而 <a data-link-type="dfn" href="#wheel" id="ref-for-wheel①③"><code>wheel</code></a> 是冒泡的，
+				而是在 <a data-link-type="biblio" href="#biblio-cssom-view" title="CSSOM View Module">[CSSOM-View]</a> 的 <a href="https://www.w3.org/TR/cssom-view-1/#scrolling-events"> scrolling-events</a> 进行了明确说明，现在属于 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④②">Event</a></code> 接口定义的事件。 <code>scroll</code> 事件在以前的混杂模式下，通常是监听 <a data-link-type="dfn" href="#window" id="ref-for-window④②">window</a> 对象以发现页面中相应元素变化，但是目前在标准模式下，对 <a href="#document" id="ref-for-document③">document</a> 对象以及元素添加 <code>scroll</code> 事件类型的事件监听器是正确的做法，可以通过这些被监听元素的 <code>scrollLeft</code> 和 <code>scrollTop</code> 属性获取垂直与水平滚动的距离。需要注意，<code>scroll</code> 事件是不冒泡，不可取消，同步触发的事件类型，而 <a data-link-type="dfn" href="#wheel" id="ref-for-wheel①③"><code>wheel</code></a> 是冒泡的，
 				取消可控制的，异步触发的事件类型。 </p>
     <h3 class="heading settled" data-level="5.5" id="events-inputevents"><span class="secno">5.5. </span><span class="content">输入事件</span><a class="self-link" href="#events-inputevents"></a></h3>
      每当 DOM 作为用户操作的直接结果而被更新(或即将被更新)时，
@@ -4001,7 +4001,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④③">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②②">target</a></code> : 将被更新的<a href="#event-target" id="ref-for-event-target③④">事件目标对象 </a>
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④③">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②②">target</a></code> : 将被更新的<a href="#event-target" id="ref-for-event-target③③">事件目标对象 </a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑦">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②①">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④③"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑧">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②③">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent③">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data①">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串 <span class="zh-upper">可以</span> 为<code>null</code>
@@ -4040,7 +4040,7 @@ myDiv.addEventListener("auxclick", function(e) {
        <th>上下文<br> (可信事件)
        <td>
         <ul>
-         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④④">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②③">target</a></code> : 刚刚被更新的<a href="#event-target" id="ref-for-event-target③⑤"> 事件目标对象</a>
+         <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event④④">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target②③">target</a></code> : 刚刚被更新的<a href="#event-target" id="ref-for-event-target③④"> 事件目标对象</a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑤⑨">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view②②">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window④④"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑥⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail②④">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#inputevent" id="ref-for-inputevent⑥">InputEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-inputevent-data" id="ref-for-dom-inputevent-data②">data</a></code> : 包含将添加到元素中的的字符串数据， 如果内容将被删除，则该字符串可 能为<a href="#empty-string" id="ref-for-empty-string①">空字符串</a>
@@ -4363,12 +4363,12 @@ myDiv.addEventListener("auxclick", function(e) {
        <td><em>(仅适用于已用于更新了 DOM 的键)</em>
     </table>
     <p class="note" role="note"> 通常，与任何特定键相关联的任何 <a href="#default-action" id="ref-for-default-action②⑤">默认行为</a> 都会在派发 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup②"><code>keyup</code></a> 事件之前完成。这可能会稍微延迟 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup③"><code>keyup</code></a> 事件的派发(尽管该延迟难以感知)。 </p>
-    <p>键事件的 <a href="#event-target" id="ref-for-event-target③⑥">事件目标</a> 是当前的焦点元素，
+    <p>键事件的 <a href="#event-target" id="ref-for-event-target③⑤">事件目标</a> 是当前的焦点元素，
 		即正在处理键盘活动的元素。这通常是 HTML <code>input</code> 元素或可编辑的文本元素，但也 <span class="zh-upper">可以</span> 是由 <a href="#host-language" id="ref-for-host-language⑦">宿主语言</a> 定义的元素，
 		用于接受非文本目的的键盘输入，例如加速按键(accelerator key)
 		的激活或触发某些其他行为。如果没有合适的焦点元素，则事件目标将是 HTML <a href="#body-element" id="ref-for-body-element①">body元素</a> (如果可用)，否则为 <a href="#root-element" id="ref-for-root-element②">根元素</a> 。</p>
-    <p class="note" role="note"> <a href="#event-target" id="ref-for-event-target③⑦">事件目标</a> 可能在不同的按键事件之间发生变化。
-		例如，在同一次击键(keystroke)过程中， <code class="keycap">Tab</code> 键的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥"><code>keydown</code></a> 事件可能与的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup④"><code>keyup</code></a> 事件具有不同的 <a href="#event-target" id="ref-for-event-target③⑧">事件目标</a> 。 </p>
+    <p class="note" role="note"> <a href="#event-target" id="ref-for-event-target③⑥">事件目标</a> 可能在不同的按键事件之间发生变化。
+		例如，在同一次击键(keystroke)过程中， <code class="keycap">Tab</code> 键的 <a data-link-type="dfn" href="#keydown" id="ref-for-keydown⑥"><code>keydown</code></a> 事件可能与的 <a data-link-type="dfn" href="#keyup" id="ref-for-keyup④"><code>keyup</code></a> 事件具有不同的 <a href="#event-target" id="ref-for-event-target③⑦">事件目标</a> 。 </p>
     <h4 class="heading settled" data-level="5.6.4" id="events-keyboard-types"><span class="secno">5.6.4. </span><span class="content">键盘事件类型</span><a class="self-link" href="#events-keyboard-types"></a></h4>
     <h5 class="heading settled" data-level="5.6.4.1" id="event-type-keydown"><span class="secno">5.6.4.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="keydown">keydown</dfn></span><a class="self-link" href="#event-type-keydown"></a></h5>
     <table class="event-definition">
@@ -7007,7 +7007,7 @@ myDiv.addEventListener("auxclick", function(e) {
      <p> XForms <a data-link-type="biblio" href="#biblio-xforms11" title="XForms 1.1">[XFORMS11]</a> <span class="zh-upper">必须</span> 支持 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①②"><code>DOMActivate</code></a> <a href="#event-type" id="ref-for-event-type①⑧">事件类型</a> ，它预定用 <a href="#host-language" id="ref-for-host-language①⓪">宿主语言</a> 实现。
 		如果用插件或基于脚本的 XForms 实现要安装在符合本规范的不支持 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①③"><code>DOMActivate</code></a> <a href="#event-type" id="ref-for-event-type①⑨">事件类型</a> 规定的原生实现中，
 		XForms <a href="#user-agent" id="ref-for-user-agent⑤⓪">用户代理</a> 必须根据合适的 <a href="#activation-trigger" id="ref-for-activation-trigger⑧">激活触发器</a> 合成(synthesize)并派发自己的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①④"><code>DOMActivate</code></a> 事件。 </p>
-     <p> 因此，当 <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> 事件由符合用户界面事件规范的 <a href="#user-agent" id="ref-for-user-agent⑤①">用户代理</a> 派发时， XForms <a href="#user-agent" id="ref-for-user-agent⑤②">用户代理</a> 必须确定是否合成具有与该 <a data-link-type="dfn" href="#click" id="ref-for-click④①"><code>click</code></a> 事件的 <a href="#default-action" id="ref-for-default-action③④">默认行为</a> 的相关属性相同的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑤"><code>DOMActivate</code></a> 事件。适当的提示(Appropriate cues，指 <a data-link-type="dfn" href="#click" id="ref-for-click④②"><code>click</code></a> 事件的属性)可能有 <a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a> 事件是否 <a href="#trusted-events">可信</a> ，或者其 <a href="#event-target" id="ref-for-event-target③⑨">事件目标</a> 是否注册了 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑥"><code>DOMActivate</code></a> 的 <a href="#event-listener" id="ref-for-event-listener⑧">事件侦听器</a> 。 </p>
+     <p> 因此，当 <a data-link-type="dfn" href="#click" id="ref-for-click④⓪"><code>click</code></a> 事件由符合用户界面事件规范的 <a href="#user-agent" id="ref-for-user-agent⑤①">用户代理</a> 派发时， XForms <a href="#user-agent" id="ref-for-user-agent⑤②">用户代理</a> 必须确定是否合成具有与该 <a data-link-type="dfn" href="#click" id="ref-for-click④①"><code>click</code></a> 事件的 <a href="#default-action" id="ref-for-default-action③④">默认行为</a> 的相关属性相同的 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑤"><code>DOMActivate</code></a> 事件。适当的提示(Appropriate cues，指 <a data-link-type="dfn" href="#click" id="ref-for-click④②"><code>click</code></a> 事件的属性)可能有 <a data-link-type="dfn" href="#click" id="ref-for-click④③"><code>click</code></a> 事件是否 <a href="#trusted-events">可信</a> ，或者其 <a href="#event-target" id="ref-for-event-target③⑧">事件目标</a> 是否注册了 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑥"><code>DOMActivate</code></a> 的 <a href="#event-listener" id="ref-for-event-listener⑧">事件侦听器</a> 。 </p>
     </div>
     <p class="note" role="note"> 不要在许多 <a href="#user-agent" id="ref-for-user-agent⑤③">用户代理</a> 中依赖 <a data-link-type="dfn" href="#domactivate" id="ref-for-domactivate①⑦"><code>DOMActivate</code></a> 的协作(interoperable)支持。相反，应该使用 <a data-link-type="dfn" href="#click" id="ref-for-click④④"><code>click</code></a> <a href="#event-type" id="ref-for-event-type②⓪">事件类型</a> ，因为它被广泛的实现支持，
 		并提供更容易访问的(accessible)行为。 </p>
@@ -7094,13 +7094,13 @@ myDiv.addEventListener("auxclick", function(e) {
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤②">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③⓪">target</a></code> :
-								正在接收焦点的 <a href="#event-target" id="ref-for-event-target④⓪">事件对象</a> 
+								正在接收焦点的 <a href="#event-target" id="ref-for-event-target③⑨">事件对象</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨⓪">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view③④">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window⑤⑥"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨①">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail③⑥">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent①⑨">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget④">relatedTarget</a></code> : <code>null</code>
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target④①">事件对象</a> 接收焦点时 <a href="#user-agent" id="ref-for-user-agent⑤⑦">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#event-target" id="ref-for-event-target④②">事件对象</a> <span class="zh-upper">必须</span> 在此事件类型被派发前接收焦点
+    <p>当 <a href="#event-target" id="ref-for-event-target④⓪">事件对象</a> 接收焦点时 <a href="#user-agent" id="ref-for-user-agent⑤⑦">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#event-target" id="ref-for-event-target④①">事件对象</a> <span class="zh-upper">必须</span> 在此事件类型被派发前接收焦点
 			此事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#focus" id="ref-for-focus⑨"><code>focus</code></a> 事件类型之后被派发。</p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domfocusin" id="ref-for-domfocusin①"><code>DOMFocusIn</code></a> <a href="#event-type" id="ref-for-event-type②②">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates⑥">反对(deprecates)</a> 使用此事件类型，
 			而赞成使用相关的 <a data-link-type="dfn" href="#focus" id="ref-for-focus①⓪"><code>focus</code></a> 和 <a data-link-type="dfn" href="#focusin" id="ref-for-focusin⑤"><code>focusin</code></a> 事件类型。 </p>
@@ -7136,13 +7136,13 @@ myDiv.addEventListener("auxclick", function(e) {
        <td>
         <ul>
          <li><code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event⑤③">Event</a></code>.<code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target③①">target</a></code> :
-								正在失去焦点的 <a href="#event-target" id="ref-for-event-target④③">事件对象</a> 
+								正在失去焦点的 <a href="#event-target" id="ref-for-event-target④②">事件对象</a> 
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨②">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-view" id="ref-for-dom-uievent-view③⑤">view</a></code> : <a data-link-type="dfn" href="#window" id="ref-for-window⑤⑧"><code>Window</code></a>
          <li><code class="idl"><a data-link-type="idl" href="#uievent" id="ref-for-uievent⑨③">UIEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-uievent-detail" id="ref-for-dom-uievent-detail③⑦">detail</a></code> : <code>0</code>
          <li><code class="idl"><a data-link-type="idl" href="#focusevent" id="ref-for-focusevent②①">FocusEvent</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-focusevent-relatedtarget" id="ref-for-dom-focusevent-relatedtarget⑤">relatedTarget</a></code> : <code>null</code>
         </ul>
     </table>
-    <p>当 <a href="#event-target" id="ref-for-event-target④④">事件对象</a> 失去焦点时， <a href="#user-agent" id="ref-for-user-agent⑤⑧">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。焦点 <span class="zh-upper">必须</span> 在派发此事件之前从 <a href="#event-target" id="ref-for-event-target④⑤">事件对象</a> 上丢失(taken)。此事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#blur" id="ref-for-blur⑧"><code>blur</code></a> 事件类型之后被派发。</p>
+    <p>当 <a href="#event-target" id="ref-for-event-target④③">事件对象</a> 失去焦点时， <a href="#user-agent" id="ref-for-user-agent⑤⑧">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。焦点 <span class="zh-upper">必须</span> 在派发此事件之前从 <a href="#event-target" id="ref-for-event-target④④">事件对象</a> 上丢失(taken)。此事件类型 <span class="zh-upper">必须</span> 在 <a data-link-type="dfn" href="#blur" id="ref-for-blur⑧"><code>blur</code></a> 事件类型之后被派发。</p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domfocusout" id="ref-for-domfocusout①"><code>DOMFocusOut</code></a> <a href="#event-type" id="ref-for-event-type②③">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates⑦">反对(deprecates)</a> 使用此事件类型，
 			而赞成使用相关的 <a data-link-type="dfn" href="#blur" id="ref-for-blur⑨"><code>blur</code></a> 和 <a data-link-type="dfn" href="#focusout" id="ref-for-focusout④"><code>focusout</code></a> 事件类型。 </p>
     <h4 class="heading settled" data-level="9.2.2" id="legacy-focusevent-event-order"><span class="secno">9.2.2. </span><span class="content">遗留焦点事件(FocusEvent)事件顺序</span><a class="self-link" href="#legacy-focusevent-event-order"></a></h4>
@@ -7547,7 +7547,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>在修改了一个 <code>Element</code> 的 <code>Attr.value</code> 之后以及在一个 <code>Element</code> 上添加或删除一个 <code>Attr</code> 节点之后 <a href="#user-agent" id="ref-for-user-agent⑥①">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。
-			事件的 <a href="#event-target" id="ref-for-event-target④⑥">事件对象</a> <span class="zh-upper">必须</span> 是发生了改变的 <code>Element</code> 节点。当 <code>Attr</code> 节点的子节点以不影响 <code>Attr.value</code> 值的方式更改时，是否会发生此事件类型取决于实现。</p>
+			事件的 <a href="#event-target" id="ref-for-event-target④⑤">事件对象</a> <span class="zh-upper">必须</span> 是发生了改变的 <code>Element</code> 节点。当 <code>Attr</code> 节点的子节点以不影响 <code>Attr.value</code> 值的方式更改时，是否会发生此事件类型取决于实现。</p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domattrmodified" id="ref-for-domattrmodified⑥"><code>DOMAttrModified</code></a> <a href="#event-type" id="ref-for-event-type②④">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates①⓪">反对(deprecates)</a> 使用此事件类型。 </p>
     <h5 class="heading settled" data-level="9.4.2.2" id="event-type-DOMCharacterDataModified"><span class="secno">9.4.2.2. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domcharacterdatamodified">DOMCharacterDataModified</dfn></span><a class="self-link" href="#event-type-DOMCharacterDataModified"></a></h5>
     <table class="event-definition">
@@ -7593,7 +7593,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>修改 <code>CharacterData.data</code> 或 <code>ProcessingInstruction.data</code> 之后，
-			但节点本身尚未被插入或删除之前 <a href="#user-agent" id="ref-for-user-agent⑥②">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。这个事件的 <a href="#event-target" id="ref-for-event-target④⑦">事件对象</a> <span class="zh-upper">必须</span> 是 <code>CharacterData</code> 节点或者 <code>ProcessingInstruction</code> 节点。</p>
+			但节点本身尚未被插入或删除之前 <a href="#user-agent" id="ref-for-user-agent⑥②">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。这个事件的 <a href="#event-target" id="ref-for-event-target④⑥">事件对象</a> <span class="zh-upper">必须</span> 是 <code>CharacterData</code> 节点或者 <code>ProcessingInstruction</code> 节点。</p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domcharacterdatamodified" id="ref-for-domcharacterdatamodified③"><code>DOMCharacterDataModified</code></a> <a href="#event-type" id="ref-for-event-type②⑤">事件类型</a> ，
 			但本规范 <a href="#deprecates" id="ref-for-deprecates①①">反对(deprecates)</a> 使用此事件类型。 </p>
     <h5 class="heading settled" data-level="9.4.2.3" id="event-type-DOMNodeInserted"><span class="secno">9.4.2.3. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domnodeinserted">DOMNodeInserted</dfn></span><a class="self-link" href="#event-type-DOMNodeInserted"></a></h5>
@@ -7639,7 +7639,7 @@ myDiv.addEventListener("auxclick", function(e) {
     </table>
     <p>当除了 <code>Attr</code> 节点之外的节点被添加为另一个节点的子节点时。 <a href="#user-agent" id="ref-for-user-agent⑥③">用户代理</a> <span class="zh-upper">必须</span> 派发此事件类型。当 <code>Attr</code> 节点已添加到一个 <code>Element</code> 节点时，<a href="#user-agent" id="ref-for-user-agent⑥④">用户代理</a> <span class="zh-upper">可以</span> 派发此事件(请参阅下面的 <a href="#DOMNodeInserted-attr">注释</a> )。
 			此事件 <span class="zh-upper">必须</span> 在插入发生后被派发。
-			事件的<a href="#event-target" id="ref-for-event-target④⑧">事件对象</a> <span class="zh-upper">必须</span> 是要被插入的节点。</p>
+			事件的<a href="#event-target" id="ref-for-event-target④⑦">事件对象</a> <span class="zh-upper">必须</span> 是要被插入的节点。</p>
     <p class="note" id="DOMNodeInserted-attr" role="note"><a class="self-link" href="#DOMNodeInserted-attr"></a> 要检测属性插入，请改用 <a data-link-type="dfn" href="#domattrmodified" id="ref-for-domattrmodified⑦"><code>DOMAttrModified</code></a> 事件类型。 </p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domnodeinserted" id="ref-for-domnodeinserted①"><code>DOMNodeInserted</code></a> <a href="#event-type" id="ref-for-event-type②⑥">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates①②">反对(deprecates)</a> 使用此事件类型。 </p>
     <h5 class="heading settled" data-level="9.4.2.4" id="event-type-DOMNodeInsertedIntoDocument"><span class="secno">9.4.2.4. </span><span class="content"> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domnodeinsertedintodocument">DOMNodeInsertedIntoDocument</dfn></span><a class="self-link" href="#event-type-DOMNodeInsertedIntoDocument"></a></h5>
@@ -7684,7 +7684,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>当一个节点被插入到文档中时(可以直接插入该节点，也可以插入包含该节点的子树)
-			， <a href="#user-agent" id="ref-for-user-agent⑥⑤">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#user-agent" id="ref-for-user-agent⑥⑥">用户代理</a> 可以将 <code>Attr</code> 节点视为一个 <code>Element</code> 子树的一部分。此事件 <span class="zh-upper">必须</span> 在插入发生后被派发。事件的 <a href="#event-target" id="ref-for-event-target④⑨">事件对象</a> <span class="zh-upper">必须</span> 在插入发生后被派发。 如果节点被直接插入， <a data-link-type="dfn" href="#domnodeinserted" id="ref-for-domnodeinserted②"><code>DOMNodeInserted</code></a> 事件类型 <span class="zh-upper">必须</span> 在此( <a data-link-type="dfn" href="#domnodeinsertedintodocument" id="ref-for-domnodeinsertedintodocument①"><code>DOMNodeInsertedIntoDocument</code></a> )事件类型发生之前被派发。</p>
+			， <a href="#user-agent" id="ref-for-user-agent⑥⑤">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#user-agent" id="ref-for-user-agent⑥⑥">用户代理</a> 可以将 <code>Attr</code> 节点视为一个 <code>Element</code> 子树的一部分。此事件 <span class="zh-upper">必须</span> 在插入发生后被派发。事件的 <a href="#event-target" id="ref-for-event-target④⑧">事件对象</a> <span class="zh-upper">必须</span> 在插入发生后被派发。 如果节点被直接插入， <a data-link-type="dfn" href="#domnodeinserted" id="ref-for-domnodeinserted②"><code>DOMNodeInserted</code></a> 事件类型 <span class="zh-upper">必须</span> 在此( <a data-link-type="dfn" href="#domnodeinsertedintodocument" id="ref-for-domnodeinsertedintodocument①"><code>DOMNodeInsertedIntoDocument</code></a> )事件类型发生之前被派发。</p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domnodeinsertedintodocument" id="ref-for-domnodeinsertedintodocument②"><code>DOMNodeInsertedIntoDocument</code></a> <a href="#event-type" id="ref-for-event-type②⑦">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates①③">反对(deprecates)</a> 使用此事件类型。 </p>
     <h5 class="heading settled" data-level="9.4.2.5" id="event-type-DOMNodeRemoved"><span class="secno">9.4.2.5. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domnoderemoved">DOMNodeRemoved</dfn></span><a class="self-link" href="#event-type-DOMNodeRemoved"></a></h5>
     <table class="event-definition">
@@ -7729,7 +7729,7 @@ myDiv.addEventListener("auxclick", function(e) {
     </table>
     <p>当从其父节点删除一个除了 <code>Attr</code> 节点以外的节点时， <a href="#user-agent" id="ref-for-user-agent⑥⑦">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。当 <code>Attr</code> 节点被它自己的 <code>ownerElement</code> 节点删除时，<a href="#user-agent" id="ref-for-user-agent⑥⑧">用户代理</a> <span class="zh-upper">可以</span> 派发此事件(请参阅下面的 <a href="#DOMNodeRemoved-attr">注释</a> )。
 			此事件 <span class="zh-upper">必须</span> 在移除(removal)发生之前被派发。
-			事件的 <a href="#event-target" id="ref-for-event-target⑤⓪">事件对象</a> <span class="zh-upper">必须</span> 是要被删除的节点。</p>
+			事件的 <a href="#event-target" id="ref-for-event-target④⑨">事件对象</a> <span class="zh-upper">必须</span> 是要被删除的节点。</p>
     <p class="note" id="DOMNodeRemoved-attr" role="note"><a class="self-link" href="#DOMNodeRemoved-attr"></a> 要可靠地检测属性的移除(removal)，请改用 <a data-link-type="dfn" href="#domattrmodified" id="ref-for-domattrmodified⑧"><code>DOMAttrModified</code></a> 事件类型。 </p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domnoderemoved" id="ref-for-domnoderemoved①"><code>DOMNodeRemoved</code></a> <a href="#event-type" id="ref-for-event-type②⑧">事件类型</a> ，但本规范 <a href="#deprecates" id="ref-for-deprecates①④">反对(deprecates)</a> 使用此事件类型。 </p>
     <h5 class="heading settled" data-level="9.4.2.6" id="event-type-DOMNodeRemovedFromDocument"><span class="secno">9.4.2.6. </span><span class="content"> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="domnoderemovedfromdocument">DOMNodeRemovedFromDocument</dfn></span><a class="self-link" href="#event-type-DOMNodeRemovedFromDocument"></a></h5>
@@ -7774,7 +7774,7 @@ myDiv.addEventListener("auxclick", function(e) {
         </ul>
     </table>
     <p>从一个节点在文档中被删除时(可以直接删除该节点，也可以删除包含该节点的子树)
-			， <a href="#user-agent" id="ref-for-user-agent⑥⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#user-agent" id="ref-for-user-agent⑦⓪">用户代理</a> <span class="zh-upper">可以</span> 将 <code>Attr</code> 节点视为一个 <code>Element</code> 子树的一部分。此事件 <span class="zh-upper">必须</span> 在移除(removal)发生之前被派发。事件的 <a href="#event-target" id="ref-for-event-target⑤①">事件对象</a> <span class="zh-upper">必须</span> 是要被删除的节点。如果节点被直接删除， <a data-link-type="dfn" href="#domnoderemoved" id="ref-for-domnoderemoved②"><code>DOMNodeRemoved</code></a> 事件类型 <span class="zh-upper">必须</span> 在此( <a data-link-type="dfn" href="#domnoderemovedfromdocument" id="ref-for-domnoderemovedfromdocument①"><code>DOMNodeRemovedFromDocument</code></a> )事件类型之前被派发。</p>
+			， <a href="#user-agent" id="ref-for-user-agent⑥⑨">用户代理</a> <span class="zh-upper">必须</span> 派发此事件。 <a href="#user-agent" id="ref-for-user-agent⑦⓪">用户代理</a> <span class="zh-upper">可以</span> 将 <code>Attr</code> 节点视为一个 <code>Element</code> 子树的一部分。此事件 <span class="zh-upper">必须</span> 在移除(removal)发生之前被派发。事件的 <a href="#event-target" id="ref-for-event-target⑤⓪">事件对象</a> <span class="zh-upper">必须</span> 是要被删除的节点。如果节点被直接删除， <a data-link-type="dfn" href="#domnoderemoved" id="ref-for-domnoderemoved②"><code>DOMNodeRemoved</code></a> 事件类型 <span class="zh-upper">必须</span> 在此( <a data-link-type="dfn" href="#domnoderemovedfromdocument" id="ref-for-domnoderemovedfromdocument①"><code>DOMNodeRemovedFromDocument</code></a> )事件类型之前被派发。</p>
     <p class="note" role="note"> 要可靠地检测属性的移除(removal)，请改用 <a data-link-type="dfn" href="#domattrmodified" id="ref-for-domattrmodified⑨"><code>DOMAttrModified</code></a> 事件类型。 </p>
     <p class="warning"> 为了(规范的)参考引用和完整性，本规范中定义了 <a data-link-type="dfn" href="#domnoderemovedfromdocument" id="ref-for-domnoderemovedfromdocument②"><code>DOMNodeRemovedFromDocument</code></a> <a href="#event-type" id="ref-for-event-type②⑨">事件类型</a> ，
 			但本规范 <a href="#deprecates" id="ref-for-deprecates①⑤">反对(deprecates)</a> 使用此事件类型。 </p>
@@ -8195,7 +8195,7 @@ William Edney and
     <dl>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="activation-behavior">activation behavior</dfn>
      <dd data-md>
-      <p>激活行为: 当一个 <a href="#event" id="ref-for-event⑥⑦">事件</a> (通常由用户通过输入设备发起)
+      <p>激活行为: 当一个 <a href="#event" id="ref-for-event⑥⑥">事件</a> (通常由用户通过输入设备发起)
 引发元素完成指定的任务时所执行的操作。该任务为引发元素定义，
 它<span class="zh-upper">可以</span> 通过 <a href="#host-language" id="ref-for-host-language①①">宿主语言</a> 定义，或者通过开发者自定义的变量定义，也可以同时由两者定义。
 任何引发元素的默认任务 <span class="zh-upper">可以</span> 是一个通用操作，或者说引发元素的任务 <span class="zh-upper">可以</span> 是唯一的。
@@ -8221,12 +8221,12 @@ IRI 。参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为
 文档中，body元素是 <a href="#root-element" id="ref-for-root-element⑥">根元素</a> 的第一个子元素。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="bubble phase|bubbling phase" data-noexport id="bubble-phase">bubbling phase</dfn>
      <dd data-md>
-      <p>冒泡阶段: <a href="#event" id="ref-for-event⑥⑧">事件</a> 在由事件目标处理 <em>之后</em> ，
+      <p>冒泡阶段: <a href="#event" id="ref-for-event⑥⑦">事件</a> 在由事件目标处理 <em>之后</em> ，
 可以被目标的祖先节点之一处理的过程。获取更多相关的详细信息，
 请参阅事件流上下文中对 <a href="#bubble-phase" id="ref-for-bubble-phase">冒泡阶段</a> 的描述。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="capture-phase">capture phase</dfn>
      <dd data-md>
-      <p>捕获阶段: <a href="#event" id="ref-for-event⑥⑨">事件</a> 在由事件目标处理 <em>之前</em> ，
+      <p>捕获阶段: <a href="#event" id="ref-for-event⑥⑧">事件</a> 在由事件目标处理 <em>之前</em> ，
 可以被目标的祖先节点之一处理的过程。获取更多相关的详细信息，
 请参阅事件流上下文中对 <a href="#capture-phase" id="ref-for-capture-phase①">捕获阶段</a> 的描述。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="character-value">character value</dfn>
@@ -8240,7 +8240,7 @@ IRI 。参见 <a href="#event-flow-activation">§ 3.5 激活触发器和行为
 use. </p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="current-event-target">current event target</dfn>
      <dd data-md>
-      <p>当前事件对象: 在事件流中，当前事件目标是与当前正在派发的 <a href="#event-handler" id="ref-for-event-handler">事件处理程序</a> 关联的对象。此对象 <span class="zh-upper">可以</span> 是 <a href="#event-target" id="ref-for-event-target⑤②">事件目标</a> 本身或其祖先之一。当前事件目标随着 <a href="#event" id="ref-for-event⑦⓪">事件</a> 在事件流的各个 <a href="#phase" id="ref-for-phase">阶段</a> 从一个对象传播到另一个对象而变化。当前事件目标是 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-currenttarget" id="ref-for-dom-event-currenttarget①">currentTarget</a></code> 属性的值。</p>
+      <p>当前事件对象: 在事件流中，当前事件目标是与当前正在派发的 <a href="#event-handler" id="ref-for-event-handler">事件处理程序</a> 关联的对象。此对象 <span class="zh-upper">可以</span> 是 <a href="#event-target" id="ref-for-event-target⑤①">事件目标</a> 本身或其祖先之一。当前事件目标随着 <a href="#event" id="ref-for-event⑥⑨">事件</a> 在事件流的各个 <a href="#phase" id="ref-for-phase">阶段</a> 从一个对象传播到另一个对象而变化。当前事件目标是 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-currenttarget" id="ref-for-dom-event-currenttarget①">currentTarget</a></code> 属性的值。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="dead-key">dead key</dfn>
      <dd data-md>
       <p>死键是一个键或键的组合(combination)，它本身不产生字符，
@@ -8256,7 +8256,7 @@ use. </p>
       <p>为响应支持 <code class="idl"><a data-link-type="idl" href="#wheelevent" id="ref-for-wheelevent①⑥">WheelEvent</a></code> 接口的输入设备(如鼠标滚轮或触摸板)的物理移动，
 用户代理将滚动或缩放页面，对这种滚动或缩放页面的滚动量
 (以像素、行或页为单位)估计就称为 <a href="#delta" id="ref-for-delta①⑨">delta</a> 。 <a href="#delta" id="ref-for-delta②⓪">delta</a> 的值(例如， <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltax" id="ref-for-dom-wheelevent-deltax④">deltaX</a></code> 、 <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltay" id="ref-for-dom-wheelevent-deltay④">deltaY</a></code> 或 <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltaz" id="ref-for-dom-wheelevent-deltaz⑥">deltaZ</a></code> 属性)将在当前 <code class="idl"><a data-link-type="idl" href="#dom-wheelevent-deltamode" id="ref-for-dom-wheelevent-deltamode④">deltaMode</a></code> 属性的背景中进行解释。
-滚轮(或其他设备)的物理运动与 <a href="#delta" id="ref-for-delta②①">delta</a> 是正值还是负值之间的关系取决于环境和设备。但是，如果用户代理将滚动作为 <a href="#default-action" id="ref-for-default-action④⑥">默认行为</a> ，则 <a href="#delta" id="ref-for-delta②②">delta</a> 的符号由右手坐标系给出，其中正 X 、 Y 和 Z 轴分别指向 <a href="#document" id="ref-for-document⑤">文档</a> 的最右边、最底边和最远深度(远离用户)。</p>
+滚轮(或其他设备)的物理运动与 <a href="#delta" id="ref-for-delta②①">delta</a> 是正值还是负值之间的关系取决于环境和设备。但是，如果用户代理将滚动作为 <a href="#default-action" id="ref-for-default-action④⑥">默认行为</a> ，则 <a href="#delta" id="ref-for-delta②②">delta</a> 的符号由右手坐标系给出，其中正 X 、 Y 和 Z 轴分别指向 <a href="#document" id="ref-for-document④">文档</a> 的最右边、最底边和最远深度(远离用户)。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="deprecates|deprecated" data-noexport id="deprecates">deprecated</dfn>
      <dd data-md>
       <p>标记为弃用的特性包含在规范中，作为对旧实现或规范的参考，但它们是 <span class="zh-upper">可选的</span> ，不鼓励使用。在本规范中，
@@ -8278,12 +8278,10 @@ use. </p>
 方法、属性、事件和其他特性，以便在 <a href="#user-agent" id="ref-for-user-agent⑦②">用户代理</a> 中向用户展现动态或交互式内容，例如 Web 应用程序。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="dom-level-0">DOM Level 0</dfn>
      <dd data-md>
-      <p>The term <q>DOM Level 0</q> refers to a mix of HTML <a data-link-type="dfn" href="#document" id="ref-for-document②">document</a> functionalities,
-often not formally specified but traditionally supported as de facto
-standards, implemented originally by Netscape Navigator version 3.0 or
-Microsoft Internet Explorer version 3.0.  In many cases, attributes or
-methods have been included for reasons of backward compatibility with <q>DOM
-Level 0</q>.</p>
+      <p>术语 <q>DOM Level 0</q> 指的是 HTML <a href="#document" id="ref-for-document⑤">文档</a> 功能的混合体(mix)，通常没有正式指定，但传统上支持它作为事实实现的标准，
+最初由 Netscape Navigator 3.0 版本或 Microsoft Internet Explorer 3.0 版本实现
+。在许多情况下，属性或方法由于与 <q>DOM Level 0</q> 向后兼容的原因被包含
+(在规范中)。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="empty-string">empty string</dfn>
      <dd data-md>
       <p>空字符串是类型为<code>DOMString</code>，长度为0的值，也就是说它是一个不包含任何字符的字符串
@@ -8291,10 +8289,10 @@ Level 0</q>.</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="event">event</dfn>
      <dd data-md>
       <p>事件是某种发生的事情的表示(例如，在一个元素上呈现地的鼠标点击，
-一个元素的孩子节点的移除，或其他任何的可能性)，它与它的 <a href="#event-target" id="ref-for-event-target⑤③">事件目标</a> 相关联。每个事件都是一个特定 <a href="#event-type" id="ref-for-event-type③①">事件类型</a> 的实例化。</p>
+一个元素的孩子节点的移除，或其他任何的可能性)，它与它的 <a href="#event-target" id="ref-for-event-target⑤②">事件目标</a> 相关联。每个事件都是一个特定 <a href="#event-type" id="ref-for-event-type③①">事件类型</a> 的实例化。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="event-focus">event focus</dfn>
      <dd data-md>
-      <p>事件焦点是文档中的一个特定元素或其他 <a href="#event-target" id="ref-for-event-target⑤④">事件目标</a> 的一种接受性(receptivity)的和聚集性(concentration)的特殊状态。
+      <p>事件焦点是文档中的一个特定元素或其他 <a href="#event-target" id="ref-for-event-target⑤③">事件目标</a> 的一种接受性(receptivity)的和聚集性(concentration)的特殊状态。
 每个元素在聚焦时都有不同的行为，这取决于元素的功能，例如启动激活元素的引发效果
 (见于按钮或超链接)或切换状态(见于复选框)、文本输入的接收(见于文本表单字段)、
 或选定文本的复制。有关更多详细信息，请参见 <a href="#events-focusevent-doc-focus">§ 5.2.3 文档焦点和焦点上下文</a> 。</p>
@@ -8334,10 +8332,10 @@ Level 0</q>.</p>
       <p>参阅 <a href="#phase" id="ref-for-phase①">阶段</a> 。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="event-target">event target</dfn>
      <dd data-md>
-      <p>一个应用 <a href="#event-flow">§ 3.1 事件派发和 DOM 事件流</a>> 的 <a href="#event" id="ref-for-event⑦①">事件</a> 的事件目标对象。事件目标对象是事件的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target④⓪">target</a></code> 属性的值。</p>
+      <p>一个应用 <a href="#event-flow">§ 3.1 事件派发和 DOM 事件流</a>> 的 <a href="#event" id="ref-for-event⑦⓪">事件</a> 的事件目标对象。事件目标对象是事件的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-target" id="ref-for-dom-event-target④⓪">target</a></code> 属性的值。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="event-type">event type</dfn>
      <dd data-md>
-      <p><em>事件类型</em>是一个具有特定名称的 <a href="#event" id="ref-for-event⑦②">事件对象</a> ，它定义了特定的触发条件、属性和区别于其他事件类型的其它特征。例如， <a data-link-type="dfn" href="#click" id="ref-for-click⑤④"><code>click</code></a> 事件类型与 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover①①"><code>mouseover</code></a> 或 <a data-link-type="dfn" href="#load" id="ref-for-load①⓪"><code>load</code></a> 类型具有不同的特性。
+      <p><em>事件类型</em>是一个具有特定名称的 <a href="#event" id="ref-for-event⑦①">事件对象</a> ，它定义了特定的触发条件、属性和区别于其他事件类型的其它特征。例如， <a data-link-type="dfn" href="#click" id="ref-for-click⑤④"><code>click</code></a> 事件类型与 <a data-link-type="dfn" href="#mouseover" id="ref-for-mouseover①①"><code>mouseover</code></a> 或 <a data-link-type="dfn" href="#load" id="ref-for-load①⓪"><code>load</code></a> 类型具有不同的特性。
 事件类型作为事件对象上的 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type④">type</a></code> 属性公开。参见 <a href="#event-types">§ 5 事件类型</a> 了解更多详细信息。这个术语也常常引申为具体"事件"，
 例如 <em><a data-link-type="dfn" href="#click" id="ref-for-click⑤⑤"><code>click</code></a></em> 事件。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fire">fire</dfn>
@@ -8383,17 +8381,17 @@ or other characters，中日韩统一表意文字和其他字符)之间执行转
 或更改键触发的功能(如 <code class="keycap">Fn</code> 键或 <code class="keycap">Alt</code> 键)。参阅 <a href="#keys-modifiers">§ 6.3.1 修饰符按键</a> 获取有关修饰符键的更多信息，并参阅 <a data-link-type="biblio" href="#biblio-uievents-key" title="UI Events KeyboardEvent key Values">[UIEvents-Key]</a> 中的 <a data-link-type="dfn" href="https://mangwu.github.io/uievents-key-cn/#keys-modifier" id="ref-for-keys-modifier③">修饰符键值表格</a> 以获取有效的修饰符键列表。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="namespace URIs" data-noexport id="namespace-uris">namespace URI</dfn>
      <dd data-md>
-      <p>A <em>namespace URI</em> is a URI that identifies an XML namespace. This is
-called the namespace name in <a data-link-type="biblio" href="#biblio-xml-names11" title="Namespaces in XML 1.1 (Second Edition)">[XML-Names11]</a>. See also sections 1.3.2 <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#baseURIs-Considerations"><em>DOM URIs</em></a> and 1.3.3 <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#Namespaces-Considerations"><em>XML Namespaces</em></a> regarding URIs and namespace URIs handling and comparison in the DOM APIs.</p>
+      <p><em>命名空间 URI</em> 是标识 XML 命名空间的URI。这在 <a data-link-type="biblio" href="#biblio-xml-names11" title="Namespaces in XML 1.1 (Second Edition)">[XML-Names11]</a> 中被称为命名空间(namespace)名称。另请参阅 <a data-link-type="biblio" href="#biblio-dom-level-3-core" title="Document Object Model (DOM) Level 3 Core Specification">[DOM-Level-3-Core]</a> 的第 1.3.2 节 <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#baseURIs-Considerations"> <em>DOM URI</em></a> 和 1.3.3 节 <a class="normative" href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#Namespaces-Considerations"> <em>XML 命名空间</em></a> ，它们涉及 DOM APIs 中的 URIs 和命名空间(namespace)
+URIs的处理和比较。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="phase">phase</dfn>
      <dd data-md>
-      <p>在 <a href="#event" id="ref-for-event⑦③">事件</a> 的上下文中，
+      <p>在 <a href="#event" id="ref-for-event⑦②">事件</a> 的上下文中，
 一个阶段是沿着 DOM 树从一个节点到另一个节点的逻辑遍历集，即
-从 <a data-link-type="dfn" href="#window" id="ref-for-window⑥②">Window</a> 到 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document③">Document</a></code> 对象、 <a href="#root-element" id="ref-for-root-element⑦">根元素</a> ，直到 <a href="#event-target" id="ref-for-event-target⑤⑤">事件目标</a> ( <a href="#capture-phase" id="ref-for-capture-phase②">捕获阶段</a> )前继续向下遍历，然后传到 <a href="#event-target" id="ref-for-event-target⑤⑥">事件目标</a> 本身( <a href="#target-phase" id="ref-for-target-phase②">目标阶段</a> )，最后按照相反方向向上遍历同一个节点链
+从 <a data-link-type="dfn" href="#window" id="ref-for-window⑥②">Window</a> 到 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#document" id="ref-for-document②">Document</a></code> 对象、 <a href="#root-element" id="ref-for-root-element⑦">根元素</a> ，直到 <a href="#event-target" id="ref-for-event-target⑤④">事件目标</a> ( <a href="#capture-phase" id="ref-for-capture-phase②">捕获阶段</a> )前继续向下遍历，然后传到 <a href="#event-target" id="ref-for-event-target⑤⑤">事件目标</a> 本身( <a href="#target-phase" id="ref-for-target-phase②">目标阶段</a> )，最后按照相反方向向上遍历同一个节点链
 ( <a href="#bubble-phase" id="ref-for-bubble-phase①">冒泡阶段</a> )。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="propagation-path">propagation path</dfn>
      <dd data-md>
-      <p>传播路径: <a href="#event" id="ref-for-event⑦④">事件</a> 对象在往返于 <a href="#event-target" id="ref-for-event-target⑤⑦">事件目标</a> 的过程中会依次通过的 <a href="#current-event-target" id="ref-for-current-event-target②">当前事件目标</a> 的有序集合。随着事件的传播，
+      <p>传播路径: <a href="#event" id="ref-for-event⑦③">事件</a> 对象在往返于 <a href="#event-target" id="ref-for-event-target⑤⑥">事件目标</a> 的过程中会依次通过的 <a href="#current-event-target" id="ref-for-current-event-target②">当前事件目标</a> 的有序集合。随着事件的传播，
 传播路径中的每个 <a href="#current-event-target" id="ref-for-current-event-target③">当前事件目标</a> 依次设置在 <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-currenttarget" id="ref-for-dom-event-currenttarget②">currentTarget</a></code> 中。传播路径最初由 <a href="#event-type" id="ref-for-event-type③②">事件类型</a> 定义的一个或多个 <a href="#event-phase" id="ref-for-event-phase①">事件阶段</a> 组成，但 <span class="zh-upper">可以</span> 被中断。传播路径也称为 <em>事件目标链</em> 。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="qwerty">QWERTY</dfn>
      <dd data-md>
@@ -8416,9 +8414,8 @@ QWERTZ 、 QZERTY 及其其它国家变体。</q> —— 维基百科 <a href="h
 它 <span class="zh-upper">可以</span> 是沿着平面移动，或按下特定按钮。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="target-phase">target phase</dfn>
      <dd data-md>
-      <p>The process by which an <a data-link-type="dfn" href="#event" id="ref-for-event⑥⑤">event</a> can be handled by the <a data-link-type="dfn" href="#event-target" id="ref-for-event-target⑤⑧">event
-target</a>. See the description of the <a data-link-type="dfn" href="#target-phase" id="ref-for-target-phase③">target phase</a> in the context of
-event flow for more details.</p>
+      <p>通过这个阶段的进程(process) <a href="#event-target" id="ref-for-event-target⑤⑦">事件目标</a> 可以用来处理 <a href="#event" id="ref-for-event⑦④">事件</a> 。获取更多有关的详细信息，
+请参阅 <a href="#event-flow">事件流</a> 上下文中对 <a href="#target-phase" id="ref-for-target-phase③">目标阶段</a> 的描述。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="text-composition-system">text composition system</dfn>
      <dd data-md>
       <p>一种软件组件(software component )，用于解释某种形式的替代输入(alternate
@@ -8426,11 +8423,10 @@ input，如 <a href="#ime" id="ref-for-ime②⑤">输入法编辑器</a> 、语�
 并将其转换为文本。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="topmost-event-target">topmost event target</dfn>
      <dd data-md>
-      <p>The <a data-link-type="dfn" href="#topmost-event-target" id="ref-for-topmost-event-target①④">topmost event target</a> MUST be the element highest in the rendering
-order which is capable of being an <a data-link-type="dfn" href="#event-target" id="ref-for-event-target①">event target</a>. In graphical user
-interfaces this is the element under the user’s pointing device. A user
-interface’s <q>hit testing</q> facility is used to determine the target. For
-specific details regarding hit testing and stacking order, refer to the <a data-link-type="dfn" href="#host-language" id="ref-for-host-language①③">host language</a>.</p>
+      <p><a href="#topmost-event-target" id="ref-for-topmost-event-target①④">最顶层的事件目标</a> <span class="zh-upper">必须</span> 是在渲染顺序中能够成为 <a href="#event-target" id="ref-for-event-target⑤⑧">事件目标</a> 的最高层(highest)的元素。
+在图形用户界面中，就是用户的定位设备下的元素。用户界面的 <q>命中测试(hit
+testing)</q> 装置(facility)用于确定这个目标。有关命中测试和层叠顺序(stacking
+order)的具体细节，请参阅 <a href="#host-language" id="ref-for-host-language①③">宿主语言</a> 。</p>
      <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="unicode-character-categories">Unicode character categories</dfn>
      <dd data-md>
       <p>Unicode字符类别，为每个 Unicode 码点定义的"一般类别(General Category)"
@@ -8895,7 +8891,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-07886e33695d0e7b473ef18f656ad7ac" style="display:none">Info about the 'Document' external reference.</span><a href="https://dom.spec.whatwg.org/#document">https://dom.spec.whatwg.org/#document</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-document">4. 基本事件接口</a>
-    <li><a href="#ref-for-document①">14. 术语表</a> <a href="#ref-for-document③">(2)</a>
+    <li><a href="#ref-for-document①">14. 术语表</a> <a href="#ref-for-document②">(2)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-316772b0029bcc028521d2db08fd3717" class="dfn-panel" data-for="316772b0029bcc028521d2db08fd3717" id="infopanel-for-316772b0029bcc028521d2db08fd3717">
@@ -11601,7 +11597,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-document" style="display:none">Info about the 'document' definition.</span><b><a href="#document">#document</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-document">5.4.2.2. 滚轮事件的可取消性</a>
-    <li><a href="#ref-for-document">14. 术语表</a> <a href="#ref-for-document②">(2)</a> <a href="#ref-for-document">(3)</a> <a href="#ref-for-document">(4)</a> <a href="#ref-for-document">(5)</a>
+    <li><a href="#ref-for-document">14. 术语表</a> <a href="#ref-for-document">(2)</a> <a href="#ref-for-document">(3)</a> <a href="#ref-for-document">(4)</a> <a href="#ref-for-document">(5)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-dom-application" class="dfn-panel" data-for="dom-application" id="infopanel-for-dom-application">
@@ -11643,7 +11639,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
    <span id="infopaneltitle-for-event" style="display:none">Info about the 'event' definition.</span><b><a href="#event">#event</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-event">1.1. 概述</a>
-    <li><a href="#ref-for-event">14. 术语表</a> <a href="#ref-for-event">(2)</a> <a href="#ref-for-event">(3)</a> <a href="#ref-for-event">(4)</a> <a href="#ref-for-event">(5)</a> <a href="#ref-for-event">(6)</a> <a href="#ref-for-event">(7)</a> <a href="#ref-for-event">(8)</a> <a href="#ref-for-event⑥⑤">(9)</a>
+    <li><a href="#ref-for-event">14. 术语表</a> <a href="#ref-for-event">(2)</a> <a href="#ref-for-event">(3)</a> <a href="#ref-for-event">(4)</a> <a href="#ref-for-event">(5)</a> <a href="#ref-for-event">(6)</a> <a href="#ref-for-event">(7)</a> <a href="#ref-for-event">(8)</a> <a href="#ref-for-event">(9)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event-focus" class="dfn-panel" data-for="event-focus" id="infopanel-for-event-focus">
@@ -11726,7 +11722,7 @@ specific details regarding hit testing and stacking order, refer to the <a data-
     <li><a href="#ref-for-event-target">9.4.2.5. DOMNodeRemoved</a>
     <li><a href="#ref-for-event-target">9.4.2.6. 
 		DOMNodeRemovedFromDocument</a>
-    <li><a href="#ref-for-event-target">14. 术语表</a> <a href="#ref-for-event-target">(2)</a> <a href="#ref-for-event-target">(3)</a> <a href="#ref-for-event-target">(4)</a> <a href="#ref-for-event-target">(5)</a> <a href="#ref-for-event-target">(6)</a> <a href="#ref-for-event-target">(7)</a> <a href="#ref-for-event-target①">(8)</a>
+    <li><a href="#ref-for-event-target">14. 术语表</a> <a href="#ref-for-event-target">(2)</a> <a href="#ref-for-event-target">(3)</a> <a href="#ref-for-event-target">(4)</a> <a href="#ref-for-event-target">(5)</a> <a href="#ref-for-event-target">(6)</a> <a href="#ref-for-event-target">(7)</a> <a href="#ref-for-event-target">(8)</a>
    </ul>
   </aside>
   <aside aria-labelledby="infopaneltitle-for-event-type" class="dfn-panel" data-for="event-type" id="infopanel-for-event-type">
