@@ -139,6 +139,14 @@ url: https://mangwu.github.io/uievents-key-cn/#combining-character; type: dfn; s
 	text: 组合字符
 url: https://dom.spec.whatwg.org/#interface-mutationobserver; type: interface; spec: dom;
 	text: MutationObserver
+url: https://dom.spec.whatwg.org/#concept-tree-ancestor; type: dfn;
+	text: 祖先
+url: https://www.w3.org/TR/CSS21/visuren.html#x43; type: dfn;
+	text: 层叠上下文(stacking context)
+url: https://drafts.csswg.org/css-position-3/#positioned-box; type: dfn;
+	text: 确定位置的盒(positioned box)
+url: https://drafts.csswg.org/css-position-4/#paint-a-stacking-context; type: dfn;
+	text: 绘制层叠上下文(painting a stacking context)
 </pre>
 
 <pre class="link-defaults">

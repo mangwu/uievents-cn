@@ -529,7 +529,9 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 				readonly attribute long screenY;
 				readonly attribute long clientX;
 				readonly attribute long clientY;
-	
+				readonly attribute long layerX;
+				readonly attribute long layerY;
+
 				readonly attribute boolean ctrlKey;
 				readonly attribute boolean shiftKey;
 				readonly attribute boolean altKey;
@@ -588,6 +590,36 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 				</dt>
 				<dd>
 					提供了发生事件的位置在应用程序视口中的竖直坐标(而不是可能滚动的页面的坐标)。
+
+					该属性的 <a href="#un-initialized-value">未初始化值</a> 
+					<span class="zh-upper">必须</span> 为 <code>0</code> 。
+				</dd>
+
+				<dt	class="origin-dfn"><dfn attribute>layerX</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">layerX</code></i>，
+					<code>long</code>
+					<span class="replacement"> 类型(4字节整型)，只读</span>
+				</dt>
+				<dd>
+					距离最近的 [=祖先=] 元素的水平偏移量，该 [=祖先=] 元素是 
+					[=层叠上下文(stacking context)=] ，[=确定位置的盒(positioned box)=] ，
+					或者是 [=绘制层叠上下文(painting a stacking context)=] 时，
+					在定位阶段的绘制结果。
+
+					该属性的 <a href="#un-initialized-value">未初始化值</a> 
+					<span class="zh-upper">必须</span> 为 <code>0</code> 。
+				</dd>
+
+				<dt	class="origin-dfn"><dfn attribute>layerY</dfn></dt>
+				<dt class="custom-dfn"><i><code class="idl">layerY</code></i>，
+					<code>long</code>
+					<span class="replacement"> 类型(4字节整型)，只读</span>
+				</dt>
+				<dd>
+					距离最近的 [=祖先=] 元素的垂直偏移量，该 [=祖先=] 元素是 
+					[=层叠上下文(stacking context)=] ，[=确定位置的盒(positioned box)=] ，
+					或者是 [=绘制层叠上下文(painting a stacking context)=] 时，
+					在定位阶段的绘制结果。
 
 					该属性的 <a href="#un-initialized-value">未初始化值</a> 
 					<span class="zh-upper">必须</span> 为 <code>0</code> 。
@@ -1349,7 +1381,9 @@ DOM 定义了一个用户界面事件模块(包括较低级别的设备独立事
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1459,7 +1493,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1553,7 +1589,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1603,7 +1641,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1684,7 +1724,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1734,7 +1776,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1788,7 +1832,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1842,7 +1888,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1899,7 +1947,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1948,7 +1998,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
@@ -1998,7 +2050,9 @@ myDiv.addEventListener("auxclick", function(e) {
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenX}} : 基于指针在屏幕上的(水平)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/screenY}} : 基于指针在屏幕上的(竖直)位置的值</li>    |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(水平)位置的值</li>    |
-			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientX}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/clientY}} : 基于指针在视口中的(竖直)位置的值</li>    |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerX}} : 基于指针在包含元素中的(水平)位置的值</li> |
+			 |                  | <li>{{MouseEvent}}.{{MouseEvent/layerY}} : 基于指针在包含元素中的(竖直)位置的值</li> |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/altKey}} : 如果 KEYCAP{Alt} 修饰符处于活动状态，则为 |
 			 |                  |     <code>true</code> ，否则为 <code>false</code> </li>                              |
 			 |                  | <li>{{MouseEvent}}.{{MouseEvent/ctrlKey}} : 如果 KEYCAP{Ctrl} 修饰符处于活动状态，   |
