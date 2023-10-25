@@ -325,12 +325,22 @@ figcaption:not(.no-marker)::before {
   white-space: pre;
 }
 
+/* 规范注释 */
+p.note[role="note"]:before {
+  content: "注: ";
+}
+
 /* 非规范注释 */
-.custom-note::before {
+.note.custom-note[role="note"]::before {
   content: "非规范注释: ";
 }
-.custom-note[data-content]::before {
+.note.custom-note[data-content]::before {
   content: attr(data-content);
+}
+
+/* 警告注释 */
+p.warning::before {
+  content: "\26A0 警告! " !important;
 }
 
 /* 隐藏summary */
