@@ -117,7 +117,7 @@
 			+| 美式     | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
 			+| 法语     | KEY{Alt}             | CODE{AltLeft}        | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}}  |
 			+| 美式     | KEY{Alt}             | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
-			+| 法语     | KEY{AltGr}           | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
+			+| 法语     | KEY{AltGraph}        | CODE{AltRight}       | {{KeyboardEvent/DOM_KEY_LOCATION_RIGHT}} |
 			++----------+----------------------+----------------------+------------------------------------------+
 
 			在本例中，检查 {{KeyboardEvent/key}} 属性允许匹配 KEYCAP{Alt} ，
@@ -125,7 +125,7 @@
 			检查 {{KeyboardEvent/code}} 属性可以匹配右 Alt 键( CODE{AltRight} )，
 			而无需担心当前正在使用的键盘布局。
 
-			请注意，在法语示例中， KEYCAP{Alt} 和 KEYCAP{AltGr} 键保留其左右位置( 
+			请注意，在法语示例中， KEYCAP{Alt} 和 KEYCAP{AltGraph} 键保留其左右位置( 
 			{{KeyboardEvent/code}} 值仍然是 CODE{AltLeft} 和 CODE{AltRight} )，
 			即使每个键只有一个。
 		</div>  <!-- Handling Left and Right Alt Keys -->
@@ -181,7 +181,7 @@
 			 +---+----------+----------o-----------+----------o-----------+-----------------------------------------+
 			+| 1 | keydown  | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 2 | keydown  | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
-			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (如果支持)                              |
+			+| 3 | keypress | KEY_NOLINK{@}        | CODE{Digit2}         | (如果支持)                              |
 			+| 4 | keyup    | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
 			+| 5 | keyup    | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			++---+----------+----------------------+----------------------+-----------------------------------------+
@@ -196,7 +196,7 @@
 			 +---+----------+----------o-----------+----------o-----------+-----------------------------------------+
 			+| 1 | keydown  | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 2 | keydown  | KEY_NOLINK{@}        | CODE{Digit2}         | {{KeyboardEvent/shiftKey}}              |
-			+| 3 | keypress | KEY_NOLINK{@}        | CODE{}               | (如果支持)                              |
+			+| 3 | keypress | KEY_NOLINK{@}        | CODE{Digit2}         | (如果支持)                              |
 			+| 4 | keyup    | KEY{Shift}           | CODE{ShiftLeft}      | {{KeyboardEvent/DOM_KEY_LOCATION_LEFT}} |
 			+| 5 | keyup    | KEY_NOLINK{2}        | CODE{Digit2}         |                                         |
 			++---+----------+----------------------+----------------------+-----------------------------------------+
@@ -482,12 +482,12 @@
 		<a href="https://zh.wikipedia.org/wiki/死键">死键</a> 。<br/>
 		<q>基本上，美式标准键盘没有任何死键，
 		所以沿用这种键盘的中国大陆地区使用的键盘也没有死键，
-		但是世界上大多数地区销售的键盘都有一个 KEYCAP{AltGr} (Alternative graphic)键，
-		它可以直接修改一些字母，并将其他字母变成死键(取决于键盘设置)。
-		<q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，它与 KEYCAP{Ctrl} 
-		键和 KEYCAP{Shift} 键相结合，可以用来将西欧语言中常见的一些变音符号(
-		<code>´</code> 、 <code>`</code> 、 <code>ˆ</code> 和 <code>¨</code> 
-		)添加到随后键入的元音中。</q> —— 维基百科 
+		但是世界上大多数地区销售的键盘都有一个 KEYCAP{AltGraph} 
+		(Alternative graphic)键，它可以直接修改一些字母，并将其他字母变成死键
+		(取决于键盘设置)。<q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，
+		它与 KEYCAP{Ctrl} 键和 KEYCAP{Shift} 键相结合，
+		可以用来将西欧语言中常见的一些变音符号( <code>´</code> 、 <code>`</code> 、 
+		<code>ˆ</code> 和 <code>¨</code> )添加到随后键入的元音中。</q> —— 维基百科 
 		<a href="https://en.wikipedia.org/wiki/Dead_key">Dead key</a>
 		</div>
 
@@ -722,7 +722,7 @@
 			本规范中为此定义的键为: KEY{Alphanumeric} ， KEY{CodeInput} ，  
 			KEY{FinalMode} ，  KEY{HangulMode} ，  KEY{HanjaMode} ， 
 			KEY{Hiragana} ，  KEY{JunjaMode} ，  KEY{KanaMode} ，  KEY{KanjiMode} ， 
-			KEY{Katakana} 和 KEY{RomanCharacters} 。当按下这些键中的一个，
+			KEY{Katakana} 和 KEY{Romaji} 。当按下这些键中的一个，
 			并且当前没有任何 <a>IME</a> 处于活动状态时，
 			期望在该键的指示下激活对应的 <a>IME</a> (如果可用)模式。
 			如果击键时某个 <a>IME</a> 已经处于活动状态，则活动状态的 <a>IME</a> 
@@ -731,8 +731,8 @@
 			(application-specific)。
 
 			本规范还定义了其他键，这些键专门用于 <a href="#ime">输入法编辑器</a> 
-			的操作: KEY{Accept} ，  KEY{AllCandidates} ，  KEY{Cancel} ，  
-			KEY{Convert} ， KEY{Compose} ，  KEY{FullWidth} ，  KEY{HalfWidth} ，  
+			的操作: KEY{Accept} ， KEY{AllCandidates} ， KEY{Cancel} ， KEY{Convert} 
+			， KEY{Compose} ， KEY{Zenkaku} (FullWidth)， KEY{Hankaku} (HalfWidth)， 
 			KEY{NextCandidate} ， KEY{Nonconvert} 和 KEY{PreviousCandidate} 。
 			这些键的功能在本规范中没有定义 —— 有关 <a href="#ime">输入法编辑器</a> 
 			功能的详细信息，请参阅其他资源。

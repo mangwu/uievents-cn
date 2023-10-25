@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version d9bd89757, updated Thu Mar 23 10:06:53 2023 -0700" name="generator">
   <link href="https://w3c.github.io/uievents/" rel="canonical">
-  <meta content="d73ea46805a24f224ad3831016326b545ba4e791" name="document-revision">
+  <meta content="9639aa2a32611cb12a341bee665770c52348c737" name="document-revision">
   <link href="./override.css" rel="stylesheet">
 <style>/* style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
@@ -809,7 +809,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">用户界面事件(UI Events)</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#UD">翻译草案</a>, <time class="dt-updated" datetime="2023-06-12">2023年5月29日</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#UD">翻译草案</a>, <time class="dt-updated" datetime="2023-10-25">2023年5月29日</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -5084,8 +5084,8 @@ myDiv.addEventListener("auxclick", function(e) {
     <div class="note custom-note" id="keyboard-layout-custom-note" role="note"><a class="self-link" href="#keyboard-layout-custom-note"></a> 以下关于键盘布局的类型，可以查阅 <a data-link-type="dfn" href="https://mangwu.github.io/uievents-code-cn/#keyboard-common-layouts" id="ref-for-keyboard-common-layouts">标准键盘布局</a> 。<br> 美式键盘布局:
 		标准 "101" 键盘布局; <br> 日式键盘布局: 日式 "106" 键盘布局; <br> 美式国际键盘布局:  备用 "101" 键盘布局; <br> 英式键盘布局:
 		标准 "102" 键盘布局。 </div>
-    <div class="example" id="example-842663ed">
-     <a class="self-link" href="#example-842663ed"></a> 处理左右的Alt键 
+    <div class="example" id="example-83354d21">
+     <a class="self-link" href="#example-83354d21"></a> 处理左右的Alt键 
      <table class="event-sequence-table">
       <tbody>
        <tr>
@@ -5110,7 +5110,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td><code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_right" id="ref-for-dom-keyboardevent-dom_key_location_right④">DOM_KEY_LOCATION_RIGHT</a></code>
        <tr>
         <td>法语
-        <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AltGr">AltGr</a>"</code>
+        <td style="text-align:center"><code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AltGraph">AltGraph</a>"</code>
         <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltRight">AltRight</a>"</code>
         <td><code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-dom_key_location_right" id="ref-for-dom-keyboardevent-dom_key_location_right⑤">DOM_KEY_LOCATION_RIGHT</a></code>
      </table>
@@ -5118,7 +5118,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			而不必担心按下了哪个 Alt 键 ( <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltLeft">AltLeft</a>"</code> 或 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltRight">AltRight</a>"</code> )。
 			检查 <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code①⑦">code</a></code> 属性可以匹配右 Alt 键( <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltRight">AltRight</a>"</code> )，
 			而无需担心当前正在使用的键盘布局。</p>
-     <p>请注意，在法语示例中， <code class="keycap">Alt</code> 和 <code class="keycap">AltGr</code> 键保留其左右位置( <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code①⑧">code</a></code> 值仍然是 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltLeft">AltLeft</a>"</code> 和 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltRight">AltRight</a>"</code> )，
+     <p>请注意，在法语示例中， <code class="keycap">Alt</code> 和 <code class="keycap">AltGraph</code> 键保留其左右位置( <code class="idl"><a data-link-type="idl" href="#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code①⑧">code</a></code> 值仍然是 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltLeft">AltLeft</a>"</code> 和 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-AltRight">AltRight</a>"</code> )，
 			即使每个键只有一个。</p>
     </div>
     <div class="example" id="example-122f0e4b">
@@ -5217,7 +5217,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td class="cell-number">3
         <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress②"><code>keypress</code></a>
         <td style="text-align:center"><code class="key">"@"</code>
-        <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-"></a>"</code>
+        <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Digit2">Digit2</a>"</code>
         <td>(如果支持)
        <tr>
         <td class="cell-number">4
@@ -5258,7 +5258,7 @@ myDiv.addEventListener("auxclick", function(e) {
         <td class="cell-number">3
         <td><a data-link-type="dfn" href="#keypress" id="ref-for-keypress③"><code>keypress</code></a>
         <td style="text-align:center"><code class="key">"@"</code>
-        <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-"></a>"</code>
+        <td style="text-align:center"><code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Digit2">Digit2</a>"</code>
         <td>(如果支持)
        <tr>
         <td class="cell-number">4
@@ -5582,8 +5582,10 @@ myDiv.addEventListener("auxclick", function(e) {
 		因此不需要为每一个字母与每一个标音的组合都对应一个单独的键;
 		只要为每一个标音对应一个死键便足够。举例来说，若键盘上有一个重音符( <code class="keycap">`</code> )的死键，要输出法文字母 à 只需要先按下 <code class="keycap">`</code> ，再按下 <code class="keycap">A</code> 。如果是 è 则是先按下 <code class="keycap">`</code> 再按下 E 。而通常来说，通过键入 <code class="keycap">`</code> 与 <code class="code">"<a href="https://mangwu.github.io/uievents-code-cn/#code-Space">Space</a>"</code> 可以产生一个单独的标音符号。</q> —— 维基百科 <a href="https://zh.wikipedia.org/wiki/死键">死键</a> 。<br> <q>基本上，美式标准键盘没有任何死键，
 		所以沿用这种键盘的中国大陆地区使用的键盘也没有死键，
-		但是世界上大多数地区销售的键盘都有一个 <code class="keycap">AltGr</code> (Alternative graphic)键，
-		它可以直接修改一些字母，并将其他字母变成死键(取决于键盘设置)。 <q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，它与 <code class="keycap">Ctrl</code> 键和 <code class="keycap">Shift</code> 键相结合，可以用来将西欧语言中常见的一些变音符号( <code>´</code> 、 <code>`</code> 、 <code>ˆ</code> 和 <code>¨</code> )添加到随后键入的元音中。</q> —— 维基百科 <a href="https://en.wikipedia.org/wiki/Dead_key">Dead key</a> </q></div>
+		但是世界上大多数地区销售的键盘都有一个 <code class="keycap">AltGraph</code> (Alternative graphic)键，它可以直接修改一些字母，并将其他字母变成死键
+		(取决于键盘设置)。<q>旧的计算机系统，如 MSX ，通常有一个标记为死键的特殊键，
+		它与 <code class="keycap">Ctrl</code> 键和 <code class="keycap">Shift</code> 键相结合，
+		可以用来将西欧语言中常见的一些变音符号( <code>´</code> 、 <code>`</code> 、 <code>ˆ</code> 和 <code>¨</code> )添加到随后键入的元音中。</q> —— 维基百科 <a href="https://en.wikipedia.org/wiki/Dead_key">Dead key</a> </q></div>
     <p>一些键盘输入使用 <a href="#dead-key" id="ref-for-dead-key④">死键</a> 来输入合成字符序列(composed
 		character sequences)。与在手写序列(见 <a href="#events-composition-handwriting">§ 5.7.3 手写识别系统</a> )中，用户可以首先输入基本字符不同，键盘输入需要在按下 <a href="#dead-key" id="ref-for-dead-key⑤">死键</a> 时进入特殊状态，并且只有在输入有限数量的 <q>合法(legal)</q> 基本字符中的一个时才发出(emit)字符。</p>
     <p class="note" role="note"> MacOS 和 Linux 操作系统使用输入法来处理 <a href="#dead-key" id="ref-for-dead-key⑥">死键</a> 。 </p>
@@ -6128,12 +6130,12 @@ myDiv.addEventListener("auxclick", function(e) {
     <p>一些设备上的某些键用于激活 <a href="#ime" id="ref-for-ime①⑧">输入法编辑器</a> 功能，
 			或更改活动状态 <a href="#ime" id="ref-for-ime①⑨">输入法编辑器</a> 的模式。
 			可以为不同的设备或语言模式自定义用于上述功能的按键。
-			本规范中为此定义的键为: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-RomanCharacters">RomanCharacters</a>"</code> 。当按下这些键中的一个，
+			本规范中为此定义的键为: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Alphanumeric">Alphanumeric</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-CodeInput">CodeInput</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FinalMode">FinalMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HangulMode">HangulMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HanjaMode">HanjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hiragana">Hiragana</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-JunjaMode">JunjaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanaMode">KanaMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-KanjiMode">KanjiMode</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Katakana">Katakana</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Romaji">Romaji</a>"</code> 。当按下这些键中的一个，
 			并且当前没有任何 <a data-link-type="dfn" href="#ime" id="ref-for-ime②">IME</a> 处于活动状态时，
 			期望在该键的指示下激活对应的 <a data-link-type="dfn" href="#ime" id="ref-for-ime③">IME</a> (如果可用)模式。
 			如果击键时某个 <a data-link-type="dfn" href="#ime" id="ref-for-ime④">IME</a> 已经处于活动状态，则活动状态的 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑤">IME</a> 可能会更改为(按键)对应的模式，或者可能会启动不同的 <a data-link-type="dfn" href="#ime" id="ref-for-ime⑥">IME</a> ，或者也 <span class="zh-upper">可以</span> 被忽略，取决于设备和具体应用程序
 			(application-specific)。</p>
-    <p>本规范还定义了其他键，这些键专门用于 <a href="#ime" id="ref-for-ime②⓪">输入法编辑器</a> 的操作: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-FullWidth">FullWidth</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-HalfWidth">HalfWidth</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code> 。
+    <p>本规范还定义了其他键，这些键专门用于 <a href="#ime" id="ref-for-ime②⓪">输入法编辑器</a> 的操作: <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Accept">Accept</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-AllCandidates">AllCandidates</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Cancel">Cancel</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Convert">Convert</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Compose">Compose</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Zenkaku">Zenkaku</a>"</code> (FullWidth)， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Hankaku">Hankaku</a>"</code> (HalfWidth)， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-NextCandidate">NextCandidate</a>"</code> ， <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-Nonconvert">Nonconvert</a>"</code> 和 <code class="key">"<a href="https://mangwu.github.io/uievents-key-cn/#key-PreviousCandidate">PreviousCandidate</a>"</code> 。
 			这些键的功能在本规范中没有定义 —— 有关 <a href="#ime" id="ref-for-ime②①">输入法编辑器</a> 功能的详细信息，请参阅其他资源。</p>
     <p class="note" role="note"> 具有 <a href="#ime" id="ref-for-ime②②">输入法编辑器</a> 功能的键不限于此目的(激活输入法功能，
 			更输入法模式)，还可以具有其他特定于设备或实现的目的。 </p>
