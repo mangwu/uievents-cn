@@ -40,56 +40,50 @@
 <h3 id="extending-events-Impl_Extensions">实现特定(implementation-specific)
 的扩展</h3>
 
-	当一个新事件正在设计和原型化时，或者当一个事件旨在实现特定的功能时，最好将其与标准化事件区分开来。实现者应该用一个短字符串作为特定于其实现的事件类型的前缀，以将其与其他实现中的同一事件以及标准化事件区分开来。这类似于CSS中供应商特定的关键字前缀，尽管在CSS中没有使用破折号（“-”），因为在Javascript中用作属性名称时可能会导致问题。
-	While a new event is being designed and prototyped, or when an event is
-	intended for implementation-specific functionality, it is desirable to
-	distinguish it from standardized events. Implementors SHOULD prefix event
-	types specific to their implementations with a short string to distinguish
-	it from the same event in other implementations and from standardized
-	events. This is similar to the
-	<a href="http://www.w3.org/TR/CSS21/syndata.html#vendor-keywords" title="CSS 2.1: Syntax and basic data types">vendor-specific keyword prefixes</a>
-	in CSS, though without the dashes (<code>"-"</code>) used in CSS, since that
-	can cause problems when used as an attribute name in Javascript.
+	当一个新事件正在设计和原型化(prototyped)时，或者当一个事件旨在实现特定的功能
+	(implementation-specific functionality)时，最好将其与标准化事件区分开来。
+	实现 <span class="zh-upper">应当</span> 用一个短字符串作为特定于(specific)
+	其实现的事件类型的前缀，以将其与其他实现中的同一事件以及标准化事件区分开来。
+	这类似于 CSS 中的
+	<a href="http://www.w3.org/TR/CSS21/syndata.html#vendor-keywords" 
+		title="CSS 2.1: Syntax and basic data types">供应商特定的(vendor-specific)
+	关键字前缀</a> ，可是没有像 CSS 一样使用破折号( <code>"-"</code> )，因为在 
+	Javascript 中(破折号)用作属性名称时可能会导致问题。
 
 	<div class="example">
-		A particular browser vendor, <q>FooCorp</q>, might wish to introduce a
-		new event, <code class="eventtype">jump</code>. This vendor implements
-		<code class="eventtype">fooJump</code> in their browser, using their
-		vendor-specific prefix: <code>"foo"</code>. Early adopters start
-		experimenting with the event, using
-		<code>someElement.addEventListener("fooJump", doJump, false )</code>,
-		and provide feedback to FooCorp, who change the behavior of <code
-		class="eventtype">fooJump</code> accordingly.
+		一个讲究的浏览器供应商 <q>FooCorp</q> 预期希望推出一个新的事件 
+		<code class="eventtype">jump</code> 。这家供应商在他们的浏览器中实现了
+		<code class="eventtype">fooJump</code> ，使用他们的供应商特定的前缀: 
+		<code>"foo"</code> 。早期(新技术)应用者开始使用 
+		<code>someElement.addEventListener("fooJump", doJump, false)</code> 
+		来试验该事件，并向 FooCorp 提供反馈， FooCorp 会相应地更改
+		<code class="eventtype">fooJump</code> 的行为。
 
-		After some time, another vendor, <q>BarOrg</q>, decides they also want
-		the functionality, but implement it slightly differently, so they use
-		their own vendor-specific prefix, <code>"bar"</code> in their event type
-		name: <code class="eventtype">barJump</code>. Content authors
-		experimenting with this version of the <code
-		class="eventtype">jump</code> event type register events with BarOrg's
-		event type name. Content authors who wish to write code that accounts
-		for both browsers can either register each event type separately with
-		specific handlers, or use the same handler and switch on the name of the
-		event type. Thus, early experiments in different codebases do not
-		conflict, and the early adopter is able to write easily-maintained code
-		for multiple implementations.
+		一段时间后，另一家供应商 <q>BarOrg</q> 决定他们也想要该功能，
+		但实现方式略有不同，因此他们在事件类型名称中使用自己的供应商特定的前缀 
+		<code>"bar"</code>: <code class="eventtype">barJump</code> 。
+		试验此版本的 <code class="eventtype">jump</code> 事件类型的内容作者使用 
+		BarOrg 的事件类型名称注册事件。希望编写适用于两种浏览器的代码的内容作者，
+		可以使用特定的事件处理程序分别注册每个事件类型，
+		也可以使用同一个事件处理程序并根据事件类型的名称执行不同的操作。因此，
+		不同代码库中的早期试验不会发生冲突，并且早期(新技术)
+		应用者能够为多个实现编写易于维护(easily-maintained)的代码。
 
-		Eventually, as the feature matures, the behavior of both browsers
-		stabilizes and might converge due to content author and user feedback or
-		through formal standardization. As this stabilization occurs, and risk
-		of conflicts decrease, content authors can remove the forked code, and
-		use the <code class="eventtype">jump</code> event type name (even before
-		it is formally standardized) using the same event handler and the more
-		generic registration method <code>someElement.addEventListener( "jump",
-		doJump, false)</code>.
+		最终，随着功能的成熟，两种浏览器的行为都会稳定下来，
+		并可能会因为内容作者和用户的反馈或通过正式的标准化而趋同。
+		随着这种稳定化的发生，冲突的风险降低，内容作者可以删除分叉(forked)代码，
+		并使用相同的事件处理程序和更通用的注册方法 
+		<code>someElement.addEventListener( "jump", doJump, false)</code> 
+		(甚至在正式标准化之前)去使用 <code class="eventtype">jump</code> 
+		事件类型名称。
 	</div>
 
-	<h4 id="extending-events-prefixes">Known Implementation-Specific Prefixes</h4>
+	<h4 id="extending-events-prefixes">已知的实现特定的前缀</h4>
 
-		At the time of writing, the following event-type name prefixes are known to exist:
+		在撰写本规范时，已知存在以下事件类型名称前缀: 
 
 		++---------------------+------------+-----------------------+
-		=| Prefix              | Web Engine | Organization          |
+		=| 前缀                | 引擎内核   | 供应商(Organization)  |
 		 +---------------------+------------+-----------------------+
 		+| <code>moz</code>,   | Gecko      | Mozilla               |
 		 | <code>Moz</code>    |            |                       |
@@ -99,5 +93,13 @@
 		 | <code>O</code>      |            |                       |
 		+| <code>webkit</code> | WebKit     | Apple, Google, others |
 		++---------------------+------------+-----------------------+
+
+		<div class="note custom-note">
+		需要说明的是，浏览器事件目前(2023年6月12日)已经趋同，
+		已经很少见到实现特定的扩展事件了，原始规范的 <q>在撰写本文时</q> 的 
+		github 提交的记录信息是 <q>Gary Kacmarcik, 7年前 (3 5th, 2016 1:56 凌晨)</q>
+		。不过这个表格中的前缀列对老版本浏览器的实现特定的 CSS 
+		属性前缀的使用理解有帮助。
+		</div>
 
 </section>

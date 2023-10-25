@@ -1,41 +1,34 @@
 <section>
-<h2 id="security-considerations">Security Considerations</h2>
+<h2 id="security-considerations">安全注意事项</h2>
 
 
-This appendix discusses security considerations for UI Events implementations.
-The discussion is limited to security issues that arise directly from
-implementation of the event model, APIs and events defined in this
-specification. Implementations typically support other features like scripting
-languages, other APIs and additional events not defined in this document. These
-features constitute an unknown factor and are out of scope of this document.
-Implementers SHOULD consult the specifications of such features for their
-respective security considerations.
+本附录讨论了用户界面事件实现的安全注意事项。
+讨论仅限于由本规范中定义的概念可能直接引起的安全问题，这些概念包括事件模型的实现
+、APIs 和事件。实现(Implementations)通常支持其他功能，如脚本语言、其他 APIs 
+和本文档中未定义的其他事件。这些功能构成不可预知的要素，超出了本规范的范围。
+实现人员 <span class="zh-upper">应当</span> 查阅上述种种功能的规范，
+以了解其各自的安全注意事项。
 
-Many of the event types defined in this specification are dispatched in response
-to user actions. This allows malicious <a>event listeners</a> to gain access to
-information users would typically consider confidential, e.g., typos they might
-have made when filling out a form, if they reconsider their answer to a multiple
-choice question shortly before submitting a form, their typing rate or primary
-input mechanism. In the worst case, malicious <a>event listeners</a> could capture all
-user interactions and submit them to a third party through means (not defined in
-this specification) that are generally available in DOM implementations, such as
-the XMLHttpRequest interface.
+本规范中定义的许多事件类型都是响应用户操作而被派发的。
+这使得恶意 <a href="#event-listener">事件监听器</a> 能够访问用户通常认为是隐私
+(confidential)的信息，例如，用户在填写表单时可能犯的拼写错误，
+如果用户在提交表单前不久重新考虑对多选问题的回答，用户的打字率或主要输入机制。
+在最坏的情况下，恶意 <a href="#event-listener">事件监听器</a> 
+可以捕获所有用户交互，并通过 DOM 实现中通常可用的方法(如 XMLHttpRequest 接口，
+本规范未定义这些方法)将其提交给第三方。
 
-In DOM implementations that support facilities to load external data, events
-like the EVENT{error} event can provide access to sensitive information about
-the environment of the computer system or network. An example would be a
-malicious HTML document that attempts to embed a resource on the local network
-or the localhost on different ports. An embedded <a>DOM application</a> could
-then listen for EVENT{error} and EVENT{load} events to determine which other
-computers in a network are accessible from the local system or which ports are
-open on the system to prepare further attacks.
+在支持加载外部数据的设备(facilities)的 DOM 实现中，像 EVENT{error} 
+这样的事件可以提供对关于计算机系统或网络的环境相关的敏感信息的访问。
+例如，一个恶意 HTML 文档试企图将资源嵌入本地网络或本地主机的不同端口。
+然后，嵌入式 <a href="#dom-application">DOM 应用程序</a> 
+可以监听 EVENT{error} 和 EVENT{load} 事件，
+以确定网络中的哪些其他计算机可以从本地系统访问，或者系统上的哪些端口是打开的，
+从而为进一步的攻击做好准备。
 
-An implementation of UI Events alone is generally insufficient to perform
-attacks of this kind and the security considerations of the facilities that
-possibly support such attacks apply. For conformance with this specification,
-DOM implementations MAY take reasonable steps to ensure that <a>DOM
-applications</a> do not get access to confidential or sensitive information. For
-example, they might choose not to dispatch EVENT{load} events to nodes that
-attempt to embed resources on the local network.
+仅支持用户界面事件的实现通常不足以执行此类攻击，
+并且可能支持此类攻击的设备的安全注意事项也适用。为了符合本规范，
+DOM 实现 <span class="zh-upper">可以</span> 采取合理的步骤来确保
+<a href="#dom-application">DOM 应用程序</a> 不会访问隐私或敏感信息。例如，
+它们可能会选择不将 EVENT{load} 事件分派发给企图在本地网络上嵌入资源的节点。
 
 </section>

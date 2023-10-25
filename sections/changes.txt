@@ -1,135 +1,126 @@
 <section>
-<h2 id="changes-from-earlier-versions">Changes</h2>
+<h2 id="changes-from-earlier-versions">变化</h2>
 
 
-<h3 id="changes-DOMEvents2to3Changes">Changes between DOM Level 2 Events and UI Events</h3>
+<h3 id="changes-DOMEvents2to3Changes">从 DOM Level 2 Events 到 UI Events 
+的更改</h3>
 
-    Numerous clarifications to the interfaces and event types have been made.
-    The <code>HTMLEvents</code> module is no longer defined in this document.
-    The EVENT{focus} and EVENT{blur} events have been added to the {{UIEvent}}
-    module, and the EVENT{dblclick} event has been added to the {{MouseEvent}}
-    module. This new specification provides a better separation between the DOM
-    event flow, the event types, and the DOM interfaces.
+    (本规范)已经对接口和事件类型进行了大量分类(clarifications)。
+		本规范文档中不再定义 <code>HTMLEvents</code> 模块。 EVENT{focus} 和 
+		EVENT{blur} 事件已添加到 {{UIEvent}} 模块， EVENT{dblclick} 事件已添加至 
+		{{MouseEvent}} 模块。本新规范在 DOM 事件流、事件类型和 DOM 
+		接口之间提供了更好的分隔(separation)。
 
-    <h4 id="changes-DOMEvents2to3Changes-flow">Changes to DOM Level 2 event flow</h4>
+    <h4 id="changes-DOMEvents2to3Changes-flow">对 DOM Level 2 事件流的更改</h4>
 
-        This new specification introduced the following new concepts in the
-        event flow:
+        本新规范在事件流中引入了以下新概念: 
 
-        *	<a>Event listeners</a> are now ordered. In DOM Level 2, the event ordering
-        	was unspecified.
-        *	The event flow now includes the <a><code>Window</code></a>, to
-            reflect existing implementations.
+        *	 <a href="#event-listener">事件监听器</a> 有序执行。在 DOM Level 2中
+					，不能指定事件顺序。
+        *	事件流现在包括 <a><code>Window</code></a> ，以反映(reflect)现有的实现。
 
-	<h4 id="changes-DOMEvents2to3Changes-event-types">Changes to DOM Level 2 event types</h4>
+	<h4 id="changes-DOMEvents2to3Changes-event-types">对 DOM Level 2 
+	事件类型的更改</h4>
 
-		Many clarifications have been made on the event types. The conformance
-		is now explicitly defined against the event types, and not only in terms
-		of interfaces used by the event types.
+		(本规范)已经对事件类型进行了大量分类(clarifications)。一致性(conformance)
+		现在是针对事件类型明确定义的，而不仅仅是根据事件类型使用的接口。
 
-		<code>"MutationEvents"</code> have been deprecated. Support for
-		namespaced events, present in early drafts of this specification, has
-		also been removed.
+		<code>"MutationEvents"</code> 已被遗弃。在本规范的早期草案中，
+		对命名空间事件(namespaced events)的支持也被删除了。
 
-		For user agents which support the EVENT{DOMNodeInserted} and
-		EVENT{DOMNodeRemoved} event types, this specification no longer requires
-		that the event type be fired for <code>Attr</code> nodes.
+		对于支持 EVENT{DOMNodeInserted} 和 EVENT{DOMNodeRemoved} 事件类型的用户代理
+		，此规范不再要求为 <code>Attr</code> 节点触发此事件类型。
 
-		The <code>resize</code> event type no longer bubbles and the EVENT{mousemove}
-		event is now cancelable, reflecting existing implementations.
+		<code>resize</code> 事件类型不再冒泡， EVENT{mousemove} 事件现在是可取消
+		(默认行为)的，以反映(reflect)现有的实现。
 
-	<h4 id="changes-DOMLevel2to3Changes">Changes to DOM Level 2 Events interfaces</h4>
+	<h4 id="changes-DOMLevel2to3Changes">对 DOM Level 2 接口的更改</h4>
 
 		<dl>
-			<dt>Interface {{Event}}</dt>
+			<dt>{{Event}} 接口</dt>
 			<dd>
-				*	The {{Event}} interface has one new attribute,
-					{{Event/defaultPrevented}}, and one new method,
-					{{Event/stopImmediatePropagation()}}.
-				*	{{Event/timeStamp}} is now a <code>Number</code> in the
-					ECMAScript binding. A proposed correction to make the same
-					change in [[DOM-Level-3-Core]] is forthcoming.
-				*	This specification considers the {{Event/type}} attribute
-					to be case-sensitive, while DOM Level 2 Events considers
-					{{Event/type}} to be case-insensitive.
+				*	{{Event}} 接口有一个新属性 {{Event/defaultPrevented}} 和一个新方法
+					{{Event/stopImmediatePropagation()}} 。
+				*	{{Event/timeStamp}} 现在是 ECMAScript 绑定中的一个数字( 
+					<code>Number</code> )。即将提出一项修正建议，对 
+					[[DOM-Level-3-Core]] 进行同样的更改。
+				*	此规范认为 {{Event/type}} 属性区分大小写，而 DOM Level 2 Events
+					则认为 {{Event/type}} 不区分大小写。
 			</dd>
 
-			<dt>Interface {{EventTarget}}</dt>
+			<dt>{{EventTarget}} 接口</dt>
 			<dd>
-				*	The method {{EventTarget/dispatchEvent()}} was modified.
+				*	{{EventTarget/dispatchEvent()}} 方法已被修改。
 			</dd>
 
-			<dt>Interface {{MouseEvent}}</dt>
+			<dt>{{MouseEvent}} 接口</dt>
 			<dd>
-				*	The {{MouseEvent}} interface has one new method {{MouseEvent/getModifierState()}}.
+				*	{{MouseEvent}} 接口有一个新方法 {{MouseEvent/getModifierState()}} 。
 			</dd>
 
-			<dt>Exception <code>EventException</code></dt>
+			<dt><code>EventException</code> 异常</dt>
 			<dd>
-				*	The exception <code>EventException</code> is removed in this
-					specification. The prior <code>DISPATCH_REQUEST_ERR</code>
-					code is re-mapped to a <code>DOMException</code> of type
-					<code>InvalidStateError</code>.
+				*	本规范中删除了异常 <code>EventException</code> 。先前的 
+					<code>DISPATCH_REQUEST_ERR</code> 代码被重新映射到 
+					<code>InvalidStateError</code> 类型的 <code>DOMException</code> 。
 			</dd>
 		</dl>
 
-	<h4 id="changes-DOMLevel3Addons">New Interfaces</h4>
+	<h4 id="changes-DOMLevel3Addons">新接口</h4>
 
-		The interfaces {{CustomEvent}}, {{FocusEvent}}, {{KeyboardEvent}},
-		{{CompositionEvent}}, and {{WheelEvent}} were added to the Events module.
+		接口 {{CustomEvent}} ， {{FocusEvent}} ， {{KeyboardEvent}} ，
+		{{CompositionEvent}} 和 {{WheelEvent}} 已添加到事件(Events)模块中。
 
-<h3 id="changes-drafts">Changes between different drafts of UI Events</h3>
+<h3 id="changes-drafts">用户界面事件的不同草稿(drafts)之间的更改</h3>
 
-	The DOM Level 3 Events document was originally developed between 2000 and
-	2003, and published as a W3C Note, pending further feedback and interest
-	from implementers. In 2006, it was picked up for revision and progress on
-	the Recommendation Track, and was then revised to reflect the current state
-	of implementation and the needs of script authors.
+	DOM Level3 Events 文档最初是在 2000 年到 2003 年间开发的，并作为 W3C 注释(W3C
+	Note)发布，等待实现者的进一步反馈和参与(interest)。2006 年，它被选中在 
+	Recommendation Track 上进行修订(revision)和推进(progress)，
+	并取得进展，随后经过订正(revised)，以反映当前实现的状态和脚本作者的需求。
 
-	Despite its status only as a W3C Note, rather than an official
-	Recommendation, DOM 3 Events saw some implementation, and was also
-	referenced by other specifications, so care is being taken to cause minimal
-	disruption, while still adapting the specification to the current
-	environment.
+	尽管 DOM 3 Events 的地位仅为 W3C 注释(W3C Note)，而非官方 Recommendation ，
+	但它在一些实现上呈现，也被其他规范引用，因此在使规范适应当前环境的同时，
+	也将(提案的)区别(disruption)降至最低。
 
-	The current specification has been reordered significantly from the earlier
-	W3C Note form, and also from the structure of DOM2 Events, in order to
-	clarify the material. New diagrams have been put in place to represent
-	hierarchies and events flows more clearly. Here are some of the more
-	important changes between drafts:
+	为了弄清原始资料(clarify the material)，当前规范已从早期的 W3C 注释(W3C Note)
+	形式以及 DOM2 Events 的构造中进行了显著的重新排序。新的图表已经(阐述)到位，
+	可以更清晰地表示层次结构和事件流。以下是一些草案之间的更重要的变化: 
 
-	*	The <q>key identifier</q> feature has been renamed <q>key value</q> to
-		disambiguate them from unique identifiers for keys.
+	*	<q>键标识符(key identifier)<q> 功能已被重命名为<q>键值(key value)</q>，
+		以消除它们与键的唯一标识符之间的歧义。
 
-	*	The {{KeyboardEvent}} interface was briefly (from 2003-2010) defined to
-		have <code>keyIdentifier</code> and <code>keyLocation</code> attributes,
-		but these were removed in favor of the current {{KeyboardEvent/key}} and
-		{{KeyboardEvent/location}} attributes. These attributes were not widely
-		implemented.
+		<div class="note custom-note">
+		键的唯一标识符是 <q>码值(code value)</q> 。
+		</div>
 
-	*	The {{KeyboardEvent}} and {{CompositionEvent}} interfaces defined a
-		<code>locale</code> attribute. This attribute was underspecified and
-		moved into a technical note until it can be specified adequately.
-		Refer to this
-		<a href="https://www.w3.org/TR/2014/WD-uievents-20140612/">old version of UI Events</a>
-		(before the DOM3Events spec was renamed "UI Events") for details.
+	*	{{KeyboardEvent}} 接口(从 2003-2010 年开始)被短暂地定义具有 
+		<code>keyIdentifier</code> 和 <code>keyLocation</code> 属性过，
+		但为了支持当前的 {{KeyboardEvent/key}} 和 {{KeyboardEvent/location}} 属性，
+		这些属性被删除了。并且这些属性没有得到广泛的实现。
 
-	*	The {{KeyboardEvent}} also had a <code>char</code> attribute that
-		was only used by the EVENT{keypress} event. Since the keypress event has
-		been deprecated, this attribute was no longer useful and was removed.
+	*	{{KeyboardEvent}} 和 {{CompositionEvent}} 接口定义了一个 <code>locale</code>
+		属性。该属性未被充分指定，并被移到技术说明中，直到可以充分指定为止。
+		有关详细信息，请参阅此 
+		<a href="https://www.w3.org/TR/2014/WD-uievents-20140612/">
+		旧版本的用户界面事件</a>（在 DOM3Events 规范被重命名为"UI Events"之前）。
 
-	*	The <code>change</code>, <code>submit</code>, and <code>reset</code>
-		events were removed, since they were specific to HTML forms, and are
-		specified in [[HTML5]].
+	*	{{KeyboardEvent}} 还有一个仅由 EVENT{keypress} 事件使用的 <code>char</code> 
+		属性。由于 EVENT{keypress} 事件已被弃用，因此该属性不再有用，已被删除。
 
-	*	The <code>textInput</code> event, originally proposed as a replacement
-		for EVENT{keypress}, was removed in favor of the current
-		EVENT{beforeinput} and EVENT{input} events.
+	*	<code>change</code> 、 <code>submit</code> 和 <code>reset</code> 事件被删除
+		，因为它们是特定于 HTML 表单的，并且在 [[HTML5]] 中规定。
 
-	*	Namespaced events have been removed.
+	*	最初被提议作为 EVENT{keypress} 替代的 <code>textInput</code> 事件被删除，
+		取而代之的是当前的 EVENT{beforeinput} 和 EVENT{input} 事件。
 
-	*	Updated to use [[WebIDL]].
+	*	已删除命名空间(Namespaced)事件。
 
-	*	EventException has been removed.
+	*	已更新为使用 [[WebIDL]] 。
+
+		<div class="note custom-note">
+		这里指接口的定义方式遵循 [[WebIDL]] 规范 。
+		</div>
+
+	*	EventException 已被删除。
 
 </section>
