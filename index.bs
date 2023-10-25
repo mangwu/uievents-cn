@@ -10,7 +10,7 @@ Group: webapps
 Status: UD
 TR: https://w3c.github.io/uievents/
 ED: https://mangwu.github.io/uievents-cn
-Text Macro: DATE 2023年5月29日
+Text Macro: DATE 2023年10月25日
 Text Macro: LONGSTATUS 翻译草案
 Boilerplate: repository-issue-tracking off, copyright off, property-index off
 Repository: mangwu/uievents-cn
