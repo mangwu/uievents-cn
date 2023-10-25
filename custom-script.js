@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: custom-script.js                                                     *
  * @Date: 2023-05-01 02:02:19                                                  *
- * @LastModifiedDate: 2023-05-29 11:20:56                                      *
+ * @LastModifiedDate: 2023-10-25 16:05:49                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -33,7 +33,6 @@ const CONFORMANCE = `<h2 class="no-ref no-num heading settled" id="w3c-conforman
 const CONFORMANCETOC = `<a href="#w3c-conformance-zh"><span class="secno"></span> <span class="content">一致性</span></a>
 <ol class="toc"><li><a href="#w3c-conventions-zh"><span class="secno"></span> <span class="content">文档规约</span></a>
 </li><li><a href="#w3c-conformant-algorithms-zh"><span class="secno"></span> <span class="content">一致性算法</span></a></li></ol>`;
-
 
 /**
  * @description 尝试执行代码
@@ -294,19 +293,37 @@ function addZhComformance() {
   }
 }
 
+/**
+ * @description 添加中文的文档翻译时间
+ */
+function addZhTime() {
+  const timeEle = document.querySelector("time.dt-updated");
+  if (timeEle) {
+    const date = new Date(timeEle.dateTime);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    timeEle.textContent = `${year}年${month}月${day}日`;
+  }
+}
+
 function tranlateMetaData() {
   tranlateIndexBySeletor("details > summary", "有关此文档的更多详细信息");
   tranlateIndexBySeletor("details > div > dl dt:nth-child(1)", "本版本: ");
-  tranlateIndexBySeletor("details > div > dl dt:nth-child(3)", "最新发布版本: ");
+  tranlateIndexBySeletor(
+    "details > div > dl dt:nth-child(3)",
+    "最新发布版本: "
+  );
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  tryCatch(figureAllChange,"figureAllChange方法执行错误:")
-  tryCatch(translatePanels,"translatePanels方法执行错误:")
-  tryCatch(tranlateToc,"tranlateToc方法执行错误:")
-  tryCatch(translateDfnTypes,"translateDfnTypes方法执行错误:")
+  tryCatch(figureAllChange, "figureAllChange方法执行错误:");
+  tryCatch(translatePanels, "translatePanels方法执行错误:");
+  tryCatch(tranlateToc, "tranlateToc方法执行错误:");
+  tryCatch(translateDfnTypes, "translateDfnTypes方法执行错误:");
   tryCatch(tranlateIndex, "tranlateIndex方法执行错误:");
   tryCatch(tranlateReferences, "tranlateReferences方法执行错误:");
   tryCatch(addZhComformance, "addZhComformance方法执行错误:");
-  tryCatch(tranlateMetaData,"tranlateMetaData方法执行错误:")
+  tryCatch(tranlateMetaData, "tranlateMetaData方法执行错误:");
+  tryCatch(addZhTime, "addZhTime方法执行错误");
 });
