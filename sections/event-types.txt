@@ -2402,7 +2402,7 @@ myDiv.addEventListener("auxclick", function(e) {
 			在一个滚轮事件上调用 <code>preventDefault</code> 可以阻止或中断滚动。
 			为了获得最大的滚动性能，
 			用户代理可能不会等待每个与滚动相关联的滚轮事件被处理完毕
-			(检阅滚轮事件是否被取消)才派发事件。在这种情况下，用户代理应该生成 
+			(检阅滚轮事件是否被取消)才执行默认行为。在这种情况下，用户代理应该生成 
 			<code>cancelable</code> 属性为 <code>false</code> 的 <code>wheel</code> 事件，
 			表明 <code>preventDefault</code> 不能用于阻止或中断滚动。否则 
 			<code>cancelable</code> 属性将为 <code>true</code> 。
